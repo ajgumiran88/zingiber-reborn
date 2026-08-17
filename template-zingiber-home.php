@@ -75,9 +75,11 @@ get_header('zingiber');
         <div class="zingiber-container zingiber-coast__intro" data-zingiber-reveal>
             <p class="zingiber-eyebrow"><?php echo esc_html($sections['coastal_expression']['eyebrow']); ?></p>
             <h2><?php echo esc_html($sections['coastal_expression']['heading']); ?></h2>
-            <?php foreach ($sections['coastal_expression']['body'] as $paragraph) : ?>
-                <p><?php echo esc_html($paragraph); ?></p>
-            <?php endforeach; ?>
+            <div class="zingiber-coast__copy">
+                <?php foreach ($sections['coastal_expression']['body'] as $paragraph) : ?>
+                    <p><?php echo esc_html($paragraph); ?></p>
+                <?php endforeach; ?>
+            </div>
         </div>
         <div class="zingiber-container zingiber-coast__composition">
             <figure class="zingiber-coast__image zingiber-coast__image--primary" data-zingiber-reveal>

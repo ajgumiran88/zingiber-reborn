@@ -3,8 +3,18 @@
 
     document.documentElement.classList.add('zingiber-js');
 
+    var header = document.querySelector('[data-zingiber-header]');
     var toggle = document.querySelector('[data-zingiber-menu-toggle]');
     var menu = document.querySelector('[data-zingiber-menu]');
+
+    if (header) {
+        var updateStickyHeader = function () {
+            header.classList.toggle('is-sticky', window.scrollY > 16);
+        };
+
+        updateStickyHeader();
+        window.addEventListener('scroll', updateStickyHeader, { passive: true });
+    }
 
     if (toggle && menu) {
         var closeMenu = function (restoreFocus) {
