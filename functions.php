@@ -75,3 +75,5 @@ if (vonaco_is_elementor_activated()) {
 if (!is_user_logged_in()) {
     require get_theme_file_path('inc/modules/class-login.php');
 }
+
+require_once get_theme_file_path('inc/zingiber/setup.php');

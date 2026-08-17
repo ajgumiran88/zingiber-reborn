@@ -216,6 +216,32 @@ if (in_array('templates', $groups, true)) {
             }
         }
     }
+
+    $setup = $read('inc/zingiber/setup.php');
+    if ($setup !== null) {
+        foreach ([
+            'zingiber_theme_asset_url',
+            'zingiber_current_page_content',
+            'zingiber_install_site_pages',
+            'after_switch_theme',
+            'wp_enqueue_scripts',
+            'body_class',
+            'get_page_by_path',
+            'wp_insert_post',
+            'wp_create_nav_menu',
+            "'zingiber-fonts'",
+            "'zingiber-site'",
+        ] as $contract) {
+            if (strpos($setup, $contract) === false) {
+                $fail('templates', sprintf('Theme bootstrap contract missing: %s.', $contract));
+            }
+        }
+    }
+
+    $functions = $read('functions.php');
+    if ($functions === null || strpos($functions, "inc/zingiber/setup.php") === false) {
+        $fail('templates', 'functions.php does not load the Zingiber setup module.');
+    }
 }
 
 if (in_array('brand', $groups, true)) {
@@ -245,8 +271,18 @@ if (in_array('brand', $groups, true)) {
     }
 
     $style = $read('style.css');
-    if ($style === null || strpos($style, 'Theme Name: Zingiber Restaurant') === false) {
-        $fail('brand', 'WordPress theme metadata has not been updated for Zingiber.');
+    if ($style === null) {
+        $fail('brand', 'style.css is missing.');
+    } else {
+        foreach ([
+            'Theme Name: Zingiber Restaurant' => '/Theme\s+Name:\s+Zingiber\s+Restaurant/',
+            'Text Domain: vonaco' => '/Text\s+Domain:\s+vonaco/',
+            'Description: A professional Zingiber restaurant experience' => '/Description:\s+A\s+professional\s+Zingiber\s+restaurant\s+experience/',
+        ] as $metadata => $pattern) {
+            if (preg_match($pattern, $style) !== 1) {
+                $fail('brand', sprintf('WordPress theme metadata missing: %s.', $metadata));
+            }
+        }
     }
 }
 
