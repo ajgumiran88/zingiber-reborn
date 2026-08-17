@@ -272,6 +272,34 @@ if (in_array('templates', $groups, true)) {
     if ($functions === null || strpos($functions, "inc/zingiber/setup.php") === false) {
         $fail('templates', 'functions.php does not load the Zingiber setup module.');
     }
+
+    $homeTemplate = $read('template-zingiber-home.php');
+    if ($homeTemplate !== null) {
+        foreach (['hero', 'chef', 'principles', 'coastal-regions', 'menu', 'experience', 'gallery', 'reservations'] as $sectionId) {
+            if (strpos($homeTemplate, 'id="' . $sectionId . '"') === false) {
+                $fail('templates', sprintf('Home 2 section missing: #%s.', $sectionId));
+            }
+        }
+
+        foreach ([
+            "get_header('zingiber')",
+            "get_footer('zingiber')",
+            "\$home['principles']",
+            "\$home['regions']",
+            "\$home['featured_images']",
+            'data-zingiber-reveal',
+            "home_url('/menu/')",
+            "home_url('/contact/')",
+        ] as $contract) {
+            if (strpos($homeTemplate, $contract) === false) {
+                $fail('templates', sprintf('Home 2 template contract missing: %s.', $contract));
+            }
+        }
+
+        if (preg_match_all('/<h1\b/i', $homeTemplate) !== 1) {
+            $fail('templates', 'Home 2 template must contain exactly one H1.');
+        }
+    }
 }
 
 if (in_array('brand', $groups, true)) {

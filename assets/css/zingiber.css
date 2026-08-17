@@ -180,6 +180,520 @@ body.zingiber-site {
     color: var(--zingiber-burnt-red);
 }
 
+.zingiber-button--dark {
+    border-color: var(--zingiber-burnt-red);
+    background: var(--zingiber-burnt-red);
+    color: var(--zingiber-sand);
+}
+
+.zingiber-button--dark:hover {
+    border-color: var(--zingiber-charcoal);
+    background: var(--zingiber-charcoal);
+    color: var(--zingiber-sand);
+}
+
+.zingiber-text-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--zingiber-sand);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.zingiber-text-link span {
+    color: var(--zingiber-copper);
+    font-size: 1rem;
+    transition: transform 180ms ease;
+}
+
+.zingiber-text-link:hover span {
+    transform: translate(0.2rem, -0.2rem);
+}
+
+.zingiber-text-link--dark {
+    color: var(--zingiber-charcoal);
+}
+
+.zingiber-main {
+    overflow: hidden;
+}
+
+.zingiber-section {
+    padding-block: var(--zingiber-section-space);
+}
+
+.zingiber-eyebrow {
+    margin: 0 0 1.35rem;
+    color: var(--zingiber-terracotta);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.zingiber-site h1,
+.zingiber-site h2,
+.zingiber-site h3 {
+    margin-top: 0;
+    color: inherit;
+    font-family: var(--zingiber-display);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.zingiber-site h2 {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(2.7rem, 5.4vw, 5.8rem);
+    line-height: 0.98;
+}
+
+.zingiber-site p {
+    max-width: 44rem;
+}
+
+.zingiber-enhanced-motion [data-zingiber-reveal] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zingiber-enhanced-motion [data-zingiber-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zingiber-hero {
+    position: relative;
+    display: flex;
+    min-height: max(48rem, 100svh);
+    align-items: flex-end;
+    isolation: isolate;
+    background-color: var(--zingiber-charcoal);
+    background-image: var(--zingiber-hero-image);
+    background-position: center;
+    background-size: cover;
+    color: var(--zingiber-sand);
+}
+
+.zingiber-hero__veil {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 15, 15, 0.82) 0%, rgba(15, 15, 15, 0.52) 48%, rgba(15, 15, 15, 0.2) 100%), linear-gradient(0deg, rgba(15, 15, 15, 0.68), transparent 55%);
+}
+
+.zingiber-hero__content {
+    padding-top: 11rem;
+    padding-bottom: clamp(6.5rem, 11vh, 10rem);
+}
+
+.zingiber-hero .zingiber-eyebrow {
+    color: var(--zingiber-copper);
+}
+
+.zingiber-hero h1 {
+    max-width: 12ch;
+    margin-bottom: 1.75rem;
+    font-size: clamp(5rem, 11vw, 11rem);
+    line-height: 0.78;
+}
+
+.zingiber-hero__lede {
+    max-width: 38rem;
+    margin: 0;
+    color: rgba(237, 231, 225, 0.86);
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.4rem, 2.4vw, 2.25rem);
+    line-height: 1.35;
+}
+
+.zingiber-hero__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    margin-top: 2.75rem;
+}
+
+.zingiber-hero__scroll {
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 4rem);
+    bottom: 2rem;
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.zingiber-chef {
+    background: var(--zingiber-sand);
+}
+
+.zingiber-chef__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 0.72fr);
+    align-items: center;
+    gap: clamp(3rem, 9vw, 10rem);
+}
+
+.zingiber-chef__copy {
+    max-width: 49rem;
+}
+
+.zingiber-chef__copy > p:not(.zingiber-eyebrow) {
+    color: var(--zingiber-ink-soft);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+}
+
+.zingiber-chef__figure {
+    position: relative;
+    margin: 0;
+    padding: 1.25rem 1.25rem 3.5rem;
+    border: 1px solid var(--zingiber-line);
+}
+
+.zingiber-chef__figure img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.zingiber-chef__figure figcaption {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.1rem;
+    left: 1.25rem;
+    color: var(--zingiber-terracotta);
+    font-family: var(--zingiber-display);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.zingiber-principles {
+    padding-block: clamp(4rem, 7vw, 7rem);
+    background: var(--zingiber-burnt-red);
+    color: var(--zingiber-sand);
+}
+
+.zingiber-principles__heading {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.zingiber-principles .zingiber-eyebrow {
+    color: var(--zingiber-copper);
+}
+
+.zingiber-principles h2 {
+    max-width: 12ch;
+    margin: 0;
+}
+
+.zingiber-principles__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(237, 231, 225, 0.28);
+    border-left: 1px solid rgba(237, 231, 225, 0.28);
+    list-style: none;
+}
+
+.zingiber-principles__list li {
+    display: flex;
+    min-height: 13rem;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-right: 1px solid rgba(237, 231, 225, 0.28);
+    border-bottom: 1px solid rgba(237, 231, 225, 0.28);
+}
+
+.zingiber-principles__list span {
+    color: var(--zingiber-copper);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+}
+
+.zingiber-principles__list strong {
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.75rem, 2.6vw, 2.7rem);
+    font-weight: 500;
+}
+
+.zingiber-coast {
+    background: #f4efea;
+}
+
+.zingiber-coast__intro {
+    display: grid;
+    grid-template-columns: 0.55fr 1.1fr 0.7fr;
+    gap: 2rem clamp(2rem, 5vw, 6rem);
+}
+
+.zingiber-coast__intro h2 {
+    max-width: 11ch;
+}
+
+.zingiber-coast__intro > p:not(.zingiber-eyebrow) {
+    grid-column: 3;
+    margin: 0 0 1rem;
+    color: var(--zingiber-ink-soft);
+}
+
+.zingiber-coast__intro > p:nth-of-type(2) {
+    grid-row: 1;
+}
+
+.zingiber-coast__intro > p:nth-of-type(3) {
+    grid-row: 2;
+}
+
+.zingiber-coast__composition {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(13rem, 0.5fr) minmax(0, 0.8fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5.5rem);
+    margin-top: clamp(4rem, 8vw, 8rem);
+}
+
+.zingiber-coast__image {
+    margin: 0;
+}
+
+.zingiber-coast__image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.zingiber-coast__image--primary img {
+    aspect-ratio: 4 / 5;
+}
+
+.zingiber-coast__image--secondary {
+    align-self: end;
+    margin-bottom: -5rem;
+}
+
+.zingiber-coast__image--secondary img {
+    aspect-ratio: 1 / 1;
+}
+
+.zingiber-coast__regions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.zingiber-coast__regions li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    align-items: baseline;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--zingiber-line);
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.6rem, 2.8vw, 3rem);
+}
+
+.zingiber-coast__regions span {
+    color: var(--zingiber-terracotta);
+    font: 600 0.65rem/1 var(--zingiber-body);
+    letter-spacing: 0.12em;
+}
+
+.zingiber-menu-story {
+    background: var(--zingiber-sand);
+}
+
+.zingiber-menu-story__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 0.7fr);
+    align-items: center;
+    gap: clamp(4rem, 8vw, 9rem);
+}
+
+.zingiber-menu-story__images {
+    position: relative;
+    min-height: 43rem;
+}
+
+.zingiber-menu-story__image {
+    position: absolute;
+    object-fit: cover;
+}
+
+.zingiber-menu-story__image--wide {
+    top: 0;
+    left: 0;
+    width: 78%;
+    aspect-ratio: 4 / 3;
+}
+
+.zingiber-menu-story__image--detail {
+    right: 0;
+    bottom: 0;
+    width: 48%;
+    aspect-ratio: 4 / 5;
+    border: 0.75rem solid var(--zingiber-sand);
+}
+
+.zingiber-menu-story__copy p:not(.zingiber-eyebrow) {
+    color: var(--zingiber-ink-soft);
+}
+
+.zingiber-menu-story__copy .zingiber-button {
+    margin-top: 1.75rem;
+}
+
+.zingiber-experience {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(24rem, 0.8fr);
+    min-height: 52rem;
+    background: var(--zingiber-charcoal);
+    color: var(--zingiber-sand);
+}
+
+.zingiber-experience__image {
+    min-height: 42rem;
+}
+
+.zingiber-experience__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zingiber-experience__copy {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: clamp(4rem, 8vw, 9rem);
+}
+
+.zingiber-experience .zingiber-eyebrow {
+    color: var(--zingiber-copper);
+}
+
+.zingiber-experience__copy p:not(.zingiber-eyebrow) {
+    color: rgba(237, 231, 225, 0.72);
+}
+
+.zingiber-gallery {
+    background: #f4efea;
+}
+
+.zingiber-gallery__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.zingiber-gallery__heading h2 {
+    margin-bottom: 0;
+}
+
+.zingiber-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 8rem;
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+
+.zingiber-gallery__item {
+    overflow: hidden;
+    margin: 0;
+}
+
+.zingiber-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zingiber-gallery__item:hover img {
+    transform: scale(1.03);
+}
+
+.zingiber-gallery__item--1 {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 4;
+}
+
+.zingiber-gallery__item--2 {
+    grid-column: 6 / span 3;
+    grid-row: 2 / span 3;
+}
+
+.zingiber-gallery__item--3 {
+    grid-column: 9 / span 4;
+    grid-row: 1 / span 5;
+}
+
+.zingiber-gallery__item--4 {
+    grid-column: 1 / span 4;
+    grid-row: 5 / span 3;
+}
+
+.zingiber-gallery__item--5 {
+    grid-column: 5 / span 4;
+    grid-row: 5 / span 4;
+}
+
+.zingiber-reservations {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 1.1fr);
+    background: var(--zingiber-sand);
+}
+
+.zingiber-reservations__image {
+    min-height: 46rem;
+}
+
+.zingiber-reservations__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zingiber-reservations__copy {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: clamp(4rem, 9vw, 10rem);
+}
+
+.zingiber-reservations__copy address {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0 2.5rem;
+    color: var(--zingiber-ink-soft);
+    font-style: normal;
+}
+
+.zingiber-reservation-cta {
+    align-self: flex-start;
+    border-color: var(--zingiber-burnt-red);
+    background: var(--zingiber-burnt-red);
+    color: var(--zingiber-sand);
+}
+
 .zingiber-mobile-toggle {
     display: none;
     min-width: 44px;
@@ -300,6 +814,22 @@ body.zingiber-site {
     .zingiber-header__inner {
         grid-template-columns: auto 1fr;
     }
+
+    .zingiber-coast__intro {
+        grid-template-columns: 0.4fr 1fr;
+    }
+
+    .zingiber-coast__intro > p:not(.zingiber-eyebrow) {
+        grid-column: 2;
+    }
+
+    .zingiber-coast__composition {
+        grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.55fr);
+    }
+
+    .zingiber-coast__image--secondary {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
@@ -354,6 +884,56 @@ body.zingiber-site {
     .zingiber-footer__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .zingiber-chef__grid,
+    .zingiber-menu-story__grid,
+    .zingiber-experience,
+    .zingiber-reservations {
+        grid-template-columns: 1fr;
+    }
+
+    .zingiber-chef__figure {
+        width: min(100%, 36rem);
+        justify-self: end;
+    }
+
+    .zingiber-principles__heading {
+        grid-template-columns: 1fr;
+    }
+
+    .zingiber-principles__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .zingiber-coast__intro {
+        display: block;
+    }
+
+    .zingiber-coast__composition {
+        grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.75fr);
+    }
+
+    .zingiber-menu-story__images {
+        min-height: 38rem;
+    }
+
+    .zingiber-menu-story__copy {
+        max-width: 40rem;
+    }
+
+    .zingiber-experience__copy,
+    .zingiber-reservations__copy {
+        padding: var(--zingiber-section-space) max(1.5rem, 7vw);
+    }
+
+    .zingiber-experience__image,
+    .zingiber-reservations__image {
+        min-height: min(70vw, 38rem);
+    }
+
+    .zingiber-gallery__grid {
+        grid-auto-rows: 6rem;
+    }
 }
 
 @media (max-width: 767px) {
@@ -369,6 +949,75 @@ body.zingiber-site {
     .zingiber-footer__bottom {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .zingiber-hero {
+        min-height: 48rem;
+        background-position: 62% center;
+    }
+
+    .zingiber-hero__veil {
+        background: linear-gradient(0deg, rgba(15, 15, 15, 0.86) 0%, rgba(15, 15, 15, 0.38) 80%);
+    }
+
+    .zingiber-hero h1 {
+        font-size: clamp(4.5rem, 24vw, 7rem);
+    }
+
+    .zingiber-hero__scroll {
+        display: none;
+    }
+
+    .zingiber-principles__list {
+        grid-template-columns: 1fr;
+    }
+
+    .zingiber-principles__list li {
+        min-height: 9rem;
+    }
+
+    .zingiber-coast__composition {
+        grid-template-columns: 1fr;
+    }
+
+    .zingiber-coast__image--primary img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .zingiber-menu-story__images {
+        min-height: 30rem;
+    }
+
+    .zingiber-menu-story__image--wide {
+        width: 92%;
+    }
+
+    .zingiber-menu-story__image--detail {
+        width: 52%;
+    }
+
+    .zingiber-gallery__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .zingiber-gallery__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 13rem;
+    }
+
+    .zingiber-gallery__item--1,
+    .zingiber-gallery__item--2,
+    .zingiber-gallery__item--3,
+    .zingiber-gallery__item--4,
+    .zingiber-gallery__item--5 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .zingiber-gallery__item--1,
+    .zingiber-gallery__item--5 {
+        grid-row: span 2;
     }
 }
 
