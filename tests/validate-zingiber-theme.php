@@ -300,6 +300,40 @@ if (in_array('templates', $groups, true)) {
             $fail('templates', 'Home 2 template must contain exactly one H1.');
         }
     }
+
+    $pageTemplate = $read('template-zingiber-page.php');
+    if ($pageTemplate !== null) {
+        foreach ([
+            'zingiber_current_page_content()',
+            "get_header('zingiber')",
+            "get_footer('zingiber')",
+            'zingiber-page-hero',
+            'zingiber-page-principles',
+            'zingiber-page-menu',
+            'zingiber-page-gallery',
+            'zingiber-page-careers',
+            'zingiber-page-contact',
+            "mailto:",
+            "\$page['slug']",
+            "\$page['details']",
+        ] as $contract) {
+            if (strpos($pageTemplate, $contract) === false) {
+                $fail('templates', sprintf('Supporting-page template contract missing: %s.', $contract));
+            }
+        }
+
+        if (preg_match_all('/<h1\b/i', $pageTemplate) !== 1) {
+            $fail('templates', 'Supporting-page template must contain exactly one H1.');
+        }
+    }
+
+    if ($setup !== null) {
+        foreach (['zingiber_filter_document_title', 'zingiber_output_meta_description', 'document_title_parts', '<meta name="description"'] as $seoContract) {
+            if (strpos($setup, $seoContract) === false) {
+                $fail('templates', sprintf('SEO metadata contract missing: %s.', $seoContract));
+            }
+        }
+    }
 }
 
 if (in_array('brand', $groups, true)) {
