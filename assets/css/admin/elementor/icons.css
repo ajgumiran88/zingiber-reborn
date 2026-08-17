@@ -1,0 +1,754 @@
+
+@font-face {
+  font-family: "vonaco-icon";
+  src: url("../../../fonts/icons/vonaco-icon-1.3.1.eot");
+  src: url("../../../fonts/icons/vonaco-icon-1.3.1.eot?#iefix") format("eot"), url("../../../fonts/icons/vonaco-icon-1.3.1.woff2") format("woff2"), url("../../../fonts/icons/vonaco-icon-1.3.1.woff") format("woff"), url("../../../fonts/icons/vonaco-icon-1.3.1.ttf") format("truetype"), url("../../../fonts/icons/vonaco-icon-1.3.1.svg#vonaco-icon-1.3.1") format("svg");
+}
+[class*=vonaco-icon-] {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.vonaco-icon-account:before {
+  content: "";
+}
+
+.vonaco-icon-angle-down:before {
+  content: "";
+}
+
+.vonaco-icon-angle-left:before {
+  content: "";
+}
+
+.vonaco-icon-angle-right:before {
+  content: "";
+}
+
+.vonaco-icon-angle-up:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-circle-left:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-circle:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-down:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-left:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-right:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-up:before {
+  content: "";
+}
+
+.vonaco-icon-backtop:before {
+  content: "";
+}
+
+.vonaco-icon-book-call:before {
+  content: "";
+}
+
+.vonaco-icon-calendar-1:before {
+  content: "";
+}
+
+.vonaco-icon-calendar:before {
+  content: "";
+}
+
+.vonaco-icon-cart-shopping:before {
+  content: "";
+}
+
+.vonaco-icon-cart:before {
+  content: "";
+}
+
+.vonaco-icon-check-square-solid:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-down:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-left:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-right:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-up:before {
+  content: "";
+}
+
+.vonaco-icon-clock:before {
+  content: "";
+}
+
+.vonaco-icon-compare:before {
+  content: "";
+}
+
+.vonaco-icon-cornish:before {
+  content: "";
+}
+
+.vonaco-icon-email-1:before {
+  content: "";
+}
+
+.vonaco-icon-eye:before {
+  content: "";
+}
+
+.vonaco-icon-facebook-f:before {
+  content: "";
+}
+
+.vonaco-icon-filter-ul:before {
+  content: "";
+}
+
+.vonaco-icon-google-plus-g:before {
+  content: "";
+}
+
+.vonaco-icon-heart-1:before {
+  content: "";
+}
+
+.vonaco-icon-linkedin-in:before {
+  content: "";
+}
+
+.vonaco-icon-list-ul:before {
+  content: "";
+}
+
+.vonaco-icon-location-1:before {
+  content: "";
+}
+
+.vonaco-icon-location:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-down:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-left:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-right:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-up:before {
+  content: "";
+}
+
+.vonaco-icon-modish:before {
+  content: "";
+}
+
+.vonaco-icon-next-right:before {
+  content: "";
+}
+
+.vonaco-icon-pen:before {
+  content: "";
+}
+
+.vonaco-icon-phone-1:before {
+  content: "";
+}
+
+.vonaco-icon-phone:before {
+  content: "";
+}
+
+.vonaco-icon-pin:before {
+  content: "";
+}
+
+.vonaco-icon-prev-left:before {
+  content: "";
+}
+
+.vonaco-icon-quote:before {
+  content: "";
+}
+
+.vonaco-icon-rhombus:before {
+  content: "";
+}
+
+.vonaco-icon-salad:before {
+  content: "";
+}
+
+.vonaco-icon-search-1:before {
+  content: "";
+}
+
+.vonaco-icon-shoping:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-bag:before {
+  content: "";
+}
+
+.vonaco-icon-sliders-v:before {
+  content: "";
+}
+
+.vonaco-icon-spaghetti:before {
+  content: "";
+}
+
+.vonaco-icon-star-1:before {
+  content: "";
+}
+
+.vonaco-icon-th-large:before {
+  content: "";
+}
+
+.vonaco-icon-tweet:before {
+  content: "";
+}
+
+.vonaco-icon-vonaco-plate:before {
+  content: "";
+}
+
+.vonaco-icon-vonaco-quotes1:before {
+  content: "";
+}
+
+.vonaco-icon-360:before {
+  content: "";
+}
+
+.vonaco-icon-bars:before {
+  content: "";
+}
+
+.vonaco-icon-caret-down:before {
+  content: "";
+}
+
+.vonaco-icon-caret-left:before {
+  content: "";
+}
+
+.vonaco-icon-caret-right:before {
+  content: "";
+}
+
+.vonaco-icon-caret-up:before {
+  content: "";
+}
+
+.vonaco-icon-cart-empty:before {
+  content: "";
+}
+
+.vonaco-icon-check-square:before {
+  content: "";
+}
+
+.vonaco-icon-circle:before {
+  content: "";
+}
+
+.vonaco-icon-cloud-download-alt:before {
+  content: "";
+}
+
+.vonaco-icon-comment:before {
+  content: "";
+}
+
+.vonaco-icon-comments:before {
+  content: "";
+}
+
+.vonaco-icon-contact:before {
+  content: "";
+}
+
+.vonaco-icon-credit-card:before {
+  content: "";
+}
+
+.vonaco-icon-dot-circle:before {
+  content: "";
+}
+
+.vonaco-icon-edit:before {
+  content: "";
+}
+
+.vonaco-icon-envelope:before {
+  content: "";
+}
+
+.vonaco-icon-expand-alt:before {
+  content: "";
+}
+
+.vonaco-icon-external-link-alt:before {
+  content: "";
+}
+
+.vonaco-icon-file-alt:before {
+  content: "";
+}
+
+.vonaco-icon-file-archive:before {
+  content: "";
+}
+
+.vonaco-icon-filter:before {
+  content: "";
+}
+
+.vonaco-icon-folder-open:before {
+  content: "";
+}
+
+.vonaco-icon-folder:before {
+  content: "";
+}
+
+.vonaco-icon-frown:before {
+  content: "";
+}
+
+.vonaco-icon-gift:before {
+  content: "";
+}
+
+.vonaco-icon-grid:before {
+  content: "";
+}
+
+.vonaco-icon-grip-horizontal:before {
+  content: "";
+}
+
+.vonaco-icon-heart-fill:before {
+  content: "";
+}
+
+.vonaco-icon-heart:before {
+  content: "";
+}
+
+.vonaco-icon-history:before {
+  content: "";
+}
+
+.vonaco-icon-home:before {
+  content: "";
+}
+
+.vonaco-icon-info-circle:before {
+  content: "";
+}
+
+.vonaco-icon-instagram:before {
+  content: "";
+}
+
+.vonaco-icon-level-up-alt:before {
+  content: "";
+}
+
+.vonaco-icon-list:before {
+  content: "";
+}
+
+.vonaco-icon-map-marker-check:before {
+  content: "";
+}
+
+.vonaco-icon-meh:before {
+  content: "";
+}
+
+.vonaco-icon-minus-circle:before {
+  content: "";
+}
+
+.vonaco-icon-minus:before {
+  content: "";
+}
+
+.vonaco-icon-mobile-android-alt:before {
+  content: "";
+}
+
+.vonaco-icon-money-bill:before {
+  content: "";
+}
+
+.vonaco-icon-pencil-alt:before {
+  content: "";
+}
+
+.vonaco-icon-play-circle:before {
+  content: "";
+}
+
+.vonaco-icon-play:before {
+  content: "";
+}
+
+.vonaco-icon-plus-circle:before {
+  content: "";
+}
+
+.vonaco-icon-plus:before {
+  content: "";
+}
+
+.vonaco-icon-random:before {
+  content: "";
+}
+
+.vonaco-icon-reply-all:before {
+  content: "";
+}
+
+.vonaco-icon-reply:before {
+  content: "";
+}
+
+.vonaco-icon-search-plus:before {
+  content: "";
+}
+
+.vonaco-icon-search:before {
+  content: "";
+}
+
+.vonaco-icon-shield-check:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-basket:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-cart:before {
+  content: "";
+}
+
+.vonaco-icon-sign-out-alt:before {
+  content: "";
+}
+
+.vonaco-icon-smile:before {
+  content: "";
+}
+
+.vonaco-icon-spinner:before {
+  content: "";
+}
+
+.vonaco-icon-square:before {
+  content: "";
+}
+
+.vonaco-icon-star:before {
+  content: "";
+}
+
+.vonaco-icon-store:before {
+  content: "";
+}
+
+.vonaco-icon-sync:before {
+  content: "";
+}
+
+.vonaco-icon-tachometer-alt:before {
+  content: "";
+}
+
+.vonaco-icon-th-list:before {
+  content: "";
+}
+
+.vonaco-icon-thumbtack:before {
+  content: "";
+}
+
+.vonaco-icon-ticket:before {
+  content: "";
+}
+
+.vonaco-icon-times-circle:before {
+  content: "";
+}
+
+.vonaco-icon-times:before {
+  content: "";
+}
+
+.vonaco-icon-trophy-alt:before {
+  content: "";
+}
+
+.vonaco-icon-truck:before {
+  content: "";
+}
+
+.vonaco-icon-user-headset:before {
+  content: "";
+}
+
+.vonaco-icon-user-shield:before {
+  content: "";
+}
+
+.vonaco-icon-user:before {
+  content: "";
+}
+
+.vonaco-icon-video:before {
+  content: "";
+}
+
+.vonaco-icon-adobe:before {
+  content: "";
+}
+
+.vonaco-icon-amazon:before {
+  content: "";
+}
+
+.vonaco-icon-android:before {
+  content: "";
+}
+
+.vonaco-icon-angular:before {
+  content: "";
+}
+
+.vonaco-icon-apper:before {
+  content: "";
+}
+
+.vonaco-icon-apple:before {
+  content: "";
+}
+
+.vonaco-icon-atlassian:before {
+  content: "";
+}
+
+.vonaco-icon-behance:before {
+  content: "";
+}
+
+.vonaco-icon-bitbucket:before {
+  content: "";
+}
+
+.vonaco-icon-bitcoin:before {
+  content: "";
+}
+
+.vonaco-icon-bity:before {
+  content: "";
+}
+
+.vonaco-icon-bluetooth:before {
+  content: "";
+}
+
+.vonaco-icon-btc:before {
+  content: "";
+}
+
+.vonaco-icon-centos:before {
+  content: "";
+}
+
+.vonaco-icon-chrome:before {
+  content: "";
+}
+
+.vonaco-icon-codepen:before {
+  content: "";
+}
+
+.vonaco-icon-cpanel:before {
+  content: "";
+}
+
+.vonaco-icon-discord:before {
+  content: "";
+}
+
+.vonaco-icon-dochub:before {
+  content: "";
+}
+
+.vonaco-icon-docker:before {
+  content: "";
+}
+
+.vonaco-icon-dribbble:before {
+  content: "";
+}
+
+.vonaco-icon-dropbox:before {
+  content: "";
+}
+
+.vonaco-icon-drupal:before {
+  content: "";
+}
+
+.vonaco-icon-ebay:before {
+  content: "";
+}
+
+.vonaco-icon-facebook:before {
+  content: "";
+}
+
+.vonaco-icon-figma:before {
+  content: "";
+}
+
+.vonaco-icon-firefox:before {
+  content: "";
+}
+
+.vonaco-icon-google-plus:before {
+  content: "";
+}
+
+.vonaco-icon-google:before {
+  content: "";
+}
+
+.vonaco-icon-grunt:before {
+  content: "";
+}
+
+.vonaco-icon-gulp:before {
+  content: "";
+}
+
+.vonaco-icon-html5:before {
+  content: "";
+}
+
+.vonaco-icon-joomla:before {
+  content: "";
+}
+
+.vonaco-icon-link-brand:before {
+  content: "";
+}
+
+.vonaco-icon-linkedin:before {
+  content: "";
+}
+
+.vonaco-icon-mailchimp:before {
+  content: "";
+}
+
+.vonaco-icon-opencart:before {
+  content: "";
+}
+
+.vonaco-icon-paypal:before {
+  content: "";
+}
+
+.vonaco-icon-pinterest-p:before {
+  content: "";
+}
+
+.vonaco-icon-reddit:before {
+  content: "";
+}
+
+.vonaco-icon-skype:before {
+  content: "";
+}
+
+.vonaco-icon-slack:before {
+  content: "";
+}
+
+.vonaco-icon-snapchat:before {
+  content: "";
+}
+
+.vonaco-icon-spotify:before {
+  content: "";
+}
+
+.vonaco-icon-trello:before {
+  content: "";
+}
+
+.vonaco-icon-twitter:before {
+  content: "";
+}
+
+.vonaco-icon-vimeo:before {
+  content: "";
+}
+
+.vonaco-icon-whatsapp:before {
+  content: "";
+}
+
+.vonaco-icon-wordpress:before {
+  content: "";
+}
+
+.vonaco-icon-yoast:before {
+  content: "";
+}
+
+.vonaco-icon-youtube:before {
+  content: "";
+}
+

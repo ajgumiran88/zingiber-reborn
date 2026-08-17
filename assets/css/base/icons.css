@@ -1,0 +1,2691 @@
+@charset "UTF-8";
+/* ===== Start ICONS CSS ===== */
+@font-face {
+  font-family: "vonaco-icon";
+  src: url("./assets/fonts/icons/vonaco-icon-1.3.1.eot");
+  src: url("./assets/fonts/icons/vonaco-icon-1.3.1.eot?#iefix") format("eot"), url("./assets/fonts/icons/vonaco-icon-1.3.1.woff2") format("woff2"), url("./assets/fonts/icons/vonaco-icon-1.3.1.woff") format("woff"), url("./assets/fonts/icons/vonaco-icon-1.3.1.ttf") format("truetype"), url("./assets/fonts/icons/vonaco-icon-1.3.1.svg#vonaco-icon-1.3.1") format("svg");
+}
+[class*=vonaco-icon-] {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.vonaco-icon-account:before {
+  content: "";
+}
+
+.vonaco-icon-angle-down:before {
+  content: "";
+}
+
+.vonaco-icon-angle-left:before {
+  content: "";
+}
+
+.vonaco-icon-angle-right:before {
+  content: "";
+}
+
+.vonaco-icon-angle-up:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-circle-left:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-circle:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-down:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-left:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-right:before {
+  content: "";
+}
+
+.vonaco-icon-arrow-up:before {
+  content: "";
+}
+
+.vonaco-icon-backtop:before {
+  content: "";
+}
+
+.vonaco-icon-book-call:before {
+  content: "";
+}
+
+.vonaco-icon-calendar-1:before {
+  content: "";
+}
+
+.vonaco-icon-calendar:before {
+  content: "";
+}
+
+.vonaco-icon-cart-shopping:before {
+  content: "";
+}
+
+.vonaco-icon-cart:before {
+  content: "";
+}
+
+.vonaco-icon-check-square-solid:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-down:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-left:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-right:before {
+  content: "";
+}
+
+.vonaco-icon-chevron-up:before {
+  content: "";
+}
+
+.vonaco-icon-clock:before {
+  content: "";
+}
+
+.vonaco-icon-compare:before {
+  content: "";
+}
+
+.vonaco-icon-cornish:before {
+  content: "";
+}
+
+.vonaco-icon-email-1:before {
+  content: "";
+}
+
+.vonaco-icon-eye:before {
+  content: "";
+}
+
+.vonaco-icon-facebook-f:before {
+  content: "";
+}
+
+.vonaco-icon-filter-ul:before {
+  content: "";
+}
+
+.vonaco-icon-google-plus-g:before {
+  content: "";
+}
+
+.vonaco-icon-heart-1:before {
+  content: "";
+}
+
+.vonaco-icon-linkedin-in:before {
+  content: "";
+}
+
+.vonaco-icon-list-ul:before {
+  content: "";
+}
+
+.vonaco-icon-location-1:before {
+  content: "";
+}
+
+.vonaco-icon-location:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-down:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-left:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-right:before {
+  content: "";
+}
+
+.vonaco-icon-long-arrow-up:before {
+  content: "";
+}
+
+.vonaco-icon-modish:before {
+  content: "";
+}
+
+.vonaco-icon-next-right:before {
+  content: "";
+}
+
+.vonaco-icon-pen:before {
+  content: "";
+}
+
+.vonaco-icon-phone-1:before {
+  content: "";
+}
+
+.vonaco-icon-phone:before {
+  content: "";
+}
+
+.vonaco-icon-pin:before {
+  content: "";
+}
+
+.vonaco-icon-prev-left:before {
+  content: "";
+}
+
+.vonaco-icon-quote:before {
+  content: "";
+}
+
+.vonaco-icon-rhombus:before {
+  content: "";
+}
+
+.vonaco-icon-salad:before {
+  content: "";
+}
+
+.vonaco-icon-search-1:before {
+  content: "";
+}
+
+.vonaco-icon-shoping:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-bag:before {
+  content: "";
+}
+
+.vonaco-icon-sliders-v:before {
+  content: "";
+}
+
+.vonaco-icon-spaghetti:before {
+  content: "";
+}
+
+.vonaco-icon-star-1:before {
+  content: "";
+}
+
+.vonaco-icon-th-large:before {
+  content: "";
+}
+
+.vonaco-icon-tweet:before {
+  content: "";
+}
+
+.vonaco-icon-vonaco-plate:before {
+  content: "";
+}
+
+.vonaco-icon-vonaco-quotes1:before {
+  content: "";
+}
+
+.vonaco-icon-360:before {
+  content: "";
+}
+
+.vonaco-icon-bars:before {
+  content: "";
+}
+
+.vonaco-icon-caret-down:before {
+  content: "";
+}
+
+.vonaco-icon-caret-left:before {
+  content: "";
+}
+
+.vonaco-icon-caret-right:before {
+  content: "";
+}
+
+.vonaco-icon-caret-up:before {
+  content: "";
+}
+
+.vonaco-icon-cart-empty:before {
+  content: "";
+}
+
+.vonaco-icon-check-square:before {
+  content: "";
+}
+
+.vonaco-icon-circle:before {
+  content: "";
+}
+
+.vonaco-icon-cloud-download-alt:before {
+  content: "";
+}
+
+.vonaco-icon-comment:before {
+  content: "";
+}
+
+.vonaco-icon-comments:before {
+  content: "";
+}
+
+.vonaco-icon-contact:before {
+  content: "";
+}
+
+.vonaco-icon-credit-card:before {
+  content: "";
+}
+
+.vonaco-icon-dot-circle:before {
+  content: "";
+}
+
+.vonaco-icon-edit:before {
+  content: "";
+}
+
+.vonaco-icon-envelope:before {
+  content: "";
+}
+
+.vonaco-icon-expand-alt:before {
+  content: "";
+}
+
+.vonaco-icon-external-link-alt:before {
+  content: "";
+}
+
+.vonaco-icon-file-alt:before {
+  content: "";
+}
+
+.vonaco-icon-file-archive:before {
+  content: "";
+}
+
+.vonaco-icon-filter:before {
+  content: "";
+}
+
+.vonaco-icon-folder-open:before {
+  content: "";
+}
+
+.vonaco-icon-folder:before {
+  content: "";
+}
+
+.vonaco-icon-frown:before {
+  content: "";
+}
+
+.vonaco-icon-gift:before {
+  content: "";
+}
+
+.vonaco-icon-grid:before {
+  content: "";
+}
+
+.vonaco-icon-grip-horizontal:before {
+  content: "";
+}
+
+.vonaco-icon-heart-fill:before {
+  content: "";
+}
+
+.vonaco-icon-heart:before {
+  content: "";
+}
+
+.vonaco-icon-history:before {
+  content: "";
+}
+
+.vonaco-icon-home:before {
+  content: "";
+}
+
+.vonaco-icon-info-circle:before {
+  content: "";
+}
+
+.vonaco-icon-instagram:before {
+  content: "";
+}
+
+.vonaco-icon-level-up-alt:before {
+  content: "";
+}
+
+.vonaco-icon-list:before {
+  content: "";
+}
+
+.vonaco-icon-map-marker-check:before {
+  content: "";
+}
+
+.vonaco-icon-meh:before {
+  content: "";
+}
+
+.vonaco-icon-minus-circle:before {
+  content: "";
+}
+
+.vonaco-icon-minus:before {
+  content: "";
+}
+
+.vonaco-icon-mobile-android-alt:before {
+  content: "";
+}
+
+.vonaco-icon-money-bill:before {
+  content: "";
+}
+
+.vonaco-icon-pencil-alt:before {
+  content: "";
+}
+
+.vonaco-icon-play-circle:before {
+  content: "";
+}
+
+.vonaco-icon-play:before {
+  content: "";
+}
+
+.vonaco-icon-plus-circle:before {
+  content: "";
+}
+
+.vonaco-icon-plus:before {
+  content: "";
+}
+
+.vonaco-icon-random:before {
+  content: "";
+}
+
+.vonaco-icon-reply-all:before {
+  content: "";
+}
+
+.vonaco-icon-reply:before {
+  content: "";
+}
+
+.vonaco-icon-search-plus:before {
+  content: "";
+}
+
+.vonaco-icon-search:before {
+  content: "";
+}
+
+.vonaco-icon-shield-check:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-basket:before {
+  content: "";
+}
+
+.vonaco-icon-shopping-cart:before {
+  content: "";
+}
+
+.vonaco-icon-sign-out-alt:before {
+  content: "";
+}
+
+.vonaco-icon-smile:before {
+  content: "";
+}
+
+.vonaco-icon-spinner:before {
+  content: "";
+}
+
+.vonaco-icon-square:before {
+  content: "";
+}
+
+.vonaco-icon-star:before {
+  content: "";
+}
+
+.vonaco-icon-store:before {
+  content: "";
+}
+
+.vonaco-icon-sync:before {
+  content: "";
+}
+
+.vonaco-icon-tachometer-alt:before {
+  content: "";
+}
+
+.vonaco-icon-th-list:before {
+  content: "";
+}
+
+.vonaco-icon-thumbtack:before {
+  content: "";
+}
+
+.vonaco-icon-ticket:before {
+  content: "";
+}
+
+.vonaco-icon-times-circle:before {
+  content: "";
+}
+
+.vonaco-icon-times:before {
+  content: "";
+}
+
+.vonaco-icon-trophy-alt:before {
+  content: "";
+}
+
+.vonaco-icon-truck:before {
+  content: "";
+}
+
+.vonaco-icon-user-headset:before {
+  content: "";
+}
+
+.vonaco-icon-user-shield:before {
+  content: "";
+}
+
+.vonaco-icon-user:before {
+  content: "";
+}
+
+.vonaco-icon-video:before {
+  content: "";
+}
+
+.vonaco-icon-adobe:before {
+  content: "";
+}
+
+.vonaco-icon-amazon:before {
+  content: "";
+}
+
+.vonaco-icon-android:before {
+  content: "";
+}
+
+.vonaco-icon-angular:before {
+  content: "";
+}
+
+.vonaco-icon-apper:before {
+  content: "";
+}
+
+.vonaco-icon-apple:before {
+  content: "";
+}
+
+.vonaco-icon-atlassian:before {
+  content: "";
+}
+
+.vonaco-icon-behance:before {
+  content: "";
+}
+
+.vonaco-icon-bitbucket:before {
+  content: "";
+}
+
+.vonaco-icon-bitcoin:before {
+  content: "";
+}
+
+.vonaco-icon-bity:before {
+  content: "";
+}
+
+.vonaco-icon-bluetooth:before {
+  content: "";
+}
+
+.vonaco-icon-btc:before {
+  content: "";
+}
+
+.vonaco-icon-centos:before {
+  content: "";
+}
+
+.vonaco-icon-chrome:before {
+  content: "";
+}
+
+.vonaco-icon-codepen:before {
+  content: "";
+}
+
+.vonaco-icon-cpanel:before {
+  content: "";
+}
+
+.vonaco-icon-discord:before {
+  content: "";
+}
+
+.vonaco-icon-dochub:before {
+  content: "";
+}
+
+.vonaco-icon-docker:before {
+  content: "";
+}
+
+.vonaco-icon-dribbble:before {
+  content: "";
+}
+
+.vonaco-icon-dropbox:before {
+  content: "";
+}
+
+.vonaco-icon-drupal:before {
+  content: "";
+}
+
+.vonaco-icon-ebay:before {
+  content: "";
+}
+
+.vonaco-icon-facebook:before {
+  content: "";
+}
+
+.vonaco-icon-figma:before {
+  content: "";
+}
+
+.vonaco-icon-firefox:before {
+  content: "";
+}
+
+.vonaco-icon-google-plus:before {
+  content: "";
+}
+
+.vonaco-icon-google:before {
+  content: "";
+}
+
+.vonaco-icon-grunt:before {
+  content: "";
+}
+
+.vonaco-icon-gulp:before {
+  content: "";
+}
+
+.vonaco-icon-html5:before {
+  content: "";
+}
+
+.vonaco-icon-joomla:before {
+  content: "";
+}
+
+.vonaco-icon-link-brand:before {
+  content: "";
+}
+
+.vonaco-icon-linkedin:before {
+  content: "";
+}
+
+.vonaco-icon-mailchimp:before {
+  content: "";
+}
+
+.vonaco-icon-opencart:before {
+  content: "";
+}
+
+.vonaco-icon-paypal:before {
+  content: "";
+}
+
+.vonaco-icon-pinterest-p:before {
+  content: "";
+}
+
+.vonaco-icon-reddit:before {
+  content: "";
+}
+
+.vonaco-icon-skype:before {
+  content: "";
+}
+
+.vonaco-icon-slack:before {
+  content: "";
+}
+
+.vonaco-icon-snapchat:before {
+  content: "";
+}
+
+.vonaco-icon-spotify:before {
+  content: "";
+}
+
+.vonaco-icon-trello:before {
+  content: "";
+}
+
+.vonaco-icon-twitter:before {
+  content: "";
+}
+
+.vonaco-icon-vimeo:before {
+  content: "";
+}
+
+.vonaco-icon-whatsapp:before {
+  content: "";
+}
+
+.vonaco-icon-wordpress:before {
+  content: "";
+}
+
+.vonaco-icon-yoast:before {
+  content: "";
+}
+
+.vonaco-icon-youtube:before {
+  content: "";
+}
+
+/* ===== End ICONS CSS ===== */
+.vonaco-social ul {
+  margin: 0;
+  list-style-type: none;
+}
+.vonaco-social ul li {
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1;
+}
+.vonaco-social ul li:last-child {
+  margin-right: 0;
+}
+.vonaco-social ul li a:before {
+  position: relative;
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.vonaco-social ul li a[href*=twitter]:before {
+  content: "";
+  color: #1DA1F2;
+}
+.vonaco-social ul li a[href*=instagram]:before {
+  content: "";
+  color: #262626;
+}
+.vonaco-social ul li a[href*=docker]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=dochub]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=yelp]:before {
+  content: "";
+  color: #af0606;
+}
+.vonaco-social ul li a[href*=flickr]:before {
+  content: "";
+  color: #0063dc;
+}
+.vonaco-social ul li a[href*=github]:before {
+  content: "";
+  color: #333333;
+}
+.vonaco-social ul li a[href*=dribbble]:before {
+  content: "";
+  color: #ea4c89;
+}
+.vonaco-social ul li a[href*=wordpress]:before {
+  content: "";
+  color: #21759b;
+}
+.vonaco-social ul li a[href*=tumblr]:before {
+  content: "";
+  color: #35465c;
+}
+.vonaco-social ul li a[href*=angular]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=atlassian]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=snapchat]:before {
+  content: "";
+  color: #fffc00;
+}
+.vonaco-social ul li a[href*=apper]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=codepen]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=gulp]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=cpanel]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=skype]:before {
+  content: "";
+  color: #00AFF0;
+}
+.vonaco-social ul li a[href*=reddit]:before {
+  content: "";
+  color: #ff4500;
+}
+.vonaco-social ul li a[href*=whatsapp]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=slack]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=amazon]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=android]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=grunt]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=firefox]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=adobe]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=behance]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=dropbox]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=facebook]:before {
+  content: "";
+  color: #3b5998;
+}
+.vonaco-social ul li a[href*=linkedin]:before {
+  content: "";
+  color: #0077b5;
+}
+.vonaco-social ul li a[href*=paypal]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=trello]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=vimeo]:before {
+  content: "";
+  color: #1ab7ea;
+}
+.vonaco-social ul li a[href*=youtube]:before {
+  content: "";
+  color: #cd201f;
+}
+.vonaco-social ul li a[href*=apple]:before {
+  content: "";
+  color: #999999;
+}
+.vonaco-social ul li a[href*=bitbucket]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=bitcoin]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=bluetooth]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=bity]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*="google/chrome"]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=drupal]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=html5]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=mailchimp]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=jenkins]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=spotify]:before {
+  content: "";
+  color: #2ebd59;
+}
+.vonaco-social ul li a[href*=ebay]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=telegram]:before {
+  content: "";
+  color: #2CA5E0;
+}
+.vonaco-social ul li a[href*=yoast]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=btc-e]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=discord]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=google]:before {
+  content: "";
+  color: #dd4b39;
+}
+.vonaco-social ul li a[href*=google-plus]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=figma]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=joomla]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=opencart]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=pinterest]:before {
+  content: "";
+  color: #bd081c;
+}
+.vonaco-social ul li a[href*=vimeo]:before {
+  content: "";
+  color: #1ab7ea;
+}
+.vonaco-social ul li a[href*=centos]:before {
+  content: "";
+}
+.vonaco-social ul li a[href*=whatsapp]:before {
+  content: "";
+}
+
+#comments .commentlist .bypostauthor > .comment-body cite::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+#comments .commentlist .reply a::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+#comments .commentlist .reply a.comment-edit-link::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+#respond #cancel-comment-reply-link::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  display: block;
+}
+
+.sticky .entry-title::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+button.loading,
+input[type=button].loading,
+input[type=reset].loading,
+input[type=submit].loading,
+.button.loading,
+.wc-block-grid__products .wc-block-grid__product .wp-block-button__link.loading,
+.added_to_cart.loading {
+  position: relative;
+}
+button.loading::after,
+input[type=button].loading::after,
+input[type=reset].loading::after,
+input[type=submit].loading::after,
+.button.loading::after,
+.wc-block-grid__products .wc-block-grid__product .wp-block-button__link.loading::after,
+.added_to_cart.loading::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  display: block;
+}
+button.loading:before,
+input[type=button].loading:before,
+input[type=reset].loading:before,
+input[type=submit].loading:before,
+.button.loading:before,
+.wc-block-grid__products .wc-block-grid__product .wp-block-button__link.loading:before,
+.added_to_cart.loading:before {
+  opacity: 0;
+}
+
+.shop-action .blockUI.blockOverlay:before,
+.shop-action .loader:before {
+  top: 50%;
+  left: 50%;
+  opacity: 1 !important;
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  position: absolute;
+  display: block !important;
+  margin-left: -10px;
+  margin-top: -10px;
+  color: #000;
+}
+
+.shop-action .blockUI.blockOverlay {
+  opacity: 1 !important;
+  overflow: hidden;
+  background-image: none !important;
+  background: #fff !important;
+}
+
+.main-navigtion ul li a::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+.mobile-navigation ul li button::after, .mobile-navigation-categories ul li button::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.mobile-navigation ul li button.toggled-on::after, .mobile-navigation-categories ul li button.toggled-on::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.widget_search form::before,
+.widget_product_search form::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+.widget_search.widget_block form::before,
+.widget_product_search.widget_block form::before {
+  content: none;
+}
+.widget_search.widget_block form .wp-block-search__inside-wrapper,
+.widget_product_search.widget_block form .wp-block-search__inside-wrapper {
+  position: relative;
+}
+.widget_search.widget_block form .wp-block-search__inside-wrapper:before,
+.widget_product_search.widget_block form .wp-block-search__inside-wrapper:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  z-index: 1;
+}
+
+.elementor-widget-vonaco-image-gallery .column-item a:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.elementor-image-carousel a:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.vonaco-handheld-footer-bar ul li > a::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  line-height: 2;
+  font-size: 1.41575em;
+  text-indent: 0;
+  display: block;
+  cursor: pointer;
+}
+.vonaco-handheld-footer-bar ul li.shop > a::before {
+  content: "";
+}
+.vonaco-handheld-footer-bar ul li.search > a::before {
+  content: "";
+}
+.vonaco-handheld-footer-bar ul li.my-account > a::before {
+  content: "";
+}
+.vonaco-handheld-footer-bar ul li.cart > a::before {
+  content: "";
+}
+.vonaco-handheld-footer-bar ul li.wishlist > a::before {
+  content: "";
+}
+
+.single-product .pswp__button {
+  background-color: transparent;
+}
+.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+  text-indent: -999px;
+  overflow: hidden;
+}
+.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  display: block;
+  line-height: 20px;
+  text-indent: 0;
+  font-size: 18px;
+}
+.single-product div.product .woocommerce-product-gallery .woocommerce-product-gallery__trigger img {
+  display: none !important;
+}
+.single-product div.product .entry-summary .yith-wcwl-add-to-wishlist > div > a:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.single-product div.product .entry-summary .compare:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.stock::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 0.5407911001em;
+}
+.stock.in-stock::before {
+  content: "";
+}
+
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav ul {
+  margin-left: 0;
+}
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav ul li {
+  padding-left: 1.618em;
+}
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav ul li::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 0.5407911001em;
+  display: block;
+  float: left;
+  opacity: 0.35;
+  margin-left: -1.618em;
+  width: 1em;
+}
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav ul li .children {
+  margin-left: 0;
+}
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav li::before {
+  content: "";
+}
+.content-area .vonaco-dropdown-filter-wrap .widget_layered_nav .chosen::before {
+  content: "";
+}
+
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav ul {
+  margin-left: 0;
+}
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav ul li {
+  padding-left: 1.618em;
+}
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav ul li::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 0.5407911001em;
+  display: block;
+  float: left;
+  opacity: 0.35;
+  margin-left: -1.618em;
+  width: 1em;
+}
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav ul li .children {
+  margin-left: 0;
+}
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav li::before {
+  content: "";
+}
+.vonaco-canvas-filter .vonaco-canvas-filter-wrap .widget_layered_nav .chosen::before {
+  content: "";
+}
+
+a.remove {
+  display: block;
+  width: 1.618em;
+  height: 1.618em;
+  line-height: 1.618;
+  font-weight: 400;
+  text-indent: -9999px;
+  position: relative;
+}
+a.remove::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #999999;
+  line-height: 1.618;
+  text-indent: 0;
+  text-align: center;
+}
+
+.woocommerce-shipping-calculator > p:first-child a::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.3342343017em;
+}
+
+.blockUI::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+}
+
+.woocommerce-pagination .next,
+.woocommerce-pagination .prev {
+  display: inline-block;
+  position: relative;
+}
+#shipping_method li > label {
+  cursor: pointer;
+}
+#shipping_method li > label::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+  transition: color, ease, 0.2s;
+}
+#shipping_method li > input[type=radio]:first-child {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+#shipping_method li > input[type=radio]:first-child:checked + label::after {
+  font-weight: 700;
+  content: "";
+}
+
+#payment .payment_methods li > label {
+  cursor: pointer;
+}
+#payment .payment_methods li > label::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+  transition: color, ease, 0.2s;
+}
+#payment .payment_methods li > input[type=radio]:first-child {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+#payment .payment_methods li > input[type=radio]:first-child:checked + label::before {
+  font-weight: 700;
+  content: "";
+}
+
+.woocommerce-password-strength::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+.woocommerce-password-strength.strong::after {
+  content: "";
+}
+.woocommerce-password-strength.good::after {
+  content: "";
+}
+
+.woocommerce-MyAccount-navigation ul li.is-active a::before {
+  opacity: 1;
+}
+.woocommerce-MyAccount-navigation ul li a::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  line-height: 1.618;
+  margin-left: 0.5407911001em;
+  width: 1.41575em;
+  text-align: right;
+  float: right;
+  opacity: 0.25;
+  font-weight: 700;
+}
+.woocommerce-MyAccount-navigation ul li a:hover::before {
+  opacity: 1;
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--dashboard a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--orders a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--downloads a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--edit-address a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--payment-methods a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--edit-account a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--customer-logout a::before {
+  content: "";
+}
+.woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--subscriptions a::before {
+  content: "";
+}
+
+.my_account_orders .button.view::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+
+p.order-again .button::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+
+.woocommerce-MyAccount-downloads .button::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+
+.demo_store::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+#reviews .commentlist li p.meta .verified {
+  display: inline-block;
+  height: 1.41575em;
+  width: 1.41575em;
+  position: relative;
+  text-indent: -9999px;
+}
+#reviews .commentlist li p.meta .verified::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  color: #0f834d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.41575em;
+  height: 1.41575em;
+  text-indent: 0;
+  text-align: center;
+  line-height: 1.618em;
+}
+
+/**
+ * Composite Products
+ */
+.single-product div.product .component_selections .clear_component_options::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+/**
+ * Mix and Match
+ */
+.cart .mnm_table_item .mnm_table_item_indent::before,
+.shop_table .mnm_table_item .mnm_table_item_indent::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  transform: rotate(90deg);
+  margin-right: 0.3819820591em;
+  opacity: 0.25;
+}
+
+/**
+ * Quick view
+ */
+.quick-view-button::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.6180469716em;
+}
+
+/**
+ * Ship multiple addresses
+ */
+.woocommerce-page .ship_address .gift-form label::after,
+.woocommerce-page .no_shipping_address .gift-form label::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5407911001em;
+}
+.woocommerce-page .ship_address .modify-address-button::before,
+.woocommerce-page .no_shipping_address .modify-address-button::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+.woocommerce-page .addresses + .addresses header.title a::before {
+  content: "";
+}
+
+/**
+ * Product reviews pro
+ */
+.woocommerce .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--contributions a::before,
+.woocommerce-page .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--contributions a::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+/**
+ * Variation Swatches
+ */
+a#variations_clear::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+/**
+ * Wishlists
+ */
+.wl-add-link::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+.button.wl-create-new::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 0.5407911001em;
+}
+
+.site-header-cart .cart-contents::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.elementor-widget-vonaco-vertiacl-menu .vertical-navigation .vonaco-icon {
+  position: relative;
+}
+.elementor-widget-vonaco-vertiacl-menu .vertical-navigation .vonaco-icon::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+.elementor-widget-vonaco-vertiacl-menu .vertical-navigation .vonaco-icon::before {
+  position: absolute;
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 20px;
+  color: var(--primary);
+  transform: translate3d(0, 250%, 0);
+  transition: transform 0.2s;
+}
+.elementor-widget-vonaco-vertiacl-menu .vertical-navigation:hover .vonaco-icon::after {
+  transform: translate3d(0, -250%, 0);
+}
+.elementor-widget-vonaco-vertiacl-menu .vertical-navigation:hover .vonaco-icon::before {
+  transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  .main-navigation ul.menu > li.menu-item-has-children > a:after, .main-navigation ul.menu > li.page_item_has_children > a:after, .main-navigation ul.menu > li.has-mega-menu > a:after,
+.main-navigation ul.nav-menu > li.menu-item-has-children > a:after,
+.main-navigation ul.nav-menu > li.page_item_has_children > a:after,
+.main-navigation ul.nav-menu > li.has-mega-menu > a:after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-left: 5px;
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+  .gecko .main-navigation ul.menu > li.menu-item-has-children > a:after, .gecko .main-navigation ul.menu > li.page_item_has_children > a:after, .gecko .main-navigation ul.menu > li.has-mega-menu > a:after,
+.gecko .main-navigation ul.nav-menu > li.menu-item-has-children > a:after,
+.gecko .main-navigation ul.nav-menu > li.page_item_has_children > a:after,
+.gecko .main-navigation ul.nav-menu > li.has-mega-menu > a:after {
+    margin-bottom: 0;
+    vertical-align: sub;
+  }
+
+  .header-side .main-navigation ul.menu > li.menu-item-has-children > a::after, .header-side .main-navigation ul.menu > li.page_item_has_children > a::after, .header-side .main-navigation ul.menu > li.has-mega-menu > a::after,
+.header-side .main-navigation ul.nav-menu > li.menu-item-has-children > a::after,
+.header-side .main-navigation ul.nav-menu > li.page_item_has_children > a::after,
+.header-side .main-navigation ul.nav-menu > li.has-mega-menu > a::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-left: 1em;
+    margin-right: -25px;
+  }
+
+  .vertical-navigation ul.menu > li.menu-item-has-children > a::after, .vertical-navigation ul.menu > li.page_item_has_children > a::after, .vertical-navigation ul.menu > li.has-mega-menu > a::after,
+.vertical-navigation ul.nav-menu > li.menu-item-has-children > a::after,
+.vertical-navigation ul.nav-menu > li.page_item_has_children > a::after,
+.vertical-navigation ul.nav-menu > li.has-mega-menu > a::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-left: auto;
+    float: right;
+  }
+
+  .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.menu-item-has-children > a::after, .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.page_item_has_children > a::after, .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.has-mega-menu > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.menu-item-has-children > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.page_item_has_children > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.has-mega-menu > a::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-left: auto;
+    float: right;
+  }
+  .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.menu-item-has-children:last-child > a::after, .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.page_item_has_children:last-child > a::after, .elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.menu > li.has-mega-menu:last-child > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.menu-item-has-children:last-child > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.page_item_has_children:last-child > a::after,
+.elementor-widget-vonaco-vertiacl-menu .style-2 .vertical-navigation ul.nav-menu > li.has-mega-menu:last-child > a::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-left: auto;
+    float: right;
+  }
+
+  .main-navigation ul.menu ul li.menu-item-has-children > a::after, .main-navigation ul.menu ul li.page_item_has_children > a::after,
+.main-navigation ul.nav-menu ul li.menu-item-has-children > a::after,
+.main-navigation ul.nav-menu ul li.page_item_has_children > a::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    float: right;
+    margin-left: 10px;
+    line-height: 1.5;
+  }
+
+  .demo_store a.woocommerce-store-notice__dismiss-link::before {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    margin-right: 0.3342343017em;
+  }
+
+  .addresses header.title a {
+    display: block;
+    width: 1em;
+    height: 1em;
+    text-indent: -9999px;
+    position: relative;
+    padding: 0.875em;
+    margin-top: 0.6180469716em;
+  }
+  .addresses header.title a::before {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    line-height: 1.618;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    text-indent: 0;
+  }
+
+  /**
+   * Wishlists
+   */
+  #wl-wrapper .wl-tabs > li.active::after {
+    font-family: "vonaco-icon";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    content: "";
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    height: 1em;
+    width: 1em;
+    margin-top: -0.5em;
+  }
+}
+ul.wishlist_table.mobile .remove_from_wishlist:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.slick-prev:before {
+  content: "";
+}
+[dir=rtl] .slick-prev:before {
+  content: "";
+}
+.woocommerce-product-gallery-vertical .slick-prev:before {
+  content: "";
+}
+.woocommerce-product-gallery-horizontal .slick-prev:before {
+  content: "";
+}
+
+.slick-next:before {
+  content: "";
+}
+[dir=rtl] .slick-next:before {
+  content: "";
+}
+.woocommerce-product-gallery-vertical .slick-next:before {
+  content: "";
+}
+.woocommerce-product-gallery-horizontal .slick-next:before {
+  content: "";
+}
+
+body.loading {
+  position: relative;
+}
+body.loading::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: block;
+  z-index: 999999;
+  color: #fff;
+}
+body.loading:before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999998;
+}
+
+.woocommerce-cart .cart-empty:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 164px;
+  color: var(--light);
+  display: block;
+}
+
+#yith-quick-view-close * {
+  display: none;
+}
+#yith-quick-view-close:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+div[class*=post-style-] .entry-content > a:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+h2.resp-accordion:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-right: 10px;
+}
+h2.resp-accordion.active:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.widget_product_categories .icon-minus {
+  float: right;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.widget_product_categories .icon-minus:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 14px;
+}
+.widget_product_categories .icon-plus {
+  float: right;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.widget_product_categories .icon-plus:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 14px;
+}
+
+.shop-action .woosc-btn:before,
+.shop-action .woosq-btn:before,
+.shop-action .woosw-btn:before, .product-list .woosc-btn:before,
+.product-list .woosq-btn:before,
+.product-list .woosw-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+}
+.shop-action .woosw-btn:before, .product-list .woosw-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.shop-action .woosw-btn.woosw-added:before, .product-list .woosw-btn.woosw-added:before {
+  content: "";
+  color: red;
+  margin-right: 0;
+}
+.shop-action .woosw-btn.woosw-adding::after, .product-list .woosw-btn.woosw-adding::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  line-height: inherit;
+  content: "" !important;
+  animation: fa-spin 0.75s linear infinite;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  display: block;
+  transform: translate(0);
+}
+.shop-action .woosw-btn.woosw-adding:before, .product-list .woosw-btn.woosw-adding:before {
+  opacity: 0;
+}
+.shop-action .woosc-btn:before, .product-list .woosc-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.shop-action .woosq-btn:before, .product-list .woosq-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+.shop-action a[class*=product_type_]:before, .product-list a[class*=product_type_]:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+ul.products li.product a[class*=product_type_]:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.woocommerce-product-list ul.products li.product a[class*=product_type_]:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.single-product div.product .entry-summary .woosc-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  line-height: inherit;
+}
+.single-product div.product .entry-summary .woosw-btn:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  line-height: inherit;
+}
+.single-product div.product .entry-summary .woosw-btn.woosw-added:before {
+  content: "";
+}
+
+a.read-more:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 5px;
+}
+
+.ajax-search .widget_product_search .woocommerce-product-search.loading button[type=submit]::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  animation: fa-spin 0.75s linear infinite;
+}
+
+.elementor-widget-vonaco-language-switcher.language-switcher-style-mobile .vonaco-language-switcher .language-switcher-head:after {
+  position: relative;
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5em;
+  line-height: 12px;
+}
+
+.loading-quick-shop .product-transition::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.search-by-category .input-dropdown-inner > a:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.popup-navigation ul.menu > li.menu-item-has-children > a:after, .popup-navigation ul.menu > li.page_item_has_children > a:after, .popup-navigation ul.menu > li.has-mega-menu > a:after,
+.popup-navigation ul.nav-menu > li.menu-item-has-children > a:after,
+.popup-navigation ul.nav-menu > li.page_item_has_children > a:after,
+.popup-navigation ul.nav-menu > li.has-mega-menu > a:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  margin-left: 0.5em;
+  font-size: 16px;
+}
+
+.popup-navigation ul.menu ul li.menu-item-has-children > a::after, .popup-navigation ul.menu ul li.page_item_has_children > a::after,
+.popup-navigation ul.nav-menu ul li.menu-item-has-children > a::after,
+.popup-navigation ul.nav-menu ul li.page_item_has_children > a::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  float: right;
+  margin-left: 0.5em;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.vonaco-canvas-filter-wrap .widget_product_brands ul, .vonaco-canvas-filter-wrap .widget_product_brands ol, #secondary .widget_product_brands ul, #secondary .widget_product_brands ol {
+  margin-left: 0;
+}
+.vonaco-canvas-filter-wrap .widget_product_brands ul li, .vonaco-canvas-filter-wrap .widget_product_brands ol li, #secondary .widget_product_brands ul li, #secondary .widget_product_brands ol li {
+  padding-left: 1em;
+}
+.vonaco-canvas-filter-wrap .widget_product_brands ul li::before, .vonaco-canvas-filter-wrap .widget_product_brands ol li::before, #secondary .widget_product_brands ul li::before, #secondary .widget_product_brands ol li::before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 0.5407911001em;
+  display: block;
+  float: left;
+  opacity: 0.35;
+  margin-left: -1em;
+  width: 1em;
+  line-height: inherit !important;
+}
+.vonaco-canvas-filter-wrap .widget_product_brands ul li .children, .vonaco-canvas-filter-wrap .widget_product_brands ol li .children, #secondary .widget_product_brands ul li .children, #secondary .widget_product_brands ol li .children {
+  margin-left: 0;
+}
+.vonaco-canvas-filter-wrap .widget_product_brands li::before, #secondary .widget_product_brands li::before {
+  content: "";
+}
+.vonaco-canvas-filter-wrap .widget_product_brands .chosen::before, .vonaco-canvas-filter-wrap .widget_product_brands .current-cat::before, #secondary .widget_product_brands .chosen::before, #secondary .widget_product_brands .current-cat::before {
+  content: "";
+  opacity: 1;
+  color: #000000;
+}
+
+#comments .comment-list .reply a.comment-edit-link:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  line-height: inherit;
+}
+#comments .comment-list .reply a.comment-reply-link:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
+
+.single-product div.product .single_add_to_cart_button:after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.ui-datepicker .ui-datepicker-prev span:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 20px;
+  color: #fff;
+}
+
+.ui-datepicker .ui-datepicker-next span:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  font-size: 20px;
+  color: #fff;
+}
+
+.hentry .entry-content .wp-block-quote:before {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+  line-height: 60px;
+}
+
+.woocommerce form .show-password-input::after, .woocommerce-page form .show-password-input::after {
+  font-family: "vonaco-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: middle;
+  content: "";
+}
