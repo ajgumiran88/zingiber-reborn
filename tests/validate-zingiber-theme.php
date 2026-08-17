@@ -192,19 +192,49 @@ if (in_array('templates', $groups, true)) {
 
     $header = $read('header-zingiber.php');
     if ($header !== null) {
-        foreach (['<header', '<nav', 'aria-label="Primary navigation"', 'data-zingiber-menu-toggle', 'wp_head()', 'wp_body_open()'] as $contract) {
+        foreach ([
+            '<header',
+            '<nav',
+            'aria-label="Primary navigation"',
+            'data-zingiber-menu-toggle',
+            'aria-controls="zingiber-primary-menu"',
+            'aria-expanded="false"',
+            'type="button"',
+            'zingiber_theme_asset_url',
+            'wp_head()',
+            'wp_body_open()',
+        ] as $contract) {
             if (strpos($header, $contract) === false) {
                 $fail('templates', sprintf('Header contract missing: %s.', $contract));
             }
+        }
+
+        if (preg_match_all('/<header\b/i', $header) !== 1) {
+            $fail('templates', 'The Zingiber header must contain exactly one header element.');
         }
     }
 
     $footer = $read('footer-zingiber.php');
     if ($footer !== null) {
-        foreach (['<footer', 'wp_footer()', 'reservations@zingiber.ae'] as $contract) {
+        foreach ([
+            '<footer',
+            'zingiber_theme_asset_url',
+            'wp_footer()',
+            'Jumeirah Lakes Towers',
+            '@zingiberdubai',
+        ] as $contract) {
             if (strpos($footer, $contract) === false) {
                 $fail('templates', sprintf('Footer contract missing: %s.', $contract));
             }
+        }
+
+
+        if (preg_match_all('/<footer\b/i', $footer) !== 1) {
+            $fail('templates', 'The Zingiber footer must contain exactly one footer element.');
+        }
+
+        if (strpos($footer, "\$contact['email']") === false && strpos($footer, 'reservations@zingiber.ae') === false) {
+            $fail('templates', 'The Zingiber footer must render the approved reservations email.');
         }
     }
 
