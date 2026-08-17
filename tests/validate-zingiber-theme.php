@@ -395,6 +395,25 @@ if (in_array('import', $groups, true)) {
             $fail('import', 'Home 2 import XML is not well formed.');
         } else {
             $xml = file_get_contents($importPath) ?: '';
+            $xpath = new DOMXPath($document);
+            $xpath->registerNamespace('wp', 'http://wordpress.org/export/1.2/');
+            $xpath->registerNamespace('content', 'http://purl.org/rss/1.0/modules/content/');
+            $xpath->registerNamespace('excerpt', 'http://wordpress.org/export/1.2/excerpt/');
+
+            $homeItems = $xpath->query('//item[wp:post_type="page" and wp:post_name="home"]');
+            if ($homeItems === false || $homeItems->length !== 1) {
+                $fail('import', 'Home 2 WXR must contain exactly one published Home page item.');
+            }
+
+            $templateMeta = $xpath->query('//item[wp:post_name="home"]/wp:postmeta[wp:meta_key="_wp_page_template" and wp:meta_value="template-zingiber-home.php"]');
+            if ($templateMeta === false || $templateMeta->length !== 1) {
+                $fail('import', 'Home 2 WXR is missing the Zingiber Home page-template metadata.');
+            }
+
+            if (strpos($xml, '_elementor_data') !== false) {
+                $fail('import', 'Home 2 WXR must not depend on legacy Elementor demo data.');
+            }
+
             foreach (['Zingiber', 'Meet the Chef', 'A Journey Across India’s Coastline'] as $requiredCopy) {
                 if (strpos($xml, $requiredCopy) === false) {
                     $fail('import', sprintf('Home 2 import XML is missing approved copy: %s.', $requiredCopy));
