@@ -83,14 +83,21 @@ body.zingiber-site {
     right: 0;
     left: 0;
     color: var(--zingiber-sand);
-    border-bottom: 1px solid rgba(237, 231, 225, 0.22);
-    transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    background-image: linear-gradient(
+        180deg,
+        rgba(15, 15, 15, 0.82) 0%,
+        rgba(15, 15, 15, 0.46) 62%,
+        rgba(15, 15, 15, 0) 100%
+    );
+    border-bottom: 0;
+    transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-image 220ms ease;
 }
 
 .zingiber-header.is-sticky {
     position: fixed;
-    background: rgba(15, 15, 15, 0.94);
-    border-bottom-color: rgba(237, 231, 225, 0.14);
+    background-color: rgba(15, 15, 15, 0.94);
+    background-image: none;
+    border-bottom: 1px solid rgba(237, 231, 225, 0.14);
     box-shadow: 0 16px 40px rgba(15, 15, 15, 0.28);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -102,15 +109,23 @@ body.zingiber-site {
 
 .zingiber-header__inner {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    min-height: 7rem;
-    gap: clamp(1.5rem, 3vw, 4rem);
+    min-height: 6.25rem;
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
     transition: min-height 220ms ease;
 }
 
 .zingiber-header.is-sticky .zingiber-header__inner {
-    min-height: 4.75rem;
+    min-height: 4.5rem;
+}
+
+.zingiber-header__actions {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(1.1rem, 2vw, 1.85rem);
 }
 
 .zingiber-logo-link,
@@ -132,13 +147,15 @@ body.zingiber-site {
 }
 
 .zingiber-primary-nav {
-    justify-self: end;
+    min-width: 0;
 }
 
 .zingiber-menu {
     display: flex;
     align-items: center;
-    gap: clamp(1.1rem, 2vw, 2.25rem);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.15rem clamp(0.85rem, 1.5vw, 1.5rem);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -149,17 +166,20 @@ body.zingiber-site {
     display: inline-flex;
     min-height: 44px;
     align-items: center;
-    font-size: 0.76rem;
+    color: #fff;
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
+    line-height: 1;
     text-decoration: none;
+    text-shadow: 0 1px 10px rgba(15, 15, 15, 0.7);
     text-transform: uppercase;
 }
 
 .zingiber-menu a::after {
     position: absolute;
     right: 0;
-    bottom: 0.35rem;
+    bottom: 0.55rem;
     left: 0;
     height: 1px;
     background: currentColor;
@@ -192,6 +212,14 @@ body.zingiber-site {
     text-decoration: none;
     text-transform: uppercase;
     transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.zingiber-button--header {
+    flex-shrink: 0;
+    min-height: 42px;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
 }
 
 .zingiber-button:hover {
@@ -1199,6 +1227,10 @@ body.zingiber-site {
         justify-content: space-between;
     }
 
+    .zingiber-header__actions {
+        display: contents;
+    }
+
     .zingiber-logo {
         width: 7.5rem;
     }
@@ -1226,6 +1258,8 @@ body.zingiber-site {
     .zingiber-menu {
         align-items: stretch;
         flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         gap: 0;
     }
 
@@ -1234,6 +1268,7 @@ body.zingiber-site {
         min-height: 50px;
         padding-inline: 0.5rem;
         border-bottom: 1px solid rgba(237, 231, 225, 0.12);
+        text-shadow: none;
     }
 
     .zingiber-footer__grid {

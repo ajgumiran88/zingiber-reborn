@@ -5,6 +5,14 @@
 
 $navigationPages = zingiber_get_site_content();
 $navigationOrder = ['home', 'about', 'menu', 'gallery', 'careers', 'contact'];
+$navigationLabels = [
+    'home' => 'Home',
+    'about' => 'About',
+    'menu' => 'Menu',
+    'gallery' => 'Gallery',
+    'careers' => 'Careers',
+    'contact' => 'Contact',
+];
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -40,34 +48,40 @@ $navigationOrder = ['home', 'about', 'menu', 'gallery', 'careers', 'contact'];
             <span class="zingiber-mobile-toggle__icon" aria-hidden="true"><span></span><span></span></span>
         </button>
 
-        <nav class="zingiber-primary-nav" aria-label="Primary navigation" data-zingiber-menu>
-            <?php if (has_nav_menu('primary')) : ?>
-                <?php
-                wp_nav_menu([
-                    'theme_location' => 'primary',
-                    'container' => false,
-                    'menu_id' => 'zingiber-primary-menu',
-                    'menu_class' => 'zingiber-menu',
-                    'depth' => 1,
-                    'fallback_cb' => false,
-                ]);
-                ?>
-            <?php else : ?>
-                <ul id="zingiber-primary-menu" class="zingiber-menu">
-                    <?php foreach ($navigationOrder as $slug) : ?>
-                        <?php if (!isset($navigationPages[$slug])) { continue; } ?>
-                        <li class="menu-item">
-                            <a href="<?php echo esc_url($slug === 'home' ? home_url('/') : home_url('/' . $slug . '/')); ?>">
-                                <?php echo esc_html($navigationPages[$slug]['title']); ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
-        </nav>
+        <div class="zingiber-header__actions">
+            <nav class="zingiber-primary-nav" aria-label="Primary navigation" data-zingiber-menu>
+                <?php if (has_nav_menu('primary')) : ?>
+                    <?php
+                    wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'container' => false,
+                        'menu_id' => 'zingiber-primary-menu',
+                        'menu_class' => 'zingiber-menu',
+                        'depth' => 1,
+                        'fallback_cb' => false,
+                    ]);
+                    ?>
+                <?php else : ?>
+                    <ul id="zingiber-primary-menu" class="zingiber-menu">
+                        <?php foreach ($navigationOrder as $slug) : ?>
+                            <?php if (!isset($navigationPages[$slug])) { continue; } ?>
+                            <?php
+                            $itemUrl = $slug === 'home' ? home_url('/') : home_url('/' . $slug . '/');
+                            $isCurrent = ($slug === 'home' && is_front_page()) || is_page($slug);
+                            ?>
+                            <li class="menu-item<?php echo $isCurrent ? ' current-menu-item' : ''; ?>">
+                                <a href="<?php echo esc_url($itemUrl); ?>">
+                                    <?php echo esc_html($navigationLabels[$slug]); ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </nav>
 
-        <a class="zingiber-button zingiber-button--header" href="<?php echo esc_url(home_url('/contact/')); ?>">
-            <?php esc_html_e('Reserve a Table', 'vonaco'); ?>
-        </a>
+            <a class="zingiber-button zingiber-button--header" href="<?php echo esc_url(home_url('/contact/')); ?>">
+                <?php esc_html_e('Reserve a Table', 'vonaco'); ?>
+            </a>
+        </div>
     </div>
 </header>
