@@ -360,6 +360,15 @@ if (in_array('brand', $groups, true)) {
                 $fail('brand', sprintf('Responsive/accessibility rule missing: %s.', $requirement));
             }
         }
+
+        if (strpos($css, '.zingiber-site a:not(.zingiber-button)') === false
+            && strpos($css, '.zingiber-site a.zingiber-button') === false) {
+            $fail('brand', 'Filled buttons must not inherit body text color, or labels become unreadable on dark fills.');
+        }
+
+        if (!preg_match('/\.zingiber-button\s*\{[^}]*color:\s*(?:#fff(?:fff)?|var\(--zingiber-sand\))/s', $css)) {
+            $fail('brand', 'Filled buttons must use light text on dark backgrounds.');
+        }
     }
 
     $style = $read('style.css');

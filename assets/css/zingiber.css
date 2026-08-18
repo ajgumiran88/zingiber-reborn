@@ -38,7 +38,7 @@ body.zingiber-site {
     height: auto;
 }
 
-.zingiber-site a {
+.zingiber-site a:not(.zingiber-button) {
     color: inherit;
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.2em;
@@ -204,7 +204,7 @@ body.zingiber-site {
     padding: 0.9rem 1.4rem;
     border: 1px solid var(--zingiber-copper);
     background: var(--zingiber-copper);
-    color: var(--zingiber-charcoal);
+    color: #fff;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.14em;
