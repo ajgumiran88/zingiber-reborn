@@ -20,7 +20,7 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
                     loading="lazy"
                 >
             </a>
-            <p><?php esc_html_e('A chef-led modern Indian coastal restaurant shaped by heritage, innovation, and storytelling.', 'vonaco'); ?></p>
+            <p><?php esc_html_e('A chef-led modern Indian coastal restaurant in Jumeirah Lakes Towers, shaped by heritage, innovation, and storytelling.', 'vonaco'); ?></p>
         </div>
 
         <div class="zingiber-footer__nav">

@@ -35,4 +35,4 @@ xmllint --noout dummy-data/homepage/home-2.xml
 
 For a focused check, use one of the validator groups: `content`, `assets`, `templates`, `brand`, `import`, or `placeholders`.
 
-The preferred Estratto Var and Luxora Grotesk font files were not included with the supplied theme assets. The implementation therefore uses a refined open serif/grotesk pairing while preserving the approved visual hierarchy and exact Zingiber colour palette.
+The official Zingiber Brand Guidelines (d1) specify Estratto Var for headlines and Luxora Grotesk for body, menus, and UI. Those are licensed faces and are not bundled. The theme loads Cormorant Garamond and Manrope as the closest open substitutes (oldstyle serif + minimal grotesk), and will use Estratto Var / Luxora Grotesk automatically if `.woff2` files are added to `assets/fonts/zingiber/`.

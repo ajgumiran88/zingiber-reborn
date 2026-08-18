@@ -16,6 +16,18 @@ if (!function_exists('zingiber_theme_asset_url')) {
     }
 }
 
+if (!function_exists('zingiber_icon_svg')) {
+    function zingiber_icon_svg(string $name): string
+    {
+        $icons = [
+            'arrow' => '<svg class="zingiber-icon zingiber-icon--arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 11 11 3m0 0H5.5M11 3v5.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            'scroll' => '<svg class="zingiber-icon zingiber-icon--scroll" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M7 2v9M3.5 8.5 7 12l3.5-3.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        ];
+
+        return $icons[$name] ?? '';
+    }
+}
+
 if (!function_exists('zingiber_is_site_template')) {
     function zingiber_is_site_template(): bool
     {
@@ -40,6 +52,78 @@ if (!function_exists('zingiber_current_page_content')) {
     }
 }
 
+if (!function_exists('zingiber_licensed_font_faces')) {
+    function zingiber_licensed_font_faces(): string
+    {
+        $dir = get_theme_file_path('assets/fonts/zingiber');
+        if (!is_dir($dir)) {
+            return '';
+        }
+
+        $faces = [];
+        $files = array_merge(
+            glob($dir . '/*.woff2') ?: [],
+            glob($dir . '/*.woff') ?: [],
+            glob($dir . '/*.ttf') ?: [],
+            glob($dir . '/*.otf') ?: []
+        );
+
+        foreach ($files as $file) {
+            $basename = basename($file);
+            $name = strtolower($basename);
+            $family = null;
+
+            if (strpos($name, 'estratto') !== false) {
+                $family = 'Estratto Var';
+            } elseif (strpos($name, 'luxora') !== false) {
+                $family = 'Luxora Grotesk';
+            }
+
+            if ($family === null) {
+                continue;
+            }
+
+            $weight = '400';
+            if (strpos($name, 'thin') !== false) {
+                $weight = '100';
+            } elseif (strpos($name, 'light') !== false) {
+                $weight = '300';
+            } elseif (strpos($name, 'book') !== false || strpos($name, 'regular') !== false) {
+                $weight = '400';
+            } elseif (strpos($name, 'medium') !== false) {
+                $weight = '500';
+            } elseif (strpos($name, 'semibold') !== false || strpos($name, 'semi') !== false) {
+                $weight = '600';
+            } elseif (strpos($name, 'bold') !== false) {
+                $weight = '700';
+            } elseif (strpos($name, 'heavy') !== false || strpos($name, 'black') !== false) {
+                $weight = '800';
+            }
+
+            $style = (strpos($name, 'italic') !== false) ? 'italic' : 'normal';
+            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            $format = [
+                'woff2' => 'woff2',
+                'woff' => 'woff',
+                'ttf' => 'truetype',
+                'otf' => 'opentype',
+            ][$ext] ?? 'woff2';
+
+            $url = zingiber_theme_asset_url('assets/fonts/zingiber/' . $basename);
+            $faces[] = sprintf(
+                '@font-face{font-family:"%s";src:url("%s") format("%s");font-weight:%s;font-style:%s;font-display:swap;}',
+                $family,
+                esc_url($url),
+                $format,
+                $weight,
+                $style
+            );
+        }
+
+        return implode('', $faces);
+    }
+}
+
 if (!function_exists('zingiber_enqueue_assets')) {
     function zingiber_enqueue_assets(): void
     {
@@ -49,10 +133,11 @@ if (!function_exists('zingiber_enqueue_assets')) {
 
         $cssPath = get_theme_file_path('assets/css/zingiber.css');
         $jsPath = get_theme_file_path('assets/js/zingiber.js');
+        $licensedFaces = zingiber_licensed_font_faces();
 
         wp_enqueue_style(
             'zingiber-fonts',
-            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap',
+            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap',
             [],
             null
         );
@@ -62,6 +147,10 @@ if (!function_exists('zingiber_enqueue_assets')) {
             ['zingiber-fonts'],
             is_file($cssPath) ? (string) filemtime($cssPath) : null
         );
+
+        if ($licensedFaces !== '') {
+            wp_add_inline_style('zingiber-site', $licensedFaces);
+        }
         wp_enqueue_script(
             'zingiber-site',
             zingiber_theme_asset_url('assets/js/zingiber.js'),

@@ -20,15 +20,17 @@ get_header('zingiber');
     >
         <div class="zingiber-hero__veil" aria-hidden="true"></div>
         <div class="zingiber-container zingiber-hero__content">
+            <p class="zingiber-kicker" data-zingiber-reveal><?php esc_html_e('Jumeirah Lakes Towers, Dubai', 'vonaco'); ?></p>
             <p class="zingiber-eyebrow" data-zingiber-reveal><?php echo esc_html($home['hero']['eyebrow']); ?></p>
+            <div class="zingiber-rule" aria-hidden="true" data-zingiber-reveal></div>
             <h1 data-zingiber-reveal><?php echo esc_html($home['hero']['heading']); ?></h1>
             <p class="zingiber-hero__lede" data-zingiber-reveal><?php echo esc_html($home['hero']['subheading']); ?></p>
             <div class="zingiber-hero__actions" data-zingiber-reveal>
                 <a class="zingiber-button" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php echo esc_html($home['calls_to_action']['primary']['label']); ?></a>
-                <a class="zingiber-text-link" href="<?php echo esc_url(home_url('/menu/')); ?>"><?php echo esc_html($home['calls_to_action']['secondary']['label']); ?><span aria-hidden="true">↗</span></a>
+                <a class="zingiber-text-link" href="<?php echo esc_url(home_url('/menu/')); ?>"><?php echo esc_html($home['calls_to_action']['secondary']['label']); ?><?php echo zingiber_icon_svg('arrow'); ?></a>
             </div>
         </div>
-        <a class="zingiber-hero__scroll" href="#chef"><span><?php esc_html_e('Discover Zingiber', 'vonaco'); ?></span><span aria-hidden="true">↓</span></a>
+        <a class="zingiber-hero__scroll" href="#chef"><span><?php esc_html_e('Discover Zingiber', 'vonaco'); ?></span><?php echo zingiber_icon_svg('scroll'); ?></a>
     </section>
 
     <section id="chef" class="zingiber-section zingiber-chef">
@@ -39,7 +41,7 @@ get_header('zingiber');
                 <?php foreach ($sections['chef_story']['body'] as $paragraph) : ?>
                     <p><?php echo esc_html($paragraph); ?></p>
                 <?php endforeach; ?>
-                <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(home_url('/about/')); ?>"><?php echo esc_html($home['calls_to_action']['story']['label']); ?><span aria-hidden="true">↗</span></a>
+                <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(home_url('/about/')); ?>"><?php echo esc_html($home['calls_to_action']['story']['label']); ?><?php echo zingiber_icon_svg('arrow'); ?></a>
             </div>
             <figure class="zingiber-chef__figure" data-zingiber-reveal>
                 <img
@@ -164,7 +166,7 @@ get_header('zingiber');
                 <p class="zingiber-eyebrow"><?php echo esc_html($siteContent['gallery']['hero']['eyebrow']); ?></p>
                 <h2 id="gallery-title"><?php echo esc_html($siteContent['gallery']['hero']['heading']); ?></h2>
             </div>
-            <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(home_url('/gallery/')); ?>"><?php esc_html_e('View the Gallery', 'vonaco'); ?><span aria-hidden="true">↗</span></a>
+            <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(home_url('/gallery/')); ?>"><?php esc_html_e('View the Gallery', 'vonaco'); ?><?php echo zingiber_icon_svg('arrow'); ?></a>
         </div>
         <div class="zingiber-container zingiber-gallery__grid">
             <?php foreach ($home['featured_images'] as $index => $galleryImage) : ?>

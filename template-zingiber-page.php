@@ -22,7 +22,9 @@ get_header('zingiber');
         </div>
         <div class="zingiber-page-hero__veil" aria-hidden="true"></div>
         <div class="zingiber-container zingiber-page-hero__content">
+            <p class="zingiber-kicker" data-zingiber-reveal><?php esc_html_e('Zingiber · Dubai', 'vonaco'); ?></p>
             <p class="zingiber-eyebrow" data-zingiber-reveal><?php echo esc_html($page['hero']['eyebrow']); ?></p>
+            <div class="zingiber-rule" aria-hidden="true" data-zingiber-reveal></div>
             <h1 data-zingiber-reveal><?php echo esc_html($page['hero']['heading']); ?></h1>
             <p data-zingiber-reveal><?php echo esc_html($page['hero']['subheading']); ?></p>
         </div>

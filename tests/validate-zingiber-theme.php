@@ -355,9 +355,24 @@ if (in_array('brand', $groups, true)) {
             }
         }
 
+        if (strpos($css, '"Estratto Var"') === false || strpos($css, '"Luxora Grotesk"') === false) {
+            $fail('brand', 'Stylesheet must name Estratto Var and Luxora Grotesk in the type stack.');
+        }
+
+        $setupSource = $read('inc/zingiber/setup.php') ?? '';
+        if (strpos($setupSource, 'Cormorant+Garamond') === false || strpos($setupSource, 'Manrope') === false) {
+            $fail('brand', 'Open substitutes for Estratto Var and Luxora Grotesk must be enqueued.');
+        }
+
         foreach ([':focus-visible', '@media (prefers-reduced-motion: reduce)', '@media (max-width: 767px)'] as $requirement) {
             if (strpos($css, $requirement) === false) {
                 $fail('brand', sprintf('Responsive/accessibility rule missing: %s.', $requirement));
+            }
+        }
+
+        foreach (['#C4A574', '#C9A66B', '#F7F2EA', '#080706'] as $offBrand) {
+            if (stripos($css, $offBrand) !== false) {
+                $fail('brand', sprintf('Off-palette colour %s is not in the Zingiber brand guidelines.', $offBrand));
             }
         }
 
