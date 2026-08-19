@@ -13,6 +13,8 @@
     --zingiber-body: "Luxora Grotesk", "Manrope", Arial, sans-serif;
     --zingiber-container: min(88rem, calc(100vw - 3.5rem));
     --zingiber-section-space: clamp(5.5rem, 10vw, 11rem);
+    --zingiber-header-height: 6.5rem;
+    --zingiber-header-height-sticky: 4.5rem;
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --zingiber-duration: 220ms;
     --zingiber-duration-lux: 520ms;
@@ -20,6 +22,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--zingiber-header-height-sticky);
 }
 
 body.zingiber-site {
@@ -112,7 +115,7 @@ body.zingiber-site {
 
 .zingiber-header.is-sticky {
     position: fixed;
-    background-color: rgba(15, 15, 15, 0.72);
+    background-color: var(--zingiber-charcoal);
     background-image: none;
     border-bottom: 1px solid rgba(184, 115, 51, 0.22);
     box-shadow: 0 24px 48px rgba(15, 15, 15, 0.28);
@@ -555,8 +558,9 @@ body.zingiber-site {
 }
 
 .zingiber-principles h2 {
-    max-width: 12ch;
+    max-width: 14ch;
     margin: 0;
+    text-wrap: balance;
 }
 
 .zingiber-principles__list {
@@ -1387,13 +1391,24 @@ body.zingiber-site {
 @media (max-width: 900px) {
     :root {
         --zingiber-container: min(calc(100% - 2rem), 46rem);
+        --zingiber-section-space: clamp(4rem, 9vw, 7rem);
+        --zingiber-header-height: 4.5rem;
+        --zingiber-header-height-sticky: 4rem;
+    }
+
+    html {
+        scroll-padding-top: var(--zingiber-header-height-sticky);
     }
 
     .zingiber-header__inner {
         position: relative;
         display: flex;
-        min-height: 5.75rem;
+        min-height: var(--zingiber-header-height);
         justify-content: space-between;
+    }
+
+    .zingiber-header.is-sticky .zingiber-header__inner {
+        min-height: var(--zingiber-header-height-sticky);
     }
 
     .zingiber-header__actions {
@@ -1401,7 +1416,11 @@ body.zingiber-site {
     }
 
     .zingiber-logo {
-        width: 7.5rem;
+        width: 6.75rem;
+    }
+
+    .zingiber-header.is-sticky .zingiber-logo {
+        width: 6.25rem;
     }
 
     .zingiber-mobile-toggle {
@@ -1410,13 +1429,15 @@ body.zingiber-site {
 
     .zingiber-primary-nav {
         position: absolute;
+        z-index: 2;
         top: 100%;
         right: -1rem;
         left: -1rem;
         display: none;
-        padding: 1rem;
+        padding: 0.75rem 1rem 1rem;
         border-top: 1px solid rgba(237, 231, 225, 0.16);
         background: var(--zingiber-charcoal);
+        box-shadow: 0 18px 36px rgba(15, 15, 15, 0.35);
     }
 
     .zingiber-primary-nav.is-open,
@@ -1458,10 +1479,23 @@ body.zingiber-site {
 
     .zingiber-principles__heading {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .zingiber-principles h2 {
+        max-width: none;
+        font-size: clamp(2.15rem, 6.5vw, 3.4rem);
+        line-height: 1.08;
     }
 
     .zingiber-principles__list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .zingiber-principles__list li {
+        min-height: 8.5rem;
+        padding: 1.15rem 1.25rem;
     }
 
     .zingiber-coast__intro {
@@ -1521,6 +1555,19 @@ body.zingiber-site {
 
     .zingiber-page-principles ol {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 2.5rem;
+    }
+
+    .zingiber-page-principles li {
+        min-height: 8.5rem;
+        padding: 1.15rem 1.25rem;
+    }
+
+    .zingiber-page-principles h2 {
+        max-width: none;
+        font-size: clamp(2.15rem, 6.5vw, 3.4rem);
+        line-height: 1.08;
+        text-wrap: balance;
     }
 
     .zingiber-page-gallery__intro {
@@ -1542,7 +1589,49 @@ body.zingiber-site {
     }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .zingiber-hero__content {
+        padding-top: 9.5rem;
+    }
+
+    .zingiber-page-hero__content {
+        padding-top: 9.5rem;
+    }
+
+    .zingiber-coast__regions li {
+        font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+    }
+
+    .zingiber-menu-story__images {
+        min-height: 32rem;
+    }
+
+    .zingiber-experience,
+    .zingiber-reservations {
+        min-height: auto;
+    }
+
+    .zingiber-experience__image,
+    .zingiber-reservations__image {
+        min-height: min(52vw, 28rem);
+    }
+}
+
 @media (max-width: 767px) {
+    :root {
+        --zingiber-container: min(calc(100% - 1.5rem), 46rem);
+        --zingiber-section-space: clamp(3.25rem, 11vw, 4.75rem);
+        --zingiber-header-height: 4rem;
+        --zingiber-header-height-sticky: 3.75rem;
+    }
+
+    html {
+        scroll-padding-top: calc(var(--zingiber-header-height-sticky) + 0.5rem);
+    }
+
+    [id] {
+        scroll-margin-top: calc(var(--zingiber-header-height-sticky) + 0.75rem);
+    }
     .admin-bar .zingiber-header {
         top: 46px;
     }
@@ -1558,8 +1647,13 @@ body.zingiber-site {
     }
 
     .zingiber-hero {
-        min-height: 48rem;
+        min-height: max(36rem, 100svh);
         background-position: 62% center;
+    }
+
+    .zingiber-hero__content {
+        padding-top: 7.5rem;
+        padding-bottom: clamp(4rem, 10vh, 6rem);
     }
 
     .zingiber-hero__veil {
@@ -1567,24 +1661,89 @@ body.zingiber-site {
     }
 
     .zingiber-hero h1 {
-        font-size: clamp(2.35rem, 9.2vw, 3.05rem);
-        white-space: nowrap;
+        font-size: clamp(2.1rem, 8.8vw, 2.85rem);
+        line-height: 1.02;
+        white-space: normal;
+        text-wrap: balance;
+    }
+
+    .zingiber-hero__lede {
+        font-size: clamp(1rem, 4.2vw, 1.2rem);
+    }
+
+    .zingiber-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.85rem;
+        margin-top: 2rem;
+    }
+
+    .zingiber-hero__actions .zingiber-button,
+    .zingiber-hero__actions .zingiber-text-link {
+        width: 100%;
+        justify-content: center;
     }
 
     .zingiber-hero__scroll {
         display: none;
     }
 
+    .zingiber-site h2 {
+        font-size: clamp(2rem, 7.4vw, 2.85rem);
+        line-height: 1.06;
+    }
+
+    .zingiber-principles {
+        padding-block: clamp(3.25rem, 10vw, 4.75rem);
+    }
+
+    .zingiber-principles__heading {
+        gap: 0.75rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .zingiber-principles h2 {
+        font-size: clamp(1.85rem, 7.6vw, 2.45rem);
+    }
+
     .zingiber-principles__list {
         grid-template-columns: 1fr;
+        border-left: 0;
     }
 
     .zingiber-principles__list li {
-        min-height: 9rem;
+        display: grid;
+        grid-template-columns: 2.75rem minmax(0, 1fr);
+        align-items: center;
+        gap: 0.85rem 1rem;
+        min-height: 0;
+        padding: 1rem 0;
+        border-right: 0;
+        border-left: 0;
+    }
+
+    .zingiber-principles__list span {
+        font-size: 0.68rem;
+    }
+
+    .zingiber-principles__list strong {
+        font-size: clamp(1.35rem, 5.2vw, 1.75rem);
+        line-height: 1.15;
+    }
+
+    .zingiber-coast__intro h2 {
+        max-width: none;
+        text-wrap: balance;
+    }
+
+    .zingiber-coast__regions li {
+        font-size: clamp(1.25rem, 5vw, 1.65rem);
+        padding-block: 0.85rem;
     }
 
     .zingiber-coast__composition {
         grid-template-columns: 1fr;
+        margin-top: clamp(2.5rem, 8vw, 4rem);
     }
 
     .zingiber-coast__image--primary img {
@@ -1592,15 +1751,39 @@ body.zingiber-site {
     }
 
     .zingiber-menu-story__images {
-        min-height: 30rem;
+        display: grid;
+        gap: 0.85rem;
+        min-height: auto;
     }
 
-    .zingiber-menu-story__image--wide {
-        width: 92%;
+    .zingiber-menu-story__image {
+        position: static;
+        width: 100%;
     }
 
+    .zingiber-menu-story__image--wide,
     .zingiber-menu-story__image--detail {
-        width: 52%;
+        width: 100%;
+        border: 0;
+    }
+
+    .zingiber-menu-story__copy .zingiber-button {
+        width: 100%;
+    }
+
+    .zingiber-experience,
+    .zingiber-reservations {
+        min-height: auto;
+    }
+
+    .zingiber-experience__copy,
+    .zingiber-reservations__copy {
+        padding: var(--zingiber-section-space) max(1.25rem, 5vw);
+    }
+
+    .zingiber-experience__image,
+    .zingiber-reservations__image {
+        min-height: min(62vw, 22rem);
     }
 
     .zingiber-gallery__heading {
@@ -1627,18 +1810,45 @@ body.zingiber-site {
         grid-row: span 2;
     }
 
+    .zingiber-page-hero {
+        min-height: clamp(30rem, 72svh, 40rem);
+    }
+
+    .zingiber-page-hero__content {
+        padding-top: 7.5rem;
+        padding-bottom: clamp(3.5rem, 8vw, 5rem);
+    }
+
     .zingiber-page-hero h1 {
-        font-size: clamp(2.2rem, 8.4vw, 3.15rem);
+        font-size: clamp(2rem, 8.4vw, 2.85rem);
         white-space: normal;
         text-wrap: balance;
     }
 
+    .zingiber-page-principles {
+        padding-block: clamp(3.25rem, 10vw, 4.75rem);
+    }
+
     .zingiber-page-principles ol {
         grid-template-columns: 1fr;
+        margin-top: 1.75rem;
+        border-left: 0;
     }
 
     .zingiber-page-principles li {
-        min-height: 8.5rem;
+        display: grid;
+        grid-template-columns: 2.75rem minmax(0, 1fr);
+        align-items: center;
+        gap: 0.85rem 1rem;
+        min-height: 0;
+        padding: 1rem 0;
+        border-right: 0;
+        border-left: 0;
+    }
+
+    .zingiber-page-principles li strong {
+        font-size: clamp(1.35rem, 5.2vw, 1.75rem);
+        line-height: 1.15;
     }
 
     .zingiber-page-menu__images {
@@ -1681,6 +1891,20 @@ body.zingiber-site {
 
     .zingiber-page-contact__details > div > *:not(.zingiber-page-contact__label) {
         grid-column: 1;
+    }
+
+    .zingiber-button {
+        min-height: 44px;
+        padding: 0.85rem 1.35rem;
+    }
+
+    .zingiber-footer__logo {
+        width: 9rem;
+    }
+
+    .zingiber-chef__figure {
+        width: 100%;
+        padding: 0.75rem 0.75rem 2.75rem;
     }
 
     .zingiber-page-contact__label {
