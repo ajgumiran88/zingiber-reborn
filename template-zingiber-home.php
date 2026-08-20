@@ -60,7 +60,10 @@ get_header('zingiber');
         <div class="zingiber-container">
             <div class="zingiber-principles__heading" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php esc_html_e('What Guides Us', 'vonaco'); ?></p>
-                <h2 id="principles-title"><?php esc_html_e('Four Principles. One Point of View.', 'vonaco'); ?></h2>
+                <h2 id="principles-title">
+                    <?php esc_html_e('Four Principles.', 'vonaco'); ?>
+                    <span class="zingiber-principles__accent"><?php esc_html_e('One Point of View.', 'vonaco'); ?></span>
+                </h2>
             </div>
             <ol class="zingiber-principles__list">
                 <?php foreach ($home['principles'] as $index => $principle) : ?>

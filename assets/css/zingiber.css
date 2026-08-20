@@ -548,7 +548,7 @@ body.zingiber-site {
 .zingiber-principles__heading {
     display: grid;
     grid-template-columns: 0.5fr 1.5fr;
-    align-items: end;
+    align-items: start;
     gap: 2rem;
     margin-bottom: 3.5rem;
 }
@@ -558,9 +558,20 @@ body.zingiber-site {
 }
 
 .zingiber-principles h2 {
-    max-width: 14ch;
+    max-width: none;
     margin: 0;
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    line-height: 1.1;
     text-wrap: balance;
+    letter-spacing: -0.02em;
+}
+
+.zingiber-principles h2 .zingiber-principles__accent {
+    display: block;
+    color: var(--zingiber-copper);
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 0.25rem;
 }
 
 .zingiber-principles__list {
@@ -1487,6 +1498,7 @@ body.zingiber-site {
         max-width: none;
         font-size: clamp(2.15rem, 6.5vw, 3.4rem);
         line-height: 1.08;
+        text-wrap: balance;
     }
 
     .zingiber-principles__list {
@@ -1704,6 +1716,7 @@ body.zingiber-site {
 
     .zingiber-principles h2 {
         font-size: clamp(1.85rem, 7.6vw, 2.45rem);
+        text-wrap: balance;
     }
 
     .zingiber-principles__list {
