@@ -109,7 +109,8 @@ body.zingiber-site {
         rgba(15, 15, 15, 0.32) 58%,
         rgba(15, 15, 15, 0) 100%
     );
-    border-bottom: 1px solid transparent;
+    border-bottom: none !important;
+    box-shadow: none !important;
     transition: background-color var(--zingiber-duration) var(--zingiber-ease), border-color var(--zingiber-duration) var(--zingiber-ease), box-shadow var(--zingiber-duration) var(--zingiber-ease), background-image var(--zingiber-duration) var(--zingiber-ease);
 }
 
@@ -117,10 +118,24 @@ body.zingiber-site {
     position: fixed;
     background-color: var(--zingiber-charcoal);
     background-image: none;
-    border-bottom: 1px solid rgba(184, 115, 51, 0.22);
-    box-shadow: 0 24px 48px rgba(15, 15, 15, 0.28);
+    border-bottom: none !important;
+    box-shadow: 0 24px 48px rgba(15, 15, 15, 0.28) !important;
     backdrop-filter: blur(22px) saturate(140%);
     -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
+
+@media (min-width: 901px) {
+    .zingiber-header__inner,
+    .zingiber-header__actions,
+    .zingiber-primary-nav,
+    .zingiber-menu,
+    .zingiber-menu li,
+    .zingiber-logo-link {
+        border: none !important;
+        border-bottom: none !important;
+        border-top: none !important;
+        box-shadow: none !important;
+    }
 }
 
 .admin-bar .zingiber-header {
