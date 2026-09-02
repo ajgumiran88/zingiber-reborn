@@ -18,6 +18,10 @@
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --zingiber-duration: 220ms;
     --zingiber-duration-lux: 520ms;
+    --zingiber-frame-inset: clamp(14px, 2.2vw, 24px);
+    --zingiber-frame-color: #B87333;
+    --zingiber-frame-terracotta: #9C4722;
+    --zingiber-frame-glow: rgba(184, 115, 51, 0.16);
 }
 
 html {
@@ -1937,6 +1941,250 @@ body.zingiber-site {
 
     .zingiber-page-contact__label {
         grid-row: auto;
+    }
+}
+
+/* ==========================================================================
+   Zingiber Architectural Fluted & Botanical Decorative Frame System
+   Inspired by the interior ribbed terracotta architecture, ginger rhizomes,
+   and brushed copper/brass artisanry.
+   ========================================================================== */
+
+:root {
+    --zingiber-frame-inset: clamp(14px, 2vw, 24px);
+    --zingiber-frame-color: rgba(184, 115, 51, 0.45);
+    --zingiber-frame-terracotta: rgba(156, 71, 34, 0.4);
+}
+
+.zingiber-frame {
+    position: fixed;
+    top: var(--zingiber-frame-inset);
+    right: var(--zingiber-frame-inset);
+    bottom: var(--zingiber-frame-inset);
+    left: var(--zingiber-frame-inset);
+    z-index: 95;
+    pointer-events: none !important;
+    user-select: none;
+    transition: top var(--zingiber-duration) var(--zingiber-ease),
+                right var(--zingiber-duration) var(--zingiber-ease),
+                bottom var(--zingiber-duration) var(--zingiber-ease),
+                left var(--zingiber-duration) var(--zingiber-ease);
+}
+
+.admin-bar .zingiber-frame {
+    top: calc(var(--zingiber-frame-inset) + 32px);
+}
+
+/* Whisper-Thin Fluted Strata Perimeter Rails */
+.zingiber-frame__rail {
+    position: absolute;
+    pointer-events: none;
+}
+
+.zingiber-frame__rail--top {
+    top: 0;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--zingiber-frame-color) 6%,
+        var(--zingiber-frame-color) 94%,
+        transparent 100%
+    );
+    opacity: 0.7;
+}
+
+.zingiber-frame__rail--bottom {
+    bottom: 0;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--zingiber-frame-color) 6%,
+        var(--zingiber-frame-color) 94%,
+        transparent 100%
+    );
+    opacity: 0.7;
+}
+
+.zingiber-frame__rail--left {
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--zingiber-frame-color) 6%,
+        var(--zingiber-frame-terracotta) 50%,
+        var(--zingiber-frame-color) 94%,
+        transparent 100%
+    );
+    opacity: 0.7;
+}
+
+.zingiber-frame__rail--right {
+    top: 40px;
+    bottom: 40px;
+    right: 0;
+    width: 1px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--zingiber-frame-color) 6%,
+        var(--zingiber-frame-terracotta) 50%,
+        var(--zingiber-frame-color) 94%,
+        transparent 100%
+    );
+    opacity: 0.7;
+}
+
+/* Whisper-Thin Jewel Corners */
+.zingiber-frame__corner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.zingiber-frame__corner--tl {
+    top: 0;
+    left: 0;
+}
+
+.zingiber-frame__corner--tr {
+    top: 0;
+    right: 0;
+}
+
+.zingiber-frame__corner--bl {
+    bottom: 0;
+    left: 0;
+}
+
+.zingiber-frame__corner--br {
+    bottom: 0;
+    right: 0;
+}
+
+.zingiber-frame__corner-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Minimalist Center Coordinate Marker */
+.zingiber-frame__marker {
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.zingiber-frame__marker-line {
+    width: 24px;
+    height: 1px;
+    background: rgba(184, 115, 51, 0.4);
+}
+
+.zingiber-frame__marker-text {
+    font-family: var(--zingiber-body);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(237, 231, 225, 0.75);
+    background: rgba(15, 15, 15, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(184, 115, 51, 0.35);
+    box-shadow: 0 4px 12px rgba(15, 15, 15, 0.4);
+}
+
+/* Architectural Terracotta Strata & Fluting on Content */
+.zingiber-hero,
+.zingiber-page-hero {
+    border-bottom: 1px solid rgba(184, 115, 51, 0.25);
+    box-shadow: 0 20px 40px rgba(15, 15, 15, 0.2);
+}
+
+.zingiber-chef__figure,
+.zingiber-coast__image,
+.zingiber-page-editorial__image,
+.zingiber-page-gallery__item,
+.zingiber-page-menu__images figure {
+    position: relative;
+    box-shadow: 0 28px 64px rgba(15, 15, 15, 0.1);
+}
+
+.zingiber-chef__figure::after,
+.zingiber-coast__image::after,
+.zingiber-page-editorial__image::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border: 1px solid rgba(184, 115, 51, 0.25);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Responsive Frame Adjustments */
+@media (max-width: 900px) {
+    :root {
+        --zingiber-frame-inset: 8px;
+    }
+
+    .zingiber-frame__corner {
+        width: 24px;
+        height: 24px;
+    }
+
+    .zingiber-frame__rail--top,
+    .zingiber-frame__rail--bottom {
+        left: 28px;
+        right: 28px;
+    }
+
+    .zingiber-frame__rail--left,
+    .zingiber-frame__rail--right {
+        top: 28px;
+        bottom: 28px;
+    }
+
+    .zingiber-frame__marker-text {
+        font-size: 0.5rem;
+        letter-spacing: 0.2em;
+        padding: 1px 8px;
+    }
+
+    .zingiber-frame__marker-line {
+        width: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --zingiber-frame-inset: 4px;
+    }
+
+    .zingiber-frame__corner {
+        display: none;
+    }
+
+    .zingiber-frame__marker {
+        display: none;
     }
 }
 

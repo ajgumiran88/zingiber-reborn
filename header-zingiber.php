@@ -23,6 +23,7 @@ $navigationLabels = [
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<?php get_template_part('template-parts/zingiber-frame'); ?>
 <a class="zingiber-skip-link" href="#zingiber-main"><?php esc_html_e('Skip to content', 'vonaco'); ?></a>
 
 <header class="zingiber-header" data-zingiber-header>
