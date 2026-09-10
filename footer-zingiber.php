@@ -13,10 +13,10 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
             <a class="zingiber-footer__logo-link" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
                 <img
                     class="zingiber-footer__logo"
-                    src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>"
+                    src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
                     alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-                    width="607"
-                    height="800"
+                    width="700"
+                    height="424"
                     loading="lazy"
                 >
             </a>

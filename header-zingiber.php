@@ -29,13 +29,23 @@ $navigationLabels = [
 <header class="zingiber-header" data-zingiber-header>
     <div class="zingiber-container zingiber-header__inner">
         <a class="zingiber-logo-link" href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
-            <img
-                class="zingiber-logo"
-                src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>"
-                alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-                width="607"
-                height="800"
-            >
+            <span class="zingiber-logo-stack">
+                <img
+                    class="zingiber-logo zingiber-logo--light"
+                    src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>"
+                    alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
+                    width="700"
+                    height="424"
+                >
+                <img
+                    class="zingiber-logo zingiber-logo--dark"
+                    src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
+                    alt=""
+                    width="700"
+                    height="424"
+                    aria-hidden="true"
+                >
+            </span>
         </a>
 
         <button
