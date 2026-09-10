@@ -175,14 +175,14 @@ body.zingiber-site {
 }
 
 .zingiber-logo {
-    width: clamp(7.5rem, 11vw, 10rem);
-    aspect-ratio: 536 / 356;
+    width: clamp(2.75rem, 4.5vw, 3.5rem);
+    aspect-ratio: 607 / 800;
     object-fit: contain;
     transition: width var(--zingiber-duration) var(--zingiber-ease);
 }
 
 .zingiber-header.is-sticky .zingiber-logo {
-    width: 7.25rem;
+    width: 2.5rem;
 }
 
 .zingiber-primary-nav {
@@ -1302,7 +1302,9 @@ body.zingiber-site {
 }
 
 .zingiber-footer__logo {
-    width: 11rem;
+    width: 4.5rem;
+    aspect-ratio: 607 / 800;
+    object-fit: contain;
 }
 
 .zingiber-footer__brand > p {
@@ -1446,11 +1448,11 @@ body.zingiber-site {
     }
 
     .zingiber-logo {
-        width: 6.75rem;
+        width: 2.5rem;
     }
 
     .zingiber-header.is-sticky .zingiber-logo {
-        width: 6.25rem;
+        width: 2.25rem;
     }
 
     .zingiber-mobile-toggle {
@@ -1931,7 +1933,7 @@ body.zingiber-site {
     }
 
     .zingiber-footer__logo {
-        width: 9rem;
+        width: 3.75rem;
     }
 
     .zingiber-chef__figure {
