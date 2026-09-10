@@ -278,6 +278,41 @@ if (!function_exists('zingiber_filter_document_title')) {
 }
 add_filter('document_title_parts', 'zingiber_filter_document_title', 20);
 
+if (!function_exists('zingiber_output_site_icons')) {
+    /**
+     * Output Zingiber favicons (overrides the default WordPress “W”).
+     */
+    function zingiber_output_site_icons(): void
+    {
+        if (is_admin()) {
+            return;
+        }
+
+        // Prefer theme icons whenever a Zingiber template is active,
+        // or when no Customizer site icon has been set.
+        if (!zingiber_is_site_template() && (int) get_option('site_icon') > 0) {
+            return;
+        }
+
+        $dir = 'assets/images/zingiber/favicon';
+        $ico = zingiber_theme_asset_url($dir . '/favicon.ico');
+        $png16 = zingiber_theme_asset_url($dir . '/favicon-16x16.png');
+        $png32 = zingiber_theme_asset_url($dir . '/favicon-32x32.png');
+        $apple = zingiber_theme_asset_url($dir . '/apple-touch-icon.png');
+        $png192 = zingiber_theme_asset_url($dir . '/icon-192.png');
+        $png512 = zingiber_theme_asset_url($dir . '/icon-512.png');
+
+        echo '<link rel="icon" href="' . esc_url($ico) . '" sizes="any">' . "\n";
+        echo '<link rel="icon" type="image/png" href="' . esc_url($png16) . '" sizes="16x16">' . "\n";
+        echo '<link rel="icon" type="image/png" href="' . esc_url($png32) . '" sizes="32x32">' . "\n";
+        echo '<link rel="icon" type="image/png" href="' . esc_url($png192) . '" sizes="192x192">' . "\n";
+        echo '<link rel="icon" type="image/png" href="' . esc_url($png512) . '" sizes="512x512">' . "\n";
+        echo '<link rel="apple-touch-icon" href="' . esc_url($apple) . '">' . "\n";
+        echo '<meta name="theme-color" content="#0F0F0F">' . "\n";
+    }
+}
+add_action('wp_head', 'zingiber_output_site_icons', 1);
+
 if (!function_exists('zingiber_output_meta_description')) {
     function zingiber_output_meta_description(): void
     {
