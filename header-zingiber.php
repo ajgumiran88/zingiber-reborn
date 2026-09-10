@@ -19,10 +19,52 @@ $navigationLabels = [
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>">
+    <style id="zingiber-preloader-critical">
+        html.zingiber-preload{overflow:hidden}
+        .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#0F0F0F;color:#EDE7E1}
+        .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
+        .zingiber-preloader__logo{width:min(11rem,42vw);height:auto;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
+        .zingiber-preloader__progress{width:min(11rem,42vw);height:1px;overflow:hidden;background:rgba(184,115,51,0.22)}
+        .zingiber-preloader__progress-bar{display:block;width:0;height:100%;background:#B87333;transform-origin:left center}
+        @keyframes zingiber-preloader-logo{to{opacity:1;transform:scale(1)}}
+        @media (prefers-reduced-motion:reduce){.zingiber-preloader__logo{opacity:1;transform:none;animation:none}}
+    </style>
+    <script>document.documentElement.classList.add('zingiber-preload');</script>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+<div
+    class="zingiber-preloader"
+    data-zingiber-preloader
+    role="status"
+    aria-live="polite"
+    aria-busy="true"
+>
+    <div class="zingiber-preloader__inner">
+        <img
+            class="zingiber-preloader__logo"
+            src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
+            alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
+            width="700"
+            height="424"
+            decoding="async"
+        >
+        <div
+            class="zingiber-preloader__progress"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-label="<?php esc_attr_e('Loading', 'vonaco'); ?>"
+            data-zingiber-preloader-progress
+        >
+            <span class="zingiber-preloader__progress-bar" data-zingiber-preloader-bar></span>
+        </div>
+        <span class="zingiber-preloader__sr"><?php esc_html_e('Loading Zingiber', 'vonaco'); ?></span>
+    </div>
+</div>
 <?php get_template_part('template-parts/zingiber-frame'); ?>
 <a class="zingiber-skip-link" href="#zingiber-main"><?php esc_html_e('Skip to content', 'vonaco'); ?></a>
 
