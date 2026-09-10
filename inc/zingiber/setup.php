@@ -12,7 +12,16 @@ require_once __DIR__ . '/content.php';
 if (!function_exists('zingiber_theme_asset_url')) {
     function zingiber_theme_asset_url(string $path): string
     {
-        return get_theme_file_uri(ltrim($path, '/'));
+        $relative = ltrim($path, '/');
+        $url = get_theme_file_uri($relative);
+        $file = get_theme_file_path($relative);
+
+        // InfinityFree caches theme assets for up to a year; bust on file change.
+        if (is_file($file)) {
+            $url = add_query_arg('v', (string) filemtime($file), $url);
+        }
+
+        return $url;
     }
 }
 
