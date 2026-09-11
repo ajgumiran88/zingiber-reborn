@@ -102,7 +102,6 @@ $navigationLabels = [
         </button>
 
         <div class="zingiber-header__actions">
-            <p class="zingiber-header__place"><?php esc_html_e('JLT · Dubai', 'vonaco'); ?></p>
             <nav class="zingiber-primary-nav" aria-label="Primary navigation" data-zingiber-menu>
                 <?php if (has_nav_menu('primary')) : ?>
                     <?php

@@ -7,6 +7,33 @@
  * loaded by the standalone validation suite.
  */
 
+if (!function_exists('zingiber_prevent_widows')) {
+    function zingiber_prevent_widows(string $text): string
+    {
+        $text = trim(preg_replace('/\s+/u', ' ', $text) ?? '');
+
+        if ($text === '' || !str_contains($text, ' ')) {
+            return $text;
+        }
+
+        // Keep short openers with the next word so display type never strands "A" or "An".
+        $text = (string) preg_replace(
+            '/^(A|An|The|We|On|Of|To|By|At)\s+/ui',
+            "$1\u{00A0}",
+            $text
+        );
+
+        // Only glue the final word when the line still has room to wrap elsewhere.
+        // Avoid turning short titles into one unbreakable string that gets mid-word cut.
+        $words = preg_split('/\s+/u', $text) ?: [];
+        if (count($words) < 4) {
+            return $text;
+        }
+
+        return (string) preg_replace('/\s+(\S+)$/u', "\u{00A0}$1", $text);
+    }
+}
+
 if (!function_exists('zingiber_get_site_content')) {
     function zingiber_get_site_content(): array
     {
@@ -26,17 +53,17 @@ if (!function_exists('zingiber_get_site_content')) {
                 'template' => 'template-zingiber-home.php',
                 'hero' => [
                     'eyebrow' => 'Modern Indian Coastal Dining',
-                    'heading' => 'Meet the Chef',
-                    'subheading' => 'A modern coastal Indian dining experience, led by culinary mastery and shaped by storytelling.',
+                    'heading' => 'Introducing Modern Indian Coastal Dining Experience.',
+                    'subheading' => 'A chef-led coastal Indian dining experience, shaped by mastery, heritage, and storytelling.',
                     'image' => $image('interior-hero.jpg', 'Warm, atmospheric interior of Zingiber restaurant in Dubai'),
                 ],
                 'sections' => [
                     'chef_story' => [
                         'eyebrow' => 'The Zingiber Story',
-                        'heading' => 'Chef-Led. Story-Driven. Distinctly Coastal.',
+                        'heading' => 'Coastal India, Reimagined for Now',
                         'body' => [
-                            'Zingiber is a chef-driven modern Indian restaurant in JLT, Dubai, led by renowned Chef Shankar Krishnamurthy. Rooted in India’s coastal heritage, our menu reinterprets regional classics through a contemporary lens, balancing authenticity with innovation.',
-                            'Every dish reflects a journey across Goa, Kerala, Mangalore, and Tamil Nadu, brought to life through refined techniques, thoughtful presentation, and bold, layered flavours.',
+                            'Zingiber is a chef-driven modern Indian restaurant in Dubai, led by Chef Shankar Krishnamurthy. Rooted in India’s coastal heritage, the menu reinterprets regional classics through a contemporary lens — authenticity held in balance with innovation.',
+                            'Every dish traces a journey across Goa, Kerala, Mangalore, and Tamil Nadu, brought to life through refined technique, thoughtful presentation, and layered flavour.',
                         ],
                         'image' => $image('food-signature-plate.jpg', 'A refined signature dish presented at Zingiber'),
                     ],
@@ -68,16 +95,28 @@ if (!function_exists('zingiber_get_site_content')) {
                     ],
                 ],
                 'principles' => [
-                    ['title' => 'Authenticity'],
-                    ['title' => 'Innovation'],
-                    ['title' => 'Consistency'],
-                    ['title' => 'Storytelling'],
+                    ['title' => 'Authenticity', 'icon' => 'authenticity'],
+                    ['title' => 'Innovation', 'icon' => 'innovation'],
+                    ['title' => 'Consistency', 'icon' => 'consistency'],
+                    ['title' => 'Storytelling', 'icon' => 'storytelling'],
                 ],
                 'regions' => [
-                    ['name' => 'Goa'],
-                    ['name' => 'Kerala'],
-                    ['name' => 'Mangalore'],
-                    ['name' => 'Tamil Nadu'],
+                    [
+                        'name' => 'Goa',
+                        'image' => $image('food-prawn-curry.jpg', 'Coastal Indian prawn curry with a contemporary Zingiber presentation'),
+                    ],
+                    [
+                        'name' => 'Kerala',
+                        'image' => $image('food-seafood-rice.jpg', 'Seafood rice dish served with refined garnishes'),
+                    ],
+                    [
+                        'name' => 'Mangalore',
+                        'image' => $image('food-grilled-lamb.jpg', 'Grilled dish with layered coastal Indian flavours'),
+                    ],
+                    [
+                        'name' => 'Tamil Nadu',
+                        'image' => $image('food-coastal-thali.jpg', 'Contemporary presentation inspired by India’s coastal regions'),
+                    ],
                 ],
                 'featured_images' => [
                     $image('food-grilled-lamb.jpg', 'Grilled dish with layered coastal Indian flavours'),
@@ -238,7 +277,7 @@ if (!function_exists('zingiber_get_site_content')) {
                     'email' => 'reservations@zingiber.ae',
                     'phone' => '',
                     'phone_label' => 'Phone details coming soon',
-                    'hours' => 'Daily | Lunch & Dinner Service',
+                    'hours' => 'Opening hours coming soon',
                     'instagram' => '@zingiberdubai',
                     'tiktok' => '@zingiberdubai',
                     'facebook' => 'Zingiber Dubai',

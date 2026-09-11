@@ -67,7 +67,7 @@
     <!-- Editorial Coordinate Marker at Bottom Center -->
     <div class="zingiber-frame__marker">
         <span class="zingiber-frame__marker-line" aria-hidden="true"></span>
-        <span class="zingiber-frame__marker-text"><?php esc_html_e('25°04′N 55°08′E · ZINGIBER DUBAI', 'vonaco'); ?></span>
+        <span class="zingiber-frame__marker-text"><?php esc_html_e('ZINGIBER · DUBAI', 'vonaco'); ?></span>
         <span class="zingiber-frame__marker-line" aria-hidden="true"></span>
     </div>
 </div>

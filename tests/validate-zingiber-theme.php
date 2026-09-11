@@ -123,6 +123,10 @@ if (in_array('content', $groups, true)) {
             $fail('content', 'The editable phone status label is missing.');
         }
 
+        if (($content['contact']['details']['hours'] ?? '') !== 'Opening hours coming soon') {
+            $fail('content', 'Unconfirmed opening hours must be presented as clearly labeled placeholder text.');
+        }
+
         foreach ($collectImages($content) as $image) {
             if ($image['alt'] === '') {
                 $fail('content', sprintf('Image "%s" is missing meaningful alt text.', $image['src']));
@@ -212,6 +216,10 @@ if (in_array('templates', $groups, true)) {
         if (preg_match_all('/<header\b/i', $header) !== 1) {
             $fail('templates', 'The Zingiber header must contain exactly one header element.');
         }
+
+        if (strpos($header, 'JLT Dubai') !== false) {
+            $fail('templates', 'The Zingiber primary navigation must not feature the JLT Dubai label.');
+        }
     }
 
     $footer = $read('footer-zingiber.php');
@@ -299,6 +307,40 @@ if (in_array('templates', $groups, true)) {
         if (preg_match_all('/<h1\b/i', $homeTemplate) !== 1) {
             $fail('templates', 'Home 2 template must contain exactly one H1.');
         }
+
+        if (preg_match('/<section\b[^>]*\bid="hero"[^>]*>(.*?)<\/section>/si', $homeTemplate, $heroMatch) !== 1) {
+            $fail('templates', 'Home 2 template must expose a complete #hero section.');
+        } else {
+            $heroMarkup = $heroMatch[1];
+
+            if (substr_count($heroMarkup, "home_url('/menu/')") !== 1) {
+                $fail('templates', 'The homepage hero must contain exactly one Menu CTA.');
+            }
+
+            if (strpos($heroMarkup, "home_url('/contact/')") !== false) {
+                $fail('templates', 'The homepage hero must keep reservation actions in the header, not inside the photo.');
+            }
+
+            if (strpos($heroMarkup, 'zingiber-button--prominent') === false) {
+                $fail('templates', 'The homepage Menu CTA must use the prominent button treatment.');
+            }
+
+            if (substr_count($heroMarkup, '<span class="zingiber-hero__title-line') !== 2) {
+                $fail('templates', 'The homepage headline must remain a balanced two-line lockup.');
+            }
+
+            if (strpos($heroMarkup, 'zingiber-hero__title-line--italic') === false) {
+                $fail('templates', 'The homepage hero must include an italic display line in the Zingiber heading font.');
+            }
+
+            if (strpos($heroMarkup, 'zingiber-hero__hairline') === false) {
+                $fail('templates', 'The homepage hero must include the quiet copper hairline treatment.');
+            }
+
+            if (strpos($heroMarkup, 'zingiber-hero__scroll') !== false) {
+                $fail('templates', 'The competing homepage hero scroll cue must be removed.');
+            }
+        }
     }
 
     $pageTemplate = $read('template-zingiber-page.php');
@@ -314,8 +356,8 @@ if (in_array('templates', $groups, true)) {
             'zingiber-page-careers',
             'zingiber-page-contact',
             "mailto:",
-            "\$page['slug']",
-            "\$page['details']",
+            "\$zingiberPage['slug']",
+            "\$zingiberPage['details']",
         ] as $contract) {
             if (strpos($pageTemplate, $contract) === false) {
                 $fail('templates', sprintf('Supporting-page template contract missing: %s.', $contract));
@@ -438,7 +480,7 @@ if (in_array('import', $groups, true)) {
                 $fail('import', 'Home 2 WXR must not depend on legacy Elementor demo data.');
             }
 
-            foreach (['Zingiber', 'Meet the Chef', 'A Journey Across India’s Coastline'] as $requiredCopy) {
+            foreach (['Zingiber', 'Introducing Modern Indian Coastal Dining Experience.', 'A Journey Across India’s Coastline'] as $requiredCopy) {
                 if (strpos($xml, $requiredCopy) === false) {
                     $fail('import', sprintf('Home 2 import XML is missing approved copy: %s.', $requiredCopy));
                 }

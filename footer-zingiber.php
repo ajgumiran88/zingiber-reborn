@@ -20,7 +20,7 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
                     loading="lazy"
                 >
             </a>
-            <p><?php esc_html_e('A chef-led modern Indian coastal restaurant in Jumeirah Lakes Towers, shaped by heritage, innovation, and storytelling.', 'vonaco'); ?></p>
+            <p><?php echo esc_html(zingiber_prevent_widows(__('A chef-led modern Indian coastal restaurant in Jumeirah Lakes Towers, shaped by heritage, innovation, and storytelling.', 'vonaco'))); ?></p>
         </div>
 
         <div class="zingiber-footer__nav">
@@ -36,10 +36,10 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
             <p class="zingiber-footer__heading"><?php esc_html_e('Visit Zingiber', 'vonaco'); ?></p>
             <address>
                 <span><?php echo esc_html($contact['address_name']); ?></span>
-                <span><?php echo esc_html($contact['address']); ?></span>
+                <span><?php echo esc_html(zingiber_prevent_widows($contact['address'])); ?></span>
             </address>
             <a href="mailto:<?php echo esc_attr($contact['email']); ?>"><?php echo esc_html($contact['email']); ?></a>
-            <span><?php echo esc_html($contact['hours']); ?></span>
+            <span class="zingiber-operational-placeholder"><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></span>
         </div>
 
         <div class="zingiber-footer__social">
@@ -52,7 +52,7 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
 
     <div class="zingiber-container zingiber-footer__bottom">
         <p>&copy; <?php echo esc_html(date_i18n('Y')); ?> <?php esc_html_e('Zingiber Restaurant. All rights reserved.', 'vonaco'); ?></p>
-        <p><?php esc_html_e('Jumeirah Lakes Towers, Dubai, UAE', 'vonaco'); ?></p>
+        <p><?php echo esc_html(zingiber_prevent_widows(__('Jumeirah Lakes Towers, Dubai, UAE', 'vonaco'))); ?></p>
     </div>
 </footer>
 

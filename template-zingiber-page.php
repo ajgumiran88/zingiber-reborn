@@ -25,8 +25,18 @@ get_header('zingiber');
             <p class="zingiber-kicker" data-zingiber-reveal><?php esc_html_e('Zingiber · Dubai', 'vonaco'); ?></p>
             <p class="zingiber-eyebrow" data-zingiber-reveal><?php echo esc_html($zingiberPage['hero']['eyebrow']); ?></p>
             <div class="zingiber-rule" aria-hidden="true" data-zingiber-reveal></div>
-            <h1 data-zingiber-reveal><?php echo esc_html($zingiberPage['hero']['heading']); ?></h1>
-            <p data-zingiber-reveal><?php echo esc_html($zingiberPage['hero']['subheading']); ?></p>
+            <h1 data-zingiber-reveal>
+                <?php if ($zingiberPage['slug'] === 'menu') : ?>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('A Journey Across')); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('India’s Coastline')); ?></span>
+                <?php elseif ($zingiberPage['slug'] === 'about') : ?>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('A Modern Expression')); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('of Coastal India')); ?></span>
+                <?php else : ?>
+                    <?php echo esc_html(zingiber_prevent_widows($zingiberPage['hero']['heading'])); ?>
+                <?php endif; ?>
+            </h1>
+            <p data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows($zingiberPage['hero']['subheading'])); ?></p>
         </div>
     </section>
 
@@ -37,9 +47,9 @@ get_header('zingiber');
                     <article class="zingiber-page-editorial__row<?php echo $index % 2 ? ' is-reversed' : ''; ?>">
                         <div class="zingiber-page-editorial__copy" data-zingiber-reveal>
                             <p class="zingiber-eyebrow"><?php echo esc_html(sprintf('%02d / Our Story', $index + 1)); ?></p>
-                            <h2><?php echo esc_html($section['heading']); ?></h2>
+                            <h2><?php echo esc_html(zingiber_prevent_widows($section['heading'])); ?></h2>
                             <?php foreach ($section['body'] as $paragraph) : ?>
-                                <p><?php echo esc_html($paragraph); ?></p>
+                                <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                             <?php endforeach; ?>
                         </div>
                         <figure class="zingiber-page-editorial__image" data-zingiber-reveal>
@@ -52,11 +62,15 @@ get_header('zingiber');
 
         <section class="zingiber-page-principles" aria-labelledby="about-principles-title">
             <div class="zingiber-container">
-                <p class="zingiber-eyebrow" data-zingiber-reveal><?php esc_html_e('At Our Core', 'vonaco'); ?></p>
-                <h2 id="about-principles-title" data-zingiber-reveal><?php esc_html_e('Guided by Four Principles', 'vonaco'); ?></h2>
+                <p class="zingiber-eyebrow" data-zingiber-reveal><?php esc_html_e('What Guides Us', 'vonaco'); ?></p>
+                <h2 id="about-principles-title" data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows('Four Principles. One Point of View.')); ?></h2>
                 <ol>
                     <?php foreach ($home['principles'] as $index => $principle) : ?>
-                        <li data-zingiber-reveal><span><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span><strong><?php echo esc_html($principle['title']); ?></strong></li>
+                        <li data-zingiber-reveal>
+                            <span class="zingiber-principles__icon"><?php echo zingiber_icon_svg($principle['icon']); ?></span>
+                            <span class="zingiber-principles__index"><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span>
+                            <strong><?php echo esc_html($principle['title']); ?></strong>
+                        </li>
                     <?php endforeach; ?>
                 </ol>
             </div>
@@ -67,11 +81,11 @@ get_header('zingiber');
             <div class="zingiber-container zingiber-page-menu__intro">
                 <div data-zingiber-reveal>
                     <p class="zingiber-eyebrow"><?php esc_html_e('The Culinary Journey', 'vonaco'); ?></p>
-                    <h2><?php echo esc_html($zingiberPage['sections'][0]['heading']); ?></h2>
+                    <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
                 </div>
                 <div data-zingiber-reveal>
                     <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
-                        <p><?php echo esc_html($paragraph); ?></p>
+                        <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -80,9 +94,9 @@ get_header('zingiber');
                 <figure data-zingiber-reveal><img src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/food-coastal-thali.jpg')); ?>" alt="<?php esc_attr_e('A modern composition inspired by India’s coastal regions', 'vonaco'); ?>" width="1672" height="941" loading="lazy"></figure>
                 <figure data-zingiber-reveal><img src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/food-dessert.jpg')); ?>" alt="<?php esc_attr_e('Elegant dessert presentation from the Zingiber kitchen', 'vonaco'); ?>" width="1024" height="1536" loading="lazy"></figure>
             </div>
-            <div class="zingiber-container zingiber-page-menu__note" data-zingiber-reveal>
-                <p><?php echo esc_html($zingiberPage['sections'][1]['body'][0]); ?></p>
-                <a class="zingiber-button zingiber-button--dark" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Plan Your Visit', 'vonaco'); ?></a>
+            <div class="zingiber-container zingiber-page-menu__note zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
+                <p><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][1]['body'][0])); ?></p>
+                <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Plan Your Visit', 'vonaco'); ?></a>
             </div>
         </section>
 
@@ -90,9 +104,9 @@ get_header('zingiber');
         <section class="zingiber-section zingiber-page-gallery">
             <div class="zingiber-container zingiber-page-gallery__intro" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php esc_html_e('Inside Zingiber', 'vonaco'); ?></p>
-                <h2><?php echo esc_html($zingiberPage['sections'][0]['heading']); ?></h2>
+                <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
                 <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
-                    <p><?php echo esc_html($paragraph); ?></p>
+                    <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                 <?php endforeach; ?>
             </div>
             <div class="zingiber-container zingiber-page-gallery__grid">
@@ -110,13 +124,13 @@ get_header('zingiber');
                 <figure data-zingiber-reveal>
                     <img src="<?php echo esc_url(zingiber_theme_asset_url($zingiberPage['sections'][0]['image']['src'])); ?>" alt="<?php echo esc_attr($zingiberPage['sections'][0]['image']['alt']); ?>" width="2400" height="1350" loading="lazy">
                 </figure>
-                <div data-zingiber-reveal>
+                <div class="zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
                     <p class="zingiber-eyebrow"><?php esc_html_e('Careers at Zingiber', 'vonaco'); ?></p>
-                    <h2><?php echo esc_html($zingiberPage['sections'][0]['heading']); ?></h2>
+                    <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
                     <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
-                        <p><?php echo esc_html($paragraph); ?></p>
+                        <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                     <?php endforeach; ?>
-                    <a class="zingiber-button zingiber-button--dark" href="mailto:reservations@zingiber.ae?subject=Careers%20at%20Zingiber"><?php echo esc_html($zingiberPage['sections'][0]['action']['label']); ?></a>
+                    <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="mailto:reservations@zingiber.ae?subject=Careers%20at%20Zingiber"><?php echo esc_html($zingiberPage['sections'][0]['action']['label']); ?></a>
                 </div>
             </div>
         </section>
@@ -126,23 +140,26 @@ get_header('zingiber');
             <div class="zingiber-container zingiber-page-contact__grid">
                 <div class="zingiber-page-contact__copy" data-zingiber-reveal>
                     <p class="zingiber-eyebrow"><?php esc_html_e('Contact & Reservations', 'vonaco'); ?></p>
-                    <h2><?php echo esc_html($zingiberPage['sections'][0]['heading']); ?></h2>
-                    <p><?php echo esc_html($zingiberPage['sections'][0]['body'][0]); ?></p>
-                    <a class="zingiber-button zingiber-button--dark" href="mailto:<?php echo esc_attr($zingiberPage['details']['email']); ?>?subject=Reservation%20Enquiry"><?php esc_html_e('Email Reservations', 'vonaco'); ?></a>
+                    <h2>
+                        <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('We Look Forward')); ?></span>
+                        <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('to Welcoming You')); ?></span>
+                    </h2>
+                    <p><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['body'][0])); ?></p>
+                    <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="mailto:<?php echo esc_attr($zingiberPage['details']['email']); ?>?subject=Reservation%20Enquiry"><?php esc_html_e('Email Reservations', 'vonaco'); ?></a>
                 </div>
-                <div class="zingiber-page-contact__details" data-zingiber-reveal>
+                <div class="zingiber-page-contact__details zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
                     <div>
                         <p class="zingiber-page-contact__label"><?php esc_html_e('Visit', 'vonaco'); ?></p>
-                        <address><strong><?php echo esc_html($zingiberPage['details']['address_name']); ?></strong><span><?php echo esc_html($zingiberPage['details']['address']); ?></span></address>
+                        <address><strong><?php echo esc_html($zingiberPage['details']['address_name']); ?></strong><span><?php echo esc_html(zingiber_prevent_widows($zingiberPage['details']['address'])); ?></span></address>
                     </div>
                     <div>
                         <p class="zingiber-page-contact__label"><?php esc_html_e('Reservations', 'vonaco'); ?></p>
                         <a href="mailto:<?php echo esc_attr($zingiberPage['details']['email']); ?>"><?php echo esc_html($zingiberPage['details']['email']); ?></a>
-                        <span><?php echo esc_html($zingiberPage['details']['phone_label']); ?></span>
+                        <span class="zingiber-placeholder"><?php echo esc_html($zingiberPage['details']['phone_label']); ?></span>
                     </div>
                     <div>
                         <p class="zingiber-page-contact__label"><?php esc_html_e('Opening Hours', 'vonaco'); ?></p>
-                        <span><?php echo esc_html($zingiberPage['details']['hours']); ?></span>
+                        <span class="zingiber-operational-placeholder"><?php echo esc_html(zingiber_prevent_widows($zingiberPage['details']['hours'])); ?></span>
                     </div>
                     <div>
                         <p class="zingiber-page-contact__label"><?php esc_html_e('Follow', 'vonaco'); ?></p>

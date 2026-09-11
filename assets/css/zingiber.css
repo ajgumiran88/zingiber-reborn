@@ -5,14 +5,21 @@
     --zingiber-terracotta: #9C4722;
     --zingiber-copper: #B87333;
     --zingiber-sand: #EDE7E1;
-    --zingiber-ink-soft: rgba(15, 15, 15, 0.8);
+    --zingiber-ink-soft: rgba(15, 15, 15, 0.88);
     --zingiber-line: rgba(184, 115, 51, 0.38);
-    /* Estratto Var (Caslon/Californian/Trinité) → Cormorant Garamond
-       Luxora Grotesk (Light/Book/Medium) → Manrope */
+    /* Estratto Var → Cormorant Garamond; Luxora Grotesk Light/Book/Medium → Manrope */
     --zingiber-display: "Estratto Var", "Cormorant Garamond", Georgia, serif;
     --zingiber-body: "Luxora Grotesk", "Manrope", Arial, sans-serif;
+    --zingiber-display-weight: 400;
+    --zingiber-ui-weight: 500;
+    --zingiber-type-hero: clamp(3.5rem, 6.4vw, 6.5rem);
+    --zingiber-type-section: clamp(2.4rem, 4.4vw, 4.6rem);
+    --zingiber-type-body: 1.125rem;
+    --zingiber-tracking-display: -0.02em;
+    --zingiber-tracking-ui: 0.14em;
+    --zingiber-tracking-body: 0.012em;
     --zingiber-container: min(88rem, calc(100vw - 3.5rem));
-    --zingiber-section-space: clamp(5.5rem, 10vw, 11rem);
+    --zingiber-section-space: clamp(4.25rem, 7.5vw, 8rem);
     --zingiber-header-height: 6.5rem;
     --zingiber-header-height-sticky: 4.5rem;
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -22,6 +29,11 @@
     --zingiber-frame-color: #B87333;
     --zingiber-frame-terracotta: #9C4722;
     --zingiber-frame-glow: rgba(184, 115, 51, 0.16);
+    --zingiber-texture-wood-photo: url("../images/zingiber/interior-feature-wall.jpg");
+    --zingiber-texture-wood: url("../svg/zingiber/texture-wood.svg");
+    --zingiber-texture-copper: url("../svg/zingiber/texture-copper.svg");
+    --zingiber-texture-size-wood: 16px 80px;
+    --zingiber-texture-size-copper: 48px 48px;
 }
 
 html {
@@ -31,13 +43,13 @@ html {
 
 body.zingiber-site {
     margin: 0;
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
     font-family: var(--zingiber-body);
-    font-size: 1.0625rem;
-    font-weight: 300;
-    letter-spacing: 0.01em;
-    line-height: 1.7;
+    font-size: var(--zingiber-type-body);
+    font-weight: 400;
+    letter-spacing: var(--zingiber-tracking-body);
+    line-height: 1.72;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
@@ -50,7 +62,9 @@ body.zingiber-site {
     z-index: 100000;
     display: grid;
     place-items: center;
-    background: var(--zingiber-charcoal);
+    background-color: var(--zingiber-charcoal);
+    background-image: var(--zingiber-texture-copper);
+    background-size: var(--zingiber-texture-size-copper);
     color: var(--zingiber-sand);
     pointer-events: auto;
     transition: opacity 680ms var(--zingiber-ease), visibility 680ms linear;
@@ -179,7 +193,7 @@ html.zingiber-preload body.zingiber-site {
     padding: 0.75rem 1rem;
     background: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
-    font: 600 0.85rem/1 var(--zingiber-body);
+    font: 500 0.85rem/1 var(--zingiber-body);
     text-decoration: none;
 }
 
@@ -197,8 +211,8 @@ html.zingiber-preload body.zingiber-site {
     /* Immersive over-hero chrome — no milky banner */
     background-image: linear-gradient(
         180deg,
-        rgba(15, 15, 15, 0.55) 0%,
-        rgba(15, 15, 15, 0.18) 55%,
+        rgba(15, 15, 15, 0.62) 0%,
+        rgba(15, 15, 15, 0.22) 58%,
         rgba(15, 15, 15, 0) 100%
     );
     border-bottom: none !important;
@@ -210,7 +224,6 @@ html.zingiber-preload body.zingiber-site {
     position: fixed;
     color: var(--zingiber-charcoal);
     background-color: rgba(237, 231, 225, 0.92);
-    background-image: none;
     border-bottom: 1px solid rgba(184, 115, 51, 0.16) !important;
     box-shadow: 0 12px 32px rgba(15, 15, 15, 0.08) !important;
     backdrop-filter: blur(18px) saturate(140%);
@@ -337,10 +350,10 @@ html.zingiber-preload body.zingiber-site {
     display: inline-flex;
     min-height: 44px;
     align-items: center;
-    color: #fff;
+    color: var(--zingiber-sand);
     font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     line-height: 1;
     text-decoration: none;
     text-shadow: 0 1px 14px rgba(15, 15, 15, 0.55);
@@ -378,14 +391,18 @@ html.zingiber-preload body.zingiber-site {
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
-    padding: 0.95rem 1.7rem;
-    border: 1px solid var(--zingiber-copper);
-    background: var(--zingiber-copper);
+    padding: 1.05rem 1.9rem;
+    border: 1px solid var(--zingiber-burnt-red);
+    background-color: var(--zingiber-burnt-red);
+    background-image:
+        var(--zingiber-texture-copper),
+        linear-gradient(180deg, rgba(184, 115, 51, 0.22), transparent 55%);
+    background-size: var(--zingiber-texture-size-copper), auto;
     color: var(--zingiber-sand);
     font-family: var(--zingiber-body);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    font-size: 0.78rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
@@ -396,20 +413,35 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-button--header {
     flex-shrink: 0;
     min-height: 44px;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.55rem;
+    border-radius: 999px;
+    border-color: var(--zingiber-sand);
+    background: var(--zingiber-sand);
+    color: var(--zingiber-charcoal);
     font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
 }
 
 .zingiber-header .zingiber-button--header:hover {
     border-color: var(--zingiber-sand);
-    background: var(--zingiber-sand);
-    color: var(--zingiber-burnt-red);
+    background: transparent;
+    color: var(--zingiber-sand);
+}
+
+.zingiber-header.is-sticky .zingiber-button--header {
+    border-color: var(--zingiber-burnt-red);
+    background-color: var(--zingiber-burnt-red);
+    background-image:
+        var(--zingiber-texture-copper),
+        linear-gradient(180deg, rgba(184, 115, 51, 0.22), transparent 55%);
+    background-size: var(--zingiber-texture-size-copper), auto;
+    color: var(--zingiber-sand);
 }
 
 .zingiber-header.is-sticky .zingiber-button--header:hover {
-    border-color: var(--zingiber-burnt-red);
-    background: var(--zingiber-burnt-red);
+    border-color: var(--zingiber-charcoal);
+    background: var(--zingiber-charcoal);
     color: var(--zingiber-sand);
 }
 
@@ -425,26 +457,12 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-button--prominent {
-    min-height: 60px;
-    padding: 1.2rem 2.4rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    min-height: 64px;
+    padding: 1.3rem 2.65rem;
+    font-size: 0.92rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     box-shadow: 0 14px 36px rgba(15, 15, 15, 0.28);
-}
-
-.zingiber-button--ghost {
-    min-height: 60px;
-    padding: 1.2rem 2.15rem;
-    background: transparent;
-    color: var(--zingiber-sand);
-    border-color: rgba(237, 231, 225, 0.88);
-}
-
-.zingiber-button--ghost:hover {
-    border-color: var(--zingiber-sand);
-    background: var(--zingiber-sand);
-    color: var(--zingiber-burnt-red);
 }
 
 .zingiber-button:active {
@@ -473,9 +491,9 @@ html.zingiber-preload body.zingiber-site {
     align-items: center;
     gap: 0.75rem;
     color: var(--zingiber-sand);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -500,9 +518,9 @@ html.zingiber-preload body.zingiber-site {
     margin: 0 0 1rem;
     color: var(--zingiber-copper);
     font-family: var(--zingiber-body);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
+    font-size: 0.75rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     line-height: 1.4;
     text-transform: uppercase;
 }
@@ -527,13 +545,13 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-eyebrow {
-    margin: 0 0 1.15rem;
+    margin: 0 0 1.35rem;
     color: var(--zingiber-terracotta);
     font-family: var(--zingiber-body);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.26em;
-    line-height: 1.4;
+    font-size: 0.78rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: 0.16em;
+    line-height: 1.45;
     text-transform: uppercase;
 }
 
@@ -543,20 +561,62 @@ html.zingiber-preload body.zingiber-site {
     margin-top: 0;
     color: inherit;
     font-family: var(--zingiber-display);
-    font-weight: 500;
+    font-weight: var(--zingiber-display-weight);
     font-style: normal;
-    letter-spacing: -0.01em;
+    letter-spacing: var(--zingiber-tracking-display);
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 .zingiber-site h2 {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-    font-size: clamp(2.6rem, 5.2vw, 5.4rem);
-    line-height: 1.02;
+    margin-bottom: clamp(1.75rem, 3.2vw, 2.75rem);
+    font-size: var(--zingiber-type-section);
+    line-height: 1.08;
 }
 
 .zingiber-site p {
     max-width: 42rem;
+    text-wrap: pretty;
+}
+
+.zingiber-panel {
+    width: 100%;
+    min-width: 0;
+    padding: clamp(1.6rem, 3.2vw, 2.6rem);
+    border: 1px solid var(--zingiber-line);
+}
+
+.zingiber-panel h2 {
+    max-width: 100%;
+}
+
+.zingiber-panel--sand {
+    background-color: rgba(237, 231, 225, 0.78);
+}
+
+.zingiber-panel--dark {
+    border-color: rgba(184, 115, 51, 0.38);
+    background-color: rgba(15, 15, 15, 0.52);
+    background-image: var(--zingiber-texture-copper);
+    background-size: var(--zingiber-texture-size-copper);
+    box-shadow: inset 0 0 0 1px rgba(184, 115, 51, 0.18);
+}
+
+.zingiber-placeholder {
+    color: var(--zingiber-terracotta);
+    font-style: italic;
+}
+
+.zingiber-operational-placeholder {
+    color: var(--zingiber-terracotta);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.zingiber-reservations .zingiber-operational-placeholder {
+    color: var(--zingiber-copper);
 }
 
 .zingiber-enhanced-motion [data-zingiber-reveal] {
@@ -572,10 +632,31 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-heading-line {
     display: block;
+    position: relative;
+    max-width: 100%;
+    line-height: 1.12;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+}
+
+.zingiber-site h1:has(.zingiber-heading-line),
+.zingiber-site h2:has(.zingiber-heading-line),
+.zingiber-site h3:has(.zingiber-heading-line) {
+    text-wrap: wrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+}
+
+@media (max-width: 480px) {
+    .zingiber-heading-line {
+        white-space: normal;
+    }
 }
 
 @media (min-width: 701px) {
-    .zingiber-heading-line,
     .zingiber-hero__title-line {
         white-space: nowrap;
     }
@@ -584,15 +665,17 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-hero {
     position: relative;
     display: flex;
-    min-height: max(52rem, 100svh);
-    align-items: flex-start;
+    min-height: 100svh;
+    align-items: center;
+    justify-content: flex-start;
     isolation: isolate;
     overflow: hidden;
     background-color: var(--zingiber-charcoal);
     background-image: var(--zingiber-hero-image);
-    background-position: center;
+    background-position: center 42%;
     background-size: cover;
     color: var(--zingiber-sand);
+    text-align: left;
 }
 
 .zingiber-hero::after {
@@ -600,14 +683,9 @@ html.zingiber-preload body.zingiber-site {
     z-index: 0;
     inset: 0;
     pointer-events: none;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(15, 15, 15, 0.035) 0,
-        rgba(15, 15, 15, 0.035) 1px,
-        transparent 1px,
-        transparent 3px
-    );
-    opacity: 0.35;
+    background-image:
+        linear-gradient(90deg, rgba(15, 15, 15, 0.58) 0%, rgba(15, 15, 15, 0.22) 36%, rgba(15, 15, 15, 0.04) 64%, transparent 86%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.32) 0%, transparent 24%, transparent 72%, rgba(15, 15, 15, 0.22) 100%);
     content: "";
 }
 
@@ -615,75 +693,106 @@ html.zingiber-preload body.zingiber-site {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background:
-        linear-gradient(90deg, rgba(15, 15, 15, 0.86) 0%, rgba(15, 15, 15, 0.48) 46%, rgba(15, 15, 15, 0.18) 100%),
-        linear-gradient(0deg, rgba(15, 15, 15, 0.78), transparent 58%);
+    background-image:
+        linear-gradient(90deg, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.12) 42%, transparent 70%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.28) 0%, transparent 22%);
 }
 
 .zingiber-hero__content {
     position: relative;
     z-index: 1;
-    padding-top: calc(var(--zingiber-header-height) + clamp(1.75rem, 4.5vh, 3.25rem));
-    padding-bottom: clamp(3rem, 8vh, 5.5rem);
+    display: flex;
+    width: min(100%, 62rem);
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: calc(var(--zingiber-header-height) + 1.25rem) 3rem;
+    transform: translateY(clamp(-2.25rem, -3vh, -1rem));
+}
+
+.zingiber-hero__intro {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: clamp(1.75rem, 3.2vh, 2.4rem);
 }
 
 .zingiber-hero .zingiber-eyebrow {
+    margin: 0;
     color: var(--zingiber-copper);
+    font-size: 0.72rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: 0.18em;
+}
+
+.zingiber-hero .zingiber-rule {
+    width: 2.25rem;
+    margin: 0;
+    background: var(--zingiber-copper);
 }
 
 .zingiber-hero h1 {
     max-width: none;
-    margin-bottom: 1.35rem;
-    font-size: clamp(2.35rem, 3.2vw + 0.85rem, 4.25rem);
+    margin: 0;
+    font-family: var(--zingiber-display);
+    font-size: var(--zingiber-type-hero);
     font-style: normal;
-    font-weight: 600;
+    font-weight: var(--zingiber-display-weight);
     line-height: 1.06;
+    letter-spacing: var(--zingiber-tracking-display);
+    text-shadow: 0 3px 24px rgba(15, 15, 15, 0.42);
 }
 
 .zingiber-hero__title-line {
     display: block;
+    white-space: nowrap;
+}
+
+.zingiber-hero__title-line--italic {
+    font-family: var(--zingiber-display);
+    font-style: italic;
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-hero__lede {
-    max-width: 34rem;
-    margin: 0;
-    color: #f4efe9;
+    max-width: 32rem;
+    margin: clamp(1.75rem, 3.2vh, 2.25rem) 0 0;
+    color: rgba(244, 239, 233, 0.94);
     font-family: var(--zingiber-body);
-    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    font-size: clamp(1.02rem, 1.2vw, 1.18rem);
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.02em;
-    line-height: 1.55;
+    line-height: 1.7;
+    text-shadow: 0 2px 18px rgba(15, 15, 15, 0.62);
     text-wrap: pretty;
 }
 
-.zingiber-hero__actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.85rem 1.1rem;
-    margin-top: 2.25rem;
+.zingiber-hero__hairline {
+    width: 3.25rem;
+    height: 1px;
+    margin-top: clamp(1.5rem, 2.6vh, 2rem);
+    background: var(--zingiber-copper);
+    opacity: 0.85;
 }
 
-.zingiber-hero__scroll {
-    position: absolute;
-    z-index: 1;
-    right: clamp(1.5rem, 4vw, 4rem);
-    bottom: 2rem;
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    gap: 0.75rem;
+.zingiber-hero__cta {
+    align-self: flex-start;
+    margin-top: clamp(1.5rem, 2.8vh, 2rem);
+    border-color: var(--zingiber-sand);
+    background: var(--zingiber-sand);
+    color: var(--zingiber-charcoal);
+    box-shadow: 0 16px 40px rgba(15, 15, 15, 0.26);
+}
+
+.zingiber-hero__cta:hover {
+    border-color: var(--zingiber-burnt-red);
+    background: var(--zingiber-burnt-red);
     color: var(--zingiber-sand);
-    font-size: 0.66rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-decoration: none;
-    text-transform: uppercase;
 }
 
-.zingiber-hero__scroll .zingiber-icon {
-    color: var(--zingiber-copper);
+.zingiber-hero__cta:focus-visible {
+    outline-color: var(--zingiber-copper);
 }
 
 .zingiber-chef {
@@ -692,16 +801,17 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-chef__grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 0.72fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.78fr);
     align-items: stretch;
-    gap: clamp(3.5rem, 9vw, 10rem);
+    gap: clamp(2rem, 5vw, 5rem);
 }
 
 .zingiber-chef__copy {
     display: flex;
-    max-width: 49rem;
+    max-width: none;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 .zingiber-chef__copy h2 {
@@ -710,8 +820,8 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-chef__copy > p:not(.zingiber-eyebrow) {
-    color: var(--zingiber-ink-soft);
-    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: var(--zingiber-charcoal);
+    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
     text-wrap: pretty;
 }
 
@@ -727,7 +837,7 @@ html.zingiber-preload body.zingiber-site {
     margin: 0;
     padding: 1rem 1rem 3.6rem;
     border: 1px solid var(--zingiber-line);
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
     box-shadow: 0 40px 80px rgba(15, 15, 15, 0.08);
 }
 
@@ -751,10 +861,16 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-principles {
-    padding-block: clamp(4.5rem, 8vw, 8rem);
+    padding-block: clamp(3.75rem, 6.5vw, 6.5rem);
     background-color: var(--zingiber-burnt-red);
     background-image:
-        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.2), transparent 48%);
+        var(--zingiber-texture-wood),
+        linear-gradient(180deg, rgba(112, 22, 22, 0.68), rgba(112, 22, 22, 0.8)),
+        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.28), transparent 48%),
+        var(--zingiber-texture-wood-photo);
+    background-size: var(--zingiber-texture-size-wood), auto, auto, cover;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    background-position: center;
     color: var(--zingiber-sand);
 }
 
@@ -775,10 +891,10 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-principles h2 {
     max-width: none;
     margin: 0;
-    font-size: clamp(1.7rem, 3.1vw, 3.35rem);
-    font-weight: 600;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
     line-height: 1.12;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--zingiber-tracking-display);
     white-space: nowrap;
 }
 
@@ -824,18 +940,22 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-principles__index {
     color: var(--zingiber-copper);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.85rem, 2.4vw, 2.4rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--zingiber-display-weight);
+    letter-spacing: -0.02em;
+    line-height: 1;
 }
 
 .zingiber-principles__list strong {
     font-family: var(--zingiber-display);
     font-size: clamp(1.75rem, 2.6vw, 2.7rem);
-    font-weight: 500;
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-coast {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-coast__intro {
@@ -849,16 +969,16 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-coast__intro .zingiber-eyebrow {
     max-width: none;
     margin-bottom: 0;
-    font-size: clamp(0.78rem, 1.1vw, 0.92rem);
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-size: clamp(0.92rem, 1.35vw, 1.12rem);
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: 0.16em;
 }
 
 .zingiber-coast__intro h2 {
     max-width: none;
     margin-bottom: 0;
-    font-size: clamp(2.55rem, 4.6vw, 4.75rem);
-    font-weight: 600;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
     line-height: 1.08;
     overflow-wrap: normal;
     word-break: keep-all;
@@ -881,15 +1001,15 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-coast__regions {
     display: flex;
     flex-direction: column;
-    gap: clamp(3.5rem, 7vw, 7rem);
-    margin-top: clamp(4rem, 8vw, 8rem);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    margin-top: clamp(3rem, 6vw, 5.5rem);
 }
 
 .zingiber-region {
     display: grid;
     grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
     align-items: center;
-    gap: clamp(2rem, 6vw, 6.5rem);
+    gap: clamp(1.75rem, 4.5vw, 4.5rem);
 }
 
 .zingiber-region.is-reversed {
@@ -908,15 +1028,19 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-region__index {
     color: var(--zingiber-copper);
-    font: 600 0.85rem/1 var(--zingiber-body);
-    letter-spacing: 0.18em;
+    font-family: var(--zingiber-display);
+    font-size: clamp(4.25rem, 8vw, 7.25rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--zingiber-display-weight);
+    letter-spacing: -0.03em;
+    line-height: 0.85;
 }
 
 .zingiber-region h3 {
     margin: 0;
     font-family: var(--zingiber-display);
     font-size: clamp(2.4rem, 4.2vw, 4.4rem);
-    font-weight: 500;
+    font-weight: var(--zingiber-display-weight);
     line-height: 1;
     white-space: nowrap;
 }
@@ -933,14 +1057,14 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-menu-story {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-menu-story__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(20rem, 0.7fr);
     align-items: center;
-    gap: clamp(4rem, 8vw, 9rem);
+    gap: clamp(2.25rem, 5vw, 5.5rem);
 }
 
 .zingiber-menu-story__images {
@@ -977,20 +1101,25 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-menu-story__copy h2 {
-    max-width: 10em;
-    font-weight: 600;
+    max-width: none;
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-experience {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(24rem, 0.8fr);
-    min-height: 52rem;
-    background: var(--zingiber-charcoal);
+    min-height: 46rem;
+    background-color: var(--zingiber-charcoal);
+    background-image:
+        var(--zingiber-texture-copper),
+        radial-gradient(90% 70% at 100% 0%, rgba(184, 115, 51, 0.22), transparent 55%),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.12), transparent 46%);
+    background-size: var(--zingiber-texture-size-copper), auto, auto;
     color: var(--zingiber-sand);
 }
 
 .zingiber-experience__image {
-    min-height: 42rem;
+    min-height: 38rem;
 }
 
 .zingiber-experience__image img {
@@ -1001,22 +1130,43 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-experience__copy {
     display: flex;
+    min-width: 0;
     justify-content: center;
     flex-direction: column;
-    padding: clamp(4rem, 8vw, 9rem);
-    border-left: 1px solid rgba(184, 115, 51, 0.22);
+    padding: clamp(3rem, 6vw, 6.5rem);
+    border-left: 1px solid rgba(184, 115, 51, 0.28);
+    background-image:
+        var(--zingiber-texture-copper),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.12), rgba(15, 15, 15, 0.28)),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.14), transparent 42%);
+    background-size: var(--zingiber-texture-size-copper), auto, auto;
 }
 
 .zingiber-experience .zingiber-eyebrow {
     color: var(--zingiber-copper);
 }
 
+.zingiber-experience__copy .zingiber-panel h2,
+.zingiber-reservations__copy .zingiber-panel h2 {
+    max-width: 100%;
+    font-size: clamp(2.15rem, 3.1vw, 3.35rem);
+    font-weight: var(--zingiber-display-weight);
+    line-height: 1.14;
+    text-wrap: wrap;
+}
+
+.zingiber-experience__copy .zingiber-heading-line,
+.zingiber-reservations__copy .zingiber-heading-line {
+    display: block;
+    white-space: nowrap;
+}
+
 .zingiber-experience__copy p:not(.zingiber-eyebrow) {
-    color: rgba(237, 231, 225, 0.72);
+    color: rgba(237, 231, 225, 0.94);
 }
 
 .zingiber-gallery {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-gallery__heading {
@@ -1029,6 +1179,10 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-gallery__heading h2 {
     margin-bottom: 0;
+    max-width: none;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
+    text-wrap: pretty;
 }
 
 .zingiber-gallery__grid {
@@ -1047,12 +1201,11 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--zingiber-duration-lux) var(--zingiber-ease), filter var(--zingiber-duration-lux) var(--zingiber-ease);
 }
 
 .zingiber-gallery__item:hover img {
-    transform: scale(1.04);
-    filter: brightness(1.06) saturate(1.04);
+    transform: none;
+    filter: none;
 }
 
 .zingiber-gallery__item--1 {
@@ -1083,13 +1236,18 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-reservations {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 1.1fr);
-    background: var(--zingiber-charcoal);
+    background-color: var(--zingiber-charcoal);
+    background-image:
+        var(--zingiber-texture-copper),
+        radial-gradient(80% 60% at 0% 100%, rgba(156, 71, 34, 0.22), transparent 52%),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.12), transparent 46%);
+    background-size: var(--zingiber-texture-size-copper), auto, auto;
     color: var(--zingiber-sand);
 }
 
 .zingiber-reservations__image {
     position: relative;
-    min-height: 46rem;
+    min-height: 42rem;
 }
 
 .zingiber-reservations__image::after {
@@ -1108,15 +1266,21 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-reservations__copy {
     display: flex;
+    min-width: 0;
     justify-content: center;
     flex-direction: column;
-    padding: clamp(4rem, 9vw, 10rem);
-    border-left: 1px solid rgba(184, 115, 51, 0.22);
+    padding: clamp(3rem, 6vw, 6.5rem);
+    border-left: 1px solid rgba(184, 115, 51, 0.28);
+    background-image:
+        var(--zingiber-texture-copper),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.12), rgba(15, 15, 15, 0.28)),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.14), transparent 42%);
+    background-size: var(--zingiber-texture-size-copper), auto, auto;
 }
 
 .zingiber-reservations .zingiber-eyebrow,
 .zingiber-reservations__copy address {
-    color: #fff;
+    color: var(--zingiber-sand);
 }
 
 .zingiber-reservations__copy address {
@@ -1129,7 +1293,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-reservations__copy h2 {
     max-width: 8em;
-    font-weight: 600;
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-reservation-cta {
@@ -1143,7 +1307,7 @@ html.zingiber-preload body.zingiber-site {
     align-items: flex-start;
     isolation: isolate;
     overflow: hidden;
-    background: var(--zingiber-charcoal);
+    background-color: var(--zingiber-charcoal);
     color: var(--zingiber-sand);
 }
 
@@ -1162,53 +1326,66 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-hero__veil {
     z-index: -1;
-    background: linear-gradient(0deg, rgba(15, 15, 15, 0.86), rgba(15, 15, 15, 0.22) 72%), linear-gradient(90deg, rgba(15, 15, 15, 0.5), transparent 70%);
+    background-image:
+        var(--zingiber-texture-copper),
+        linear-gradient(105deg, rgba(15, 15, 15, 0.72) 0%, rgba(15, 15, 15, 0.34) 36%, rgba(15, 15, 15, 0.1) 68%, transparent 86%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.32) 0%, transparent 28%, rgba(15, 15, 15, 0.55) 100%);
+    background-size: var(--zingiber-texture-size-copper), auto, auto;
 }
 
 .zingiber-page-hero__content {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    color: var(--zingiber-sand);
     padding-top: calc(var(--zingiber-header-height) + clamp(2.5rem, 5.5vh, 4.5rem));
     padding-bottom: clamp(4.5rem, 8vw, 8rem);
 }
 
+.zingiber-page-hero .zingiber-kicker,
 .zingiber-page-hero .zingiber-eyebrow {
     color: var(--zingiber-copper);
+    text-shadow: 0 2px 14px rgba(15, 15, 15, 0.72);
 }
 
 .zingiber-page-hero h1 {
-    max-width: 12em;
+    max-width: 14em;
     margin-bottom: 1.5rem;
-    font-size: clamp(2.35rem, 3.6vw + 0.7rem, 4.6rem);
+    font-size: var(--zingiber-type-hero);
     font-style: normal;
-    font-weight: 600;
-    line-height: 1.05;
-    text-wrap: balance;
+    font-weight: var(--zingiber-display-weight);
+    line-height: 1.12;
+    letter-spacing: var(--zingiber-tracking-display);
+    text-wrap: wrap;
+    text-shadow: 0 4px 28px rgba(15, 15, 15, 0.72);
 }
 
 .zingiber-page-hero__content > p:last-child {
     max-width: 42rem;
     margin: 0;
-    color: rgba(237, 231, 225, 0.84);
+    color: rgba(237, 231, 225, 0.94);
     font-family: var(--zingiber-body);
     font-size: clamp(1.15rem, 1.7vw, 1.45rem);
     font-style: normal;
-    font-weight: 300;
-    letter-spacing: 0.02em;
+    font-weight: 400;
+    letter-spacing: 0.012em;
     line-height: 1.55;
+    text-shadow: 0 2px 18px rgba(15, 15, 15, 0.78);
 }
 
 .zingiber-page-editorial {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-page-editorial__row {
     display: grid;
     grid-template-columns: minmax(20rem, 0.8fr) minmax(0, 1.2fr);
-    align-items: center;
-    gap: clamp(3rem, 8vw, 9rem);
+    align-items: stretch;
+    gap: clamp(2rem, 5vw, 5rem);
 }
 
 .zingiber-page-editorial__row + .zingiber-page-editorial__row {
-    margin-top: var(--zingiber-section-space);
+    margin-top: clamp(3rem, 6vw, 5.5rem);
 }
 
 .zingiber-page-editorial__row.is-reversed .zingiber-page-editorial__copy {
@@ -1217,6 +1394,20 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-editorial__copy p:not(.zingiber-eyebrow) {
     color: var(--zingiber-ink-soft);
+}
+
+.zingiber-page-editorial__copy {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+    border: 1px solid var(--zingiber-line);
+    background-color: rgba(237, 231, 225, 0.78);
+}
+
+.zingiber-page-editorial__copy h2 {
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .zingiber-page-editorial__image {
@@ -1240,7 +1431,13 @@ html.zingiber-preload body.zingiber-site {
     padding-block: var(--zingiber-section-space);
     background-color: var(--zingiber-burnt-red);
     background-image:
-        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.2), transparent 48%);
+        var(--zingiber-texture-wood),
+        linear-gradient(180deg, rgba(112, 22, 22, 0.68), rgba(112, 22, 22, 0.8)),
+        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.28), transparent 48%),
+        var(--zingiber-texture-wood-photo);
+    background-size: var(--zingiber-texture-size-wood), auto, auto, cover;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+    background-position: center;
     color: var(--zingiber-sand);
     text-align: center;
 }
@@ -1252,8 +1449,9 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-principles h2 {
     margin-bottom: 0;
-    font-size: clamp(1.7rem, 3.1vw, 3.35rem);
-    font-weight: 600;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
+    letter-spacing: var(--zingiber-tracking-display);
     white-space: nowrap;
 }
 
@@ -1289,23 +1487,26 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-principles .zingiber-principles__index {
     color: var(--zingiber-copper);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.85rem, 2.4vw, 2.4rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--zingiber-display-weight);
+    letter-spacing: -0.02em;
 }
 
 .zingiber-page-principles li strong {
     font-family: var(--zingiber-display);
     font-size: clamp(1.7rem, 2.5vw, 2.6rem);
-    font-weight: 500;
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-page-menu {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-page-menu__intro h2 {
     max-width: 11em;
-    font-weight: 600;
+    font-weight: var(--zingiber-display-weight);
     text-wrap: pretty;
 }
 
@@ -1324,7 +1525,7 @@ html.zingiber-preload body.zingiber-site {
     grid-template-columns: 0.75fr 1.25fr 0.75fr;
     align-items: center;
     gap: clamp(0.75rem, 2vw, 2rem);
-    margin-top: clamp(4rem, 8vw, 8rem);
+    margin-top: clamp(3rem, 6vw, 5.5rem);
 }
 
 .zingiber-page-menu__images figure {
@@ -1347,30 +1548,35 @@ html.zingiber-preload body.zingiber-site {
     justify-content: space-between;
     gap: 2rem;
     margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--zingiber-line);
+}
+
+.zingiber-page-menu__note.zingiber-panel {
+    padding: clamp(1.6rem, 3.2vw, 2.6rem);
 }
 
 .zingiber-page-menu__note p {
     margin: 0;
     font-family: var(--zingiber-display);
     font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: var(--zingiber-display-weight);
 }
 
 .zingiber-page-gallery {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-page-gallery__intro {
     display: grid;
     grid-template-columns: 0.5fr 1fr 0.7fr;
     gap: 2rem clamp(2rem, 5vw, 5rem);
-    margin-bottom: clamp(4rem, 7vw, 7rem);
+    margin-bottom: clamp(3rem, 6vw, 5.5rem);
 }
 
 .zingiber-page-gallery__intro h2 {
     margin-bottom: clamp(1.25rem, 3vw, 1.85rem);
-    text-wrap: balance;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
+    text-wrap: pretty;
 }
 
 .zingiber-page-gallery__intro > p:not(.zingiber-eyebrow) {
@@ -1395,12 +1601,11 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--zingiber-duration-lux) var(--zingiber-ease), filter var(--zingiber-duration-lux) var(--zingiber-ease);
 }
 
 .zingiber-page-gallery__item:hover img {
-    transform: scale(1.04);
-    filter: brightness(1.06) saturate(1.04);
+    transform: none;
+    filter: none;
 }
 
 .zingiber-page-gallery__item--1 { grid-column: 1 / span 7; grid-row: 1 / span 5; }
@@ -1412,11 +1617,27 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-careers__grid h2,
 .zingiber-page-contact__copy h2 {
-    text-wrap: balance;
+    text-wrap: wrap;
+}
+
+.zingiber-page-contact__copy {
+    min-width: 0;
+}
+
+.zingiber-page-contact__copy h2 {
+    max-width: 100%;
+    font-size: var(--zingiber-type-section);
+    font-weight: var(--zingiber-display-weight);
+    line-height: 1.08;
+}
+
+.zingiber-page-contact__copy .zingiber-heading-line {
+    display: block;
+    white-space: nowrap;
 }
 
 .zingiber-page-careers {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-page-careers__grid {
@@ -1436,7 +1657,7 @@ html.zingiber-preload body.zingiber-site {
     object-fit: cover;
 }
 
-.zingiber-page-careers p:not(.zingiber-eyebrow) {
+.zingiber-page-careers__grid p:not(.zingiber-eyebrow) {
     color: var(--zingiber-ink-soft);
 }
 
@@ -1445,7 +1666,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-page-contact {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
 }
 
 .zingiber-page-contact__grid {
@@ -1463,7 +1684,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-page-contact__details {
-    border-top: 1px solid var(--zingiber-line);
+    border-top: 0;
 }
 
 .zingiber-page-contact__details > div {
@@ -1482,6 +1703,10 @@ html.zingiber-preload body.zingiber-site {
     grid-row: 1 / span 4;
     margin: 0;
     color: var(--zingiber-terracotta);
+    font-family: var(--zingiber-body);
+    font-size: 0.75rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     text-transform: uppercase;
 }
 
@@ -1522,7 +1747,7 @@ html.zingiber-preload body.zingiber-site {
     border: 0;
     background: transparent;
     color: inherit;
-    font: 600 0.72rem/1 var(--zingiber-body);
+    font: 500 0.72rem/1 var(--zingiber-body);
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -1542,10 +1767,10 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-footer {
-    padding: clamp(5rem, 9vw, 8rem) 0 2rem;
-    background: var(--zingiber-sand);
+    padding: clamp(4rem, 7vw, 6.5rem) 0 2rem;
+    background-color: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
-    border-top: 1px solid rgba(184, 115, 51, 0.22);
+    border-top: 1px solid rgba(156, 71, 34, 0.28);
 }
 
 .zingiber-footer__grid {
@@ -1567,21 +1792,21 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-footer__brand > p {
     max-width: 32rem;
     margin: 1.5rem 0 0;
-    color: rgba(15, 15, 15, 0.68);
+    color: var(--zingiber-charcoal);
     font-family: var(--zingiber-body);
     font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     font-style: normal;
-    font-weight: 300;
-    letter-spacing: 0.02em;
+    font-weight: 400;
+    letter-spacing: 0.012em;
     line-height: 1.55;
 }
 
 .zingiber-footer__heading {
     margin: 0 0 1.25rem;
     color: var(--zingiber-burnt-red);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: var(--zingiber-tracking-ui);
     text-transform: uppercase;
 }
 
@@ -1647,17 +1872,43 @@ html.zingiber-preload body.zingiber-site {
     }
 }
 
+@media (max-width: 1200px) {
+    .zingiber-experience,
+    .zingiber-reservations {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .zingiber-experience__copy,
+    .zingiber-reservations__copy {
+        padding: clamp(3.5rem, 8vw, 6rem) max(1.5rem, 7vw);
+        border-top: 1px solid rgba(184, 115, 51, 0.22);
+        border-left: 0;
+    }
+
+    .zingiber-experience__image,
+    .zingiber-reservations__image {
+        min-height: min(62vw, 34rem);
+    }
+
+    .zingiber-reservations__image::after {
+        display: none;
+    }
+}
+
 @media (max-width: 1100px) {
     .zingiber-header__place {
         display: none;
     }
 
-    .zingiber-button--header {
-        display: none;
-    }
-
     .zingiber-header__inner {
         grid-template-columns: auto 1fr;
+    }
+
+    .zingiber-principles h2,
+    .zingiber-page-principles h2 {
+        white-space: normal;
+        text-wrap: pretty;
     }
 
     .zingiber-coast__intro {
@@ -1677,6 +1928,7 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-region.is-reversed .zingiber-region__copy {
         order: 0;
     }
+
 }
 
 @media (max-width: 900px) {
@@ -1685,6 +1937,8 @@ html.zingiber-preload body.zingiber-site {
         --zingiber-section-space: clamp(4rem, 9vw, 7rem);
         --zingiber-header-height: 4.5rem;
         --zingiber-header-height-sticky: 4rem;
+        --zingiber-type-hero: clamp(2.6rem, 5.2vw, 4.35rem);
+        --zingiber-type-section: clamp(2.1rem, 4.2vw, 3.5rem);
     }
 
     html {
@@ -1704,6 +1958,12 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-header__actions {
         display: contents;
+    }
+
+    .zingiber-button--header {
+        min-height: 44px;
+        padding: 0.7rem 1rem;
+        font-size: 0.7rem;
     }
 
     .zingiber-logo {
@@ -1727,12 +1987,14 @@ html.zingiber-preload body.zingiber-site {
         display: none;
         padding: 0.75rem 1rem 1rem;
         border-top: 1px solid rgba(184, 115, 51, 0.2);
-        background: rgba(15, 15, 15, 0.96);
+        background-color: rgba(15, 15, 15, 0.96);
+        background-image: var(--zingiber-texture-copper);
+        background-size: var(--zingiber-texture-size-copper);
         box-shadow: 0 18px 36px rgba(15, 15, 15, 0.35);
     }
 
     .zingiber-header.is-sticky .zingiber-primary-nav {
-        background: rgba(237, 231, 225, 0.98);
+        background-color: rgba(237, 231, 225, 0.98);
         box-shadow: 0 18px 36px rgba(15, 15, 15, 0.1);
     }
 
@@ -1766,9 +2028,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-chef__grid,
-    .zingiber-menu-story__grid,
-    .zingiber-experience,
-    .zingiber-reservations {
+    .zingiber-menu-story__grid {
         grid-template-columns: 1fr;
     }
 
@@ -1786,8 +2046,9 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-page-principles h2 {
         max-width: none;
         font-size: clamp(1.45rem, 3.6vw, 2.15rem);
-        line-height: 1.12;
-        white-space: nowrap;
+        line-height: 1.18;
+        white-space: normal;
+        text-wrap: pretty;
     }
 
     .zingiber-principles__list,
@@ -1816,22 +2077,6 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-menu-story__copy {
         max-width: 40rem;
-    }
-
-    .zingiber-experience__copy,
-    .zingiber-reservations__copy {
-        padding: var(--zingiber-section-space) max(1.5rem, 7vw);
-        border-left: 0;
-        border-top: 1px solid rgba(184, 115, 51, 0.22);
-    }
-
-    .zingiber-reservations__image::after {
-        display: none;
-    }
-
-    .zingiber-experience__image,
-    .zingiber-reservations__image {
-        min-height: min(70vw, 38rem);
     }
 
     .zingiber-gallery__grid {
@@ -1878,8 +2123,8 @@ html.zingiber-preload body.zingiber-site {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .zingiber-hero__content {
-        padding-top: calc(var(--zingiber-header-height) + 1.5rem);
-        padding-bottom: clamp(3.25rem, 8vh, 5rem);
+        width: min(100%, 52rem);
+        padding-block: calc(var(--zingiber-header-height) + 1rem) 2.5rem;
     }
 
     .zingiber-page-hero__content {
@@ -1908,6 +2153,8 @@ html.zingiber-preload body.zingiber-site {
         --zingiber-section-space: clamp(3.25rem, 11vw, 4.75rem);
         --zingiber-header-height: 4rem;
         --zingiber-header-height-sticky: 3.75rem;
+        --zingiber-type-hero: clamp(1.85rem, 8.2vw, 2.65rem);
+        --zingiber-type-section: clamp(2rem, 7.4vw, 2.85rem);
     }
 
     html {
@@ -1932,45 +2179,52 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero {
-        min-height: max(36rem, 100svh);
+        min-height: 100svh;
         background-position: 62% center;
     }
 
     .zingiber-hero__content {
-        padding-top: calc(var(--zingiber-header-height) + 1.15rem);
-        padding-bottom: clamp(3.5rem, 8vh, 5rem);
+        width: 100%;
+        padding-block: calc(var(--zingiber-header-height) + 0.85rem) 2.25rem;
+        transform: translateY(clamp(-1.25rem, -2vh, -0.5rem));
     }
 
     .zingiber-hero__veil {
-        background: linear-gradient(0deg, rgba(15, 15, 15, 0.9) 0%, rgba(15, 15, 15, 0.42) 80%);
+        background-image:
+            linear-gradient(90deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.18) 48%, transparent 78%),
+            linear-gradient(180deg, rgba(15, 15, 15, 0.36) 0%, transparent 24%);
+    }
+
+    .zingiber-hero::after {
+        background-image:
+            linear-gradient(90deg, rgba(15, 15, 15, 0.48) 0%, rgba(15, 15, 15, 0.16) 50%, transparent 82%),
+            linear-gradient(180deg, rgba(15, 15, 15, 0.28), transparent 22%, transparent 62%, rgba(15, 15, 15, 0.4) 100%);
     }
 
     .zingiber-hero h1 {
         max-width: none;
-        font-size: clamp(2.05rem, 7vw, 2.55rem);
-        line-height: 1.08;
-        font-weight: 600;
+        font-size: clamp(1.85rem, 8.2vw, 2.65rem);
+        line-height: 1.1;
+        font-weight: var(--zingiber-display-weight);
+        letter-spacing: -0.015em;
+    }
+
+    .zingiber-hero__title-line {
+        white-space: nowrap;
     }
 
     .zingiber-hero__lede {
-        font-size: clamp(1rem, 4.2vw, 1.2rem);
+        max-width: 22rem;
+        margin-top: 1.35rem;
+        font-size: 0.95rem;
     }
 
-    .zingiber-hero__actions {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.85rem;
-        margin-top: 2rem;
-    }
-
-    .zingiber-hero__actions .zingiber-button,
-    .zingiber-hero__actions .zingiber-text-link {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .zingiber-hero__scroll {
-        display: none;
+    .zingiber-hero__cta {
+        width: auto;
+        min-height: 56px;
+        padding: 1.1rem 1.85rem;
+        font-size: 0.84rem;
+        box-shadow: 0 14px 32px rgba(15, 15, 15, 0.24);
     }
 
     .zingiber-site h2 {
@@ -2099,9 +2353,9 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-page-hero h1 {
-        font-size: clamp(2rem, 8.4vw, 2.85rem);
+        font-size: clamp(2.15rem, 9vw, 3.1rem);
         white-space: normal;
-        text-wrap: balance;
+        text-wrap: pretty;
     }
 
     .zingiber-page-principles {
@@ -2167,8 +2421,25 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-button {
-        min-height: 44px;
-        padding: 0.85rem 1.35rem;
+        min-height: 48px;
+        padding: 0.95rem 1.5rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+    }
+
+    .zingiber-button--prominent {
+        min-height: 56px;
+        padding: 1.1rem 1.85rem;
+        font-size: 0.84rem;
+        letter-spacing: 0.12em;
+    }
+
+    .zingiber-hero .zingiber-hero__cta {
+        min-height: 46px;
+        padding: 0.8rem 1.65rem;
+        font-size: 0.68rem;
+        box-shadow: none;
+        border-radius: 999px;
     }
 
     .zingiber-footer__logo {
@@ -2183,6 +2454,54 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-page-contact__label {
         grid-row: auto;
     }
+
+    .zingiber-footer__heading {
+        letter-spacing: 0.14em;
+    }
+}
+
+@media (max-width: 520px) {
+    .zingiber-header__inner {
+        gap: 0.45rem;
+    }
+
+    .zingiber-logo,
+    .zingiber-header.is-sticky .zingiber-logo {
+        width: min(7.75rem, 35vw);
+    }
+
+    .zingiber-button--header {
+        display: inline-flex;
+        min-height: 44px;
+        padding: 0.65rem 0.7rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+    }
+
+    .zingiber-mobile-toggle {
+        gap: 0.35rem;
+        font-size: 0.64rem;
+    }
+}
+
+.zingiber-chef,
+.zingiber-coast,
+.zingiber-menu-story,
+.zingiber-gallery,
+.zingiber-page-editorial,
+.zingiber-page-menu,
+.zingiber-page-gallery,
+.zingiber-page-careers,
+.zingiber-page-contact {
+    background-color: var(--zingiber-sand);
+}
+
+.zingiber-chef__figure {
+    background-color: var(--zingiber-sand);
+}
+
+.zingiber-page-contact__details {
+    border-color: rgba(156, 71, 34, 0.28);
 }
 
 /* ==========================================================================
@@ -2325,7 +2644,7 @@ html.zingiber-preload body.zingiber-site {
     bottom: -7px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
+    display: none;
     align-items: center;
     gap: 12px;
     white-space: nowrap;
@@ -2340,9 +2659,9 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-frame__marker-text {
     font-family: var(--zingiber-body);
-    font-size: 0.58rem;
+    font-size: 0.64rem;
     font-weight: 500;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: rgba(237, 231, 225, 0.75);
     background: rgba(15, 15, 15, 0.82);
@@ -2405,8 +2724,8 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-frame__marker-text {
-        font-size: 0.5rem;
-        letter-spacing: 0.2em;
+        font-size: 0.6rem;
+        letter-spacing: 0.14em;
         padding: 1px 8px;
     }
 

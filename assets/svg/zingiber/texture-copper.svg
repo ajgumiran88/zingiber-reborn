@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <pattern id="brush" width="3.5" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+      <rect width=".45" height="10" fill="#B87333" opacity=".16"/>
+      <rect x="1.1" width=".22" height="10" fill="#EDE7E1" opacity=".045"/>
+      <rect x="1.85" width=".35" height="10" fill="#9C4722" opacity=".08"/>
+      <rect x="2.6" width=".28" height="10" fill="#B87333" opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="48" height="48" fill="url(#brush)"/>
+</svg>

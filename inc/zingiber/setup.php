@@ -31,6 +31,10 @@ if (!function_exists('zingiber_icon_svg')) {
         $icons = [
             'arrow' => '<svg class="zingiber-icon zingiber-icon--arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M3 11 11 3m0 0H5.5M11 3v5.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>',
             'scroll' => '<svg class="zingiber-icon zingiber-icon--scroll" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M7 2v9M3.5 8.5 7 12l3.5-3.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            'authenticity' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path d="M18 5.5c2.8 3.2 7.5 8.4 7.5 13.2A7.5 7.5 0 0 1 18 26a7.5 7.5 0 0 1-7.5-7.3c0-4.8 4.7-10 7.5-13.2Z" stroke="currentColor" stroke-width="1.2"/><path d="M18 10.5v15.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M14 16.5c1.4.8 2.8 1.2 4 1.2s2.6-.4 4-1.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>',
+            'innovation' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path d="M18 6v3.5M18 26.5V30M8.5 18H5M31 18h-3.5M10.4 10.4l2.5 2.5M23.1 23.1l2.5 2.5M25.6 10.4l-2.5 2.5M12.9 23.1l-2.5 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="18" r="5.2" stroke="currentColor" stroke-width="1.2"/></svg>',
+            'consistency' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><circle cx="18" cy="18" r="10.5" stroke="currentColor" stroke-width="1.2"/><circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M18 7.5V12M18 24v4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>',
+            'storytelling' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path d="M8 9.5h9.5A4.5 4.5 0 0 1 22 14v13.5H12A4 4 0 0 1 8 23.5v-14Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M28 9.5h-9.5A4.5 4.5 0 0 0 14 14v13.5h10A4 4 0 0 0 28 23.5v-14Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M18 14v13.5" stroke="currentColor" stroke-width="1.2"/></svg>',
         ];
 
         return $icons[$name] ?? '';
@@ -92,8 +96,11 @@ if (!function_exists('zingiber_licensed_font_faces')) {
                 continue;
             }
 
+            $hasNamedWeight = preg_match('/thin|light|book|regular|medium|semi|bold|heavy|black/', $name) === 1;
             $weight = '400';
-            if (strpos($name, 'thin') !== false) {
+            if (strpos($name, 'var') !== false && !$hasNamedWeight) {
+                $weight = '100 900';
+            } elseif (strpos($name, 'thin') !== false) {
                 $weight = '100';
             } elseif (strpos($name, 'light') !== false) {
                 $weight = '300';
@@ -146,7 +153,7 @@ if (!function_exists('zingiber_enqueue_assets')) {
 
         wp_enqueue_style(
             'zingiber-fonts',
-            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap',
+            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500&display=swap',
             [],
             null
         );
