@@ -274,7 +274,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-logo {
-    width: clamp(9.5rem, 20vw, 14.5rem);
+    width: clamp(13rem, 24vw, 18rem);
     aspect-ratio: 1400 / 235;
     object-fit: contain;
     transition: width var(--zingiber-duration) var(--zingiber-ease);
@@ -293,7 +293,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-header.is-sticky .zingiber-logo {
-    width: 12.5rem;
+    width: 15.5rem;
 }
 
 .zingiber-primary-nav {
@@ -419,6 +419,34 @@ html.zingiber-preload body.zingiber-site {
     color: var(--zingiber-burnt-red);
 }
 
+.zingiber-button:focus-visible {
+    outline: 2px solid var(--zingiber-copper);
+    outline-offset: 4px;
+}
+
+.zingiber-button--prominent {
+    min-height: 60px;
+    padding: 1.2rem 2.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    box-shadow: 0 14px 36px rgba(15, 15, 15, 0.28);
+}
+
+.zingiber-button--ghost {
+    min-height: 60px;
+    padding: 1.2rem 2.15rem;
+    background: transparent;
+    color: var(--zingiber-sand);
+    border-color: rgba(237, 231, 225, 0.88);
+}
+
+.zingiber-button--ghost:hover {
+    border-color: var(--zingiber-sand);
+    background: var(--zingiber-sand);
+    color: var(--zingiber-burnt-red);
+}
+
 .zingiber-button:active {
     transform: scale(0.98);
 }
@@ -433,6 +461,10 @@ html.zingiber-preload body.zingiber-site {
     border-color: var(--zingiber-charcoal);
     background: var(--zingiber-charcoal);
     color: var(--zingiber-sand);
+}
+
+.zingiber-button--dark:focus-visible {
+    outline-color: var(--zingiber-burnt-red);
 }
 
 .zingiber-text-link {
@@ -538,11 +570,22 @@ html.zingiber-preload body.zingiber-site {
     transform: translateY(0);
 }
 
+.zingiber-heading-line {
+    display: block;
+}
+
+@media (min-width: 701px) {
+    .zingiber-heading-line,
+    .zingiber-hero__title-line {
+        white-space: nowrap;
+    }
+}
+
 .zingiber-hero {
     position: relative;
     display: flex;
     min-height: max(52rem, 100svh);
-    align-items: flex-end;
+    align-items: flex-start;
     isolation: isolate;
     overflow: hidden;
     background-color: var(--zingiber-charcoal);
@@ -580,8 +623,8 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-hero__content {
     position: relative;
     z-index: 1;
-    padding-top: 11.5rem;
-    padding-bottom: clamp(6.5rem, 11vh, 10rem);
+    padding-top: calc(var(--zingiber-header-height) + clamp(1.75rem, 4.5vh, 3.25rem));
+    padding-bottom: clamp(3rem, 8vh, 5.5rem);
 }
 
 .zingiber-hero .zingiber-eyebrow {
@@ -590,32 +633,36 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-hero h1 {
     max-width: none;
-    margin-bottom: 1.6rem;
-    font-size: clamp(2.75rem, 5.6vw + 1rem, 6.5rem);
+    margin-bottom: 1.35rem;
+    font-size: clamp(2.35rem, 3.2vw + 0.85rem, 4.25rem);
     font-style: normal;
-    font-weight: 500;
-    line-height: 1;
-    white-space: nowrap;
+    font-weight: 600;
+    line-height: 1.06;
+}
+
+.zingiber-hero__title-line {
+    display: block;
 }
 
 .zingiber-hero__lede {
-    max-width: 38rem;
+    max-width: 34rem;
     margin: 0;
-    color: rgba(237, 231, 225, 0.86);
+    color: #f4efe9;
     font-family: var(--zingiber-body);
-    font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
     font-style: normal;
     font-weight: 300;
     letter-spacing: 0.02em;
     line-height: 1.55;
+    text-wrap: pretty;
 }
 
 .zingiber-hero__actions {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1.25rem 2rem;
-    margin-top: 2.75rem;
+    gap: 0.85rem 1.1rem;
+    margin-top: 2.25rem;
 }
 
 .zingiber-hero__scroll {
@@ -646,21 +693,37 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-chef__grid {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 0.72fr);
-    align-items: center;
-    gap: clamp(3rem, 9vw, 10rem);
+    align-items: stretch;
+    gap: clamp(3.5rem, 9vw, 10rem);
 }
 
 .zingiber-chef__copy {
+    display: flex;
     max-width: 49rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.zingiber-chef__copy h2 {
+    max-width: none;
+    margin-bottom: clamp(2.15rem, 4vw, 3.25rem);
 }
 
 .zingiber-chef__copy > p:not(.zingiber-eyebrow) {
     color: var(--zingiber-ink-soft);
     font-size: clamp(1rem, 1.2vw, 1.15rem);
+    text-wrap: pretty;
+}
+
+.zingiber-chef__copy > p:not(.zingiber-eyebrow) + p {
+    margin-top: 1.35rem;
 }
 
 .zingiber-chef__figure {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     margin: 0;
     padding: 1rem 1rem 3.6rem;
     border: 1px solid var(--zingiber-line);
@@ -670,7 +733,9 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-chef__figure img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    flex: 1 1 auto;
+    min-height: 28rem;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -694,63 +759,73 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-principles__heading {
-    display: grid;
-    grid-template-columns: 0.5fr 1.5fr;
-    align-items: start;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
     margin-bottom: 3.5rem;
+    text-align: center;
 }
 
 .zingiber-principles .zingiber-eyebrow {
     color: var(--zingiber-copper);
+    margin-bottom: 0;
 }
 
 .zingiber-principles h2 {
     max-width: none;
     margin: 0;
-    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
-    line-height: 1.1;
-    text-wrap: balance;
+    font-size: clamp(1.7rem, 3.1vw, 3.35rem);
+    font-weight: 600;
+    line-height: 1.12;
     letter-spacing: -0.02em;
-}
-
-.zingiber-principles h2 .zingiber-principles__accent {
-    display: block;
-    color: var(--zingiber-copper);
-    font-style: italic;
-    font-weight: 400;
-    margin-top: 0.25rem;
+    white-space: nowrap;
 }
 
 .zingiber-principles__list {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
     margin: 0;
     padding: 0;
-    border-top: 1px solid rgba(184, 115, 51, 0.32);
-    border-left: 1px solid rgba(184, 115, 51, 0.32);
+    border: 1px solid rgba(184, 115, 51, 0.32);
     list-style: none;
 }
 
 .zingiber-principles__list li {
     display: flex;
-    min-height: 13rem;
-    justify-content: space-between;
+    min-height: 16rem;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    padding: 1.5rem;
-    border-right: 1px solid rgba(184, 115, 51, 0.32);
-    border-bottom: 1px solid rgba(184, 115, 51, 0.32);
+    gap: 1rem;
+    padding: 2rem 1.25rem;
+    text-align: center;
+    background: rgba(15, 15, 15, 0.08);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
 }
 
 .zingiber-principles__list li:hover {
-    background: rgba(184, 115, 51, 0.08);
+    background: rgba(184, 115, 51, 0.12);
 }
 
-.zingiber-principles__list span {
+.zingiber-principles__icon {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: var(--zingiber-copper);
+}
+
+.zingiber-icon--principle {
+    width: 2.15rem;
+    height: 2.15rem;
+}
+
+.zingiber-principles__index {
     color: var(--zingiber-copper);
     font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
 }
 
 .zingiber-principles__list strong {
@@ -765,19 +840,26 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-coast__intro {
     display: grid;
-    grid-template-columns: minmax(8.5rem, 0.32fr) minmax(16ch, 1.55fr) minmax(18rem, 0.82fr);
+    grid-template-columns: minmax(10rem, 0.38fr) minmax(18ch, 1.45fr) minmax(18rem, 0.9fr);
     align-items: start;
     column-gap: clamp(1.5rem, 4vw, 4.5rem);
     row-gap: 1.25rem;
 }
 
 .zingiber-coast__intro .zingiber-eyebrow {
-    max-width: 13ch;
+    max-width: none;
+    margin-bottom: 0;
+    font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+    font-weight: 600;
+    letter-spacing: 0.2em;
 }
 
 .zingiber-coast__intro h2 {
-    max-width: 16ch;
+    max-width: none;
     margin-bottom: 0;
+    font-size: clamp(2.55rem, 4.6vw, 4.75rem);
+    font-weight: 600;
+    line-height: 1.08;
     overflow-wrap: normal;
     word-break: keep-all;
     hyphens: none;
@@ -793,64 +875,61 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-coast__copy p {
     margin: 0;
-}
-
-.zingiber-coast__composition {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(13rem, 0.5fr) minmax(0, 0.8fr);
-    align-items: center;
-    gap: clamp(2rem, 5vw, 5.5rem);
-    margin-top: clamp(4rem, 8vw, 8rem);
-}
-
-.zingiber-coast__image {
-    margin: 0;
-}
-
-.zingiber-coast__image img {
-    width: 100%;
-    object-fit: cover;
-}
-
-.zingiber-coast__image--primary img {
-    aspect-ratio: 4 / 5;
-}
-
-.zingiber-coast__image--secondary {
-    align-self: end;
-    margin-bottom: -5rem;
-}
-
-.zingiber-coast__image--secondary img {
-    aspect-ratio: 1 / 1;
+    text-wrap: pretty;
 }
 
 .zingiber-coast__regions {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(3.5rem, 7vw, 7rem);
+    margin-top: clamp(4rem, 8vw, 8rem);
 }
 
-.zingiber-coast__regions li {
+.zingiber-region {
     display: grid;
-    grid-template-columns: 2.5rem 1fr;
-    align-items: baseline;
-    padding-block: 1rem;
-    border-bottom: 1px solid var(--zingiber-line);
-    font-family: var(--zingiber-display);
-    font-size: clamp(1.6rem, 2.8vw, 3rem);
-    transition: color var(--zingiber-duration) var(--zingiber-ease), transform var(--zingiber-duration) var(--zingiber-ease);
+    grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6.5rem);
 }
 
-.zingiber-coast__regions li:hover {
-    color: var(--zingiber-burnt-red);
-    transform: translateX(0.35rem);
+.zingiber-region.is-reversed {
+    grid-template-columns: minmax(0, 1.22fr) minmax(16rem, 0.78fr);
 }
 
-.zingiber-coast__regions span {
+.zingiber-region.is-reversed .zingiber-region__copy {
+    order: 2;
+}
+
+.zingiber-region__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.zingiber-region__index {
     color: var(--zingiber-copper);
-    font: 600 0.65rem/1 var(--zingiber-body);
-    letter-spacing: 0.12em;
+    font: 600 0.85rem/1 var(--zingiber-body);
+    letter-spacing: 0.18em;
+}
+
+.zingiber-region h3 {
+    margin: 0;
+    font-family: var(--zingiber-display);
+    font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.zingiber-region__image {
+    margin: 0;
+}
+
+.zingiber-region__image img {
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    object-fit: cover;
+    box-shadow: 0 28px 60px rgba(15, 15, 15, 0.1);
 }
 
 .zingiber-menu-story {
@@ -894,7 +973,12 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-menu-story__copy .zingiber-button {
-    margin-top: 1.75rem;
+    margin-top: 2.15rem;
+}
+
+.zingiber-menu-story__copy h2 {
+    max-width: 10em;
+    font-weight: 600;
 }
 
 .zingiber-experience {
@@ -1030,13 +1114,22 @@ html.zingiber-preload body.zingiber-site {
     border-left: 1px solid rgba(184, 115, 51, 0.22);
 }
 
+.zingiber-reservations .zingiber-eyebrow,
+.zingiber-reservations__copy address {
+    color: #fff;
+}
+
 .zingiber-reservations__copy address {
     display: flex;
     flex-direction: column;
     margin: 1.5rem 0 2.5rem;
-    color: rgba(237, 231, 225, 0.72);
     font-style: normal;
     letter-spacing: 0.04em;
+}
+
+.zingiber-reservations__copy h2 {
+    max-width: 8em;
+    font-weight: 600;
 }
 
 .zingiber-reservation-cta {
@@ -1047,7 +1140,7 @@ html.zingiber-preload body.zingiber-site {
     position: relative;
     display: flex;
     min-height: clamp(40rem, 78svh, 56rem);
-    align-items: flex-end;
+    align-items: flex-start;
     isolation: isolate;
     overflow: hidden;
     background: var(--zingiber-charcoal);
@@ -1073,7 +1166,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-page-hero__content {
-    padding-top: 12rem;
+    padding-top: calc(var(--zingiber-header-height) + clamp(2.5rem, 5.5vh, 4.5rem));
     padding-bottom: clamp(4.5rem, 8vw, 8rem);
 }
 
@@ -1082,12 +1175,13 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-page-hero h1 {
-    max-width: none;
+    max-width: 12em;
     margin-bottom: 1.5rem;
     font-size: clamp(2.35rem, 3.6vw + 0.7rem, 4.6rem);
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.05;
+    text-wrap: balance;
 }
 
 .zingiber-page-hero__content > p:last-child {
@@ -1136,7 +1230,7 @@ html.zingiber-preload body.zingiber-site {
     box-shadow: 0 36px 70px rgba(15, 15, 15, 0.12);
 }
 
-.zingiber-coast__image img,
+.zingiber-region__image img,
 .zingiber-page-menu__images img,
 .zingiber-page-careers figure img {
     box-shadow: 0 28px 60px rgba(15, 15, 15, 0.1);
@@ -1148,41 +1242,55 @@ html.zingiber-preload body.zingiber-site {
     background-image:
         radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.2), transparent 48%);
     color: var(--zingiber-sand);
+    text-align: center;
 }
 
 .zingiber-page-principles .zingiber-eyebrow {
     color: var(--zingiber-copper);
+    margin-bottom: 0.85rem;
+}
+
+.zingiber-page-principles h2 {
+    margin-bottom: 0;
+    font-size: clamp(1.7rem, 3.1vw, 3.35rem);
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .zingiber-page-principles ol {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: 4rem 0 0;
+    gap: 1px;
+    margin: 3.5rem 0 0;
     padding: 0;
-    border-top: 1px solid rgba(184, 115, 51, 0.32);
-    border-left: 1px solid rgba(184, 115, 51, 0.32);
+    border: 1px solid rgba(184, 115, 51, 0.32);
     list-style: none;
 }
 
 .zingiber-page-principles li {
     display: flex;
-    min-height: 12rem;
-    justify-content: space-between;
+    min-height: 16rem;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    padding: 1.4rem;
-    border-right: 1px solid rgba(184, 115, 51, 0.32);
-    border-bottom: 1px solid rgba(184, 115, 51, 0.32);
+    gap: 1rem;
+    padding: 2rem 1.25rem;
+    background: rgba(15, 15, 15, 0.08);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
 }
 
 .zingiber-page-principles li:hover {
-    background: rgba(184, 115, 51, 0.08);
+    background: rgba(184, 115, 51, 0.12);
 }
 
-.zingiber-page-principles li span {
+.zingiber-page-principles .zingiber-principles__icon {
     color: var(--zingiber-copper);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
+}
+
+.zingiber-page-principles .zingiber-principles__index {
+    color: var(--zingiber-copper);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
 }
 
 .zingiber-page-principles li strong {
@@ -1193,6 +1301,12 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-menu {
     background: var(--zingiber-sand);
+}
+
+.zingiber-page-menu__intro h2 {
+    max-width: 11em;
+    font-weight: 600;
+    text-wrap: pretty;
 }
 
 .zingiber-page-menu__intro {
@@ -1254,6 +1368,11 @@ html.zingiber-preload body.zingiber-site {
     margin-bottom: clamp(4rem, 7vw, 7rem);
 }
 
+.zingiber-page-gallery__intro h2 {
+    margin-bottom: clamp(1.25rem, 3vw, 1.85rem);
+    text-wrap: balance;
+}
+
 .zingiber-page-gallery__intro > p:not(.zingiber-eyebrow) {
     grid-column: 3;
     margin: 0;
@@ -1264,7 +1383,7 @@ html.zingiber-preload body.zingiber-site {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-auto-rows: 7rem;
-    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    gap: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .zingiber-page-gallery__item {
@@ -1286,10 +1405,10 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-gallery__item--1 { grid-column: 1 / span 7; grid-row: 1 / span 5; }
 .zingiber-page-gallery__item--2 { grid-column: 8 / span 5; grid-row: 1 / span 4; }
-.zingiber-page-gallery__item--3 { grid-column: 1 / span 4; grid-row: 6 / span 4; }
-.zingiber-page-gallery__item--4 { grid-column: 5 / span 4; grid-row: 6 / span 5; }
-.zingiber-page-gallery__item--5 { grid-column: 9 / span 4; grid-row: 5 / span 4; }
-.zingiber-page-gallery__item--6 { grid-column: 9 / span 4; grid-row: 9 / span 3; }
+.zingiber-page-gallery__item--3 { grid-column: 1 / span 4; grid-row: 6 / span 5; }
+.zingiber-page-gallery__item--4 { grid-column: 5 / span 3; grid-row: 6 / span 5; }
+.zingiber-page-gallery__item--5 { grid-column: 8 / span 5; grid-row: 5 / span 3; }
+.zingiber-page-gallery__item--6 { grid-column: 8 / span 5; grid-row: 8 / span 3; }
 
 .zingiber-page-careers {
     background: var(--zingiber-sand);
@@ -1496,6 +1615,7 @@ html.zingiber-preload body.zingiber-site {
     display: flex;
     flex-direction: column;
     margin: 0 0 0.5rem;
+    color: var(--zingiber-charcoal);
     font-style: normal;
 }
 
@@ -1506,7 +1626,7 @@ html.zingiber-preload body.zingiber-site {
     margin-top: clamp(3.5rem, 7vw, 6rem);
     padding-top: 1.4rem;
     border-top: 1px solid rgba(184, 115, 51, 0.22);
-    color: rgba(15, 15, 15, 0.48);
+    color: var(--zingiber-charcoal);
     font-size: 0.72rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -1518,7 +1638,7 @@ html.zingiber-preload body.zingiber-site {
 
 @media (min-width: 768px) {
     .zingiber-page-hero h1 {
-        white-space: nowrap;
+        white-space: normal;
     }
 }
 
@@ -1536,20 +1656,21 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-coast__intro {
-        grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .zingiber-coast__copy {
-        grid-column: 2;
         max-width: 38rem;
     }
 
-    .zingiber-coast__composition {
-        grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.55fr);
+    .zingiber-region,
+    .zingiber-region.is-reversed {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .zingiber-coast__image--secondary {
-        display: none;
+    .zingiber-region.is-reversed .zingiber-region__copy {
+        order: 0;
     }
 }
 
@@ -1581,11 +1702,11 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-logo {
-        width: 8.5rem;
+        width: 12.25rem;
     }
 
     .zingiber-header.is-sticky .zingiber-logo {
-        width: 7.75rem;
+        width: 11.25rem;
     }
 
     .zingiber-mobile-toggle {
@@ -1652,33 +1773,36 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-principles__heading {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.75rem;
         margin-bottom: 2.5rem;
     }
 
-    .zingiber-principles h2 {
+    .zingiber-principles h2,
+    .zingiber-page-principles h2 {
         max-width: none;
-        font-size: clamp(2.15rem, 6.5vw, 3.4rem);
-        line-height: 1.08;
-        text-wrap: balance;
+        font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+        line-height: 1.12;
+        white-space: nowrap;
     }
 
-    .zingiber-principles__list {
+    .zingiber-principles__list,
+    .zingiber-page-principles ol {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .zingiber-principles__list li {
-        min-height: 8.5rem;
-        padding: 1.15rem 1.25rem;
+    .zingiber-principles__list li,
+    .zingiber-page-principles li {
+        min-height: 12rem;
+        padding: 1.5rem 1.15rem;
     }
 
     .zingiber-coast__intro {
         display: block;
     }
 
-    .zingiber-coast__composition {
-        grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.75fr);
+    .zingiber-region,
+    .zingiber-region.is-reversed {
+        grid-template-columns: 1fr;
     }
 
     .zingiber-menu-story__images {
@@ -1728,23 +1852,6 @@ html.zingiber-preload body.zingiber-site {
         justify-self: end;
     }
 
-    .zingiber-page-principles ol {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-top: 2.5rem;
-    }
-
-    .zingiber-page-principles li {
-        min-height: 8.5rem;
-        padding: 1.15rem 1.25rem;
-    }
-
-    .zingiber-page-principles h2 {
-        max-width: none;
-        font-size: clamp(2.15rem, 6.5vw, 3.4rem);
-        line-height: 1.08;
-        text-wrap: balance;
-    }
-
     .zingiber-page-gallery__intro {
         display: block;
     }
@@ -1766,15 +1873,13 @@ html.zingiber-preload body.zingiber-site {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .zingiber-hero__content {
-        padding-top: 9.5rem;
+        padding-top: calc(var(--zingiber-header-height) + 1.5rem);
+        padding-bottom: clamp(3.25rem, 8vh, 5rem);
     }
 
     .zingiber-page-hero__content {
-        padding-top: 9.5rem;
-    }
-
-    .zingiber-coast__regions li {
-        font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+        padding-top: calc(var(--zingiber-header-height) + 1.5rem);
+        padding-bottom: clamp(3.25rem, 8vh, 5rem);
     }
 
     .zingiber-menu-story__images {
@@ -1827,8 +1932,8 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero__content {
-        padding-top: 7.5rem;
-        padding-bottom: clamp(4rem, 10vh, 6rem);
+        padding-top: calc(var(--zingiber-header-height) + 1.15rem);
+        padding-bottom: clamp(3.5rem, 8vh, 5rem);
     }
 
     .zingiber-hero__veil {
@@ -1836,10 +1941,10 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero h1 {
-        font-size: clamp(2.1rem, 8.8vw, 2.85rem);
-        line-height: 1.02;
-        white-space: normal;
-        text-wrap: balance;
+        max-width: none;
+        font-size: clamp(2.05rem, 7vw, 2.55rem);
+        line-height: 1.08;
+        font-weight: 600;
     }
 
     .zingiber-hero__lede {
@@ -1877,53 +1982,46 @@ html.zingiber-preload body.zingiber-site {
         margin-bottom: 1.75rem;
     }
 
-    .zingiber-principles h2 {
-        font-size: clamp(1.85rem, 7.6vw, 2.45rem);
-        text-wrap: balance;
+    .zingiber-principles h2,
+    .zingiber-page-principles h2 {
+        font-size: clamp(1.55rem, 6.2vw, 2.05rem);
+        line-height: 1.15;
+        white-space: normal;
+        text-wrap: pretty;
     }
 
-    .zingiber-principles__list {
+    .zingiber-principles__list,
+    .zingiber-page-principles ol {
         grid-template-columns: 1fr;
         border-left: 0;
     }
 
-    .zingiber-principles__list li {
-        display: grid;
-        grid-template-columns: 2.75rem minmax(0, 1fr);
-        align-items: center;
-        gap: 0.85rem 1rem;
-        min-height: 0;
-        padding: 1rem 0;
-        border-right: 0;
-        border-left: 0;
+    .zingiber-principles__list li,
+    .zingiber-page-principles li {
+        display: flex;
+        min-height: 11rem;
+        padding: 1.5rem 1.15rem;
+        border: 0;
     }
 
-    .zingiber-principles__list span {
-        font-size: 0.68rem;
-    }
-
-    .zingiber-principles__list strong {
-        font-size: clamp(1.35rem, 5.2vw, 1.75rem);
+    .zingiber-principles__list strong,
+    .zingiber-page-principles li strong {
+        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
         line-height: 1.15;
     }
 
     .zingiber-coast__intro h2 {
         max-width: none;
-        text-wrap: balance;
+        font-size: clamp(2.15rem, 8vw, 2.85rem);
+        text-wrap: pretty;
     }
 
-    .zingiber-coast__regions li {
-        font-size: clamp(1.25rem, 5vw, 1.65rem);
-        padding-block: 0.85rem;
+    .zingiber-region {
+        gap: 1.15rem;
     }
 
-    .zingiber-coast__composition {
-        grid-template-columns: 1fr;
-        margin-top: clamp(2.5rem, 8vw, 4rem);
-    }
-
-    .zingiber-coast__image--primary img {
-        aspect-ratio: 4 / 3;
+    .zingiber-region h3 {
+        font-size: clamp(2rem, 8vw, 2.6rem);
     }
 
     .zingiber-menu-story__images {
@@ -1991,7 +2089,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-page-hero__content {
-        padding-top: 7.5rem;
+        padding-top: calc(var(--zingiber-header-height) + 1.25rem);
         padding-bottom: clamp(3.5rem, 8vw, 5rem);
     }
 
@@ -2008,22 +2106,16 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-page-principles ol {
         grid-template-columns: 1fr;
         margin-top: 1.75rem;
-        border-left: 0;
     }
 
     .zingiber-page-principles li {
-        display: grid;
-        grid-template-columns: 2.75rem minmax(0, 1fr);
-        align-items: center;
-        gap: 0.85rem 1rem;
-        min-height: 0;
-        padding: 1rem 0;
-        border-right: 0;
-        border-left: 0;
+        display: flex;
+        min-height: 11rem;
+        padding: 1.5rem 1.15rem;
     }
 
     .zingiber-page-principles li strong {
-        font-size: clamp(1.35rem, 5.2vw, 1.75rem);
+        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
         line-height: 1.15;
     }
 
@@ -2265,7 +2357,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-chef__figure,
-.zingiber-coast__image,
+.zingiber-region__image,
 .zingiber-page-editorial__image,
 .zingiber-page-gallery__item,
 .zingiber-page-menu__images figure {
@@ -2274,7 +2366,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-chef__figure::after,
-.zingiber-coast__image::after,
+.zingiber-region__image::after,
 .zingiber-page-editorial__image::after {
     content: "";
     position: absolute;
