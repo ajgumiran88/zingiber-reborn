@@ -68,14 +68,14 @@ body.zingiber-site {
 }
 
 .zingiber-preloader__logo {
-    width: min(11rem, 42vw);
+    width: min(22rem, 78vw);
     height: auto;
-    aspect-ratio: 700 / 424;
+    aspect-ratio: 1400 / 235;
     object-fit: contain;
 }
 
 .zingiber-preloader__progress {
-    width: min(11rem, 42vw);
+    width: min(22rem, 78vw);
     height: 1px;
     overflow: hidden;
     background: rgba(184, 115, 51, 0.22);
@@ -274,8 +274,8 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-logo {
-    width: clamp(7.5rem, 11vw, 10rem);
-    aspect-ratio: 700 / 424;
+    width: clamp(9.5rem, 20vw, 14.5rem);
+    aspect-ratio: 1400 / 235;
     object-fit: contain;
     transition: width var(--zingiber-duration) var(--zingiber-ease);
 }
@@ -293,7 +293,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-header.is-sticky .zingiber-logo {
-    width: 7.25rem;
+    width: 12.5rem;
 }
 
 .zingiber-primary-nav {
@@ -1435,8 +1435,8 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-footer__logo {
-    width: 11rem;
-    aspect-ratio: 700 / 424;
+    width: 14rem;
+    aspect-ratio: 1400 / 235;
     object-fit: contain;
 }
 
@@ -1581,11 +1581,11 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-logo {
-        width: 6.75rem;
+        width: 8.5rem;
     }
 
     .zingiber-header.is-sticky .zingiber-logo {
-        width: 6.25rem;
+        width: 7.75rem;
     }
 
     .zingiber-mobile-toggle {

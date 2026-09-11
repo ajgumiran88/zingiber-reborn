@@ -15,8 +15,8 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
                     class="zingiber-footer__logo"
                     src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
                     alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-                    width="700"
-                    height="424"
+                    width="1400"
+                    height="235"
                     loading="lazy"
                 >
             </a>

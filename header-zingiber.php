@@ -24,8 +24,8 @@ $navigationLabels = [
         html.zingiber-preload{overflow:hidden}
         .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#0F0F0F;color:#EDE7E1}
         .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
-        .zingiber-preloader__logo{width:min(11rem,42vw);height:auto;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
-        .zingiber-preloader__progress{width:min(11rem,42vw);height:1px;overflow:hidden;background:rgba(184,115,51,0.22)}
+        .zingiber-preloader__logo{width:min(22rem,78vw);height:auto;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
+        .zingiber-preloader__progress{width:min(22rem,78vw);height:1px;overflow:hidden;background:rgba(184,115,51,0.22)}
         .zingiber-preloader__progress-bar{display:block;width:0;height:100%;background:#B87333;transform-origin:left center}
         @keyframes zingiber-preloader-logo{to{opacity:1;transform:scale(1)}}
         @media (prefers-reduced-motion:reduce){.zingiber-preloader__logo{opacity:1;transform:none;animation:none}}
@@ -47,8 +47,8 @@ $navigationLabels = [
             class="zingiber-preloader__logo"
             src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
             alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-            width="700"
-            height="424"
+            width="1400"
+            height="235"
             decoding="async"
         >
         <div
@@ -76,15 +76,15 @@ $navigationLabels = [
                     class="zingiber-logo zingiber-logo--light"
                     src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>"
                     alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-                    width="700"
-                    height="424"
+                    width="1400"
+                    height="235"
                 >
                 <img
                     class="zingiber-logo zingiber-logo--dark"
                     src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
                     alt=""
-                    width="700"
-                    height="424"
+                    width="1400"
+                    height="235"
                     aria-hidden="true"
                 >
             </span>
