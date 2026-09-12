@@ -19,13 +19,16 @@ $navigationLabels = [
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>">
+    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>">
+    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>">
     <style id="zingiber-preloader-critical">
         html.zingiber-preload{overflow:hidden}
-        .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:#0F0F0F;color:#EDE7E1}
+        .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;isolation:isolate;overflow:hidden;background:#701616;color:#B87333}
+        .zingiber-preloader::before{position:absolute;inset:0;z-index:-1;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>') center / min(100vw,110rem) auto no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>') center / min(100vw,110rem) auto no-repeat;content:"";opacity:.28;pointer-events:none}
+        .zingiber-preloader::after{position:absolute;inset:clamp(14px,2.2vw,24px);border:1px solid rgba(184,115,51,.42);content:"";pointer-events:none}
         .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
-        .zingiber-preloader__logo{width:min(22rem,78vw);height:auto;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
-        .zingiber-preloader__progress{width:min(22rem,78vw);height:1px;overflow:hidden;background:rgba(184,115,51,0.22)}
+        .zingiber-preloader__logo{display:block;width:min(22rem,78vw);aspect-ratio:1400/235;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
+        .zingiber-preloader__progress{width:min(18rem,68vw);height:2px;overflow:hidden;background:rgba(184,115,51,.28)}
         .zingiber-preloader__progress-bar{display:block;width:0;height:100%;background:#B87333;transform-origin:left center}
         @keyframes zingiber-preloader-logo{to{opacity:1;transform:scale(1)}}
         @media (prefers-reduced-motion:reduce){.zingiber-preloader__logo{opacity:1;transform:none;animation:none}}
@@ -43,14 +46,11 @@ $navigationLabels = [
     aria-busy="true"
 >
     <div class="zingiber-preloader__inner">
-        <img
+        <span
             class="zingiber-preloader__logo"
-            src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>"
-            alt="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
-            width="1400"
-            height="235"
-            decoding="async"
-        >
+            role="img"
+            aria-label="<?php esc_attr_e('Zingiber', 'vonaco'); ?>"
+        ></span>
         <div
             class="zingiber-preloader__progress"
             role="progressbar"

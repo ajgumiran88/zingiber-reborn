@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Warfare Center — Got Insights or Ideas?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --awc-bg-deep: #060B14;
+            --awc-bg-card: rgba(13, 23, 42, 0.92);
+            --awc-bg-input: rgba(10, 19, 36, 0.8);
+            --awc-bg-input-focus: rgba(15, 29, 56, 0.98);
+            
+            --awc-cyan: #00E5FF;
+            --awc-cyan-glow: rgba(0, 229, 255, 0.28);
+            --awc-cyan-dim: rgba(0, 229, 255, 0.12);
+            --awc-blue-cobalt: #0077FF;
+            --awc-gold: #FFB300;
+            --awc-danger: #FF3B30;
+            --awc-success: #00E676;
+            
+            --awc-text-primary: #FFFFFF;
+            --awc-text-secondary: #94A3B8;
+            --awc-text-muted: #64748B;
+            
+            --awc-border: rgba(0, 229, 255, 0.22);
+            --awc-border-focus: #00E5FF;
+            
+            --awc-font-display: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+            --awc-font-tech: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+            --awc-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --awc-radius: 12px;
+            --awc-radius-sm: 8px;
+            --awc-transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.awc-body {
+            min-height: 100vh;
+            background-color: var(--awc-bg-deep);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 119, 255, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(0, 229, 255, 0.09) 0%, transparent 50%),
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+            background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+            color: var(--awc-text-primary);
+            font-family: var(--awc-font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1rem;
+        }
+
+        .awc-modal-overlay {
+            position: relative;
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            z-index: 10;
+            animation: awcScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes awcScaleIn {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .awc-modal-card {
+            position: relative;
+            background: var(--awc-bg-card);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border: 1px solid var(--awc-border);
+            border-radius: var(--awc-radius);
+            padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4.5vw, 3.25rem);
+            box-shadow: 
+                0 30px 90px rgba(0, 0, 0, 0.7),
+                0 0 40px rgba(0, 229, 255, 0.09),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+        }
+
+        /* Tactical HUD Corner Brackets */
+        .awc-corner-bracket {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            pointer-events: none;
+        }
+        .awc-corner-bracket--tl {
+            top: 10px;
+            left: 10px;
+            border-top: 2px solid var(--awc-cyan);
+            border-left: 2px solid var(--awc-cyan);
+        }
+        .awc-corner-bracket--tr {
+            top: 10px;
+            right: 10px;
+            border-top: 2px solid var(--awc-cyan);
+            border-right: 2px solid var(--awc-cyan);
+        }
+        .awc-corner-bracket--bl {
+            bottom: 10px;
+            left: 10px;
+            border-bottom: 2px solid var(--awc-cyan);
+            border-left: 2px solid var(--awc-cyan);
+        }
+        .awc-corner-bracket--br {
+            bottom: 10px;
+            right: 10px;
+            border-bottom: 2px solid var(--awc-cyan);
+            border-right: 2px solid var(--awc-cyan);
+        }
+
+        /* Close Button (X) */
+        .awc-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--awc-text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--awc-transition);
+            z-index: 20;
+        }
+        .awc-close-btn:hover {
+            background: rgba(0, 229, 255, 0.12);
+            border-color: var(--awc-cyan);
+            color: var(--awc-cyan);
+            transform: rotate(90deg) scale(1.05);
+            box-shadow: 0 0 15px var(--awc-cyan-glow);
+        }
+        .awc-close-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Header Area */
+        .awc-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .awc-top-line {
+            width: 2px;
+            height: 38px;
+            background: linear-gradient(180deg, transparent, var(--awc-cyan));
+            margin: 0 auto 1.25rem;
+            box-shadow: 0 0 12px var(--awc-cyan);
+        }
+
+        .awc-eyebrow {
+            font-family: var(--awc-font-tech);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--awc-cyan);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px var(--awc-cyan-glow);
+        }
+
+        .awc-heading {
+            font-family: var(--awc-font-display);
+            font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            line-height: 1.15;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .awc-badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--awc-font-tech);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--awc-text-muted);
+            margin-bottom: 1rem;
+        }
+        .awc-badge-tag svg {
+            width: 12px;
+            height: 12px;
+            color: var(--awc-cyan);
+            animation: awcBounce 2s infinite ease-in-out;
+        }
+
+        @keyframes awcBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+
+        .awc-subheading {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            font-weight: 400;
+            color: var(--awc-text-secondary);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* Form Layout */
+        .awc-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .awc-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 640px) {
+            .awc-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Input Fields */
+        .awc-field-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .awc-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--awc-font-tech);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--awc-text-secondary);
+            margin-bottom: 0.45rem;
+            transition: var(--awc-transition);
+        }
+
+        .awc-label .awc-req {
+            color: var(--awc-danger);
+            font-weight: 700;
+        }
+
+        .awc-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .awc-input-icon {
+            position: absolute;
+            left: 1rem;
+            width: 18px;
+            height: 18px;
+            color: var(--awc-text-muted);
+            pointer-events: none;
+            transition: var(--awc-transition);
+            z-index: 2;
+        }
+
+        .awc-input,
+        .awc-textarea,
+        .awc-select {
+            width: 100%;
+            background: var(--awc-bg-input);
+            border: 1px solid var(--awc-border);
+            border-radius: var(--awc-radius-sm);
+            color: var(--awc-text-primary);
+            font-family: var(--awc-font-body);
+            font-size: 0.95rem;
+            padding: 0.95rem 1rem 0.95rem 2.75rem;
+            outline: none;
+            transition: var(--awc-transition);
+        }
+
+        .awc-input::placeholder,
+        .awc-textarea::placeholder {
+            color: rgba(148, 163, 184, 0.4);
+        }
+
+        .awc-input:hover,
+        .awc-textarea:hover,
+        .awc-select:hover {
+            border-color: rgba(0, 229, 255, 0.45);
+            background: var(--awc-bg-input-focus);
+        }
+
+        .awc-input:focus,
+        .awc-textarea:focus,
+        .awc-select:focus {
+            border-color: var(--awc-cyan);
+            background: var(--awc-bg-input-focus);
+            box-shadow: 
+                0 0 0 3px var(--awc-cyan-dim),
+                0 0 16px var(--awc-cyan-glow);
+        }
+
+        .awc-input:focus + .awc-input-icon,
+        .awc-input-wrapper:focus-within .awc-input-icon {
+            color: var(--awc-cyan);
+        }
+
+        .awc-field-group.is-invalid .awc-input,
+        .awc-field-group.is-invalid .awc-textarea {
+            border-color: var(--awc-danger) !important;
+            box-shadow: 0 0 0 2px rgba(255, 59, 48, 0.2) !important;
+        }
+
+        .awc-field-group.is-invalid .awc-label {
+            color: var(--awc-danger);
+        }
+
+        .awc-error-msg {
+            font-size: 0.78rem;
+            color: var(--awc-danger);
+            margin-top: 0.35rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .awc-field-group.is-invalid .awc-error-msg {
+            display: block;
+        }
+
+        .awc-select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .awc-select-arrow {
+            position: absolute;
+            right: 1rem;
+            width: 14px;
+            height: 14px;
+            color: var(--awc-text-muted);
+            pointer-events: none;
+        }
+
+        .awc-textarea {
+            min-height: 130px;
+            resize: vertical;
+            padding-left: 2.75rem;
+            line-height: 1.5;
+        }
+
+        .awc-textarea-icon {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 18px;
+            height: 18px;
+            color: var(--awc-text-muted);
+            pointer-events: none;
+        }
+
+        .awc-char-counter {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--awc-text-muted);
+            margin-top: 0.25rem;
+            font-family: var(--awc-font-tech);
+        }
+
+        /* Submit Action Button */
+        .awc-submit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .awc-submit-btn {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            min-height: 54px;
+            background: linear-gradient(135deg, #0077FF 0%, #00E5FF 100%);
+            border: none;
+            border-radius: var(--awc-radius-sm);
+            color: #060B14;
+            font-family: var(--awc-font-display);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            overflow: hidden;
+            transition: var(--awc-transition);
+            box-shadow: 
+                0 10px 30px rgba(0, 119, 255, 0.4),
+                0 0 20px rgba(0, 229, 255, 0.25);
+        }
+
+        .awc-submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.6s ease;
+        }
+
+        .awc-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 14px 40px rgba(0, 119, 255, 0.55),
+                0 0 30px rgba(0, 229, 255, 0.45);
+            background: linear-gradient(135deg, #0088FF 0%, #33EEFF 100%);
+        }
+
+        .awc-submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .awc-submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .awc-submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .awc-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(6, 11, 20, 0.3);
+            border-top-color: #060B14;
+            border-radius: 50%;
+            animation: awcSpin 0.7s linear infinite;
+            display: none;
+        }
+
+        @keyframes awcSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        .awc-submit-btn.is-loading .awc-spinner {
+            display: block;
+        }
+        .awc-submit-btn.is-loading .awc-btn-text,
+        .awc-submit-btn.is-loading .awc-btn-icon {
+            display: none;
+        }
+
+        .awc-security-notice {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--awc-text-muted);
+        }
+        .awc-security-notice svg {
+            width: 13px;
+            height: 13px;
+            color: var(--awc-cyan);
+        }
+
+        /* Success Confirmation State */
+        .awc-success-hud {
+            display: none;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .awc-success-hud.is-active {
+            display: block;
+            animation: awcFadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes awcFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .awc-success-icon-wrapper {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: rgba(0, 230, 118, 0.12);
+            border: 2px solid var(--awc-success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(0, 230, 118, 0.3);
+        }
+
+        .awc-success-icon-wrapper svg {
+            width: 36px;
+            height: 36px;
+            color: var(--awc-success);
+        }
+
+        .awc-success-title {
+            font-family: var(--awc-font-display);
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+        }
+
+        .awc-success-desc {
+            color: var(--awc-text-secondary);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+        }
+
+        .awc-telemetry-box {
+            background: rgba(10, 19, 36, 0.6);
+            border: 1px dashed rgba(0, 229, 255, 0.3);
+            border-radius: var(--awc-radius-sm);
+            padding: 1rem 1.5rem;
+            max-width: 420px;
+            margin: 0 auto 2rem;
+            font-family: var(--awc-font-tech);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            color: var(--awc-cyan);
+        }
+
+        .awc-reset-btn {
+            background: transparent;
+            border: 1px solid var(--awc-border);
+            color: var(--awc-cyan);
+            font-family: var(--awc-font-tech);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--awc-radius-sm);
+            cursor: pointer;
+            transition: var(--awc-transition);
+        }
+
+        .awc-reset-btn:hover {
+            background: rgba(0, 229, 255, 0.15);
+            border-color: var(--awc-cyan);
+            box-shadow: 0 0 15px var(--awc-cyan-glow);
+        }
+    </style>
+</head>
+<body class="awc-body">
+
+    <main class="awc-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="awcHeading">
+        <div class="awc-modal-card">
+            
+            <!-- Tactical HUD Corner Accents -->
+            <div class="awc-corner-bracket awc-corner-bracket--tl" aria-hidden="true"></div>
+            <div class="awc-corner-bracket awc-corner-bracket--tr" aria-hidden="true"></div>
+            <div class="awc-corner-bracket awc-corner-bracket--bl" aria-hidden="true"></div>
+            <div class="awc-corner-bracket awc-corner-bracket--br" aria-hidden="true"></div>
+
+            <!-- Modal Close Button -->
+            <button class="awc-close-btn" id="awcCloseBtn" type="button" aria-label="Close insight form">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Main Form View -->
+            <div id="awcFormView">
+                <!-- Header Section -->
+                <header class="awc-header">
+                    <div class="awc-top-line" aria-hidden="true"></div>
+                    <p class="awc-eyebrow">Connect With Us</p>
+                    <h1 class="awc-heading" id="awcHeading">Got Insights or Ideas?</h1>
+                    <div class="awc-badge-tag">
+                        <span>Explore</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="awc-subheading">We welcome your articles and feedback to help grow Air Power knowledge.</p>
+                </header>
+
+                <!-- Insights Form -->
+                <form class="awc-form" id="awcInsightsForm" novalidate>
+                    
+                    <!-- Submission Category Selector -->
+                    <div class="awc-field-group" id="group-awcCategory">
+                        <label class="awc-label" for="awcCategory">
+                            Submission Focus Area <span class="awc-req">*</span>
+                        </label>
+                        <div class="awc-input-wrapper">
+                            <svg class="awc-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            <select class="awc-select" id="awcCategory" required>
+                                <option value="Air Power Article & Research">Air Power Article & Research Paper</option>
+                                <option value="Doctrine & Strategy Insights">Doctrine & Strategy Insights</option>
+                                <option value="Tactical Operations Feedback">Tactical Operations Feedback</option>
+                                <option value="Technology & Defense Innovation">Technology & Defense Innovation</option>
+                                <option value="General Recommendations">General Recommendations</option>
+                            </select>
+                            <svg class="awc-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="awc-field-group" id="group-awcEmail">
+                        <label class="awc-label" for="awcEmail">
+                            Email <span class="awc-req">*</span>
+                        </label>
+                        <div class="awc-input-wrapper">
+                            <svg class="awc-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <input 
+                                class="awc-input" 
+                                type="email" 
+                                id="awcEmail" 
+                                placeholder="name@airforce.mil.ph or personal email" 
+                                required
+                                autocomplete="email"
+                            >
+                        </div>
+                        <span class="awc-error-msg">Please enter a valid email address.</span>
+                    </div>
+
+                    <!-- Two-Column Name Grid -->
+                    <div class="awc-grid-2">
+                        <div class="awc-field-group" id="group-awcFirstName">
+                            <label class="awc-label" for="awcFirstName">
+                                First Name <span class="awc-req">*</span>
+                            </label>
+                            <div class="awc-input-wrapper">
+                                <svg class="awc-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <input 
+                                    class="awc-input" 
+                                    type="text" 
+                                    id="awcFirstName" 
+                                    placeholder="First Name" 
+                                    required
+                                    autocomplete="given-name"
+                                >
+                            </div>
+                            <span class="awc-error-msg">First name is required.</span>
+                        </div>
+
+                        <div class="awc-field-group" id="group-awcLastName">
+                            <label class="awc-label" for="awcLastName">
+                                Last Name <span class="awc-req">*</span>
+                            </label>
+                            <div class="awc-input-wrapper">
+                                <svg class="awc-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <input 
+                                    class="awc-input" 
+                                    type="text" 
+                                    id="awcLastName" 
+                                    placeholder="Last Name" 
+                                    required
+                                    autocomplete="family-name"
+                                >
+                            </div>
+                            <span class="awc-error-msg">Last name is required.</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Number Field -->
+                    <div class="awc-field-group" id="group-awcContact">
+                        <label class="awc-label" for="awcContact">
+                            Contact Number <span class="awc-req">*</span>
+                        </label>
+                        <div class="awc-input-wrapper">
+                            <svg class="awc-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <input 
+                                class="awc-input" 
+                                type="tel" 
+                                id="awcContact" 
+                                placeholder="+63 9XX XXX XXXX or 09XX XXX XXXX" 
+                                required
+                                autocomplete="tel"
+                            >
+                        </div>
+                        <span class="awc-error-msg">Please enter a valid contact number.</span>
+                    </div>
+
+                    <!-- Comments & Recommendations -->
+                    <div class="awc-field-group" id="group-awcComments">
+                        <label class="awc-label" for="awcComments">
+                            Comments / Recommendations <span class="awc-req">*</span>
+                        </label>
+                        <div class="awc-input-wrapper" style="align-items: flex-start;">
+                            <svg class="awc-textarea-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <textarea 
+                                class="awc-textarea" 
+                                id="awcComments" 
+                                placeholder="Share your article abstract, operational recommendations, or strategic insights..." 
+                                maxlength="2000"
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="awc-char-counter" id="awcCharCounter">0 / 2000</div>
+                        <span class="awc-error-msg">Please provide at least 10 characters for your insight.</span>
+                    </div>
+
+                    <!-- Submit Action Button -->
+                    <div class="awc-submit-container">
+                        <button class="awc-submit-btn" id="awcSubmitBtn" type="submit">
+                            <span class="awc-btn-text">Transmit Insights</span>
+                            <svg class="awc-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            <div class="awc-spinner" aria-hidden="true"></div>
+                        </button>
+
+                        <div class="awc-security-notice">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <span>Encrypted Telemetry Channel // Air Warfare Center</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Success Confirmation State (HUD) -->
+            <div class="awc-success-hud" id="awcSuccessHud">
+                <div class="awc-success-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h2 class="awc-success-title">Transmission Received</h2>
+                <p class="awc-success-desc">Thank you for contributing to Air Power knowledge. Your insight has been routed to the Air Warfare Center editorial and research team for review.</p>
+
+                <div class="awc-telemetry-box">
+                    <span>Reference ID: <strong id="awcRefCode">AWC-2026-8941</strong></span>
+                    <span>Time: <strong id="awcTimestamp">--:--</strong></span>
+                </div>
+
+                <button class="awc-reset-btn" id="awcResetBtn" type="button">Submit Another Insight</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('awcInsightsForm');
+            const formView = document.getElementById('awcFormView');
+            const successHud = document.getElementById('awcSuccessHud');
+            const submitBtn = document.getElementById('awcSubmitBtn');
+            const resetBtn = document.getElementById('awcResetBtn');
+            const closeBtn = document.getElementById('awcCloseBtn');
+            const charCounter = document.getElementById('awcCharCounter');
+            const commentsInput = document.getElementById('awcComments');
+            const contactInput = document.getElementById('awcContact');
+            const refCodeEl = document.getElementById('awcRefCode');
+            const timestampEl = document.getElementById('awcTimestamp');
+
+            // 1. Live character counter for Comments
+            if (commentsInput && charCounter) {
+                commentsInput.addEventListener('input', () => {
+                    const count = commentsInput.value.length;
+                    charCounter.textContent = `${count} / 2000`;
+                    if (count > 1900) {
+                        charCounter.style.color = 'var(--awc-danger)';
+                    } else {
+                        charCounter.style.color = 'var(--awc-text-muted)';
+                    }
+                });
+            }
+
+            // 2. Phone input auto-formatter
+            if (contactInput) {
+                contactInput.addEventListener('input', (e) => {
+                    let val = e.target.value.replace(/\D/g, '');
+                    if (val.startsWith('63')) {
+                        if (val.length > 2) val = '+63 ' + val.substring(2);
+                        if (val.length > 8) val = val.substring(0, 7) + ' ' + val.substring(7);
+                        if (val.length > 12) val = val.substring(0, 11) + ' ' + val.substring(11, 15);
+                    } else if (val.startsWith('09')) {
+                        if (val.length > 4) val = val.substring(0, 4) + ' ' + val.substring(4);
+                        if (val.length > 8) val = val.substring(0, 8) + ' ' + val.substring(8, 12);
+                    }
+                    e.target.value = val;
+                });
+            }
+
+            // Helper: Field validation
+            const validateField = (fieldId, validator) => {
+                const group = document.getElementById(`group-${fieldId}`);
+                const input = document.getElementById(fieldId);
+                if (!input || !group) return true;
+
+                const isValid = validator(input.value.trim());
+                if (!isValid) {
+                    group.classList.add('is-invalid');
+                } else {
+                    group.classList.remove('is-invalid');
+                }
+                return isValid;
+            };
+
+            // Live validation clearance on input
+            ['awcEmail', 'awcFirstName', 'awcLastName', 'awcContact', 'awcComments'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', () => {
+                        const group = document.getElementById(`group-${id}`);
+                        if (group) group.classList.remove('is-invalid');
+                    });
+                }
+            });
+
+            // 3. Form Submit Handler
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    // Run Validations
+                    const isEmailValid = validateField('awcEmail', val => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
+                    const isFirstNameValid = validateField('awcFirstName', val => val.length >= 2);
+                    const isLastNameValid = validateField('awcLastName', val => val.length >= 2);
+                    const isContactValid = validateField('awcContact', val => val.length >= 7);
+                    const isCommentsValid = validateField('awcComments', val => val.length >= 10);
+
+                    if (!isEmailValid || !isFirstNameValid || !isLastNameValid || !isContactValid || !isCommentsValid) {
+                        const firstInvalid = form.querySelector('.is-invalid input, .is-invalid textarea');
+                        if (firstInvalid) firstInvalid.focus();
+                        return;
+                    }
+
+                    // Enter Loading Transmission State
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('is-loading');
+
+                    const payload = {
+                        category: document.getElementById('awcCategory')?.value || 'Insight / General Feedback',
+                        email: document.getElementById('awcEmail')?.value.trim(),
+                        firstName: document.getElementById('awcFirstName')?.value.trim(),
+                        lastName: document.getElementById('awcLastName')?.value.trim(),
+                        contact: document.getElementById('awcContact')?.value.trim(),
+                        comments: document.getElementById('awcComments')?.value.trim(),
+                        submittedAt: new Date().toISOString()
+                    };
+
+                    try {
+                        const existing = JSON.parse(localStorage.getItem('awc_insights_log') || '[]');
+                        existing.push(payload);
+                        localStorage.setItem('awc_insights_log', JSON.stringify(existing));
+                    } catch (err) {}
+
+                    // Simulate Network Telemetry Transmission
+                    setTimeout(() => {
+                        submitBtn.classList.remove('is-loading');
+                        submitBtn.disabled = false;
+
+                        const randomId = Math.floor(1000 + Math.random() * 9000);
+                        const refCode = `AWC-${new Date().getFullYear()}-${randomId}`;
+                        if (refCodeEl) refCodeEl.textContent = refCode;
+                        if (timestampEl) timestampEl.textContent = new Date().toLocaleTimeString();
+
+                        // Switch to Success HUD
+                        formView.style.display = 'none';
+                        successHud.classList.add('is-active');
+                    }, 1200);
+                });
+            }
+
+            // 4. Reset / Send Another Button
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    form.reset();
+                    if (charCounter) charCounter.textContent = '0 / 2000';
+                    successHud.classList.remove('is-active');
+                    formView.style.display = 'block';
+                });
+            }
+
+            // 5. Close Button Action
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    const overlay = document.querySelector('.awc-modal-overlay');
+                    if (overlay) {
+                        overlay.style.opacity = '0';
+                        overlay.style.transform = 'scale(0.96)';
+                        overlay.style.transition = 'all 0.3s ease';
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+
+            // 6. Escape key listener to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && closeBtn) {
+                    closeBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

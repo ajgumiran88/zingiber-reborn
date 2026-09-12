@@ -1,0 +1,577 @@
+/* ==========================================================================
+   Air Warfare Center — "Got Insights or Ideas?" UI/UX Pro Max
+   Aesthetic: Military / Aerospace Cyber-Tactical HUD & Glassmorphism
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --awc-bg-deep: #060B14;
+    --awc-bg-card: rgba(13, 23, 42, 0.88);
+    --awc-bg-input: rgba(10, 19, 36, 0.75);
+    --awc-bg-input-focus: rgba(15, 29, 56, 0.95);
+    
+    --awc-cyan: #00E5FF;
+    --awc-cyan-glow: rgba(0, 229, 255, 0.28);
+    --awc-cyan-dim: rgba(0, 229, 255, 0.12);
+    --awc-blue-cobalt: #0077FF;
+    --awc-gold: #FFB300;
+    --awc-danger: #FF3B30;
+    --awc-success: #00E676;
+    
+    --awc-text-primary: #FFFFFF;
+    --awc-text-secondary: #94A3B8;
+    --awc-text-muted: #64748B;
+    
+    --awc-border: rgba(0, 229, 255, 0.2);
+    --awc-border-focus: #00E5FF;
+    
+    --awc-font-display: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+    --awc-font-tech: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+    --awc-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --awc-radius: 12px;
+    --awc-radius-sm: 8px;
+    --awc-transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.awc-body {
+    min-height: 100vh;
+    background-color: var(--awc-bg-deep);
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 119, 255, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+    background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+    color: var(--awc-text-primary);
+    font-family: var(--awc-font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Modal Overlay Container */
+.awc-modal-overlay {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+/* Modal Card */
+.awc-modal-card {
+    position: relative;
+    background: var(--awc-bg-card);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid var(--awc-border);
+    border-radius: var(--awc-radius);
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4.5vw, 3.25rem);
+    box-shadow: 
+        0 30px 90px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(0, 229, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+/* Tactical HUD Corner Brackets */
+.awc-corner-bracket {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+.awc-corner-bracket--tl {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid var(--awc-cyan);
+    border-left: 2px solid var(--awc-cyan);
+}
+.awc-corner-bracket--tr {
+    top: 10px;
+    right: 10px;
+    border-top: 2px solid var(--awc-cyan);
+    border-right: 2px solid var(--awc-cyan);
+}
+.awc-corner-bracket--bl {
+    bottom: 10px;
+    left: 10px;
+    border-bottom: 2px solid var(--awc-cyan);
+    border-left: 2px solid var(--awc-cyan);
+}
+.awc-corner-bracket--br {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid var(--awc-cyan);
+    border-right: 2px solid var(--awc-cyan);
+}
+
+/* Close Button (X) */
+.awc-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--awc-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--awc-transition);
+    z-index: 20;
+}
+.awc-close-btn:hover {
+    background: rgba(0, 229, 255, 0.12);
+    border-color: var(--awc-cyan);
+    color: var(--awc-cyan);
+    transform: rotate(90deg) scale(1.05);
+    box-shadow: 0 0 15px var(--awc-cyan-glow);
+}
+.awc-close-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Header Area */
+.awc-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.awc-top-line {
+    width: 2px;
+    height: 38px;
+    background: linear-gradient(180deg, transparent, var(--awc-cyan));
+    margin: 0 auto 1.25rem;
+    box-shadow: 0 0 12px var(--awc-cyan);
+}
+
+.awc-eyebrow {
+    font-family: var(--awc-font-tech);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--awc-cyan);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--awc-cyan-glow);
+}
+
+.awc-heading {
+    font-family: var(--awc-font-display);
+    font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.awc-badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--awc-font-tech);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--awc-text-muted);
+    margin-bottom: 1rem;
+}
+.awc-badge-tag svg {
+    width: 12px;
+    height: 12px;
+    color: var(--awc-cyan);
+    animation: awcBounce 2s infinite ease-in-out;
+}
+
+@keyframes awcBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+}
+
+.awc-subheading {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    font-weight: 400;
+    color: var(--awc-text-secondary);
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* Form Layout */
+.awc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.awc-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .awc-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Input Fields */
+.awc-field-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.awc-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--awc-font-tech);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--awc-text-secondary);
+    margin-bottom: 0.45rem;
+    transition: var(--awc-transition);
+}
+
+.awc-label .awc-req {
+    color: var(--awc-danger);
+    font-weight: 700;
+}
+
+.awc-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.awc-input-icon {
+    position: absolute;
+    left: 1rem;
+    width: 18px;
+    height: 18px;
+    color: var(--awc-text-muted);
+    pointer-events: none;
+    transition: var(--awc-transition);
+    z-index: 2;
+}
+
+.awc-input,
+.awc-textarea,
+.awc-select {
+    width: 100%;
+    background: var(--awc-bg-input);
+    border: 1px solid var(--awc-border);
+    border-radius: var(--awc-radius-sm);
+    color: var(--awc-text-primary);
+    font-family: var(--awc-font-body);
+    font-size: 0.95rem;
+    padding: 0.95rem 1rem 0.95rem 2.75rem;
+    outline: none;
+    transition: var(--awc-transition);
+}
+
+.awc-input::placeholder,
+.awc-textarea::placeholder {
+    color: rgba(148, 163, 184, 0.4);
+}
+
+.awc-input:hover,
+.awc-textarea:hover,
+.awc-select:hover {
+    border-color: rgba(0, 229, 255, 0.45);
+    background: var(--awc-bg-input-focus);
+}
+
+.awc-input:focus,
+.awc-textarea:focus,
+.awc-select:focus {
+    border-color: var(--awc-cyan);
+    background: var(--awc-bg-input-focus);
+    box-shadow: 
+        0 0 0 3px var(--awc-cyan-dim),
+        0 0 16px var(--awc-cyan-glow);
+}
+
+.awc-input:focus + .awc-input-icon,
+.awc-input-wrapper:focus-within .awc-input-icon {
+    color: var(--awc-cyan);
+}
+
+.awc-field-group.is-invalid .awc-input,
+.awc-field-group.is-invalid .awc-textarea {
+    border-color: var(--awc-danger) !important;
+    box-shadow: 0 0 0 2px rgba(255, 59, 48, 0.2) !important;
+}
+
+.awc-field-group.is-invalid .awc-label {
+    color: var(--awc-danger);
+}
+
+.awc-error-msg {
+    font-size: 0.78rem;
+    color: var(--awc-danger);
+    margin-top: 0.35rem;
+    display: none;
+    font-weight: 500;
+}
+
+.awc-field-group.is-invalid .awc-error-msg {
+    display: block;
+}
+
+/* Select Box */
+.awc-select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.awc-select-arrow {
+    position: absolute;
+    right: 1rem;
+    width: 14px;
+    height: 14px;
+    color: var(--awc-text-muted);
+    pointer-events: none;
+}
+
+/* Textarea */
+.awc-textarea {
+    min-height: 130px;
+    resize: vertical;
+    padding-left: 2.75rem;
+    line-height: 1.5;
+}
+
+.awc-textarea-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 18px;
+    height: 18px;
+    color: var(--awc-text-muted);
+    pointer-events: none;
+}
+
+.awc-char-counter {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--awc-text-muted);
+    margin-top: 0.25rem;
+    font-family: var(--awc-font-tech);
+}
+
+/* Submit Action Button */
+.awc-submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.awc-submit-btn {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    min-height: 54px;
+    background: linear-gradient(135deg, #0077FF 0%, #00E5FF 100%);
+    border: none;
+    border-radius: var(--awc-radius-sm);
+    color: #060B14;
+    font-family: var(--awc-font-display);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    overflow: hidden;
+    transition: var(--awc-transition);
+    box-shadow: 
+        0 10px 30px rgba(0, 119, 255, 0.4),
+        0 0 20px rgba(0, 229, 255, 0.25);
+}
+
+.awc-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.6s ease;
+}
+
+.awc-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 14px 40px rgba(0, 119, 255, 0.55),
+        0 0 30px rgba(0, 229, 255, 0.45);
+    background: linear-gradient(135deg, #0088FF 0%, #33EEFF 100%);
+}
+
+.awc-submit-btn:hover::before {
+    left: 100%;
+}
+
+.awc-submit-btn:active {
+    transform: translateY(0);
+}
+
+.awc-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Loading Spinner */
+.awc-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(6, 11, 20, 0.3);
+    border-top-color: #060B14;
+    border-radius: 50%;
+    animation: awcSpin 0.7s linear infinite;
+    display: none;
+}
+
+@keyframes awcSpin {
+    to { transform: rotate(360deg); }
+}
+
+.awc-submit-btn.is-loading .awc-spinner {
+    display: block;
+}
+.awc-submit-btn.is-loading .awc-btn-text,
+.awc-submit-btn.is-loading .awc-btn-icon {
+    display: none;
+}
+
+.awc-security-notice {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--awc-text-muted);
+}
+.awc-security-notice svg {
+    width: 13px;
+    height: 13px;
+    color: var(--awc-cyan);
+}
+
+/* Success Confirmation State */
+.awc-success-hud {
+    display: none;
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.awc-success-hud.is-active {
+    display: block;
+    animation: awcFadeIn 0.4s ease-out forwards;
+}
+
+@keyframes awcFadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.awc-success-icon-wrapper {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: rgba(0, 230, 118, 0.12);
+    border: 2px solid var(--awc-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.3);
+}
+
+.awc-success-icon-wrapper svg {
+    width: 36px;
+    height: 36px;
+    color: var(--awc-success);
+}
+
+.awc-success-title {
+    font-family: var(--awc-font-display);
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+}
+
+.awc-success-desc {
+    color: var(--awc-text-secondary);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 2rem;
+}
+
+.awc-telemetry-box {
+    background: rgba(10, 19, 36, 0.6);
+    border: 1px dashed rgba(0, 229, 255, 0.3);
+    border-radius: var(--awc-radius-sm);
+    padding: 1rem 1.5rem;
+    max-width: 420px;
+    margin: 0 auto 2rem;
+    font-family: var(--awc-font-tech);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--awc-cyan);
+}
+
+.awc-reset-btn {
+    background: transparent;
+    border: 1px solid var(--awc-border);
+    color: var(--awc-cyan);
+    font-family: var(--awc-font-tech);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--awc-radius-sm);
+    cursor: pointer;
+    transition: var(--awc-transition);
+}
+
+.awc-reset-btn:hover {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--awc-cyan);
+    box-shadow: 0 0 15px var(--awc-cyan-glow);
+}

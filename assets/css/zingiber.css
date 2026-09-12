@@ -16,7 +16,7 @@
     --zingiber-type-section: clamp(2.4rem, 4.4vw, 4.6rem);
     --zingiber-type-body: 1.125rem;
     --zingiber-tracking-display: -0.02em;
-    --zingiber-tracking-ui: 0.14em;
+    --zingiber-tracking-ui: 0.12em;
     --zingiber-tracking-body: 0.012em;
     --zingiber-container: min(88rem, calc(100vw - 3.5rem));
     --zingiber-section-space: clamp(4.25rem, 7.5vw, 8rem);
@@ -29,11 +29,16 @@
     --zingiber-frame-color: #B87333;
     --zingiber-frame-terracotta: #9C4722;
     --zingiber-frame-glow: rgba(184, 115, 51, 0.16);
-    --zingiber-texture-wood-photo: url("../images/zingiber/interior-feature-wall.jpg");
-    --zingiber-texture-wood: url("../svg/zingiber/texture-wood.svg");
-    --zingiber-texture-copper: url("../svg/zingiber/texture-copper.svg");
-    --zingiber-texture-size-wood: 16px 80px;
-    --zingiber-texture-size-copper: 48px 48px;
+    /* Material crops and contour artwork are taken directly from the approved guide. */
+    --zingiber-pattern-contour: url("../images/zingiber/brand-contour-pattern.png");
+    --zingiber-texture-wood: url("../images/zingiber/brand-texture-wood.jpg");
+    --zingiber-texture-fabric: url("../images/zingiber/brand-texture-fabric.jpg");
+    --zingiber-texture-stone: url("../images/zingiber/brand-texture-stone.jpg");
+    --zingiber-texture-copper: url("../images/zingiber/brand-texture-copper.jpg");
+    --zingiber-texture-size-wood: 34rem 34rem;
+    --zingiber-texture-size-fabric: 38rem 38rem;
+    --zingiber-texture-size-stone: 44rem 44rem;
+    --zingiber-texture-size-copper: 32rem 32rem;
 }
 
 html {
@@ -55,19 +60,42 @@ body.zingiber-site {
     font-synthesis: none;
 }
 
-/* —— Premium charcoal logo preloader —— */
+/* —— Burnt red + copper preloader —— */
 .zingiber-preloader {
     position: fixed;
     inset: 0;
     z-index: 100000;
     display: grid;
     place-items: center;
-    background-color: var(--zingiber-charcoal);
-    background-image: var(--zingiber-texture-copper);
-    background-size: var(--zingiber-texture-size-copper);
-    color: var(--zingiber-sand);
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--zingiber-burnt-red);
+    background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(156, 71, 34, 0.3), transparent 58%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.08), rgba(15, 15, 15, 0.28));
+    color: var(--zingiber-copper);
     pointer-events: auto;
     transition: opacity 680ms var(--zingiber-ease), visibility 680ms linear;
+}
+
+.zingiber-preloader::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--zingiber-copper);
+    -webkit-mask: url("../images/zingiber/brand-contour-lines.png") center / min(100vw, 110rem) auto no-repeat;
+    mask: url("../images/zingiber/brand-contour-lines.png") center / min(100vw, 110rem) auto no-repeat;
+    content: "";
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+.zingiber-preloader::after {
+    position: absolute;
+    inset: var(--zingiber-frame-inset);
+    border: 1px solid rgba(184, 115, 51, 0.42);
+    content: "";
+    pointer-events: none;
 }
 
 .zingiber-preloader__inner {
@@ -82,17 +110,19 @@ body.zingiber-site {
 }
 
 .zingiber-preloader__logo {
+    display: block;
     width: min(22rem, 78vw);
-    height: auto;
     aspect-ratio: 1400 / 235;
-    object-fit: contain;
+    background-color: var(--zingiber-copper);
+    -webkit-mask: url("../images/zingiber/zingiber-logo-light.png") center / contain no-repeat;
+    mask: url("../images/zingiber/zingiber-logo-light.png") center / contain no-repeat;
 }
 
 .zingiber-preloader__progress {
-    width: min(22rem, 78vw);
-    height: 1px;
+    width: min(18rem, 68vw);
+    height: 2px;
     overflow: hidden;
-    background: rgba(184, 115, 51, 0.22);
+    background: rgba(184, 115, 51, 0.28);
 }
 
 .zingiber-preloader__progress-bar {
@@ -394,10 +424,8 @@ html.zingiber-preload body.zingiber-site {
     padding: 1.05rem 1.9rem;
     border: 1px solid var(--zingiber-burnt-red);
     background-color: var(--zingiber-burnt-red);
-    background-image:
-        var(--zingiber-texture-copper),
-        linear-gradient(180deg, rgba(184, 115, 51, 0.22), transparent 55%);
-    background-size: var(--zingiber-texture-size-copper), auto;
+    background-image: linear-gradient(180deg, rgba(184, 115, 51, 0.16), transparent 58%);
+    box-shadow: inset 0 1px 0 rgba(237, 231, 225, 0.12);
     color: var(--zingiber-sand);
     font-family: var(--zingiber-body);
     font-size: 0.78rem;
@@ -432,10 +460,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-header.is-sticky .zingiber-button--header {
     border-color: var(--zingiber-burnt-red);
     background-color: var(--zingiber-burnt-red);
-    background-image:
-        var(--zingiber-texture-copper),
-        linear-gradient(180deg, rgba(184, 115, 51, 0.22), transparent 55%);
-    background-size: var(--zingiber-texture-size-copper), auto;
+    background-image: linear-gradient(180deg, rgba(184, 115, 51, 0.16), transparent 58%);
     color: var(--zingiber-sand);
 }
 
@@ -568,6 +593,7 @@ html.zingiber-preload body.zingiber-site {
     overflow-wrap: normal;
     word-break: normal;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-optical-sizing: auto;
 }
 
 .zingiber-site h2 {
@@ -576,7 +602,7 @@ html.zingiber-preload body.zingiber-site {
     line-height: 1.08;
 }
 
-.zingiber-site p {
+.zingiber-site :where(p) {
     max-width: 42rem;
     text-wrap: pretty;
 }
@@ -594,13 +620,20 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-panel--sand {
     background-color: rgba(237, 231, 225, 0.78);
+    background-image:
+        linear-gradient(rgba(237, 231, 225, 0.9), rgba(237, 231, 225, 0.95)),
+        var(--zingiber-pattern-contour);
+    background-position: center;
+    background-size: auto, cover;
 }
 
 .zingiber-panel--dark {
     border-color: rgba(184, 115, 51, 0.38);
-    background-color: rgba(15, 15, 15, 0.52);
-    background-image: var(--zingiber-texture-copper);
-    background-size: var(--zingiber-texture-size-copper);
+    background-color: rgba(15, 15, 15, 0.78);
+    background-image:
+        linear-gradient(rgba(15, 15, 15, 0.78), rgba(15, 15, 15, 0.9)),
+        var(--zingiber-texture-stone);
+    background-size: auto, var(--zingiber-texture-size-stone);
     box-shadow: inset 0 0 0 1px rgba(184, 115, 51, 0.18);
 }
 
@@ -616,7 +649,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-reservations .zingiber-operational-placeholder {
-    color: var(--zingiber-copper);
+    color: var(--zingiber-sand);
 }
 
 .zingiber-enhanced-motion [data-zingiber-reveal] {
@@ -667,7 +700,7 @@ html.zingiber-preload body.zingiber-site {
     display: flex;
     min-height: 100svh;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     isolation: isolate;
     overflow: hidden;
     background-color: var(--zingiber-charcoal);
@@ -675,7 +708,7 @@ html.zingiber-preload body.zingiber-site {
     background-position: center 42%;
     background-size: cover;
     color: var(--zingiber-sand);
-    text-align: left;
+    text-align: center;
 }
 
 .zingiber-hero::after {
@@ -684,8 +717,8 @@ html.zingiber-preload body.zingiber-site {
     inset: 0;
     pointer-events: none;
     background-image:
-        linear-gradient(90deg, rgba(15, 15, 15, 0.58) 0%, rgba(15, 15, 15, 0.22) 36%, rgba(15, 15, 15, 0.04) 64%, transparent 86%),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.32) 0%, transparent 24%, transparent 72%, rgba(15, 15, 15, 0.22) 100%);
+        radial-gradient(ellipse at 50% 48%, rgba(15, 15, 15, 0.42) 0%, rgba(15, 15, 15, 0.18) 42%, transparent 72%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.4) 0%, transparent 25%, transparent 68%, rgba(15, 15, 15, 0.36) 100%);
     content: "";
 }
 
@@ -694,24 +727,24 @@ html.zingiber-preload body.zingiber-site {
     z-index: -1;
     inset: 0;
     background-image:
-        linear-gradient(90deg, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.12) 42%, transparent 70%),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.28) 0%, transparent 22%);
+        linear-gradient(180deg, rgba(15, 15, 15, 0.34) 0%, transparent 24%, transparent 70%, rgba(15, 15, 15, 0.26) 100%);
 }
 
 .zingiber-hero__content {
     position: relative;
     z-index: 1;
     display: flex;
-    width: min(100%, 62rem);
-    align-items: flex-start;
+    width: min(40rem, calc(100% - 3rem));
+    align-items: center;
     flex-direction: column;
     padding-block: calc(var(--zingiber-header-height) + 1.25rem) 3rem;
     transform: translateY(clamp(-2.25rem, -3vh, -1rem));
+    text-align: center;
 }
 
 .zingiber-hero__intro {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 0.85rem;
     margin-bottom: clamp(1.75rem, 3.2vh, 2.4rem);
@@ -719,7 +752,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-hero .zingiber-eyebrow {
     margin: 0;
-    color: var(--zingiber-copper);
+    color: rgba(237, 231, 225, 0.92);
     font-size: 0.72rem;
     font-weight: var(--zingiber-ui-weight);
     letter-spacing: 0.18em;
@@ -735,7 +768,7 @@ html.zingiber-preload body.zingiber-site {
     max-width: none;
     margin: 0;
     font-family: var(--zingiber-display);
-    font-size: var(--zingiber-type-hero);
+    font-size: clamp(3.25rem, 5.2vw, 5.35rem);
     font-style: normal;
     font-weight: var(--zingiber-display-weight);
     line-height: 1.06;
@@ -755,9 +788,9 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-hero__lede {
-    max-width: 32rem;
-    margin: clamp(1.75rem, 3.2vh, 2.25rem) 0 0;
-    color: rgba(244, 239, 233, 0.94);
+    max-width: 28rem;
+    margin: clamp(1.75rem, 3.2vh, 2.25rem) auto 0;
+    color: rgba(237, 231, 225, 0.94);
     font-family: var(--zingiber-body);
     font-size: clamp(1.02rem, 1.2vw, 1.18rem);
     font-style: normal;
@@ -777,7 +810,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-hero__cta {
-    align-self: flex-start;
+    align-self: center;
     margin-top: clamp(1.5rem, 2.8vh, 2rem);
     border-color: var(--zingiber-sand);
     background: var(--zingiber-sand);
@@ -796,7 +829,13 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-chef {
-    background: var(--zingiber-sand);
+    background-color: var(--zingiber-sand);
+    background-image:
+        linear-gradient(rgba(237, 231, 225, 0.88), rgba(237, 231, 225, 0.96)),
+        var(--zingiber-pattern-contour);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: auto, 100% auto;
 }
 
 .zingiber-chef__grid {
@@ -864,12 +903,11 @@ html.zingiber-preload body.zingiber-site {
     padding-block: clamp(3.75rem, 6.5vw, 6.5rem);
     background-color: var(--zingiber-burnt-red);
     background-image:
-        var(--zingiber-texture-wood),
-        linear-gradient(180deg, rgba(112, 22, 22, 0.68), rgba(112, 22, 22, 0.8)),
-        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.28), transparent 48%),
-        var(--zingiber-texture-wood-photo);
-    background-size: var(--zingiber-texture-size-wood), auto, auto, cover;
-    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+        linear-gradient(180deg, rgba(112, 22, 22, 0.76), rgba(112, 22, 22, 0.91)),
+        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.14), transparent 50%),
+        var(--zingiber-texture-fabric);
+    background-size: auto, auto, var(--zingiber-texture-size-fabric);
+    background-repeat: no-repeat, no-repeat, repeat;
     background-position: center;
     color: var(--zingiber-sand);
 }
@@ -884,7 +922,7 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-principles .zingiber-eyebrow {
-    color: var(--zingiber-copper);
+    color: var(--zingiber-sand);
     margin-bottom: 0;
 }
 
@@ -904,7 +942,7 @@ html.zingiber-preload body.zingiber-site {
     gap: 1px;
     margin: 0;
     padding: 0;
-    border: 1px solid rgba(184, 115, 51, 0.32);
+    border: 1px solid rgba(237, 231, 225, 0.24);
     list-style: none;
 }
 
@@ -917,12 +955,12 @@ html.zingiber-preload body.zingiber-site {
     gap: 1rem;
     padding: 2rem 1.25rem;
     text-align: center;
-    background: rgba(15, 15, 15, 0.08);
+    background: rgba(15, 15, 15, 0.18);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
 }
 
 .zingiber-principles__list li:hover {
-    background: rgba(184, 115, 51, 0.12);
+    background: rgba(156, 71, 34, 0.28);
 }
 
 .zingiber-principles__icon {
@@ -1069,7 +1107,41 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-menu-story__images {
     position: relative;
+    isolation: isolate;
     min-height: 43rem;
+}
+
+.zingiber-menu-story__images::before {
+    position: absolute;
+    z-index: -1;
+    top: clamp(2.5rem, 5vw, 5rem);
+    bottom: clamp(2rem, 4vw, 4rem);
+    left: clamp(-2rem, -2vw, -0.75rem);
+    width: 38%;
+    border: 1px solid rgba(184, 115, 51, 0.3);
+    background-color: var(--zingiber-terracotta);
+    background-image:
+        linear-gradient(rgba(112, 22, 22, 0.52), rgba(156, 71, 34, 0.42)),
+        var(--zingiber-texture-wood);
+    background-position: center;
+    background-size: auto, var(--zingiber-texture-size-wood);
+    box-shadow: 0 24px 56px rgba(15, 15, 15, 0.1);
+    content: "";
+}
+
+.zingiber-menu-story__images::after {
+    position: absolute;
+    z-index: 2;
+    top: clamp(4rem, 8vw, 8rem);
+    bottom: clamp(4rem, 8vw, 8rem);
+    left: calc(38% - 0.2rem);
+    width: 0.35rem;
+    background-color: var(--zingiber-copper);
+    background-image:
+        linear-gradient(rgba(184, 115, 51, 0.4), rgba(184, 115, 51, 0.72)),
+        var(--zingiber-texture-copper);
+    background-size: auto, var(--zingiber-texture-size-copper);
+    content: "";
 }
 
 .zingiber-menu-story__image {
@@ -1111,10 +1183,10 @@ html.zingiber-preload body.zingiber-site {
     min-height: 46rem;
     background-color: var(--zingiber-charcoal);
     background-image:
-        var(--zingiber-texture-copper),
-        radial-gradient(90% 70% at 100% 0%, rgba(184, 115, 51, 0.22), transparent 55%),
-        linear-gradient(115deg, rgba(184, 115, 51, 0.12), transparent 46%);
-    background-size: var(--zingiber-texture-size-copper), auto, auto;
+        linear-gradient(rgba(15, 15, 15, 0.78), rgba(15, 15, 15, 0.92)),
+        radial-gradient(90% 70% at 100% 0%, rgba(184, 115, 51, 0.12), transparent 55%),
+        var(--zingiber-texture-stone);
+    background-size: auto, auto, var(--zingiber-texture-size-stone);
     color: var(--zingiber-sand);
 }
 
@@ -1136,10 +1208,8 @@ html.zingiber-preload body.zingiber-site {
     padding: clamp(3rem, 6vw, 6.5rem);
     border-left: 1px solid rgba(184, 115, 51, 0.28);
     background-image:
-        var(--zingiber-texture-copper),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.12), rgba(15, 15, 15, 0.28)),
-        linear-gradient(115deg, rgba(184, 115, 51, 0.14), transparent 42%);
-    background-size: var(--zingiber-texture-size-copper), auto, auto;
+        linear-gradient(180deg, rgba(15, 15, 15, 0.08), rgba(15, 15, 15, 0.26)),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.1), transparent 42%);
 }
 
 .zingiber-experience .zingiber-eyebrow {
@@ -1167,6 +1237,12 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-gallery {
     background-color: var(--zingiber-sand);
+    background-image:
+        linear-gradient(rgba(237, 231, 225, 0.91), rgba(237, 231, 225, 0.97)),
+        var(--zingiber-pattern-contour);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: auto, 100% auto;
 }
 
 .zingiber-gallery__heading {
@@ -1238,10 +1314,10 @@ html.zingiber-preload body.zingiber-site {
     grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 1.1fr);
     background-color: var(--zingiber-charcoal);
     background-image:
-        var(--zingiber-texture-copper),
-        radial-gradient(80% 60% at 0% 100%, rgba(156, 71, 34, 0.22), transparent 52%),
-        linear-gradient(115deg, rgba(184, 115, 51, 0.12), transparent 46%);
-    background-size: var(--zingiber-texture-size-copper), auto, auto;
+        linear-gradient(rgba(15, 15, 15, 0.78), rgba(15, 15, 15, 0.92)),
+        radial-gradient(80% 60% at 0% 100%, rgba(156, 71, 34, 0.14), transparent 52%),
+        var(--zingiber-texture-stone);
+    background-size: auto, auto, var(--zingiber-texture-size-stone);
     color: var(--zingiber-sand);
 }
 
@@ -1272,10 +1348,8 @@ html.zingiber-preload body.zingiber-site {
     padding: clamp(3rem, 6vw, 6.5rem);
     border-left: 1px solid rgba(184, 115, 51, 0.28);
     background-image:
-        var(--zingiber-texture-copper),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.12), rgba(15, 15, 15, 0.28)),
-        linear-gradient(115deg, rgba(184, 115, 51, 0.14), transparent 42%);
-    background-size: var(--zingiber-texture-size-copper), auto, auto;
+        linear-gradient(180deg, rgba(15, 15, 15, 0.08), rgba(15, 15, 15, 0.26)),
+        linear-gradient(115deg, rgba(184, 115, 51, 0.1), transparent 42%);
 }
 
 .zingiber-reservations .zingiber-eyebrow,
@@ -1327,10 +1401,9 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-page-hero__veil {
     z-index: -1;
     background-image:
-        var(--zingiber-texture-copper),
         linear-gradient(105deg, rgba(15, 15, 15, 0.72) 0%, rgba(15, 15, 15, 0.34) 36%, rgba(15, 15, 15, 0.1) 68%, transparent 86%),
         linear-gradient(180deg, rgba(15, 15, 15, 0.32) 0%, transparent 28%, rgba(15, 15, 15, 0.55) 100%);
-    background-size: var(--zingiber-texture-size-copper), auto, auto;
+    background-size: auto, auto;
 }
 
 .zingiber-page-hero__content {
@@ -1431,19 +1504,18 @@ html.zingiber-preload body.zingiber-site {
     padding-block: var(--zingiber-section-space);
     background-color: var(--zingiber-burnt-red);
     background-image:
-        var(--zingiber-texture-wood),
-        linear-gradient(180deg, rgba(112, 22, 22, 0.68), rgba(112, 22, 22, 0.8)),
-        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.28), transparent 48%),
-        var(--zingiber-texture-wood-photo);
-    background-size: var(--zingiber-texture-size-wood), auto, auto, cover;
-    background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+        linear-gradient(180deg, rgba(112, 22, 22, 0.76), rgba(112, 22, 22, 0.91)),
+        radial-gradient(120% 90% at 8% 0%, rgba(184, 115, 51, 0.14), transparent 50%),
+        var(--zingiber-texture-fabric);
+    background-size: auto, auto, var(--zingiber-texture-size-fabric);
+    background-repeat: no-repeat, no-repeat, repeat;
     background-position: center;
     color: var(--zingiber-sand);
     text-align: center;
 }
 
 .zingiber-page-principles .zingiber-eyebrow {
-    color: var(--zingiber-copper);
+    color: var(--zingiber-sand);
     margin-bottom: 0.85rem;
 }
 
@@ -1461,7 +1533,7 @@ html.zingiber-preload body.zingiber-site {
     gap: 1px;
     margin: 3.5rem 0 0;
     padding: 0;
-    border: 1px solid rgba(184, 115, 51, 0.32);
+    border: 1px solid rgba(237, 231, 225, 0.24);
     list-style: none;
 }
 
@@ -1473,12 +1545,12 @@ html.zingiber-preload body.zingiber-site {
     flex-direction: column;
     gap: 1rem;
     padding: 2rem 1.25rem;
-    background: rgba(15, 15, 15, 0.08);
+    background: rgba(15, 15, 15, 0.18);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
 }
 
 .zingiber-page-principles li:hover {
-    background: rgba(184, 115, 51, 0.12);
+    background: rgba(156, 71, 34, 0.28);
 }
 
 .zingiber-page-principles .zingiber-principles__icon {
@@ -1769,6 +1841,12 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-footer {
     padding: clamp(4rem, 7vw, 6.5rem) 0 2rem;
     background-color: var(--zingiber-sand);
+    background-image:
+        linear-gradient(rgba(237, 231, 225, 0.9), rgba(237, 231, 225, 0.97)),
+        var(--zingiber-pattern-contour);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: auto, 100% auto;
     color: var(--zingiber-charcoal);
     border-top: 1px solid rgba(156, 71, 34, 0.28);
 }
@@ -1988,13 +2066,19 @@ html.zingiber-preload body.zingiber-site {
         padding: 0.75rem 1rem 1rem;
         border-top: 1px solid rgba(184, 115, 51, 0.2);
         background-color: rgba(15, 15, 15, 0.96);
-        background-image: var(--zingiber-texture-copper);
-        background-size: var(--zingiber-texture-size-copper);
+        background-image:
+            linear-gradient(rgba(15, 15, 15, 0.84), rgba(15, 15, 15, 0.94)),
+            var(--zingiber-texture-stone);
+        background-size: auto, var(--zingiber-texture-size-stone);
         box-shadow: 0 18px 36px rgba(15, 15, 15, 0.35);
     }
 
     .zingiber-header.is-sticky .zingiber-primary-nav {
         background-color: rgba(237, 231, 225, 0.98);
+        background-image:
+            linear-gradient(rgba(237, 231, 225, 0.92), rgba(237, 231, 225, 0.97)),
+            var(--zingiber-pattern-contour);
+        background-size: auto, cover;
         box-shadow: 0 18px 36px rgba(15, 15, 15, 0.1);
     }
 
@@ -2123,7 +2207,7 @@ html.zingiber-preload body.zingiber-site {
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .zingiber-hero__content {
-        width: min(100%, 52rem);
+        width: min(40rem, calc(100% - 3rem));
         padding-block: calc(var(--zingiber-header-height) + 1rem) 2.5rem;
     }
 
@@ -2184,21 +2268,20 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero__content {
-        width: 100%;
+        width: var(--zingiber-container);
         padding-block: calc(var(--zingiber-header-height) + 0.85rem) 2.25rem;
         transform: translateY(clamp(-1.25rem, -2vh, -0.5rem));
     }
 
     .zingiber-hero__veil {
         background-image:
-            linear-gradient(90deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.18) 48%, transparent 78%),
-            linear-gradient(180deg, rgba(15, 15, 15, 0.36) 0%, transparent 24%);
+            linear-gradient(180deg, rgba(15, 15, 15, 0.44) 0%, transparent 25%, transparent 58%, rgba(15, 15, 15, 0.48) 100%);
     }
 
     .zingiber-hero::after {
         background-image:
-            linear-gradient(90deg, rgba(15, 15, 15, 0.48) 0%, rgba(15, 15, 15, 0.16) 50%, transparent 82%),
-            linear-gradient(180deg, rgba(15, 15, 15, 0.28), transparent 22%, transparent 62%, rgba(15, 15, 15, 0.4) 100%);
+            radial-gradient(ellipse at 50% 46%, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.22) 48%, transparent 76%),
+            linear-gradient(180deg, rgba(15, 15, 15, 0.34), transparent 24%, transparent 58%, rgba(15, 15, 15, 0.46) 100%);
     }
 
     .zingiber-hero h1 {
@@ -2214,7 +2297,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero__lede {
-        max-width: 22rem;
+        max-width: 20rem;
         margin-top: 1.35rem;
         font-size: 0.95rem;
     }
@@ -2287,6 +2370,11 @@ html.zingiber-preload body.zingiber-site {
         display: grid;
         gap: 0.85rem;
         min-height: auto;
+    }
+
+    .zingiber-menu-story__images::before,
+    .zingiber-menu-story__images::after {
+        display: none;
     }
 
     .zingiber-menu-story__image {
@@ -2439,7 +2527,7 @@ html.zingiber-preload body.zingiber-site {
         padding: 0.8rem 1.65rem;
         font-size: 0.68rem;
         box-shadow: none;
-        border-radius: 999px;
+        border-radius: 0;
     }
 
     .zingiber-footer__logo {
