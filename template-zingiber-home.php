@@ -32,6 +32,17 @@ get_header('zingiber');
             <div class="zingiber-hero__hairline" aria-hidden="true" data-zingiber-reveal></div>
             <a class="zingiber-button zingiber-button--prominent zingiber-hero__cta" href="<?php echo esc_url(home_url('/menu/')); ?>" data-zingiber-reveal><?php echo esc_html($home['calls_to_action']['secondary']['label']); ?></a>
         </div>
+        <a
+            class="zingiber-hero__scroll-guide"
+            href="#chef"
+            aria-label="<?php esc_attr_e('Scroll to discover', 'vonaco'); ?>"
+            data-zingiber-hero-scroll
+            data-zingiber-reveal
+        >
+            <span class="zingiber-hero__scroll-guide-track" aria-hidden="true">
+                <span class="zingiber-hero__scroll-guide-marker"></span>
+            </span>
+        </a>
     </section>
 
     <section id="chef" class="zingiber-section zingiber-chef">

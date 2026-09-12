@@ -64,10 +64,4 @@
         </svg>
     </div>
 
-    <!-- Editorial Coordinate Marker at Bottom Center -->
-    <div class="zingiber-frame__marker">
-        <span class="zingiber-frame__marker-line" aria-hidden="true"></span>
-        <span class="zingiber-frame__marker-text"><?php esc_html_e('ZINGIBER · DUBAI', 'vonaco'); ?></span>
-        <span class="zingiber-frame__marker-line" aria-hidden="true"></span>
-    </div>
 </div>

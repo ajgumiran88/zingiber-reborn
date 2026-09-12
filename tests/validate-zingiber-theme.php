@@ -140,6 +140,8 @@ if (in_array('assets', $groups, true)) {
         'assets/images/zingiber/zingiber-logo-dark.png',
         'assets/images/zingiber/zingiber-logo-light.png',
         'assets/images/zingiber/zingiber-mark.png',
+        'assets/images/zingiber/brand-contour-deboss-red.webp',
+        'assets/images/zingiber/brand-contour-deboss-red.jpg',
         'assets/images/zingiber/interior-hero.jpg',
         'assets/images/zingiber/interior-dining-room.jpg',
         'assets/images/zingiber/interior-bar.jpg',
@@ -337,8 +339,12 @@ if (in_array('templates', $groups, true)) {
                 $fail('templates', 'The homepage hero must include the quiet copper hairline treatment.');
             }
 
-            if (strpos($heroMarkup, 'zingiber-hero__scroll') !== false) {
-                $fail('templates', 'The competing homepage hero scroll cue must be removed.');
+            if (strpos($heroMarkup, 'zingiber-hero__scroll-guide') === false) {
+                $fail('templates', 'The homepage hero must include the premium scroll guide.');
+            }
+
+            if (strpos($heroMarkup, '#chef') === false) {
+                $fail('templates', 'The homepage hero scroll guide must target the chef section.');
             }
         }
     }
@@ -425,6 +431,30 @@ if (in_array('brand', $groups, true)) {
 
         if (!preg_match('/\.zingiber-button\s*\{[^}]*color:\s*(?:#fff(?:fff)?|var\(--zingiber-sand\))/s', $css)) {
             $fail('brand', 'Filled buttons must use light text on dark backgrounds.');
+        }
+
+        if (strpos($css, '--zingiber-button-radius') === false
+            || !preg_match('/\.zingiber-button\s*\{[^}]*border-radius:\s*var\(--zingiber-button-radius\)/s', $css)) {
+            $fail('brand', 'Primary CTAs must share a single button radius token.');
+        }
+
+        if (strpos($css, '--zingiber-footer-max') === false
+            || !preg_match('/\.zingiber-footer\s*>\s*\.zingiber-container\s*\{[^}]*width:\s*min\(\s*var\(--zingiber-footer-max\)/s', $css)) {
+            $fail('brand', 'Footer navigation must be grouped inside a constrained max-width container.');
+        }
+
+        if (!preg_match('/\.zingiber-page-menu__images img\s*\{[^}]*aspect-ratio:\s*1\s*\/\s*1/s', $css)) {
+            $fail('brand', 'Menu preview images must use a 1:1 aspect ratio so they are not cropped into thin strips.');
+        }
+
+        if (!preg_match('/\.zingiber-page-menu__note\s*\{[^}]*flex-direction:\s*column/s', $css)
+            || !preg_match('/\.zingiber-page-menu__note\s*\{[^}]*max-width:\s*50rem/s', $css)) {
+            $fail('brand', 'The menu visit CTA must stack headline and button in a centered, narrower container.');
+        }
+
+        if (!preg_match('/\.zingiber-page-menu\s*\{[^}]*padding-bottom:\s*clamp\(1\.85rem/s', $css)
+            || !preg_match('/\.zingiber-footer\s*\{[^}]*padding:\s*clamp\(1\.75rem/s', $css)) {
+            $fail('brand', 'Menu CTA bottom padding and footer top padding must be reduced to close the beige dead zone.');
         }
     }
 

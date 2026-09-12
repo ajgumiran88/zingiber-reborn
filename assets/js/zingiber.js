@@ -118,6 +118,21 @@
         window.addEventListener('scroll', updateStickyHeader, { passive: true });
     }
 
+    var heroScrollGuide = document.querySelector('[data-zingiber-hero-scroll]');
+    var heroSection = document.getElementById('hero');
+
+    if (heroScrollGuide && heroSection) {
+        var updateHeroScrollGuide = function () {
+            var heroBottom = heroSection.getBoundingClientRect().bottom;
+            var hideGuide = window.scrollY > 56 || heroBottom < window.innerHeight * 0.72;
+            heroScrollGuide.classList.toggle('is-hidden', hideGuide);
+        };
+
+        updateHeroScrollGuide();
+        window.addEventListener('scroll', updateHeroScrollGuide, { passive: true });
+        window.addEventListener('resize', updateHeroScrollGuide, { passive: true });
+    }
+
     if (toggle && menu) {
         var closeMenu = function (restoreFocus) {
             menu.classList.remove('is-open');

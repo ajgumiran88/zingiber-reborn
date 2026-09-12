@@ -20,11 +20,10 @@ $navigationLabels = [
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>">
-    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>">
+    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>">
     <style id="zingiber-preloader-critical">
         html.zingiber-preload{overflow:hidden}
-        .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;isolation:isolate;overflow:hidden;background:#701616;color:#B87333}
-        .zingiber-preloader::before{position:absolute;inset:0;z-index:-1;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>') center / min(100vw,110rem) auto no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-lines.png')); ?>') center / min(100vw,110rem) auto no-repeat;content:"";opacity:.28;pointer-events:none}
+        .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;isolation:isolate;overflow:hidden;background-color:#701616;background-image:radial-gradient(ellipse at 50% 42%,rgba(112,22,22,.08),transparent 62%),radial-gradient(ellipse at 50% 100%,rgba(15,15,15,.28),transparent 58%),linear-gradient(180deg,rgba(15,15,15,.06),rgba(15,15,15,.18)),url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>');background-position:center,center,center,center;background-repeat:no-repeat;background-size:auto,auto,auto,cover;color:#B87333}
         .zingiber-preloader::after{position:absolute;inset:clamp(14px,2.2vw,24px);border:1px solid rgba(184,115,51,.42);content:"";pointer-events:none}
         .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
         .zingiber-preloader__logo{display:block;width:min(22rem,78vw);aspect-ratio:1400/235;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}

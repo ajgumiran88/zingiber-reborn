@@ -19,6 +19,8 @@
     --zingiber-tracking-ui: 0.12em;
     --zingiber-tracking-body: 0.012em;
     --zingiber-container: min(88rem, calc(100vw - 3.5rem));
+    --zingiber-footer-max: 75rem;
+    --zingiber-button-radius: 999px;
     --zingiber-section-space: clamp(4.25rem, 7.5vw, 8rem);
     --zingiber-header-height: 6.5rem;
     --zingiber-header-height-sticky: 4.5rem;
@@ -30,7 +32,8 @@
     --zingiber-frame-terracotta: #9C4722;
     --zingiber-frame-glow: rgba(184, 115, 51, 0.16);
     /* Material crops and contour artwork are taken directly from the approved guide. */
-    --zingiber-pattern-contour: url("../images/zingiber/brand-contour-pattern.png");
+    --zingiber-pattern-contour-deboss: url("../images/zingiber/brand-contour-deboss-red.webp");
+    --zingiber-pattern-contour: var(--zingiber-pattern-contour-deboss);
     --zingiber-texture-wood: url("../images/zingiber/brand-texture-wood.jpg");
     --zingiber-texture-fabric: url("../images/zingiber/brand-texture-fabric.jpg");
     --zingiber-texture-stone: url("../images/zingiber/brand-texture-stone.jpg");
@@ -49,6 +52,10 @@ html {
 body.zingiber-site {
     margin: 0;
     background-color: var(--zingiber-sand);
+    background-image: var(--zingiber-pattern-contour-deboss);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     color: var(--zingiber-charcoal);
     font-family: var(--zingiber-body);
     font-size: var(--zingiber-type-body);
@@ -71,23 +78,16 @@ body.zingiber-site {
     overflow: hidden;
     background-color: var(--zingiber-burnt-red);
     background-image:
-        radial-gradient(ellipse at 50% 0%, rgba(156, 71, 34, 0.3), transparent 58%),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.08), rgba(15, 15, 15, 0.28));
+        radial-gradient(ellipse at 50% 42%, rgba(112, 22, 22, 0.08), transparent 62%),
+        radial-gradient(ellipse at 50% 100%, rgba(15, 15, 15, 0.28), transparent 58%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.06), rgba(15, 15, 15, 0.18)),
+        var(--zingiber-pattern-contour-deboss);
+    background-position: center, center, center, center;
+    background-repeat: no-repeat;
+    background-size: auto, auto, auto, cover;
     color: var(--zingiber-copper);
     pointer-events: auto;
     transition: opacity 680ms var(--zingiber-ease), visibility 680ms linear;
-}
-
-.zingiber-preloader::before {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-color: var(--zingiber-copper);
-    -webkit-mask: url("../images/zingiber/brand-contour-lines.png") center / min(100vw, 110rem) auto no-repeat;
-    mask: url("../images/zingiber/brand-contour-lines.png") center / min(100vw, 110rem) auto no-repeat;
-    content: "";
-    opacity: 0.28;
-    pointer-events: none;
 }
 
 .zingiber-preloader::after {
@@ -423,6 +423,7 @@ html.zingiber-preload body.zingiber-site {
     gap: 0.65rem;
     padding: 1.05rem 1.9rem;
     border: 1px solid var(--zingiber-burnt-red);
+    border-radius: var(--zingiber-button-radius);
     background-color: var(--zingiber-burnt-red);
     background-image: linear-gradient(180deg, rgba(184, 115, 51, 0.16), transparent 58%);
     box-shadow: inset 0 1px 0 rgba(237, 231, 225, 0.12);
@@ -442,7 +443,6 @@ html.zingiber-preload body.zingiber-site {
     flex-shrink: 0;
     min-height: 44px;
     padding: 0.75rem 1.55rem;
-    border-radius: 999px;
     border-color: var(--zingiber-sand);
     background: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
@@ -622,7 +622,7 @@ html.zingiber-preload body.zingiber-site {
     background-color: rgba(237, 231, 225, 0.78);
     background-image:
         linear-gradient(rgba(237, 231, 225, 0.9), rgba(237, 231, 225, 0.95)),
-        var(--zingiber-pattern-contour);
+        var(--zingiber-pattern-contour-deboss);
     background-position: center;
     background-size: auto, cover;
 }
@@ -828,14 +828,92 @@ html.zingiber-preload body.zingiber-site {
     outline-color: var(--zingiber-copper);
 }
 
+.zingiber-hero__scroll-guide {
+    position: absolute;
+    z-index: 2;
+    bottom: calc(var(--zingiber-frame-inset) + clamp(1.1rem, 2.8vh, 1.85rem));
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(237, 231, 225, 0.78);
+    text-decoration: none;
+    transform: translateX(-50%);
+    transition: opacity 420ms var(--zingiber-ease), visibility 420ms linear, color var(--zingiber-duration) var(--zingiber-ease);
+}
+
+.zingiber-hero__scroll-guide:hover,
+.zingiber-hero__scroll-guide:focus-visible {
+    color: var(--zingiber-sand);
+}
+
+.zingiber-hero__scroll-guide.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.zingiber-hero__scroll-guide-track {
+    position: relative;
+    display: block;
+    width: 1px;
+    height: 3.35rem;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(237, 231, 225, 0.18) 16%,
+        rgba(237, 231, 225, 0.34) 50%,
+        rgba(237, 231, 225, 0.18) 84%,
+        transparent 100%
+    );
+}
+
+.zingiber-hero__scroll-guide-marker {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1.35rem;
+    height: 1px;
+    background: var(--zingiber-copper);
+    box-shadow: 0 0 14px rgba(184, 115, 51, 0.42);
+    transform: translateX(-50%);
+    animation: zingiber-hero-scroll-marker 2.8s var(--zingiber-ease) infinite;
+}
+
+.zingiber-enhanced-motion .zingiber-hero__scroll-guide[data-zingiber-reveal] {
+    transition-delay: 760ms;
+}
+
+@keyframes zingiber-hero-scroll-marker {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    14% {
+        opacity: 1;
+    }
+
+    72% {
+        top: calc(100% - 1px);
+        opacity: 1;
+    }
+
+    100% {
+        top: calc(100% - 1px);
+        opacity: 0;
+    }
+}
+
 .zingiber-chef {
     background-color: var(--zingiber-sand);
     background-image:
         linear-gradient(rgba(237, 231, 225, 0.88), rgba(237, 231, 225, 0.96)),
-        var(--zingiber-pattern-contour);
+        var(--zingiber-pattern-contour-deboss);
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: auto, 100% auto;
+    background-size: auto, cover;
 }
 
 .zingiber-chef__grid {
@@ -1239,10 +1317,10 @@ html.zingiber-preload body.zingiber-site {
     background-color: var(--zingiber-sand);
     background-image:
         linear-gradient(rgba(237, 231, 225, 0.91), rgba(237, 231, 225, 0.97)),
-        var(--zingiber-pattern-contour);
+        var(--zingiber-pattern-contour-deboss);
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: auto, 100% auto;
+    background-size: auto, cover;
 }
 
 .zingiber-gallery__heading {
@@ -1574,6 +1652,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-menu {
     background-color: var(--zingiber-sand);
+    padding-bottom: clamp(1.85rem, 3.4vw, 3.5rem);
 }
 
 .zingiber-page-menu__intro h2 {
@@ -1594,8 +1673,8 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-menu__images {
     display: grid;
-    grid-template-columns: 0.75fr 1.25fr 0.75fr;
-    align-items: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
     gap: clamp(0.75rem, 2vw, 2rem);
     margin-top: clamp(3rem, 6vw, 5.5rem);
 }
@@ -1606,20 +1685,20 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-menu__images img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-}
-
-.zingiber-page-menu__images figure:nth-child(2) img {
-    aspect-ratio: 16 / 11;
 }
 
 .zingiber-page-menu__note {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-top: 4rem;
+    justify-content: center;
+    gap: 1.35rem;
+    max-width: 50rem;
+    margin-top: 3rem;
+    margin-inline: auto;
+    text-align: center;
 }
 
 .zingiber-page-menu__note.zingiber-panel {
@@ -1628,6 +1707,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-menu__note p {
     margin: 0;
+    max-width: 36rem;
     font-family: var(--zingiber-display);
     font-size: clamp(1.4rem, 2.2vw, 2rem);
     font-weight: var(--zingiber-display-weight);
@@ -1839,22 +1919,26 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-footer {
-    padding: clamp(4rem, 7vw, 6.5rem) 0 2rem;
+    padding: clamp(1.75rem, 3.15vw, 2.85rem) 0 2rem;
     background-color: var(--zingiber-sand);
     background-image:
         linear-gradient(rgba(237, 231, 225, 0.9), rgba(237, 231, 225, 0.97)),
-        var(--zingiber-pattern-contour);
+        var(--zingiber-pattern-contour-deboss);
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: auto, 100% auto;
+    background-size: auto, cover;
     color: var(--zingiber-charcoal);
     border-top: 1px solid rgba(156, 71, 34, 0.28);
+}
+
+.zingiber-footer > .zingiber-container {
+    width: min(var(--zingiber-footer-max), var(--zingiber-container));
 }
 
 .zingiber-footer__grid {
     display: grid;
     grid-template-columns: minmax(16rem, 1.4fr) repeat(3, minmax(10rem, 0.65fr));
-    gap: clamp(2.5rem, 5vw, 6rem);
+    gap: clamp(2.5rem, 4vw, 4.5rem);
 }
 
 .zingiber-footer__logo-link {
@@ -2310,6 +2394,14 @@ html.zingiber-preload body.zingiber-site {
         box-shadow: 0 14px 32px rgba(15, 15, 15, 0.24);
     }
 
+    .zingiber-hero__scroll-guide {
+        bottom: calc(var(--zingiber-frame-inset) + 0.95rem);
+    }
+
+    .zingiber-hero__scroll-guide-track {
+        height: 2.75rem;
+    }
+
     .zingiber-site h2 {
         font-size: clamp(2rem, 7.4vw, 2.85rem);
         line-height: 1.06;
@@ -2476,8 +2568,8 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-page-menu__note {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .zingiber-page-gallery__grid {
@@ -2527,7 +2619,6 @@ html.zingiber-preload body.zingiber-site {
         padding: 0.8rem 1.65rem;
         font-size: 0.68rem;
         box-shadow: none;
-        border-radius: 0;
     }
 
     .zingiber-footer__logo {
@@ -2726,41 +2817,6 @@ html.zingiber-preload body.zingiber-site {
     display: block;
 }
 
-/* Minimalist Center Coordinate Marker */
-.zingiber-frame__marker {
-    position: absolute;
-    bottom: -7px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    align-items: center;
-    gap: 12px;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.zingiber-frame__marker-line {
-    width: 24px;
-    height: 1px;
-    background: rgba(184, 115, 51, 0.4);
-}
-
-.zingiber-frame__marker-text {
-    font-family: var(--zingiber-body);
-    font-size: 0.64rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(237, 231, 225, 0.75);
-    background: rgba(15, 15, 15, 0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 2px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(184, 115, 51, 0.35);
-    box-shadow: 0 4px 12px rgba(15, 15, 15, 0.4);
-}
-
 /* Architectural Terracotta Strata & Fluting on Content */
 .zingiber-hero,
 .zingiber-page-hero {
@@ -2811,15 +2867,6 @@ html.zingiber-preload body.zingiber-site {
         bottom: 28px;
     }
 
-    .zingiber-frame__marker-text {
-        font-size: 0.6rem;
-        letter-spacing: 0.14em;
-        padding: 1px 8px;
-    }
-
-    .zingiber-frame__marker-line {
-        width: 14px;
-    }
 }
 
 @media (max-width: 600px) {
@@ -2828,10 +2875,6 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-frame__corner {
-        display: none;
-    }
-
-    .zingiber-frame__marker {
         display: none;
     }
 }
@@ -2848,5 +2891,11 @@ html.zingiber-preload body.zingiber-site {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+
+    .zingiber-hero__scroll-guide-marker {
+        top: 62%;
+        opacity: 1;
+        animation: none !important;
     }
 }
