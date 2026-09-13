@@ -56,6 +56,24 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
     </div>
 </footer>
 
+<button
+    type="button"
+    class="zingiber-back-to-top"
+    data-zingiber-back-to-top
+    aria-label="<?php esc_attr_e('Back to top', 'vonaco'); ?>"
+>
+    <svg class="zingiber-back-to-top__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M3.5 9.5 8 5l4.5 4.5M8 5.25v7.25"
+        />
+    </svg>
+</button>
+
 <?php wp_footer(); ?>
 </body>
 </html>

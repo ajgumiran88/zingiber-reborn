@@ -118,6 +118,28 @@
         window.addEventListener('scroll', updateStickyHeader, { passive: true });
     }
 
+    var backToTop = document.querySelector('[data-zingiber-back-to-top]');
+
+    if (backToTop) {
+        var updateBackToTop = function () {
+            var threshold = Math.max(window.innerHeight * 0.85, 480);
+            backToTop.classList.toggle('is-visible', window.scrollY > threshold);
+        };
+
+        backToTop.addEventListener('click', function () {
+            if (reducedMotion) {
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        updateBackToTop();
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        window.addEventListener('resize', updateBackToTop, { passive: true });
+    }
+
     var heroScrollGuide = document.querySelector('[data-zingiber-hero-scroll]');
     var heroSection = document.getElementById('hero');
 
