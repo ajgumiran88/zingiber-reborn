@@ -16,8 +16,20 @@ get_header('zingiber');
     <section
         id="hero"
         class="zingiber-hero"
-        style="--zingiber-hero-image: url('<?php echo esc_url(zingiber_theme_asset_url($home['hero']['image']['src'])); ?>');"
     >
+        <div class="zingiber-hero__media" aria-hidden="true">
+            <?php
+            zingiber_theme_image($home['hero']['image'], [
+                'class' => 'zingiber-hero__photo',
+                'width' => 2400,
+                'height' => 1350,
+                'loading' => 'eager',
+                'fetchpriority' => 'high',
+                'sizes' => '100vw',
+                'aria_hidden' => true,
+            ]);
+            ?>
+        </div>
         <div class="zingiber-hero__veil" aria-hidden="true"></div>
         <div class="zingiber-container zingiber-hero__content">
             <div class="zingiber-hero__intro" data-zingiber-reveal>
@@ -59,13 +71,13 @@ get_header('zingiber');
                 <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(home_url('/about/')); ?>"><?php echo esc_html($home['calls_to_action']['story']['label']); ?><?php echo zingiber_icon_svg('arrow'); ?></a>
             </div>
             <figure class="zingiber-chef__figure" data-zingiber-reveal>
-                <img
-                    src="<?php echo esc_url(zingiber_theme_asset_url($sections['chef_story']['image']['src'])); ?>"
-                    alt="<?php echo esc_attr($sections['chef_story']['image']['alt']); ?>"
-                    width="1536"
-                    height="1024"
-                    loading="lazy"
-                >
+                <?php
+                zingiber_theme_image($sections['chef_story']['image'], [
+                    'width' => 1536,
+                    'height' => 1024,
+                    'sizes' => '(min-width: 1025px) 38vw, 100vw',
+                ]);
+                ?>
                 <figcaption><?php echo esc_html(zingiber_prevent_widows(__('A contemporary expression of India’s coast.', 'vonaco'))); ?></figcaption>
             </figure>
         </div>
@@ -83,6 +95,9 @@ get_header('zingiber');
                         <span class="zingiber-principles__icon"><?php echo zingiber_icon_svg($principle['icon']); ?></span>
                         <span class="zingiber-principles__index"><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span>
                         <strong><?php echo esc_html($principle['title']); ?></strong>
+                        <?php if (!empty($principle['summary'])) : ?>
+                            <p class="zingiber-principles__summary"><?php echo esc_html(zingiber_prevent_widows($principle['summary'])); ?></p>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
             </ol>
@@ -108,15 +123,18 @@ get_header('zingiber');
                     <div class="zingiber-region__copy">
                         <span class="zingiber-region__index"><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span>
                         <h3><?php echo esc_html($region['name']); ?></h3>
+                        <?php if (!empty($region['summary'])) : ?>
+                            <p class="zingiber-region__summary"><?php echo esc_html(zingiber_prevent_widows($region['summary'])); ?></p>
+                        <?php endif; ?>
                     </div>
                     <figure class="zingiber-region__image">
-                        <img
-                            src="<?php echo esc_url(zingiber_theme_asset_url($region['image']['src'])); ?>"
-                            alt="<?php echo esc_attr($region['image']['alt']); ?>"
-                            width="1536"
-                            height="1024"
-                            loading="lazy"
-                        >
+                        <?php
+                        zingiber_theme_image($region['image'], [
+                            'width' => 1536,
+                            'height' => 1024,
+                            'sizes' => '(min-width: 1025px) 42vw, 100vw',
+                        ]);
+                        ?>
                     </figure>
                 </article>
             <?php endforeach; ?>
@@ -126,22 +144,20 @@ get_header('zingiber');
     <section id="menu" class="zingiber-section zingiber-menu-story">
         <div class="zingiber-container zingiber-menu-story__grid">
             <div class="zingiber-menu-story__images" data-zingiber-reveal>
-                <img
-                    class="zingiber-menu-story__image zingiber-menu-story__image--wide"
-                    src="<?php echo esc_url(zingiber_theme_asset_url($menuPage['hero']['image']['src'])); ?>"
-                    alt="<?php echo esc_attr($menuPage['hero']['image']['alt']); ?>"
-                    width="1672"
-                    height="941"
-                    loading="lazy"
-                >
-                <img
-                    class="zingiber-menu-story__image zingiber-menu-story__image--detail"
-                    src="<?php echo esc_url(zingiber_theme_asset_url($home['featured_images'][3]['src'])); ?>"
-                    alt="<?php echo esc_attr($home['featured_images'][3]['alt']); ?>"
-                    width="1536"
-                    height="1024"
-                    loading="lazy"
-                >
+                <?php
+                zingiber_theme_image($menuPage['hero']['image'], [
+                    'class' => 'zingiber-menu-story__image zingiber-menu-story__image--wide',
+                    'width' => 1672,
+                    'height' => 941,
+                    'sizes' => '(min-width: 1025px) 50vw, 100vw',
+                ]);
+                zingiber_theme_image($home['featured_images'][3], [
+                    'class' => 'zingiber-menu-story__image zingiber-menu-story__image--detail',
+                    'width' => 1536,
+                    'height' => 1024,
+                    'sizes' => '(min-width: 1025px) 28vw, 70vw',
+                ]);
+                ?>
             </div>
             <div class="zingiber-menu-story__copy" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php echo esc_html($menuPage['hero']['eyebrow']); ?></p>
@@ -159,13 +175,13 @@ get_header('zingiber');
 
     <section id="experience" class="zingiber-experience">
         <div class="zingiber-experience__image" data-zingiber-reveal>
-            <img
-                src="<?php echo esc_url(zingiber_theme_asset_url($sections['experience']['image']['src'])); ?>"
-                alt="<?php echo esc_attr($sections['experience']['image']['alt']); ?>"
-                width="2400"
-                height="1350"
-                loading="lazy"
-            >
+            <?php
+            zingiber_theme_image($sections['experience']['image'], [
+                'width' => 2400,
+                'height' => 1350,
+                'sizes' => '(min-width: 1025px) 55vw, 100vw',
+            ]);
+            ?>
         </div>
         <div class="zingiber-experience__copy" data-zingiber-reveal>
             <div class="zingiber-panel zingiber-panel--dark">
@@ -192,13 +208,13 @@ get_header('zingiber');
         <div class="zingiber-container zingiber-gallery__grid">
             <?php foreach ($home['featured_images'] as $index => $galleryImage) : ?>
                 <figure class="zingiber-gallery__item zingiber-gallery__item--<?php echo esc_attr((string) ($index + 1)); ?>" data-zingiber-reveal>
-                    <img
-                        src="<?php echo esc_url(zingiber_theme_asset_url($galleryImage['src'])); ?>"
-                        alt="<?php echo esc_attr($galleryImage['alt']); ?>"
-                        width="1536"
-                        height="1024"
-                        loading="lazy"
-                    >
+                    <?php
+                    zingiber_theme_image($galleryImage, [
+                        'width' => 1536,
+                        'height' => 1024,
+                        'sizes' => '(min-width: 1025px) 40vw, 100vw',
+                    ]);
+                    ?>
                 </figure>
             <?php endforeach; ?>
         </div>
@@ -206,13 +222,13 @@ get_header('zingiber');
 
     <section id="reservations" class="zingiber-reservations">
         <div class="zingiber-reservations__image" data-zingiber-reveal>
-            <img
-                src="<?php echo esc_url(zingiber_theme_asset_url($sections['reservation']['image']['src'])); ?>"
-                alt="<?php echo esc_attr($sections['reservation']['image']['alt']); ?>"
-                width="2400"
-                height="1350"
-                loading="lazy"
-            >
+            <?php
+            zingiber_theme_image($sections['reservation']['image'], [
+                'width' => 2400,
+                'height' => 1350,
+                'sizes' => '(min-width: 1025px) 45vw, 100vw',
+            ]);
+            ?>
         </div>
         <div class="zingiber-reservations__copy" data-zingiber-reveal>
             <div class="zingiber-panel zingiber-panel--dark">
@@ -225,7 +241,9 @@ get_header('zingiber');
                 <address>
                     <span><?php echo esc_html($contact['address_name']); ?></span>
                     <span><?php echo esc_html(zingiber_prevent_widows($contact['address'])); ?></span>
-                    <span class="zingiber-operational-placeholder"><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></span>
+                    <?php if (!zingiber_is_pending_detail($contact['hours'] ?? '')) : ?>
+                        <span><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></span>
+                    <?php endif; ?>
                 </address>
                 <a class="zingiber-button zingiber-button--prominent zingiber-reservation-cta" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Plan Your Visit', 'vonaco'); ?></a>
             </div>

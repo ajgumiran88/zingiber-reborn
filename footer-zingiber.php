@@ -39,7 +39,9 @@ $footerOrder = ['about', 'menu', 'gallery', 'careers', 'contact'];
                 <span><?php echo esc_html(zingiber_prevent_widows($contact['address'])); ?></span>
             </address>
             <a href="mailto:<?php echo esc_attr($contact['email']); ?>"><?php echo esc_html($contact['email']); ?></a>
-            <span class="zingiber-operational-placeholder"><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></span>
+            <?php if (!zingiber_is_pending_detail($contact['hours'] ?? '')) : ?>
+                <span><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></span>
+            <?php endif; ?>
         </div>
 
         <div class="zingiber-footer__social">

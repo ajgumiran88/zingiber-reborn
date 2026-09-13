@@ -25,6 +25,81 @@ if (!function_exists('zingiber_theme_asset_url')) {
     }
 }
 
+if (!function_exists('zingiber_is_pending_detail')) {
+    function zingiber_is_pending_detail(?string $value): bool
+    {
+        $value = trim((string) $value);
+
+        return $value === '' || (bool) preg_match('/coming soon/i', $value);
+    }
+}
+
+if (!function_exists('zingiber_theme_image')) {
+    /**
+     * @param array{src?: string, alt?: string} $image
+     * @param array<string, mixed> $args
+     */
+    function zingiber_theme_image(array $image, array $args = []): void
+    {
+        $relative = ltrim((string) ($image['src'] ?? ''), '/');
+        if ($relative === '') {
+            return;
+        }
+
+        $src = zingiber_theme_asset_url($relative);
+        $alt = (string) ($image['alt'] ?? '');
+        $class = (string) ($args['class'] ?? '');
+        $width = isset($args['width']) ? (int) $args['width'] : 1536;
+        $height = isset($args['height']) ? (int) $args['height'] : 1024;
+        $loading = (string) ($args['loading'] ?? 'lazy');
+        $decoding = (string) ($args['decoding'] ?? 'async');
+        $sizes = isset($args['sizes']) ? (string) $args['sizes'] : '';
+        $fetchpriority = isset($args['fetchpriority']) ? (string) $args['fetchpriority'] : '';
+        $hidden = !empty($args['aria_hidden']);
+
+        $webpRelative = (string) preg_replace('/\.(jpe?g|png)$/i', '.webp', $relative);
+        $hasWebp = $webpRelative !== $relative && is_file(get_theme_file_path($webpRelative));
+        $webpSrc = $hasWebp ? zingiber_theme_asset_url($webpRelative) : '';
+
+        $attrs = [
+            'src="' . esc_url($src) . '"',
+            'alt="' . esc_attr($alt) . '"',
+            'width="' . esc_attr((string) $width) . '"',
+            'height="' . esc_attr((string) $height) . '"',
+            'decoding="' . esc_attr($decoding) . '"',
+        ];
+
+        if ($class !== '') {
+            $attrs[] = 'class="' . esc_attr($class) . '"';
+        }
+
+        if ($loading !== '') {
+            $attrs[] = 'loading="' . esc_attr($loading) . '"';
+        }
+
+        if ($sizes !== '') {
+            $attrs[] = 'sizes="' . esc_attr($sizes) . '"';
+        }
+
+        if ($fetchpriority !== '') {
+            $attrs[] = 'fetchpriority="' . esc_attr($fetchpriority) . '"';
+        }
+
+        if ($hidden) {
+            $attrs[] = 'aria-hidden="true"';
+        }
+
+        $img = '<img ' . implode(' ', $attrs) . '>';
+
+        if ($hasWebp) {
+            echo '<picture><source type="image/webp" srcset="' . esc_url($webpSrc) . '">' . $img . '</picture>';
+            return;
+        }
+
+        echo $img;
+    }
+}
+
 if (!function_exists('zingiber_icon_svg')) {
     function zingiber_icon_svg(string $name): string
     {

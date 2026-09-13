@@ -95,26 +95,30 @@ if (!function_exists('zingiber_get_site_content')) {
                     ],
                 ],
                 'principles' => [
-                    ['title' => 'Authenticity', 'icon' => 'authenticity'],
-                    ['title' => 'Innovation', 'icon' => 'innovation'],
-                    ['title' => 'Consistency', 'icon' => 'consistency'],
-                    ['title' => 'Storytelling', 'icon' => 'storytelling'],
+                    ['title' => 'Authenticity', 'icon' => 'authenticity', 'summary' => 'Coastal heritage held with care, never as costume.'],
+                    ['title' => 'Innovation', 'icon' => 'innovation', 'summary' => 'Contemporary technique, without losing origin.'],
+                    ['title' => 'Consistency', 'icon' => 'consistency', 'summary' => 'The same standard in every plate and every service.'],
+                    ['title' => 'Storytelling', 'icon' => 'storytelling', 'summary' => 'Dishes that trace a journey along India’s coast.'],
                 ],
                 'regions' => [
                     [
                         'name' => 'Goa',
+                        'summary' => 'Spice, seafood, and the warmth of the western shore.',
                         'image' => $image('food-prawn-curry.jpg', 'Coastal Indian prawn curry with a contemporary Zingiber presentation'),
                     ],
                     [
                         'name' => 'Kerala',
+                        'summary' => 'Coconut, coast, and layered southern flavour.',
                         'image' => $image('food-seafood-rice.jpg', 'Seafood rice dish served with refined garnishes'),
                     ],
                     [
                         'name' => 'Mangalore',
+                        'summary' => 'Char, depth, and the pull of the Arabian Sea.',
                         'image' => $image('food-grilled-lamb.jpg', 'Grilled dish with layered coastal Indian flavours'),
                     ],
                     [
                         'name' => 'Tamil Nadu',
+                        'summary' => 'Rice, spice, and a contemporary coastal table.',
                         'image' => $image('food-coastal-thali.jpg', 'Contemporary presentation inspired by India’s coastal regions'),
                     ],
                 ],

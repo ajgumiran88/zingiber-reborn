@@ -21,12 +21,26 @@ $navigationLabels = [
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>">
     <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>">
+    <?php
+    $zingiberHeroAsset = $navigationPages['home']['hero']['image']['src'] ?? '';
+    if (function_exists('zingiber_current_page_content')) {
+        $zingiberCurrentPage = zingiber_current_page_content();
+        if (!empty($zingiberCurrentPage['hero']['image']['src'])) {
+            $zingiberHeroAsset = $zingiberCurrentPage['hero']['image']['src'];
+        }
+    }
+    $zingiberHeroWebp = preg_replace('/\.(jpe?g|png)$/i', '.webp', (string) $zingiberHeroAsset);
+    $zingiberHeroPreload = (is_string($zingiberHeroWebp) && $zingiberHeroWebp !== $zingiberHeroAsset && is_file(get_theme_file_path(ltrim($zingiberHeroWebp, '/'))))
+        ? $zingiberHeroWebp
+        : $zingiberHeroAsset;
+    ?>
+    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url($zingiberHeroPreload)); ?>" fetchpriority="high">
     <style id="zingiber-preloader-critical">
         html.zingiber-preload{overflow:hidden}
         .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;isolation:isolate;overflow:hidden;background-color:#701616;background-image:radial-gradient(ellipse at 50% 42%,rgba(112,22,22,.08),transparent 62%),radial-gradient(ellipse at 50% 100%,rgba(15,15,15,.28),transparent 58%),linear-gradient(180deg,rgba(15,15,15,.06),rgba(15,15,15,.18)),url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>');background-position:center,center,center,center;background-repeat:no-repeat;background-size:auto,auto,auto,cover;color:#B87333}
         .zingiber-preloader::after{position:absolute;inset:clamp(14px,2.2vw,24px);border:1px solid rgba(184,115,51,.42);content:"";pointer-events:none}
         .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
-        .zingiber-preloader__logo{display:block;width:min(22rem,78vw);aspect-ratio:1400/235;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;opacity:0;transform:scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
+        .zingiber-preloader__logo{display:block;width:min(22rem,78vw);aspect-ratio:1400/235;background-color:#B87333;-webkit-mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;mask:url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-light.png')); ?>') center/contain no-repeat;-webkit-mask-size:contain;mask-size:contain;opacity:0;transform:translateZ(0) scale(0.92);animation:zingiber-preloader-logo 900ms cubic-bezier(0.16,1,0.3,1) 120ms forwards}
         .zingiber-preloader__progress{width:min(18rem,68vw);height:2px;overflow:hidden;background:rgba(184,115,51,.28)}
         .zingiber-preloader__progress-bar{display:block;width:0;height:100%;background:#B87333;transform-origin:left center}
         @keyframes zingiber-preloader-logo{to{opacity:1;transform:scale(1)}}
