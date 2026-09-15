@@ -10,7 +10,7 @@ return [
         'contact',
     ],
     'phrases' => [
-        'Introducing Modern Indian Coastal Dining Experience.',
+        'Introducing a Modern Indian Coastal Dining Experience.',
         'Coastal India, Reimagined for Now',
         'A Modern Expression of Coastal India',
         'A Journey Across India’s Coastline',

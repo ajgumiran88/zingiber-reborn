@@ -53,7 +53,7 @@ if (!function_exists('zingiber_get_site_content')) {
                 'template' => 'template-zingiber-home.php',
                 'hero' => [
                     'eyebrow' => 'Modern Indian Coastal Dining',
-                    'heading' => 'Introducing Modern Indian Coastal Dining Experience.',
+                    'heading' => 'Introducing a Modern Indian Coastal Dining Experience.',
                     'subheading' => 'A chef-led coastal Indian dining experience, shaped by mastery, heritage, and storytelling.',
                     'image' => $image('interior-hero.jpg', 'Warm, atmospheric interior of Zingiber restaurant in Dubai'),
                 ],
@@ -91,7 +91,7 @@ if (!function_exists('zingiber_get_site_content')) {
                         'body' => [
                             'Join us daily for lunch and dinner service in a setting shaped by coastal textures, thoughtful hospitality, and contemporary Indian cuisine.',
                         ],
-                        'image' => $image('interior-feature-wall.jpg', 'Textured feature wall and intimate seating at Zingiber'),
+                        'image' => $image('interior-bar.jpg', 'The warmly lit bar and dining atmosphere at Zingiber'),
                     ],
                 ],
                 'principles' => [

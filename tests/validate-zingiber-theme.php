@@ -513,7 +513,7 @@ if (in_array('import', $groups, true)) {
                 $fail('import', 'Home 2 WXR must not depend on legacy Elementor demo data.');
             }
 
-            foreach (['Zingiber', 'Introducing Modern Indian Coastal Dining Experience.', 'A Journey Across India’s Coastline'] as $requiredCopy) {
+            foreach (['Zingiber', 'Introducing a Modern Indian Coastal Dining Experience.', 'A Journey Across India’s Coastline'] as $requiredCopy) {
                 if (strpos($xml, $requiredCopy) === false) {
                     $fail('import', sprintf('Home 2 import XML is missing approved copy: %s.', $requiredCopy));
                 }

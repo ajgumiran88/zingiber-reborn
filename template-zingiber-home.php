@@ -37,7 +37,7 @@ get_header('zingiber');
                 <div class="zingiber-rule" aria-hidden="true"></div>
             </div>
             <h1 data-zingiber-reveal>
-                <span class="zingiber-hero__title-line"><?php echo esc_html('Introducing Modern' . "\u{00A0}" . 'Indian'); ?></span>
+                <span class="zingiber-hero__title-line"><?php echo esc_html('Introducing a Modern' . "\u{00A0}" . 'Indian'); ?></span>
                 <span class="zingiber-hero__title-line zingiber-hero__title-line--italic"><?php echo esc_html('Coastal Dining' . "\u{00A0}" . 'Experience.'); ?></span>
             </h1>
             <p class="zingiber-hero__lede" data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows($home['hero']['subheading'])); ?></p>
