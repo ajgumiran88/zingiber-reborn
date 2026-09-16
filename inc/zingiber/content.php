@@ -83,7 +83,7 @@ if (!function_exists('zingiber_get_site_content')) {
                             'Zingiber offers a refined yet approachable dining experience. Inspired by coastal textures, natural tones, and understated elegance, the space reflects the essence of the cuisine.',
                             'Whether dining in or ordering at home through our curated cloud kitchen concepts, every touchpoint is crafted with consistency, quality, and care.',
                         ],
-                        'image' => $image('interior-dining-room.jpg', 'Refined dining room with warm natural finishes at Zingiber'),
+                        'image' => $image('interior-ambience-bar.jpg', 'Wide evening view of Zingiber’s warmly lit sculptural dining room and bar'),
                     ],
                     'reservation' => [
                         'eyebrow' => 'Jumeirah Lakes Towers, Dubai',

@@ -108,6 +108,11 @@ if (in_array('content', $groups, true)) {
             }
         }
 
+        $experienceImage = $content['home']['sections']['experience']['image']['src'] ?? '';
+        if ($experienceImage !== 'assets/images/zingiber/interior-ambience-bar.jpg') {
+            $fail('content', 'The homepage experience section must use the approved ambience image.');
+        }
+
         $allCopy = implode("\n", $flattenStrings($content));
         foreach ($fixture['phrases'] as $phrase) {
             if (strpos($allCopy, $phrase) === false) {
@@ -147,6 +152,8 @@ if (in_array('assets', $groups, true)) {
         'assets/images/zingiber/interior-dining-room.jpg',
         'assets/images/zingiber/interior-dining-room.webp',
         'assets/images/zingiber/interior-bar.jpg',
+        'assets/images/zingiber/interior-ambience-bar.jpg',
+        'assets/images/zingiber/interior-ambience-bar.webp',
         'assets/images/zingiber/interior-feature-wall.jpg',
         'assets/images/zingiber/interior-feature-wall.webp',
         'assets/images/zingiber/food-prawn-curry.jpg',
