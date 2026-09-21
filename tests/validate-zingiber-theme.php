@@ -89,6 +89,27 @@ if (in_array('content', $groups, true)) {
     if ($content === null) {
         $fail('content', 'inc/zingiber/content.php is missing or does not return an array.');
     } else {
+        /*
+         * Client revision pass: the copy reads without em-dashes, and the home
+         * mosaic carries seven images so it tiles without a ragged corner.
+         */
+        foreach ($flattenStrings($content) as $publicString) {
+            foreach (["\u{2014}", '&mdash;'] as $dash) {
+                if (strpos($publicString, $dash) !== false) {
+                    $fail('content', sprintf('Public copy must not contain an em-dash: "%s".', $publicString));
+                    break;
+                }
+            }
+        }
+
+        $mosaic = $content['home']['featured_images'] ?? null;
+        if (!is_array($mosaic) || count($mosaic) !== 7) {
+            $fail('content', sprintf(
+                'Home featured_images must hold 7 images for the gallery mosaic, found %s.',
+                is_array($mosaic) ? (string) count($mosaic) : 'none'
+            ));
+        }
+
         foreach ($fixture['pages'] as $slug) {
             if (!isset($content[$slug]) || !is_array($content[$slug])) {
                 $fail('content', sprintf('Missing required page content for "%s".', $slug));
@@ -392,6 +413,35 @@ if (in_array('templates', $groups, true)) {
             }
         }
     }
+
+    /*
+     * Client revision pass: page chrome shows the page title only, and no
+     * panel regains a copper outline. The intro curtain plays on every load.
+     */
+    if ($pageTemplate !== null) {
+        foreach (["Zingiber \u{00B7} Dubai", 'zingiber-kicker'] as $removedChrome) {
+            if (strpos($pageTemplate, $removedChrome) !== false) {
+                $fail('templates', sprintf('Supporting-page template must not reintroduce page chrome: %s.', $removedChrome));
+            }
+        }
+    }
+
+    if ($header !== null && strpos($header, "document.documentElement.classList.add('zingiber-preload')") === false) {
+        $fail('templates', 'The homepage intro curtain must be armed on every page load.');
+    }
+
+    foreach ([
+        'header-zingiber.php' => $header,
+        'assets/js/zingiber.js' => $read('assets/js/zingiber.js'),
+    ] as $introPath => $introContents) {
+        if ($introContents === null) {
+            continue;
+        }
+
+        if (strpos($introContents, 'zingiberIntroSeen') !== false || strpos($introContents, 'zingiber-intro-seen') !== false) {
+            $fail('templates', sprintf('Intro curtain must not be skipped after the first view (%s).', $introPath));
+        }
+    }
 }
 
 if (in_array('brand', $groups, true)) {
@@ -415,6 +465,24 @@ if (in_array('brand', $groups, true)) {
 
         if (strpos($css, '"Estratto Var"') === false || strpos($css, '"Luxora Grotesk"') === false) {
             $fail('brand', 'Stylesheet must name Estratto Var and Luxora Grotesk in the type stack.');
+        }
+
+        /*
+         * Client revision pass: one supporting size, one label size, and no
+         * copper outline around content panels.
+         */
+        foreach (['--zingiber-type-sub:', '--zingiber-type-eyebrow:'] as $typeToken) {
+            if (strpos($css, $typeToken) === false) {
+                $fail('brand', sprintf('Shared type token missing from stylesheet: %s.', $typeToken));
+            }
+        }
+
+        if (strpos($css, 'border: 1px solid var(--zingiber-line)') !== false) {
+            $fail('brand', 'Content panels must not reintroduce the copper box outline.');
+        }
+
+        if (preg_match('/\.zingiber-gallery__item--7\s*\{/', $css) !== 1) {
+            $fail('brand', 'Home gallery mosaic must place a seventh tile.');
         }
 
         $setupSource = $read('inc/zingiber/setup.php') ?? '';

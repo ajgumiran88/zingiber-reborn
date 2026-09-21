@@ -62,7 +62,7 @@ if (!function_exists('zingiber_get_site_content')) {
                         'eyebrow' => 'The Zingiber Story',
                         'heading' => 'Coastal India, Reimagined for Now',
                         'body' => [
-                            'Zingiber is a chef-driven modern Indian restaurant in Dubai, led by Chef Shankar Krishnamurthy. Rooted in India’s coastal heritage, the menu reinterprets regional classics through a contemporary lens — authenticity held in balance with innovation.',
+                            'Zingiber is a chef-driven modern Indian restaurant in Dubai, led by Chef Shankar Krishnamurthy. Rooted in India’s coastal heritage, the menu reinterprets regional classics through a contemporary lens, holding authenticity in balance with innovation.',
                             'Every dish traces a journey across Goa, Kerala, Mangalore, and Tamil Nadu, brought to life through refined technique, thoughtful presentation, and layered flavour.',
                         ],
                         'image' => $image('food-signature-plate.jpg', 'A refined signature dish presented at Zingiber'),
@@ -128,6 +128,8 @@ if (!function_exists('zingiber_get_site_content')) {
                     $image('food-coastal-thali.jpg', 'Contemporary presentation inspired by India’s coastal regions'),
                     $image('food-seafood-rice.jpg', 'Seafood rice dish served with refined garnishes'),
                     $image('food-dessert.jpg', 'Elegant dessert presentation at Zingiber'),
+                    $image('interior-dining-room.jpg', 'Contemporary seating and understated elegance in the Zingiber dining room'),
+                    $image('interior-feature-wall.jpg', 'Sculptural feature wall and crafted coastal textures at Zingiber'),
                 ],
                 'calls_to_action' => [
                     'primary' => ['label' => 'Reserve a Table', 'url' => '/contact/'],
@@ -151,7 +153,7 @@ if (!function_exists('zingiber_get_site_content')) {
                     [
                         'heading' => 'Rooted in Meaning',
                         'body' => [
-                            'Zingiber is inspired by the Latin name for ginger—Zingiber officinale—a foundational ingredient in Indian cuisine that symbolises warmth, depth, and authenticity.',
+                            'Zingiber is inspired by the Latin name for ginger, Zingiber officinale, a foundational ingredient in Indian cuisine that symbolises warmth, depth, and authenticity.',
                             'Our concept is rooted in India’s coastal regions, where flavour, spice, and seafood traditions come together in dynamic ways. Led by Chef Shankar Krishnamurthy, whose four decades of global experience shape our culinary direction, Zingiber presents a refined interpretation of these regional influences.',
                         ],
                         'image' => $image('food-signature-plate.jpg', 'A signature Zingiber plate shaped by coastal Indian influences'),

@@ -26,7 +26,6 @@ get_header('zingiber');
         </div>
         <div class="zingiber-page-hero__veil" aria-hidden="true"></div>
         <div class="zingiber-container zingiber-page-hero__content">
-            <p class="zingiber-kicker" data-zingiber-reveal><?php esc_html_e('Zingiber · Dubai', 'vonaco'); ?></p>
             <p class="zingiber-eyebrow" data-zingiber-reveal><?php echo esc_html($zingiberPage['hero']['eyebrow']); ?></p>
             <div class="zingiber-rule" aria-hidden="true" data-zingiber-reveal></div>
             <h1 data-zingiber-reveal>
@@ -158,11 +157,15 @@ get_header('zingiber');
     <?php elseif ($zingiberPage['slug'] === 'gallery') : ?>
         <section class="zingiber-section zingiber-page-gallery">
             <div class="zingiber-container zingiber-page-gallery__intro" data-zingiber-reveal>
-                <p class="zingiber-eyebrow"><?php esc_html_e('Inside Zingiber', 'vonaco'); ?></p>
-                <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
-                <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
-                    <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
-                <?php endforeach; ?>
+                <div class="zingiber-page-gallery__title">
+                    <p class="zingiber-eyebrow"><?php esc_html_e('Inside Zingiber', 'vonaco'); ?></p>
+                    <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
+                </div>
+                <div class="zingiber-page-gallery__copy">
+                    <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
+                        <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="zingiber-container zingiber-page-gallery__grid">
                 <?php foreach ($zingiberPage['sections'][0]['gallery'] as $index => $image) : ?>

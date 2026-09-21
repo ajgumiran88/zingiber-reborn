@@ -62,7 +62,7 @@ get_header('zingiber');
             <div class="zingiber-chef__copy zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php echo esc_html($sections['chef_story']['eyebrow']); ?></p>
                 <h2>
-                    <span class="zingiber-heading-line"><?php echo esc_html('Coastal India,'); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html('Coastal India'); ?><span class="zingiber-punct">,</span></span>
                     <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('Reimagined for Now')); ?></span>
                 </h2>
                 <?php foreach ($sections['chef_story']['body'] as $paragraph) : ?>
