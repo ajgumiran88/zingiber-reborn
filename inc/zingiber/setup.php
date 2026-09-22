@@ -34,6 +34,33 @@ if (!function_exists('zingiber_is_pending_detail')) {
     }
 }
 
+if (!function_exists('zingiber_theme_image_display_src')) {
+    /**
+     * The URL a browser would actually pick for an image.
+     *
+     * The grid renders a <picture>, so a modern browser has already downloaded
+     * the WebP by the time a tile is clicked. Pointing the lightbox at the same
+     * file means the large view is served from cache instead of fetching the
+     * JPEG a second time.
+     *
+     * @param array{src?: string} $image
+     */
+    function zingiber_theme_image_display_src(array $image): string
+    {
+        $relative = ltrim((string) ($image['src'] ?? ''), '/');
+        if ($relative === '') {
+            return '';
+        }
+
+        $webp = (string) preg_replace('/\.(jpe?g|png)$/i', '.webp', $relative);
+        if ($webp !== $relative && is_file(get_theme_file_path($webp))) {
+            return zingiber_theme_asset_url($webp);
+        }
+
+        return zingiber_theme_asset_url($relative);
+    }
+}
+
 if (!function_exists('zingiber_theme_image')) {
     /**
      * @param array{src?: string, alt?: string} $image

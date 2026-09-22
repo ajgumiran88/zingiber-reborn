@@ -44,6 +44,14 @@ if (!function_exists('zingiber_get_site_content')) {
             ];
         };
 
+        $frame = static function (string $filename, string $alt, string $category, int $width, int $height) use ($image): array {
+            return $image($filename, $alt) + [
+                'category' => $category,
+                'width' => $width,
+                'height' => $height,
+            ];
+        };
+
         return [
             'home' => [
                 'slug' => 'home',
@@ -217,13 +225,31 @@ if (!function_exists('zingiber_get_site_content')) {
                             'Explore Zingiber - where design, cuisine, and atmosphere come together in harmony.',
                             'From the textures of our interiors to the artistry of each plate, every detail reflects our commitment to a refined, contemporary dining experience inspired by coastal India.',
                         ],
+                        /*
+                         * The gallery is the one page where the photography is the
+                         * content, so every frame we hold is published here rather
+                         * than the six that happened to fit the old fixed mosaic.
+                         * Each entry carries its own intrinsic size: the food is shot
+                         * portrait and the rooms landscape, and the tiles are laid out
+                         * from these numbers instead of cropping everything to one
+                         * shape.
+                         */
+                        'filters' => [
+                            'all' => 'All',
+                            'interiors' => 'Interiors',
+                            'cuisine' => 'Cuisine',
+                        ],
                         'gallery' => [
-                            $image('interior-hero.jpg', 'Atmospheric view through Zingiber’s contemporary dining space'),
-                            $image('food-prawn-curry.jpg', 'Prawn curry presented with contemporary detail'),
-                            $image('interior-dining-room.jpg', 'Warm dining room seating at Zingiber'),
-                            $image('food-dessert.jpg', 'Dessert finished with elegant, precise presentation'),
-                            $image('interior-feature-wall.jpg', 'Layered textures and feature lighting inside Zingiber'),
-                            $image('food-signature-plate.jpg', 'A signature plate from the Zingiber kitchen'),
+                            $frame('interior-hero.jpg', 'Atmospheric view through Zingiber’s contemporary dining space', 'interiors', 2400, 1350),
+                            $frame('food-prawn-curry.jpg', 'Prawn curry presented with contemporary detail', 'cuisine', 1024, 1536),
+                            $frame('interior-dining-room.jpg', 'Warm dining room seating at Zingiber', 'interiors', 2400, 1350),
+                            $frame('food-dessert.jpg', 'Dessert finished with elegant, precise presentation', 'cuisine', 1024, 1536),
+                            $frame('interior-feature-wall.jpg', 'Layered textures and feature lighting inside Zingiber', 'interiors', 2400, 1350),
+                            $frame('food-signature-plate.jpg', 'A signature plate from the Zingiber kitchen', 'cuisine', 1536, 1024),
+                            $frame('food-coastal-thali.jpg', 'A coastal thali served across small plates', 'cuisine', 1672, 941),
+                            $frame('interior-ambience-bar.jpg', 'Evening light across the sculptural dining room and bar', 'interiors', 2400, 1350),
+                            $frame('food-grilled-lamb.jpg', 'Grilled lamb finished over open coals', 'cuisine', 1536, 1024),
+                            $frame('food-seafood-rice.jpg', 'Seafood rice built on a coastal Indian base', 'cuisine', 1536, 1024),
                         ],
                     ],
                 ],
