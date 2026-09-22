@@ -253,6 +253,25 @@ if (!function_exists('zingiber_enqueue_assets')) {
 }
 add_action('wp_enqueue_scripts', 'zingiber_enqueue_assets', 30);
 
+if (!function_exists('zingiber_drop_foreign_fonts')) {
+    /**
+     * The parent theme ships DM Sans on every request. The Zingiber brand
+     * guidelines allow only Estratto Var and Luxora Grotesk (with Cormorant
+     * Garamond and Manrope as the licensed open substitutes), so the foreign
+     * family is dropped on these templates.
+     */
+    function zingiber_drop_foreign_fonts(): void
+    {
+        if (!zingiber_is_site_template()) {
+            return;
+        }
+
+        wp_dequeue_style('vonaco-fonts');
+        wp_deregister_style('vonaco-fonts');
+    }
+}
+add_action('wp_enqueue_scripts', 'zingiber_drop_foreign_fonts', 100);
+
 if (!function_exists('zingiber_body_classes')) {
     function zingiber_body_classes(array $classes): array
     {
@@ -355,7 +374,13 @@ if (!function_exists('zingiber_filter_document_title')) {
 
         $page = zingiber_current_page_content();
 
-        return ['title' => $page['seo_title']];
+        /*
+         * The browser tab shows the page's own title only. The long
+         * keyword-stacked `seo_title` stays in the content file for meta use,
+         * but it made every tab read "Zingiber Dubai | ..." with the actual
+         * page name pushed off the end of a narrow tab.
+         */
+        return ['title' => $page['title']];
     }
 }
 add_filter('document_title_parts', 'zingiber_filter_document_title', 20);

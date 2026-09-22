@@ -438,9 +438,14 @@ if (in_array('templates', $groups, true)) {
             continue;
         }
 
-        if (strpos($introContents, 'zingiberIntroSeen') !== false || strpos($introContents, 'zingiber-intro-seen') !== false) {
-            $fail('templates', sprintf('Intro curtain must not be skipped after the first view (%s).', $introPath));
+        // Match the API call, not the word, so prose about it stays allowed.
+        if (strpos($introContents, 'localStorage.getItem') !== false || strpos($introContents, 'localStorage.setItem') !== false) {
+            $fail('templates', sprintf('The intro-curtain skip must stay session-scoped; localStorage would hide the opening from returning guests (%s).', $introPath));
         }
+    }
+
+    if ($header !== null && strpos($header, "sessionStorage.getItem('zingiber-intro-seen')") === false) {
+        $fail('templates', 'The intro curtain must be skipped on in-session navigations, not replayed on every tab click.');
     }
 }
 
@@ -465,6 +470,25 @@ if (in_array('brand', $groups, true)) {
 
         if (strpos($css, '"Estratto Var"') === false || strpos($css, '"Luxora Grotesk"') === false) {
             $fail('brand', 'Stylesheet must name Estratto Var and Luxora Grotesk in the type stack.');
+        }
+
+        /*
+         * Every display heading wraps its lines in a <span>. The sitewide rule
+         * that puts spans in the text face matches those spans directly, which
+         * beats the face the heading passes down, so headings silently rendered
+         * in Manrope. The heading rule has to name its own inner markup.
+         */
+        if (!preg_match('/:where\(h1, h2, h3, h4, h5, h6\)\s*\n?\s*:where\([^)]*span[^)]*\)\s*\{[^}]*--zingiber-display/', $css)) {
+            $fail('brand', 'Heading rule must cover the spans inside headings, or every heading falls back to the text face.');
+        }
+
+        /*
+         * The two family locks sit at zero specificity so component rules can
+         * still opt a single element into the other family, e.g. the copper
+         * numerals that need the display face.
+         */
+        if (strpos($css, 'body.zingiber-site :where(p, li, a, span,') !== false) {
+            $fail('brand', 'Family locks must be wrapped in :where() so component rules can override them.');
         }
 
         /*

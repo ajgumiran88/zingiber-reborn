@@ -12,6 +12,19 @@
             return;
         }
 
+        // The head script already decided this view skips the curtain.
+        if (document.documentElement.classList.contains('zingiber-intro-skip')) {
+            if (preloader.parentNode) {
+                preloader.parentNode.removeChild(preloader);
+            }
+            document.documentElement.classList.remove('zingiber-preload');
+            return;
+        }
+
+        try {
+            window.sessionStorage.setItem('zingiber-intro-seen', '1');
+        } catch (e) {}
+
         var bar = preloader.querySelector('[data-zingiber-preloader-bar]');
         var progressEl = preloader.querySelector('[data-zingiber-preloader-progress]');
         var startedAt = Date.now();

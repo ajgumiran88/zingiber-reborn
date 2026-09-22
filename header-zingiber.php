@@ -37,6 +37,7 @@ $navigationLabels = [
     <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url($zingiberHeroPreload)); ?>" fetchpriority="high">
     <style id="zingiber-preloader-critical">
         html.zingiber-preload{overflow:hidden}
+        html.zingiber-intro-skip .zingiber-preloader{display:none}
         .zingiber-preloader{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;isolation:isolate;overflow:hidden;background-color:#701616;background-image:radial-gradient(ellipse at 50% 42%,rgba(112,22,22,.08),transparent 62%),radial-gradient(ellipse at 50% 100%,rgba(15,15,15,.28),transparent 58%),linear-gradient(180deg,rgba(15,15,15,.06),rgba(15,15,15,.18)),url('<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>');background-position:center,center,center,center;background-repeat:no-repeat;background-size:auto,auto,auto,cover;color:#B87333}
         .zingiber-preloader::after{position:absolute;inset:clamp(14px,2.2vw,24px);border:1px solid rgba(184,115,51,.42);content:"";pointer-events:none}
         .zingiber-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1.75rem;padding:1.5rem}
@@ -46,7 +47,25 @@ $navigationLabels = [
         @keyframes zingiber-preloader-logo{to{opacity:1;transform:scale(1)}}
         @media (prefers-reduced-motion:reduce){.zingiber-preloader__logo{opacity:1;transform:none;animation:none}}
     </style>
-    <script>document.documentElement.classList.add('zingiber-preload');</script>
+    <script>
+    /*
+     * The curtain is a first-impression device, not a page transition. It arms
+     * on the first view of a session; every later tab click inside that session
+     * paints straight through. sessionStorage (not localStorage) keeps it
+     * per-visit, so a returning guest still gets the full opening.
+     *
+     * This runs before the body so the curtain never flashes on a skipped view.
+     */
+    (function () {
+        var seen = false;
+        try { seen = window.sessionStorage.getItem('zingiber-intro-seen') === '1'; } catch (e) {}
+        if (seen) {
+            document.documentElement.classList.add('zingiber-intro-skip');
+            return;
+        }
+        document.documentElement.classList.add('zingiber-preload');
+    }());
+    </script>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

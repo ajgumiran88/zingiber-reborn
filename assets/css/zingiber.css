@@ -12,27 +12,44 @@
     --zingiber-body: "Luxora Grotesk", "Manrope", Arial, sans-serif;
     --zingiber-display-weight: 400;
     --zingiber-ui-weight: 500;
-    --zingiber-type-hero: clamp(3rem, 5.1vw, 5.1rem);
-    --zingiber-type-section: clamp(2.05rem, 3.5vw, 3.55rem);
+    --zingiber-type-hero: clamp(2.6rem, 3.7vw, 3.9rem);
+    --zingiber-type-section: clamp(1.9rem, 3.05vw, 3.05rem);
     --zingiber-type-body: 1rem;
     /* One supporting size for every subheading, lede, summary and caption. */
     --zingiber-type-sub: 1rem;
     --zingiber-type-sub-leading: 1.62;
     /* One eyebrow size for every uppercase label. */
-    --zingiber-type-eyebrow: 0.78rem;
-    --zingiber-type-eyebrow-tracking: 0.16em;
-    --zingiber-tracking-display: -0.02em;
-    --zingiber-tracking-ui: 0.12em;
+    /* One size for every uppercase UI label: nav, buttons, text links, toggle. */
+    --zingiber-type-ui: 0.75rem;
+    /* One size for the numerals and the short names they label. */
+    --zingiber-type-feature: clamp(1.5rem, 1.95vw, 1.95rem);
+    --zingiber-type-eyebrow: 0.76rem;
+    --zingiber-type-eyebrow-tracking: 0.22em;
+    --zingiber-tracking-display: -0.018em;
+    --zingiber-tracking-display-hero: -0.028em;
+    --zingiber-tracking-ui: 0.14em;
     --zingiber-tracking-body: 0.012em;
     --zingiber-container: min(88rem, calc(100vw - 3.5rem));
     --zingiber-footer-max: 75rem;
     --zingiber-button-radius: 4px;
-    --zingiber-section-space: clamp(4.25rem, 7.5vw, 8rem);
+    --zingiber-section-space: clamp(4.75rem, 8.4vw, 9.5rem);
     --zingiber-header-height: 6.5rem;
     --zingiber-header-height-sticky: 4.5rem;
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --zingiber-ease-lux: cubic-bezier(0.22, 0.61, 0.24, 1);
     --zingiber-duration: 220ms;
-    --zingiber-duration-lux: 520ms;
+    --zingiber-duration-lux: 900ms;
+    /* Layered rather than one flat drop, so plates and interiors sit on the page. */
+    --zingiber-shadow-raised:
+        0 1px 1px rgba(15, 15, 15, 0.04),
+        0 8px 16px rgba(15, 15, 15, 0.05),
+        0 24px 48px rgba(15, 15, 15, 0.07),
+        0 48px 88px rgba(15, 15, 15, 0.06);
+    --zingiber-shadow-floating:
+        0 2px 4px rgba(15, 15, 15, 0.06),
+        0 12px 28px rgba(15, 15, 15, 0.08),
+        0 36px 72px rgba(15, 15, 15, 0.1),
+        0 64px 120px rgba(15, 15, 15, 0.08);
     --zingiber-frame-inset: clamp(14px, 2.2vw, 24px);
     --zingiber-frame-color: #B87333;
     --zingiber-frame-terracotta: #9C4722;
@@ -53,6 +70,31 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--zingiber-header-height-sticky);
+}
+
+/*
+ * Brand guidelines allow two families only: Estratto Var (display) and
+ * Luxora Grotesk (text), with Cormorant Garamond and Manrope as the licensed
+ * open substitutes. Everything inside the Zingiber layer inherits one of them.
+ * The logo is an <img> and is deliberately untouched by these rules.
+ *
+ * These carry no specificity of their own so that a component rule further
+ * down can still opt one element into the other family.
+ */
+:where(body.zingiber-site) :where(p, li, a, span, strong, em, address, figcaption,
+blockquote, label, input, select, textarea, button, time, small, dd, dt, th, td) {
+    font-family: var(--zingiber-body);
+}
+
+/*
+ * Display headings wrap each line in a <span> for line control. A rule that
+ * matches those spans directly beats the font the heading passes down, so the
+ * heading's own markup has to be named here as well.
+ */
+:where(body.zingiber-site) :where(h1, h2, h3, h4, h5, h6),
+:where(body.zingiber-site) :where(h1, h2, h3, h4, h5, h6)
+:where(span, a, em, strong, small, time) {
+    font-family: var(--zingiber-display);
 }
 
 body.zingiber-site {
@@ -371,7 +413,7 @@ html.zingiber-preload body.zingiber-site {
     display: none;
     margin: 0;
     color: var(--zingiber-copper);
-    font-size: 0.68rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -394,7 +436,7 @@ html.zingiber-preload body.zingiber-site {
     min-height: 44px;
     align-items: center;
     color: var(--zingiber-sand);
-    font-size: 0.72rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: 400;
     letter-spacing: 0.16em;
     line-height: 1;
@@ -434,7 +476,7 @@ html.zingiber-preload body.zingiber-site {
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
-    padding: 1.05rem 1.9rem;
+    padding: 1.1rem 2.3rem;
     border: 1px solid var(--zingiber-burnt-red);
     border-radius: var(--zingiber-button-radius);
     background-color: var(--zingiber-burnt-red);
@@ -442,9 +484,9 @@ html.zingiber-preload body.zingiber-site {
     box-shadow: inset 0 1px 0 rgba(237, 231, 225, 0.12);
     color: var(--zingiber-sand);
     font-family: var(--zingiber-body);
-    font-size: 0.78rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: var(--zingiber-ui-weight);
-    letter-spacing: var(--zingiber-tracking-ui);
+    letter-spacing: 0.2em;
     line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
@@ -459,7 +501,7 @@ html.zingiber-preload body.zingiber-site {
     border-color: var(--zingiber-sand);
     background: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
-    font-size: 0.66rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: 500;
     letter-spacing: 0.14em;
 }
@@ -499,10 +541,13 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-button--prominent {
     min-height: 64px;
     padding: 1.3rem 2.65rem;
-    font-size: 0.92rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: var(--zingiber-ui-weight);
     letter-spacing: var(--zingiber-tracking-ui);
-    box-shadow: 0 14px 36px rgba(15, 15, 15, 0.28);
+    box-shadow:
+        0 2px 6px rgba(15, 15, 15, 0.12),
+        0 10px 24px rgba(15, 15, 15, 0.16),
+        0 22px 48px rgba(15, 15, 15, 0.14);
 }
 
 .zingiber-button:active {
@@ -531,7 +576,7 @@ html.zingiber-preload body.zingiber-site {
     align-items: center;
     gap: 0.75rem;
     color: var(--zingiber-sand);
-    font-size: 0.78rem;
+    font-size: var(--zingiber-type-ui);
     font-weight: 500;
     letter-spacing: 0.12em;
     text-decoration: none;
@@ -596,7 +641,9 @@ html.zingiber-preload body.zingiber-site {
     text-wrap: pretty;
     overflow-wrap: normal;
     word-break: normal;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "dlig" 1;
+    font-variant-ligatures: common-ligatures discretionary-ligatures;
+    font-kerning: normal;
     font-optical-sizing: auto;
 }
 
@@ -658,9 +705,29 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-enhanced-motion [data-zingiber-reveal] {
     opacity: 0;
-    transform: translateY(1.5rem);
-    transition: opacity var(--zingiber-duration-lux) var(--zingiber-ease), transform var(--zingiber-duration-lux) var(--zingiber-ease);
+    transform: translateY(0.75rem);
+    transition:
+        opacity var(--zingiber-duration-lux) var(--zingiber-ease-lux),
+        transform var(--zingiber-duration-lux) var(--zingiber-ease-lux);
+    will-change: opacity, transform;
 }
+
+.zingiber-enhanced-motion [data-zingiber-reveal].is-visible {
+    will-change: auto;
+}
+
+/* Cards and tiles arrive in sequence rather than all at once. */
+.zingiber-enhanced-motion :where(.zingiber-principles__list, .zingiber-page-principles ol,
+.zingiber-gallery__grid, .zingiber-page-gallery__grid, .zingiber-coast__regions)
+> [data-zingiber-reveal]:nth-child(2) { transition-delay: 70ms; }
+.zingiber-enhanced-motion :where(.zingiber-principles__list, .zingiber-page-principles ol,
+.zingiber-gallery__grid, .zingiber-page-gallery__grid, .zingiber-coast__regions)
+> [data-zingiber-reveal]:nth-child(3) { transition-delay: 140ms; }
+.zingiber-enhanced-motion :where(.zingiber-principles__list, .zingiber-page-principles ol,
+.zingiber-gallery__grid, .zingiber-page-gallery__grid, .zingiber-coast__regions)
+> [data-zingiber-reveal]:nth-child(4) { transition-delay: 210ms; }
+.zingiber-enhanced-motion :where(.zingiber-gallery__grid, .zingiber-page-gallery__grid)
+> [data-zingiber-reveal]:nth-child(n + 5) { transition-delay: 280ms; }
 
 .zingiber-enhanced-motion [data-zingiber-reveal].is-visible {
     opacity: 1;
@@ -739,28 +806,51 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 34%;
-    transform: scale(1.06);
-    transform-origin: center 34%;
+    object-position: center 52%;
+    /*
+     * The darkening is graded into the picture itself instead of being painted
+     * over it. One even multiplier holds the whole frame in the same key;
+     * stacked gradients used to sink the middle and leave the corners bright,
+     * which read as a smudge behind the headline. Contrast and saturation are
+     * nudged so the room stays warm without going muddy.
+     */
+    filter: brightness(0.54) contrast(1.08) saturate(0.86);
+    transform: scale(1.2);
+    transform-origin: center 46%;
 }
 
+/*
+ * One soft top-to-bottom gradient, there only to seat the header and the
+ * scroll guide against the photo. The middle stays near-clear so the graded
+ * image carries the frame on its own.
+ */
 .zingiber-hero::after {
     position: absolute;
     z-index: 0;
     inset: 0;
     pointer-events: none;
     background-image:
-        radial-gradient(ellipse at 50% 52%, rgba(15, 15, 15, 0.62) 0%, rgba(15, 15, 15, 0.42) 38%, rgba(15, 15, 15, 0.16) 66%, transparent 82%),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.46) 0%, rgba(15, 15, 15, 0.12) 26%, rgba(15, 15, 15, 0.16) 62%, rgba(15, 15, 15, 0.44) 100%);
+        linear-gradient(180deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.12) 22%, rgba(15, 15, 15, 0.12) 66%, rgba(15, 15, 15, 0.42) 100%);
     content: "";
 }
 
+/*
+ * The flat wash. Even opacity edge to edge is what makes the treatment read as
+ * deliberate rather than blotchy.
+ */
 .zingiber-hero__veil {
     position: absolute;
     z-index: -1;
     inset: 0;
+    background-color: rgba(15, 15, 15, 0.28);
+    /*
+     * A photographic vignette: clear through the middle, weighted at the
+     * corners. Note this is the inverse of the scrim it replaced, which darkened
+     * the centre and left the corners bright — the reason the old frame read as
+     * a smudge sitting behind the headline instead of a lit room.
+     */
     background-image:
-        linear-gradient(180deg, rgba(15, 15, 15, 0.42) 0%, rgba(15, 15, 15, 0.1) 24%, rgba(15, 15, 15, 0.14) 70%, rgba(15, 15, 15, 0.34) 100%);
+        radial-gradient(ellipse 78% 82% at 50% 46%, transparent 0%, transparent 46%, rgba(15, 15, 15, 0.22) 76%, rgba(15, 15, 15, 0.42) 100%);
 }
 
 .zingiber-hero__content {
@@ -770,8 +860,8 @@ html.zingiber-preload body.zingiber-site {
     width: min(40rem, calc(100% - 3rem));
     align-items: center;
     flex-direction: column;
-    padding-block: calc(var(--zingiber-header-height) + 1.25rem) 3rem;
-    transform: translateY(clamp(-2.25rem, -3vh, -1rem));
+    padding-block: calc(var(--zingiber-header-height) + 0.2rem) 3rem;
+    transform: translateY(clamp(-3.35rem, -4.4vh, -1.85rem));
     text-align: center;
 }
 
@@ -779,16 +869,18 @@ html.zingiber-preload body.zingiber-site {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 0.7rem;
-    margin-bottom: clamp(1rem, 1.9vh, 1.4rem);
+    gap: 0.5rem;
+    margin: 0 auto clamp(1.05rem, 2.1vh, 1.6rem);
 }
 
 .zingiber-hero .zingiber-eyebrow {
     margin: 0;
+    padding-inline-start: 0.22em;
     color: rgba(237, 231, 225, 0.94);
     font-size: var(--zingiber-type-eyebrow);
     font-weight: var(--zingiber-ui-weight);
     letter-spacing: var(--zingiber-type-eyebrow-tracking);
+    text-align: center;
     text-shadow: 0 2px 14px rgba(15, 15, 15, 0.7);
 }
 
@@ -802,11 +894,11 @@ html.zingiber-preload body.zingiber-site {
     max-width: none;
     margin: 0;
     font-family: var(--zingiber-display);
-    font-size: clamp(2.7rem, 4.15vw, 4.3rem);
+    font-size: var(--zingiber-type-hero);
     font-style: normal;
     font-weight: var(--zingiber-display-weight);
-    line-height: 1.06;
-    letter-spacing: var(--zingiber-tracking-display);
+    line-height: 0.94;
+    letter-spacing: var(--zingiber-tracking-display-hero);
     text-shadow: 0 3px 24px rgba(15, 15, 15, 0.42);
 }
 
@@ -823,15 +915,15 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-hero__lede {
     max-width: 30rem;
-    margin: clamp(1.15rem, 2.2vh, 1.55rem) auto 0;
+    margin: clamp(0.8rem, 1.5vh, 1.05rem) auto 0;
     color: rgba(237, 231, 225, 0.96);
     font-family: var(--zingiber-body);
     font-size: var(--zingiber-type-sub);
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0.02em;
-    line-height: 1.5;
-    text-shadow: 0 2px 16px rgba(15, 15, 15, 0.72);
+    line-height: 1.2;
+    text-shadow: 0 2px 18px rgba(15, 15, 15, 0.82);
     text-wrap: pretty;
 }
 
@@ -991,7 +1083,7 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    box-shadow: 0 28px 60px rgba(15, 15, 15, 0.1);
+    box-shadow: var(--zingiber-shadow-raised);
 }
 
 .zingiber-chef__figure figcaption {
@@ -1091,7 +1183,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-principles__index {
     color: var(--zingiber-copper);
     font-family: var(--zingiber-display);
-    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-size: var(--zingiber-type-feature);
     font-weight: var(--zingiber-display-weight);
     letter-spacing: 0.02em;
     line-height: 1;
@@ -1099,7 +1191,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-principles__list strong {
     font-family: var(--zingiber-display);
-    font-size: clamp(1.55rem, 2.1vw, 2.15rem);
+    font-size: var(--zingiber-type-feature);
     font-weight: var(--zingiber-display-weight);
 }
 
@@ -1141,7 +1233,9 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-coast__intro h2 {
     grid-column: 1;
     grid-row: 2;
-    max-width: 16ch;
+    /* Wide enough for the authored line: widow prevention joins the last two
+       words with a non-breaking space, so a tighter cap cannot be satisfied. */
+    max-width: 20ch;
     margin-bottom: 0;
     font-size: var(--zingiber-type-section);
     font-weight: var(--zingiber-display-weight);
@@ -1207,7 +1301,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-region__index {
     color: var(--zingiber-copper);
     font-family: var(--zingiber-display);
-    font-size: clamp(3.25rem, 5.6vw, 5rem);
+    font-size: var(--zingiber-type-feature);
     font-weight: var(--zingiber-display-weight);
     letter-spacing: -0.01em;
     line-height: 0.9;
@@ -1216,7 +1310,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-region h3 {
     margin: 0;
     font-family: var(--zingiber-display);
-    font-size: clamp(2rem, 3.3vw, 3.4rem);
+    font-size: var(--zingiber-type-section);
     font-weight: var(--zingiber-display-weight);
     line-height: 1;
     white-space: nowrap;
@@ -1239,7 +1333,7 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     aspect-ratio: 16 / 11;
     object-fit: cover;
-    box-shadow: 0 28px 60px rgba(15, 15, 15, 0.1);
+    box-shadow: var(--zingiber-shadow-raised);
 }
 
 .zingiber-menu-story {
@@ -1276,7 +1370,7 @@ html.zingiber-preload body.zingiber-site {
     bottom: 0;
     width: 48%;
     aspect-ratio: 4 / 5;
-    box-shadow: 0 24px 56px rgba(15, 15, 15, 0.22);
+    box-shadow: var(--zingiber-shadow-floating);
 }
 
 .zingiber-menu-story__copy {
@@ -1344,7 +1438,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-experience__copy .zingiber-panel h2,
 .zingiber-reservations__copy .zingiber-panel h2 {
     max-width: 100%;
-    font-size: clamp(1.85rem, 2.5vw, 2.7rem);
+    font-size: var(--zingiber-type-section);
     font-weight: var(--zingiber-display-weight);
     line-height: 1.14;
     text-wrap: wrap;
@@ -1396,11 +1490,13 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.001);
+    transition: transform 1200ms var(--zingiber-ease-lux);
 }
 
-.zingiber-gallery__item:hover img {
-    transform: none;
-    filter: none;
+.zingiber-gallery__item:hover img,
+.zingiber-gallery__item:focus-within img {
+    transform: scale(1.04);
 }
 
 .zingiber-gallery__item--1 {
@@ -1525,16 +1621,24 @@ html.zingiber-preload body.zingiber-site {
     height: 100%;
     object-fit: cover;
     object-position: center 38%;
+    /* Same grade as the home hero so every hero on the site sits in one key. */
+    filter: brightness(0.54) contrast(1.08) saturate(0.86);
     transform: scale(1.1);
     transform-origin: 38% 38%;
 }
 
 .zingiber-page-hero__veil {
     z-index: -1;
+    background-color: rgba(15, 15, 15, 0.24);
+    /*
+     * These heroes set their copy to the left, so the wash keeps a lean in that
+     * direction — but only a lean. At its old 0.88 the left third went to a flat
+     * black void against a fully lit right half, which is the uneven look the
+     * grade on the image is meant to replace.
+     */
     background-image:
-        linear-gradient(100deg, rgba(15, 15, 15, 0.88) 0%, rgba(15, 15, 15, 0.68) 34%, rgba(15, 15, 15, 0.42) 62%, rgba(15, 15, 15, 0.2) 100%),
-        linear-gradient(180deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.2) 30%, rgba(15, 15, 15, 0.62) 100%);
-    background-size: auto, auto;
+        linear-gradient(100deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.28) 38%, rgba(15, 15, 15, 0.08) 70%, transparent 100%),
+        linear-gradient(180deg, rgba(15, 15, 15, 0.42) 0%, rgba(15, 15, 15, 0.08) 30%, rgba(15, 15, 15, 0.38) 100%);
 }
 
 .zingiber-page-hero__content {
@@ -1546,8 +1650,14 @@ html.zingiber-preload body.zingiber-site {
     padding-bottom: clamp(4.5rem, 8vw, 8rem);
 }
 
+/*
+ * Matches the home hero rather than using raw copper. Copper is a dark ink
+ * (relative luminance 0.23), so over a photograph it only clears 4.5:1 where
+ * the image happens to be near-black — it was failing on the careers and
+ * gallery crops. Copper still leads every eyebrow set on a solid background.
+ */
 .zingiber-page-hero .zingiber-eyebrow {
-    color: var(--zingiber-copper);
+    color: rgba(237, 231, 225, 0.94);
     text-shadow: 0 2px 14px rgba(15, 15, 15, 0.72);
 }
 
@@ -1557,8 +1667,8 @@ html.zingiber-preload body.zingiber-site {
     font-size: var(--zingiber-type-hero);
     font-style: normal;
     font-weight: var(--zingiber-display-weight);
-    line-height: 1.12;
-    letter-spacing: var(--zingiber-tracking-display);
+    line-height: 1.06;
+    letter-spacing: var(--zingiber-tracking-display-hero);
     text-wrap: wrap;
     text-shadow: 0 4px 28px rgba(15, 15, 15, 0.72);
 }
@@ -1620,13 +1730,13 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    box-shadow: 0 36px 70px rgba(15, 15, 15, 0.12);
+    box-shadow: var(--zingiber-shadow-floating);
 }
 
 .zingiber-region__image img,
 .zingiber-page-menu__images img,
 .zingiber-page-careers figure img {
-    box-shadow: 0 28px 60px rgba(15, 15, 15, 0.1);
+    box-shadow: var(--zingiber-shadow-raised);
 }
 
 .zingiber-page-principles {
@@ -1687,14 +1797,14 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-page-principles .zingiber-principles__index {
     color: var(--zingiber-copper);
     font-family: var(--zingiber-display);
-    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-size: var(--zingiber-type-feature);
     font-weight: var(--zingiber-display-weight);
     letter-spacing: 0.02em;
 }
 
 .zingiber-page-principles li strong {
     font-family: var(--zingiber-display);
-    font-size: clamp(1.55rem, 2.1vw, 2.15rem);
+    font-size: var(--zingiber-type-feature);
     font-weight: var(--zingiber-display-weight);
 }
 
@@ -2157,8 +2267,8 @@ html.zingiber-preload body.zingiber-site {
         --zingiber-section-space: clamp(4rem, 9vw, 7rem);
         --zingiber-header-height: 4.5rem;
         --zingiber-header-height-sticky: 4rem;
-        --zingiber-type-hero: clamp(2.25rem, 4.4vw, 3.6rem);
-        --zingiber-type-section: clamp(1.85rem, 3.5vw, 2.9rem);
+        --zingiber-type-hero: clamp(2.05rem, 3.9vw, 3.1rem);
+        --zingiber-type-section: clamp(1.7rem, 3.05vw, 2.5rem);
     }
 
     html {
@@ -2183,7 +2293,7 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-button--header {
         min-height: 44px;
         padding: 0.7rem 1rem;
-        font-size: 0.7rem;
+        font-size: var(--zingiber-type-ui);
     }
 
     .zingiber-logo {
@@ -2270,7 +2380,7 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-principles h2,
     .zingiber-page-principles h2 {
         max-width: none;
-        font-size: clamp(1.45rem, 3.6vw, 2.15rem);
+        font-size: var(--zingiber-type-section);
         line-height: 1.18;
         white-space: normal;
         text-wrap: pretty;
@@ -2353,7 +2463,7 @@ html.zingiber-preload body.zingiber-site {
 @media (min-width: 768px) and (max-width: 1024px) {
     .zingiber-hero__content {
         width: min(40rem, calc(100% - 3rem));
-        padding-block: calc(var(--zingiber-header-height) + 1rem) 2.5rem;
+        padding-block: calc(var(--zingiber-header-height) + 0.55rem) 2.5rem;
     }
 
     .zingiber-page-hero__content {
@@ -2377,13 +2487,15 @@ html.zingiber-preload body.zingiber-site {
 }
 
 @media (max-width: 767px) {
+
     :root {
         --zingiber-container: min(calc(100% - 1.5rem), 46rem);
         --zingiber-section-space: clamp(3.25rem, 11vw, 4.75rem);
         --zingiber-header-height: 4rem;
         --zingiber-header-height-sticky: 3.75rem;
-        --zingiber-type-hero: clamp(1.7rem, 7.2vw, 2.35rem);
-        --zingiber-type-section: clamp(1.8rem, 6.4vw, 2.45rem);
+        --zingiber-type-ui: 0.7rem;
+        --zingiber-type-hero: clamp(1.6rem, 6.6vw, 2.15rem);
+        --zingiber-type-section: clamp(1.65rem, 5.8vw, 2.2rem);
     }
 
     html {
@@ -2413,30 +2525,32 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-hero__media img,
     .zingiber-hero__photo {
-        object-position: 62% center;
+        object-position: 58% 36%;
+        /* The phone crop swings the bright ceiling into frame, so grade harder. */
+        filter: brightness(0.48) contrast(1.08) saturate(0.86);
+        transform: scale(1.12);
+        transform-origin: 58% 32%;
     }
 
     .zingiber-hero__content {
         width: var(--zingiber-container);
-        padding-block: calc(var(--zingiber-header-height) + 0.85rem) 2.25rem;
-        transform: translateY(clamp(-1.25rem, -2vh, -0.5rem));
+        padding-block: calc(var(--zingiber-header-height) + 0.45rem) 2.25rem;
+        transform: translateY(clamp(-1.65rem, -2.4vh, -0.75rem));
     }
 
     .zingiber-hero__veil {
-        background-image:
-            linear-gradient(180deg, rgba(15, 15, 15, 0.44) 0%, transparent 25%, transparent 58%, rgba(15, 15, 15, 0.48) 100%);
+        background-color: rgba(15, 15, 15, 0.36);
     }
 
     .zingiber-hero::after {
         background-image:
-            radial-gradient(ellipse at 50% 46%, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.22) 48%, transparent 76%),
-            linear-gradient(180deg, rgba(15, 15, 15, 0.34), transparent 24%, transparent 58%, rgba(15, 15, 15, 0.46) 100%);
+            linear-gradient(180deg, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.14) 20%, rgba(15, 15, 15, 0.14) 62%, rgba(15, 15, 15, 0.56) 100%);
     }
 
     .zingiber-hero h1 {
         max-width: none;
-        font-size: clamp(1.5rem, 6.3vw, 2.15rem);
-        line-height: 1.1;
+        font-size: var(--zingiber-type-hero);
+        line-height: 0.98;
         font-weight: var(--zingiber-display-weight);
         letter-spacing: -0.015em;
     }
@@ -2447,15 +2561,16 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-hero__lede {
         max-width: 22rem;
-        margin-top: 1.1rem;
+        margin-top: 0.85rem;
         font-size: var(--zingiber-type-sub);
+        line-height: 1.28;
     }
 
     .zingiber-hero__cta {
         width: auto;
         min-height: 56px;
         padding: 1.1rem 1.85rem;
-        font-size: 0.84rem;
+        font-size: var(--zingiber-type-ui);
         box-shadow: 0 14px 32px rgba(15, 15, 15, 0.24);
     }
 
@@ -2468,7 +2583,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-site h2 {
-        font-size: clamp(1.8rem, 6.4vw, 2.45rem);
+        font-size: var(--zingiber-type-section);
         line-height: 1.08;
     }
 
@@ -2483,7 +2598,7 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-principles h2,
     .zingiber-page-principles h2 {
-        font-size: clamp(1.55rem, 6.2vw, 2.05rem);
+        font-size: var(--zingiber-type-section);
         line-height: 1.15;
         white-space: normal;
         text-wrap: pretty;
@@ -2505,13 +2620,13 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-principles__list strong,
     .zingiber-page-principles li strong {
-        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+        font-size: var(--zingiber-type-feature);
         line-height: 1.15;
     }
 
     .zingiber-coast__intro h2 {
         max-width: none;
-        font-size: clamp(1.85rem, 6.8vw, 2.45rem);
+        font-size: var(--zingiber-type-section);
         text-wrap: pretty;
     }
 
@@ -2520,7 +2635,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-region h3 {
-        font-size: clamp(1.8rem, 6.8vw, 2.25rem);
+        font-size: var(--zingiber-type-section);
     }
 
     .zingiber-menu-story__images {
@@ -2616,7 +2731,7 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-page-principles li strong {
-        font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+        font-size: var(--zingiber-type-feature);
         line-height: 1.15;
     }
 
@@ -2665,21 +2780,21 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-button {
         min-height: 48px;
         padding: 0.95rem 1.5rem;
-        font-size: 0.78rem;
+        font-size: var(--zingiber-type-ui);
         letter-spacing: 0.12em;
     }
 
     .zingiber-button--prominent {
         min-height: 56px;
         padding: 1.1rem 1.85rem;
-        font-size: 0.84rem;
+        font-size: var(--zingiber-type-ui);
         letter-spacing: 0.12em;
     }
 
     .zingiber-hero .zingiber-hero__cta {
         min-height: 46px;
         padding: 0.8rem 1.65rem;
-        font-size: 0.68rem;
+        font-size: var(--zingiber-type-ui);
         box-shadow: none;
     }
 
@@ -2715,13 +2830,13 @@ html.zingiber-preload body.zingiber-site {
         display: inline-flex;
         min-height: 44px;
         padding: 0.65rem 0.7rem;
-        font-size: 0.62rem;
+        font-size: var(--zingiber-type-ui);
         letter-spacing: 0.08em;
     }
 
     .zingiber-mobile-toggle {
         gap: 0.35rem;
-        font-size: 0.64rem;
+        font-size: var(--zingiber-type-ui);
     }
 }
 
@@ -2893,7 +3008,7 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-page-gallery__item,
 .zingiber-page-menu__images figure {
     position: relative;
-    box-shadow: 0 28px 64px rgba(15, 15, 15, 0.1);
+    box-shadow: var(--zingiber-shadow-raised);
 }
 
 /* Responsive Frame Adjustments */
@@ -3010,7 +3125,9 @@ html.zingiber-preload body.zingiber-site {
     .zingiber-site *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
         animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
         animation-iteration-count: 1 !important;
     }
 
