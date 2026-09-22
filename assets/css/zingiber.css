@@ -819,23 +819,68 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 52%;
     /*
-     * The darkening is graded into the picture itself instead of being painted
-     * over it. One even multiplier holds the whole frame in the same key;
-     * stacked gradients used to sink the middle and leave the corners bright,
-     * which read as a smudge behind the headline. Contrast and saturation are
-     * nudged so the room stays warm without going muddy.
+     * One anchor, not two. The crop and the zoom pivot used to point at
+     * different heights in the frame (52% against 46%), so enlarging the photo
+     * slid the room away from the spot the composition was built around.
      */
-    filter: brightness(0.54) contrast(1.08) saturate(0.86);
-    transform: scale(1.2);
-    transform-origin: center 46%;
+    object-position: 50% 48%;
+    /*
+     * Pivot on the top edge, not the middle. The lede used to land on the
+     * banquette line — the brightest, highest-variance band in the whole
+     * frame (brightness spread 0.094 against 0.041 on the wall above it), and
+     * variance, not average darkness, is what makes type hard to read.
+     * Expanding from the top slides that band down past the button and leaves
+     * the headline and the lede together on the calm fluted wall.
+     */
+    transform-origin: 50% 0%;
+    /*
+     * The room is the asset. brightness(0.54) played the photograph at roughly
+     * a third of its true value, which collapsed the fluted terracotta, the
+     * copper wash and the red root chandeliers into one brown murk. The grade
+     * now only takes the edge off; the contrast the headline needs is bought
+     * locally by the stage light in __veil, not by dimming the whole picture.
+     */
+    filter: brightness(0.74) contrast(1.05) saturate(0.95);
+    /*
+     * scale(1.2) spent resolution it did not have: a 2400px source rendered at
+     * 1920 CSS px is a 1.6x upscale on a 2x screen, and softness at this size
+     * reads as a cheap photograph. It sits at 1 and drifts, so the frame is
+     * sharpest in the first seconds, when the guest is actually reading it.
+     */
+    --zingiber-hero-zoom: 1.12;
+    --zingiber-hero-zoom-end: 1.175;
+    transform: scale(var(--zingiber-hero-zoom));
+}
+
+/*
+ * A still photograph announces a stock library; a frame that breathes announces
+ * a room. 28s is slow enough that no one catches it moving — they only notice
+ * the hero feels alive. Gated on no-preference so vestibular users get the still.
+ */
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-hero__media img,
+    .zingiber-hero__photo {
+        animation: zingiber-hero-drift 28s cubic-bezier(0.22, 0.61, 0.36, 1) 400ms forwards;
+    }
+}
+
+@keyframes zingiber-hero-drift {
+    from {
+        transform: scale(var(--zingiber-hero-zoom));
+    }
+
+    to {
+        transform: scale(var(--zingiber-hero-zoom-end));
+    }
 }
 
 /*
  * One soft top-to-bottom gradient, there only to seat the header and the
- * scroll guide against the photo. The middle stays near-clear so the graded
- * image carries the frame on its own.
+ * scroll guide against the photo. Both ends are lighter than they were: the
+ * photograph is no longer crushed underneath them, so far less is needed to
+ * hold the nav and the scroll guide, and the ceiling aperture — the best thing
+ * in the picture — is no longer buried under half a stop of black.
  */
 .zingiber-hero::after {
     position: absolute;
@@ -843,27 +888,33 @@ html.zingiber-preload body.zingiber-site {
     inset: 0;
     pointer-events: none;
     background-image:
-        linear-gradient(180deg, rgba(15, 15, 15, 0.5) 0%, rgba(15, 15, 15, 0.12) 22%, rgba(15, 15, 15, 0.12) 66%, rgba(15, 15, 15, 0.42) 100%);
+        linear-gradient(180deg, rgba(15, 15, 15, 0.64) 0%, rgba(15, 15, 15, 0.46) 8%, rgba(15, 15, 15, 0.05) 26%, rgba(15, 15, 15, 0.05) 58%, rgba(15, 15, 15, 0.24) 79%, rgba(15, 15, 15, 0.64) 100%);
     content: "";
 }
 
 /*
- * The flat wash. Even opacity edge to edge is what makes the treatment read as
- * deliberate rather than blotchy.
+ * Stage lighting, not a blackout blind.
+ *
+ * The flat rgba(15,15,15,0.28) wash that used to live here dimmed the headline
+ * and the chandeliers by exactly the same amount, so buying legibility for the
+ * lede cost a stop off every beautiful thing in the room. Two gradients now do
+ * the job the wash was doing badly:
+ *
+ * 1. A wide, very diffuse pool sat directly under the type block. Its falloff
+ *    runs past 80%, so it never resolves into a visible shape — the headline
+ *    simply has darkness beneath it while the ceiling above it does not.
+ * 2. A conventional corner vignette, clear until 56%, to close the frame.
+ *
+ * Net: the type sits on slightly more darkness than before, and the upper half
+ * of the room plays at roughly twice its old brightness.
  */
 .zingiber-hero__veil {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background-color: rgba(15, 15, 15, 0.28);
-    /*
-     * A photographic vignette: clear through the middle, weighted at the
-     * corners. Note this is the inverse of the scrim it replaced, which darkened
-     * the centre and left the corners bright — the reason the old frame read as
-     * a smudge sitting behind the headline instead of a lit room.
-     */
     background-image:
-        radial-gradient(ellipse 78% 82% at 50% 46%, transparent 0%, transparent 46%, rgba(15, 15, 15, 0.22) 76%, rgba(15, 15, 15, 0.42) 100%);
+        radial-gradient(ellipse 60% 42% at 50% 47%, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.39) 44%, rgba(15, 15, 15, 0.11) 78%, transparent 100%),
+        radial-gradient(ellipse 104% 96% at 50% 45%, transparent 56%, rgba(15, 15, 15, 0.14) 80%, rgba(15, 15, 15, 0.34) 100%);
 }
 
 .zingiber-hero__content {
@@ -874,7 +925,7 @@ html.zingiber-preload body.zingiber-site {
     align-items: center;
     flex-direction: column;
     padding-block: calc(var(--zingiber-header-height) + 0.2rem) 3rem;
-    transform: translateY(clamp(-3.35rem, -4.4vh, -1.85rem));
+    transform: translateY(clamp(-4.9rem, -6.7vh, -3.2rem));
     text-align: center;
 }
 
@@ -882,8 +933,15 @@ html.zingiber-preload body.zingiber-site {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 0.5rem;
-    margin: 0 auto clamp(1.05rem, 2.1vh, 1.6rem);
+    gap: 0.62rem;
+    /*
+     * The gap ladder down this block was 8 / 19 / 13 / 24 / 25 — it pinched in
+     * the middle, which left the lede stuck to the headline and floating away
+     * from the button. Each interval now opens as the eye travels down, so the
+     * block reads as three deliberate beats (name, statement, invitation)
+     * rather than five things that happen to be stacked.
+     */
+    margin: 0 auto clamp(1.7rem, 3.3vh, 2.5rem);
 }
 
 .zingiber-hero .zingiber-eyebrow {
@@ -928,33 +986,62 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-hero__lede {
     max-width: 30rem;
-    margin: clamp(0.8rem, 1.5vh, 1.05rem) auto 0;
+    margin: clamp(1.3rem, 2.4vh, 1.75rem) auto 0;
     color: rgba(237, 231, 225, 0.96);
     font-family: var(--zingiber-body);
-    font-size: var(--zingiber-type-sub);
+    /*
+     * The shared 1rem body size is right in a column of text and too quiet
+     * under a 60px headline across a 1700px frame — the other half of the
+     * client's "hard to read". This ramps 16.9px to 18.4px across desktop
+     * without touching --zingiber-type-sub, which the rest of the site uses.
+     */
+    font-size: clamp(1.02rem, 0.95rem + 0.22vw, 1.15rem);
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0.02em;
-    line-height: 1.2;
+    line-height: 1.12;
     text-shadow: 0 2px 18px rgba(15, 15, 15, 0.82);
-    text-wrap: pretty;
+    /*
+     * pretty only protects the last line from orphaning; it left a 416px line
+     * over a 267px one, which is a visibly lopsided rag under a centred
+     * headline. balance evens the two lines instead.
+     */
+    text-wrap: balance;
 }
 
 .zingiber-hero__hairline {
     width: 3.25rem;
     height: 1px;
-    margin-top: clamp(1.5rem, 2.6vh, 2rem);
+    margin-top: clamp(1.85rem, 3.1vh, 2.4rem);
     background: var(--zingiber-copper);
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 .zingiber-hero__cta {
     align-self: center;
-    margin-top: clamp(1.5rem, 2.8vh, 2rem);
+    /*
+     * At 64px tall and a full sand fill this was the brightest object in the
+     * frame — brighter than the wordmark, brighter than the headline — so the
+     * eye landed on the button before it read the name or the promise. Trimmed
+     * to 54px with tighter tracking, it still wins the page as the one primary
+     * action without out-shouting what it is inviting you into. Comfortably
+     * above the 44px touch minimum.
+     */
+    min-height: 54px;
+    margin-top: clamp(1.85rem, 3.1vh, 2.4rem);
+    padding: 1.05rem 2.45rem;
     border-color: var(--zingiber-sand);
     background: var(--zingiber-sand);
     color: var(--zingiber-charcoal);
-    box-shadow: 0 16px 40px rgba(15, 15, 15, 0.26);
+    /*
+     * A single hard drop shadow reads as a sticker pasted onto the photograph.
+     * Three stacked, widening and softening, is how an object actually sits in
+     * a lit room.
+     */
+    box-shadow:
+        0 1px 2px rgba(15, 15, 15, 0.16),
+        0 8px 20px rgba(15, 15, 15, 0.18),
+        0 20px 48px rgba(15, 15, 15, 0.16);
 }
 
 .zingiber-hero__cta:hover {
@@ -2682,11 +2769,25 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-hero__media img,
     .zingiber-hero__photo {
-        object-position: 58% 36%;
-        /* The phone crop swings the bright ceiling into frame, so grade harder. */
-        filter: brightness(0.48) contrast(1.08) saturate(0.86);
-        transform: scale(1.12);
-        transform-origin: 58% 32%;
+        /*
+         * The phone crop swings the bright ceiling into frame, so it still
+         * grades a little harder than desktop — but only a little. scale(1.12)
+         * on a 3x screen was a 2.1x upscale of the source, which is where a
+         * hero photograph starts to look like a screenshot of itself.
+         */
+        object-position: 58% 38%;
+        /*
+         * A 16:9 frame in a 0.46 phone window fills by height, so every pixel
+         * of ceiling and floor is in shot and object-position's vertical value
+         * does nothing. The only control left is the zoom, which is used here
+         * to crop the empty foreground and drop the room's horizon below the
+         * lede rather than through it. Pivoting near the top keeps the frame
+         * filled while the composition slides down.
+         */
+        transform-origin: 58% 6%;
+        filter: brightness(0.68) contrast(1.05) saturate(0.95);
+        --zingiber-hero-zoom: 1.16;
+        --zingiber-hero-zoom-end: 1.22;
     }
 
     .zingiber-hero__content {
@@ -2696,12 +2797,28 @@ html.zingiber-preload body.zingiber-site {
     }
 
     .zingiber-hero__veil {
-        background-color: rgba(15, 15, 15, 0.36);
+        /*
+         * A phone gives the type a narrower, taller stage than a desktop does,
+         * so the pool is reshaped rather than a flat wash being laid back over
+         * the top of it.
+         */
+        background-image:
+            radial-gradient(ellipse 96% 38% at 50% 44%, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.4) 46%, rgba(15, 15, 15, 0.12) 80%, transparent 100%),
+            radial-gradient(ellipse 120% 92% at 50% 44%, transparent 58%, rgba(15, 15, 15, 0.16) 82%, rgba(15, 15, 15, 0.34) 100%);
     }
 
     .zingiber-hero::after {
         background-image:
-            linear-gradient(180deg, rgba(15, 15, 15, 0.52) 0%, rgba(15, 15, 15, 0.14) 20%, rgba(15, 15, 15, 0.14) 62%, rgba(15, 15, 15, 0.56) 100%);
+            linear-gradient(
+                180deg,
+                rgba(15, 15, 15, 0.72) 0%,
+                rgba(15, 15, 15, 0.56) 8%,
+                rgba(15, 15, 15, 0.34) 20%,
+                rgba(15, 15, 15, 0.08) 34%,
+                rgba(15, 15, 15, 0.06) 56%,
+                rgba(15, 15, 15, 0.24) 78%,
+                rgba(15, 15, 15, 0.66) 100%
+            );
     }
 
     .zingiber-hero h1 {
@@ -2718,9 +2835,12 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-hero__lede {
         max-width: 22rem;
-        margin-top: 0.85rem;
+        margin-top: 1.15rem;
+        /* 16px holds on a phone — below it iOS auto-zooms — but the leading
+         * follows desktop so the client's tighter line gap reaches every
+         * screen, not just the wide ones. */
         font-size: var(--zingiber-type-sub);
-        line-height: 1.28;
+        line-height: 1.18;
     }
 
     .zingiber-hero__cta {
@@ -3325,16 +3445,29 @@ html.zingiber-preload body.zingiber-site {
 }
 
 .zingiber-lightbox__control {
+    /* Reset Vonaco’s global `button` padding/radius so these stay true circles. */
+    box-sizing: border-box;
     display: grid;
     place-items: center;
+    flex-shrink: 0;
     width: 3rem;
     height: 3rem;
+    aspect-ratio: 1;
+    padding: 0;
     border: 1px solid rgba(237, 231, 225, 0.32);
     border-radius: 50%;
     background-color: rgba(237, 231, 225, 0.06);
     color: var(--zingiber-sand);
+    font-size: 1rem;
+    font-weight: inherit;
+    letter-spacing: normal;
+    line-height: 1;
+    text-shadow: none;
+    text-transform: none;
     cursor: pointer;
     touch-action: manipulation;
+    appearance: none;
+    -webkit-appearance: none;
     transition: border-color 220ms var(--zingiber-ease), background-color 220ms var(--zingiber-ease), color 220ms var(--zingiber-ease);
 }
 
@@ -3343,10 +3476,16 @@ html.zingiber-preload body.zingiber-site {
     height: 1.25rem;
 }
 
-.zingiber-lightbox__control:hover {
+.zingiber-lightbox__control:hover,
+.zingiber-lightbox__control:focus-visible {
     border-color: var(--zingiber-copper);
     background-color: rgba(184, 115, 51, 0.18);
     color: #F4EFEA;
+}
+
+.zingiber-lightbox__control:focus-visible {
+    outline: 2px solid var(--zingiber-copper);
+    outline-offset: 3px;
 }
 
 .zingiber-lightbox__control[disabled] {
@@ -3360,10 +3499,10 @@ html.zingiber-preload body.zingiber-site {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 0.85rem;
     min-height: 0;
     margin: 0;
-    padding: 3.5rem 0 1rem;
+    padding: 3.5rem 0 0.75rem;
 }
 
 .zingiber-lightbox__frame {
@@ -3394,7 +3533,7 @@ html.zingiber-preload body.zingiber-site {
     margin: 0;
     color: rgba(237, 231, 225, 0.86);
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.45;
     text-align: center;
 }
 
@@ -3403,8 +3542,8 @@ html.zingiber-preload body.zingiber-site {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    padding-top: 0.5rem;
+    gap: 1.25rem;
+    padding-top: 0.25rem;
 }
 
 .zingiber-lightbox__counter {
