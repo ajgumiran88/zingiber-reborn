@@ -71,8 +71,10 @@ get_header('zingiber');
 
         <section class="zingiber-page-principles" aria-labelledby="about-principles-title">
             <div class="zingiber-container">
-                <p class="zingiber-eyebrow" data-zingiber-reveal><?php esc_html_e('What Guides Us', 'vonaco'); ?></p>
-                <h2 id="about-principles-title" data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows('Four Principles. One Point of View.')); ?></h2>
+                <div class="zingiber-principles__heading" data-zingiber-reveal>
+                    <p class="zingiber-eyebrow"><?php esc_html_e('What Guides Us', 'vonaco'); ?></p>
+                    <h2 id="about-principles-title"><?php echo esc_html(zingiber_prevent_widows('Four Principles. One Point of View.')); ?></h2>
+                </div>
                 <ol>
                     <?php foreach ($home['principles'] as $index => $principle) : ?>
                         <li data-zingiber-reveal>

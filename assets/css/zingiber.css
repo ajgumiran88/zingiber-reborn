@@ -1174,8 +1174,6 @@ html.zingiber-preload body.zingiber-site {
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 0 0 2.75rem;
-    background-color: var(--zingiber-sand);
 }
 
 .zingiber-chef__figure img {
@@ -1183,18 +1181,33 @@ html.zingiber-preload body.zingiber-site {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    box-shadow: var(--zingiber-shadow-raised);
 }
 
+/*
+ * The caption used to sit in a 2.75rem sand skirt below the photograph, which
+ * read as a white bar bolted to the image. It now sits on the photograph
+ * itself, lit by a short gradient that only touches the bottom third — enough
+ * to carry sand type at AA without turning into a second slab.
+ */
 .zingiber-chef__figure figcaption {
     position: absolute;
     right: 0;
-    bottom: 0.65rem;
+    bottom: 0;
     left: 0;
-    color: var(--zingiber-burnt-red);
+    padding: 4rem clamp(1.15rem, 3vw, 1.6rem) clamp(1rem, 2.4vw, 1.35rem);
+    background-image: linear-gradient(
+        180deg,
+        rgba(15, 15, 15, 0) 0%,
+        rgba(15, 15, 15, 0.08) 34%,
+        rgba(15, 15, 15, 0.46) 70%,
+        rgba(15, 15, 15, 0.78) 100%
+    );
+    color: var(--zingiber-sand);
     font-family: var(--zingiber-display);
     font-size: var(--zingiber-type-sub);
     font-style: italic;
+    line-height: 1.3;
+    text-shadow: 0 1px 10px rgba(15, 15, 15, 0.55);
 }
 
 .zingiber-principles {
@@ -1216,6 +1229,16 @@ html.zingiber-preload body.zingiber-site {
     gap: 0.85rem;
     margin-bottom: 3.5rem;
     text-align: center;
+}
+
+/*
+ * Tracked uppercase carries a trailing letter-space after its last glyph, so a
+ * geometrically centred eyebrow always lands optically left of the title under
+ * it. Pad the start back by roughly one tracking step.
+ */
+.zingiber-principles__heading .zingiber-eyebrow {
+    margin-bottom: 0;
+    padding-inline-start: 0.22em;
 }
 
 .zingiber-principles .zingiber-eyebrow {
@@ -1244,12 +1267,12 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-principles__list li {
     display: flex;
-    min-height: 20.5rem;
+    min-height: 16rem;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 0.85rem;
-    padding: 2rem 1.15rem 1.75rem;
+    gap: 0.7rem;
+    padding: 1.6rem 1rem 1.4rem;
     text-align: center;
     background: rgba(15, 15, 15, 0.18);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
@@ -1262,14 +1285,14 @@ html.zingiber-preload body.zingiber-site {
 .zingiber-principles__icon {
     display: grid;
     place-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3.25rem;
+    height: 3.25rem;
     color: var(--zingiber-copper);
 }
 
 .zingiber-icon--principle {
-    width: 2.9rem;
-    height: 2.9rem;
+    width: 2.4rem;
+    height: 2.4rem;
 }
 
 /* Cormorant defaults to old-style figures, so 0/1/2 and 3/4 sit on different
@@ -1389,9 +1412,13 @@ html.zingiber-preload body.zingiber-site {
     max-width: 22rem;
 }
 
-/* Odd rows put the copy in the left column, so align it to the inner edge. */
+/* Odd rows put the copy in the left column, so align it to the inner edge and
+   rag the type to the right, so the ragged edge faces the page gutter and the
+   flush edge meets the photograph. */
 .zingiber-region:not(.is-reversed) .zingiber-region__copy {
     justify-self: end;
+    align-items: flex-end;
+    text-align: right;
 }
 
 .zingiber-region.is-reversed .zingiber-region__copy {
@@ -1854,7 +1881,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-page-principles .zingiber-eyebrow {
     color: var(--zingiber-sand);
-    margin-bottom: 0.85rem;
+    margin-bottom: 0;
 }
 
 .zingiber-page-principles h2 {
@@ -1869,19 +1896,19 @@ html.zingiber-preload body.zingiber-site {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1px;
-    margin: 3.5rem 0 0;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .zingiber-page-principles li {
     display: flex;
-    min-height: 20.5rem;
+    min-height: 16rem;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 0.85rem;
-    padding: 2rem 1.15rem 1.75rem;
+    gap: 0.7rem;
+    padding: 1.6rem 1rem 1.4rem;
     background: rgba(15, 15, 15, 0.18);
     transition: background-color var(--zingiber-duration) var(--zingiber-ease);
 }
@@ -2502,6 +2529,14 @@ html.zingiber-preload body.zingiber-site {
         order: 0;
     }
 
+    /* Stacked rows have no inner edge to flush against — a right rag under a
+       full-width photo reads as a mistake rather than a decision. */
+    .zingiber-region:not(.is-reversed) .zingiber-region__copy {
+        justify-self: start;
+        align-items: flex-start;
+        text-align: left;
+    }
+
 }
 
 @media (max-width: 900px) {
@@ -2998,7 +3033,6 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-page-principles ol {
         grid-template-columns: 1fr;
-        margin-top: 1.75rem;
     }
 
     .zingiber-page-principles li {
@@ -3070,7 +3104,6 @@ html.zingiber-preload body.zingiber-site {
 
     .zingiber-chef__figure {
         width: 100%;
-        padding: 0.75rem 0.75rem 2.75rem;
     }
 
     .zingiber-page-contact__label {
@@ -3118,9 +3151,6 @@ html.zingiber-preload body.zingiber-site {
     background-color: var(--zingiber-sand);
 }
 
-.zingiber-chef__figure {
-    background-color: var(--zingiber-sand);
-}
 
 .zingiber-page-contact__details {
     border-color: rgba(156, 71, 34, 0.28);
@@ -3268,7 +3298,6 @@ html.zingiber-preload body.zingiber-site {
     box-shadow: 0 20px 40px rgba(15, 15, 15, 0.2);
 }
 
-.zingiber-chef__figure,
 .zingiber-region__image,
 .zingiber-page-editorial__image,
 .zingiber-page-gallery__item,
