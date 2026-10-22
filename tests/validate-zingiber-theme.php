@@ -91,7 +91,7 @@ if (in_array('content', $groups, true)) {
     } else {
         /*
          * Client revision pass: the copy reads without em-dashes, and the home
-         * mosaic carries seven images so it tiles without a ragged corner.
+         * image library retains seven images for use across the site.
          */
         foreach ($flattenStrings($content) as $publicString) {
             foreach (["\u{2014}", '&mdash;'] as $dash) {
@@ -105,7 +105,7 @@ if (in_array('content', $groups, true)) {
         $mosaic = $content['home']['featured_images'] ?? null;
         if (!is_array($mosaic) || count($mosaic) !== 7) {
             $fail('content', sprintf(
-                'Home featured_images must hold 7 images for the gallery mosaic, found %s.',
+                'The featured image library must retain 7 approved images, found %s.',
                 is_array($mosaic) ? (string) count($mosaic) : 'none'
             ));
         }
@@ -234,8 +234,12 @@ if (in_array('templates', $groups, true)) {
             '<nav',
             'aria-label="Primary navigation"',
             'data-zingiber-menu-toggle',
-            'aria-controls="zingiber-primary-menu"',
+            'aria-controls="zingiber-navigation"',
             'aria-expanded="false"',
+            '<dialog',
+            'id="zingiber-navigation"',
+            'data-zingiber-menu-close',
+            'Book Now',
             'type="button"',
             'zingiber_theme_asset_url',
             'wp_head()',
@@ -261,6 +265,11 @@ if (in_array('templates', $groups, true)) {
             '<footer',
             'zingiber_theme_asset_url',
             'wp_footer()',
+            'zingiber-footer__invitation',
+            'zingiber-footer__wordmark',
+            'assets/images/zingiber/ginger-cluster.png',
+            "template-parts/zingiber-enquiry",
+            "\$contact['phone_label']",
             'Jumeirah Lakes Towers',
             '@zingiberdubai',
         ] as $contract) {
@@ -316,7 +325,26 @@ if (in_array('templates', $groups, true)) {
 
     $homeTemplate = $read('template-zingiber-home.php');
     if ($homeTemplate !== null) {
-        foreach (['hero', 'chef', 'principles', 'coastal-regions', 'menu', 'experience', 'gallery', 'reservations'] as $sectionId) {
+        if (strpos($homeTemplate, 'zingiber-story__copy') === false || strpos($homeTemplate, 'View Full Menu') === false) {
+            $fail('templates', 'Home story must use the image/copy split with a View Full Menu link.');
+        }
+        foreach (['data-zingiber-coast-track', 'data-zingiber-coast-index', 'data-zingiber-coast-step="-1"', 'data-zingiber-coast-step="1"', '<progress'] as $sliderContract) {
+            if (strpos($homeTemplate, $sliderContract) === false) {
+                $fail('templates', 'Coastal slider contract missing: ' . $sliderContract);
+            }
+        }
+        if (strpos($homeTemplate, 'zingiber-principle-cards') === false || strpos($homeTemplate, 'Explore %s') === false) {
+            $fail('templates', 'Home principles must be an image card strip with accessible Explore links.');
+        }
+        if (strpos($homeTemplate, 'data-zingiber-principles-step="1"') === false || strpos($header, 'zingiber-navigation__image') === false) {
+            $fail('templates', 'Reference navigation needs a food image and principles need arrow controls.');
+        }
+        $homeSectionIds = ['hero', 'chef', 'coastal-regions', 'principles', 'gallery'];
+        preg_match_all('/<section\b[^>]*\bid="([^"]+)"/i', $homeTemplate, $sectionMatches);
+        if ($sectionMatches[1] !== $homeSectionIds) {
+            $fail('templates', 'Home section order must be hero, story, coast, principles, slim gallery.');
+        }
+        foreach ($homeSectionIds as $sectionId) {
             if (strpos($homeTemplate, 'id="' . $sectionId . '"') === false) {
                 $fail('templates', sprintf('Home 2 section missing: #%s.', $sectionId));
             }
@@ -330,7 +358,7 @@ if (in_array('templates', $groups, true)) {
             "\$home['featured_images']",
             'data-zingiber-reveal',
             "home_url('/menu/')",
-            "home_url('/contact/')",
+            'array_slice($home[\'featured_images\'], 0, 4)',
         ] as $contract) {
             if (strpos($homeTemplate, $contract) === false) {
                 $fail('templates', sprintf('Home 2 template contract missing: %s.', $contract));
@@ -354,8 +382,8 @@ if (in_array('templates', $groups, true)) {
                 $fail('templates', 'The homepage hero must keep reservation actions in the header, not inside the photo.');
             }
 
-            if (strpos($heroMarkup, 'zingiber-button--prominent') === false) {
-                $fail('templates', 'The homepage Menu CTA must use the prominent button treatment.');
+            if (strpos($heroMarkup, 'zingiber-circle-link') === false || strpos($heroMarkup, 'See Menu') === false) {
+                $fail('templates', 'The homepage Menu CTA must use the circular See Menu treatment.');
             }
 
             if (substr_count($heroMarkup, '<span class="zingiber-hero__title-line') !== 2) {
@@ -366,8 +394,10 @@ if (in_array('templates', $groups, true)) {
                 $fail('templates', 'The homepage hero must include an italic display line in the Zingiber heading font.');
             }
 
-            if (strpos($heroMarkup, 'zingiber-hero__hairline') === false) {
-                $fail('templates', 'The homepage hero must include the quiet copper hairline treatment.');
+            foreach (['<video', 'playsinline', 'muted', 'loop', 'poster=', 'preload="none"', 'data-zingiber-hero-video'] as $videoContract) {
+                if (strpos($heroMarkup, $videoContract) === false) {
+                    $fail('templates', 'Poster-first video contract missing: ' . $videoContract);
+                }
             }
 
             if (strpos($heroMarkup, 'zingiber-hero__scroll-guide') === false) {
@@ -394,7 +424,6 @@ if (in_array('templates', $groups, true)) {
             'zingiber-page-contact',
             "mailto:",
             "\$zingiberPage['slug']",
-            "\$zingiberPage['details']",
         ] as $contract) {
             if (strpos($pageTemplate, $contract) === false) {
                 $fail('templates', sprintf('Supporting-page template contract missing: %s.', $contract));
@@ -505,8 +534,8 @@ if (in_array('brand', $groups, true)) {
             $fail('brand', 'Content panels must not reintroduce the copper box outline.');
         }
 
-        if (preg_match('/\.zingiber-gallery__item--7\s*\{/', $css) !== 1) {
-            $fail('brand', 'Home gallery mosaic must place a seventh tile.');
+        if (strpos($css, '.zingiber-gallery-teaser__strip') === false) {
+            $fail('brand', 'Home must have a slim gallery strip.');
         }
 
         $setupSource = $read('inc/zingiber/setup.php') ?? '';
@@ -554,9 +583,8 @@ if (in_array('brand', $groups, true)) {
             $fail('brand', 'The menu visit CTA must stack headline and button in a centered, narrower container.');
         }
 
-        if (!preg_match('/\.zingiber-page-menu\s*\{[^}]*padding-bottom:\s*clamp\(1\.85rem/s', $css)
-            || !preg_match('/\.zingiber-footer\s*\{[^}]*padding:\s*clamp\(1\.75rem/s', $css)) {
-            $fail('brand', 'Menu CTA bottom padding and footer top padding must be reduced to close the beige dead zone.');
+        if (!preg_match('/\.zingiber-page-menu\s*\{[^}]*padding-bottom:\s*clamp\(1\.85rem/s', $css)) {
+            $fail('brand', 'Menu CTA bottom padding must retain its compact spacing.');
         }
     }
 

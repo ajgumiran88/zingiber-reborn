@@ -102,6 +102,7 @@ $navigationLabels = [
 
 <header class="zingiber-header" data-zingiber-header>
     <div class="zingiber-container zingiber-header__inner">
+        <a class="zingiber-book-link" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Book Now', 'vonaco'); ?></a>
         <a class="zingiber-logo-link" href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
             <span class="zingiber-logo-stack">
                 <img
@@ -123,50 +124,44 @@ $navigationLabels = [
         </a>
 
         <button
-            class="zingiber-mobile-toggle"
+            class="zingiber-menu-toggle"
             type="button"
-            aria-controls="zingiber-primary-menu"
+            aria-controls="zingiber-navigation"
             aria-expanded="false"
+            aria-label="<?php esc_attr_e('Open navigation', 'vonaco'); ?>"
             data-zingiber-menu-toggle
         >
-            <span class="zingiber-mobile-toggle__label"><?php esc_html_e('Menu', 'vonaco'); ?></span>
-            <span class="zingiber-mobile-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+            <span class="zingiber-menu-toggle__label"><?php esc_html_e('Menu', 'vonaco'); ?></span>
+            <span class="zingiber-menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
         </button>
 
-        <div class="zingiber-header__actions">
-            <nav class="zingiber-primary-nav" aria-label="Primary navigation" data-zingiber-menu>
-                <?php if (has_nav_menu('primary')) : ?>
-                    <?php
-                    wp_nav_menu([
-                        'theme_location' => 'primary',
-                        'container' => false,
-                        'menu_id' => 'zingiber-primary-menu',
-                        'menu_class' => 'zingiber-menu',
-                        'depth' => 1,
-                        'fallback_cb' => false,
-                    ]);
-                    ?>
-                <?php else : ?>
-                    <ul id="zingiber-primary-menu" class="zingiber-menu">
-                        <?php foreach ($navigationOrder as $slug) : ?>
-                            <?php if (!isset($navigationPages[$slug])) { continue; } ?>
-                            <?php
-                            $itemUrl = $slug === 'home' ? home_url('/') : home_url('/' . $slug . '/');
-                            $isCurrent = ($slug === 'home' && is_front_page()) || is_page($slug);
-                            ?>
-                            <li class="menu-item<?php echo $isCurrent ? ' current-menu-item' : ''; ?>">
-                                <a href="<?php echo esc_url($itemUrl); ?>">
-                                    <?php echo esc_html($navigationLabels[$slug]); ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </nav>
-
-            <a class="zingiber-button zingiber-button--header" href="<?php echo esc_url(home_url('/contact/')); ?>">
-                <?php esc_html_e('Reserve a Table', 'vonaco'); ?>
-            </a>
-        </div>
     </div>
 </header>
+
+<dialog id="zingiber-navigation" class="zingiber-navigation" aria-label="<?php esc_attr_e('Navigation menu', 'vonaco'); ?>" data-zingiber-menu>
+    <div class="zingiber-navigation__masthead zingiber-container">
+        <a class="zingiber-book-link" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Book Now', 'vonaco'); ?></a>
+        <a class="zingiber-navigation__logo" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
+            <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>" alt="Zingiber" width="1400" height="235">
+        </a>
+        <button class="zingiber-menu-toggle" type="button" aria-label="<?php esc_attr_e('Close navigation', 'vonaco'); ?>" data-zingiber-menu-close autofocus>
+            <span class="zingiber-menu-toggle__label"><?php esc_html_e('Close', 'vonaco'); ?></span>
+            <span class="zingiber-menu-toggle__cross" aria-hidden="true"></span>
+        </button>
+    </div>
+    <nav class="zingiber-navigation__links" aria-label="Primary navigation">
+        <ul id="zingiber-primary-menu">
+            <?php foreach ($navigationOrder as $slug) : ?>
+                <?php if (!isset($navigationPages[$slug])) { continue; } ?>
+                <?php $isCurrent = ($slug === 'home' && is_front_page()) || is_page($slug); ?>
+                <li>
+                    <a href="<?php echo esc_url($slug === 'home' ? home_url('/') : home_url('/' . $slug . '/')); ?>"<?php echo $isCurrent ? ' aria-current="page"' : ''; ?>><?php echo esc_html($navigationLabels[$slug]); ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <a class="zingiber-navigation__social" href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <?php echo zingiber_icon_svg('arrow'); ?></a>
+        <figure class="zingiber-navigation__image" aria-hidden="true">
+            <?php zingiber_theme_image($navigationPages['home']['sections']['chef_story']['image'], ['width' => 1536, 'height' => 1024, 'sizes' => '(min-width: 768px) 42rem, 90vw']); ?>
+        </figure>
+    </nav>
+</dialog>

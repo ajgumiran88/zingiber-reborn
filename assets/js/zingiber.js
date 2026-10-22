@@ -118,6 +118,18 @@
         }
     }());
 
+    var heroVideo = document.querySelector('[data-zingiber-hero-video]');
+    if (heroVideo && !reducedMotion && heroVideo.querySelector('source[src]')) {
+        var showPoster = function () {
+            heroVideo.hidden = true;
+            heroVideo.pause();
+        };
+        heroVideo.addEventListener('error', showPoster);
+        heroVideo.querySelector('source').addEventListener('error', showPoster);
+        heroVideo.addEventListener('playing', function () { heroVideo.hidden = false; });
+        heroVideo.play().catch(showPoster);
+    }
+
     var header = document.querySelector('[data-zingiber-header]');
     var toggle = document.querySelector('[data-zingiber-menu-toggle]');
     var menu = document.querySelector('[data-zingiber-menu]');
@@ -169,42 +181,138 @@
     }
 
     if (toggle && menu) {
-        var closeMenu = function (restoreFocus) {
-            menu.classList.remove('is-open');
-            toggle.setAttribute('aria-expanded', 'false');
-
-            if (restoreFocus) {
-                toggle.focus();
-            }
+        var closeToggle = menu.querySelector('[data-zingiber-menu-close]');
+        var enterTimer = 0;
+        var closeMenu = function () {
+            menu.close();
         };
 
-        toggle.addEventListener('click', function () {
-            var isOpen = toggle.getAttribute('aria-expanded') === 'true';
-            menu.classList.toggle('is-open', !isOpen);
-            toggle.setAttribute('aria-expanded', String(!isOpen));
+        menu.addEventListener('close', function () {
+            window.clearTimeout(enterTimer);
+            menu.classList.remove('is-entering');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.documentElement.classList.remove('zingiber-menu-open');
+            toggle.focus({ preventScroll: true });
         });
 
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && menu.classList.contains('is-open')) {
-                closeMenu(true);
+        toggle.addEventListener('click', function () {
+            window.clearTimeout(enterTimer);
+            menu.classList.remove('is-entering');
+            menu.showModal();
+            toggle.setAttribute('aria-expanded', 'true');
+            document.documentElement.classList.add('zingiber-menu-open');
+
+            // Restart staggered entrance on every open (keyframes do not re-fire alone).
+            if (!reducedMotion) {
+                void menu.offsetWidth;
+                menu.classList.add('is-entering');
+                enterTimer = window.setTimeout(function () {
+                    menu.classList.remove('is-entering');
+                }, 900);
             }
         });
 
-        document.addEventListener('click', function (event) {
-            if (!menu.classList.contains('is-open')) {
+        closeToggle.addEventListener('click', closeMenu);
+        menu.addEventListener('click', function (event) {
+            if (event.target.closest('a')) {
+                closeMenu();
+            }
+        });
+
+        // Native modal dialogs make the page inert and handle Escape.
+        menu.addEventListener('keydown', function (event) {
+            if (event.key !== 'Tab') {
                 return;
             }
-
-            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-                closeMenu(false);
+            var links = menu.querySelectorAll('a, button');
+            var first = links[0];
+            var last = links[links.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
             }
         });
+    }
 
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 900 && menu.classList.contains('is-open')) {
-                closeMenu(false);
+    var coast = document.querySelector('[data-zingiber-coast]');
+    if (coast) {
+        var track = coast.querySelector('[data-zingiber-coast-track]');
+        var slides = Array.prototype.slice.call(track.children);
+        var indexLabel = coast.querySelector('[data-zingiber-coast-index]');
+        var progress = coast.querySelector('[data-zingiber-coast-progress]');
+        var previous = coast.querySelector('[data-zingiber-coast-step="-1"]');
+        var next = coast.querySelector('[data-zingiber-coast-step="1"]');
+        var activeSlide = 0;
+        var updateCoast = function () {
+            var center = track.getBoundingClientRect().left + track.clientWidth / 2;
+            var closest = Infinity;
+            slides.forEach(function (slide, index) {
+                var bounds = slide.getBoundingClientRect();
+                var distance = Math.abs(bounds.left + bounds.width / 2 - center);
+                if (distance < closest) {
+                    closest = distance;
+                    activeSlide = index;
+                }
+            });
+            indexLabel.textContent = String(activeSlide + 1).padStart(2, '0');
+            progress.value = activeSlide + 1;
+            previous.disabled = activeSlide === 0;
+            next.disabled = activeSlide === slides.length - 1;
+        };
+        var goToCoast = function (index) {
+            var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
+            track.scrollTo({
+                left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+                behavior: reducedMotion ? 'instant' : 'smooth'
+            });
+        };
+        previous.addEventListener('click', function () { goToCoast(activeSlide - 1); });
+        next.addEventListener('click', function () { goToCoast(activeSlide + 1); });
+        track.addEventListener('scroll', updateCoast, { passive: true });
+        window.addEventListener('resize', updateCoast, { passive: true });
+        track.addEventListener('keydown', function (event) {
+            var destinations = { ArrowLeft: activeSlide - 1, ArrowRight: activeSlide + 1, Home: 0, End: slides.length - 1 };
+            if (Object.prototype.hasOwnProperty.call(destinations, event.key)) {
+                event.preventDefault();
+                goToCoast(destinations[event.key]);
             }
         });
+        updateCoast();
+    }
+
+    var principles = document.querySelector('.zingiber-principle-cards');
+    if (principles) {
+        var previousPrinciple = document.querySelector('[data-zingiber-principles-step="-1"]');
+        var nextPrinciple = document.querySelector('[data-zingiber-principles-step="1"]');
+        var principlesProgress = document.querySelector('[data-zingiber-principles-progress]');
+        var updatePrinciples = function () {
+            var maximum = principles.scrollWidth - principles.clientWidth;
+            previousPrinciple.disabled = principles.scrollLeft <= 2;
+            nextPrinciple.disabled = principles.scrollLeft >= maximum - 2;
+            principlesProgress.value = maximum > 0 ? principles.scrollLeft / maximum * 100 : 100;
+        };
+        var movePrinciples = function (direction) {
+            var cards = principles.children;
+            var step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : principles.clientWidth;
+            principles.scrollTo({ left: principles.scrollLeft + direction * step, behavior: reducedMotion ? 'instant' : 'smooth' });
+        };
+        previousPrinciple.addEventListener('click', function () { movePrinciples(-1); });
+        nextPrinciple.addEventListener('click', function () { movePrinciples(1); });
+        principles.addEventListener('scroll', updatePrinciples, { passive: true });
+        window.addEventListener('resize', updatePrinciples, { passive: true });
+        principles.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                event.preventDefault();
+                movePrinciples(event.key === 'ArrowLeft' ? -1 : 1);
+            } else if (event.key === 'Home' || event.key === 'End') {
+                event.preventDefault();
+                principles.scrollTo({ left: event.key === 'Home' ? 0 : principles.scrollWidth, behavior: reducedMotion ? 'instant' : 'smooth' });
+            }
+        });
+        updatePrinciples();
     }
 
     var revealItems = document.querySelectorAll('[data-zingiber-reveal]');

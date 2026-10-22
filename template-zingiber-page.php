@@ -297,40 +297,15 @@ get_header('zingiber');
     <?php elseif ($zingiberPage['slug'] === 'contact') : ?>
         <section class="zingiber-section zingiber-page-contact">
             <div class="zingiber-container zingiber-page-contact__grid">
-                <div class="zingiber-page-contact__copy" data-zingiber-reveal>
-                    <p class="zingiber-eyebrow"><?php esc_html_e('Contact & Reservations', 'vonaco'); ?></p>
-                    <h2>
-                        <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('We Look Forward')); ?></span>
-                        <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('to Welcoming You')); ?></span>
-                    </h2>
-                    <p><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['body'][0])); ?></p>
-                    <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="mailto:<?php echo esc_attr($zingiberPage['details']['email']); ?>?subject=Reservation%20Enquiry"><?php esc_html_e('Email Reservations', 'vonaco'); ?></a>
-                </div>
-                <div class="zingiber-page-contact__details zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
-                    <div>
-                        <p class="zingiber-page-contact__label"><?php esc_html_e('Visit', 'vonaco'); ?></p>
-                        <address><strong><?php echo esc_html($zingiberPage['details']['address_name']); ?></strong><span><?php echo esc_html(zingiber_prevent_widows($zingiberPage['details']['address'])); ?></span></address>
+                <?php foreach (['experience', 'reservation'] as $sectionKey) : $section = $home['sections'][$sectionKey]; ?>
+                    <div class="zingiber-page-contact__copy" data-zingiber-reveal>
+                        <p class="zingiber-eyebrow"><?php echo esc_html($section['eyebrow']); ?></p>
+                        <h2><?php echo esc_html(zingiber_prevent_widows($section['heading'])); ?></h2>
+                        <?php foreach ($section['body'] as $paragraph) : ?>
+                            <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                        <?php endforeach; ?>
                     </div>
-                    <div>
-                        <p class="zingiber-page-contact__label"><?php esc_html_e('Reservations', 'vonaco'); ?></p>
-                        <a href="mailto:<?php echo esc_attr($zingiberPage['details']['email']); ?>"><?php echo esc_html($zingiberPage['details']['email']); ?></a>
-                        <?php if (!zingiber_is_pending_detail($zingiberPage['details']['phone'] ?? '') && !zingiber_is_pending_detail($zingiberPage['details']['phone_label'] ?? '')) : ?>
-                            <span><?php echo esc_html($zingiberPage['details']['phone'] !== '' ? $zingiberPage['details']['phone'] : $zingiberPage['details']['phone_label']); ?></span>
-                        <?php endif; ?>
-                    </div>
-                    <?php if (!zingiber_is_pending_detail($zingiberPage['details']['hours'] ?? '')) : ?>
-                    <div>
-                        <p class="zingiber-page-contact__label"><?php esc_html_e('Opening Hours', 'vonaco'); ?></p>
-                        <span><?php echo esc_html(zingiber_prevent_widows($zingiberPage['details']['hours'])); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <div>
-                        <p class="zingiber-page-contact__label"><?php esc_html_e('Follow', 'vonaco'); ?></p>
-                        <a href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <?php echo esc_html($zingiberPage['details']['instagram']); ?></a>
-                        <a href="https://www.tiktok.com/@zingiberdubai" target="_blank" rel="noopener noreferrer">TikTok <?php echo esc_html($zingiberPage['details']['tiktok']); ?></a>
-                        <span>Facebook <?php echo esc_html($zingiberPage['details']['facebook']); ?></span>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
     <?php endif; ?>
