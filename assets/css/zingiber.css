@@ -3504,27 +3504,56 @@ html.zingiber-menu-open {
     .zingiber-gallery-teaser__strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    /* JF mobile: vine across seam, centered hero contact, CTA under. */
+    .zingiber-footer__invitation {
+        padding: 3.75rem 1.25rem 3.5rem;
+        text-align: center;
+    }
     .zingiber-footer__invitation-inner {
-        align-items: flex-start;
+        z-index: 2;
         flex-direction: column;
-        gap: 0.25rem;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.15rem;
+        width: 100%;
+        max-width: 22rem;
+        margin-inline: auto;
+        padding-block: 0;
     }
-    .zingiber-footer__invitation-inner {
-        padding-top: 0.5rem;
-    }
-    .zingiber-footer .zingiber-footer__roots {
-        right: 10%;
-        left: auto;
-        width: min(62vw, 16rem);
-        bottom: calc(100% - 2.25rem);
-        translate: none;
+    .zingiber-footer__email {
+        justify-content: center;
+        width: 100%;
+        font-size: clamp(1.55rem, 6.8vw, 2.2rem);
+        line-height: 1.15;
+        text-align: center;
+        text-decoration: none;
+        min-height: 0;
+        color: var(--zingiber-sand);
     }
     .zingiber-footer__book {
-        align-self: flex-end;
+        align-self: center;
+        font-size: clamp(1.35rem, 5.2vw, 1.65rem);
+        gap: 0.4rem;
+        min-height: 0;
+        color: var(--zingiber-sand);
+    }
+    .zingiber-footer__book span { display: none; }
+    .zingiber-footer .zingiber-footer__roots {
+        left: 50%;
+        right: auto;
+        width: min(94vw, 23rem);
+        bottom: calc(100% - 2.6rem);
+        translate: -50% 0;
+        z-index: 1;
     }
     .zingiber-footer .zingiber-footer__grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+        padding-top: 2.5rem;
+    }
+    .zingiber-footer > .zingiber-footer__wordmark {
+        width: calc(100% - 2rem);
+        margin-top: 3rem;
     }
 }
 
@@ -3654,11 +3683,28 @@ html.zingiber-menu-open {
 .zingiber-enquiry__submit:focus-visible { outline: 3px solid var(--zingiber-burnt-red); }
 .zingiber-enquiry__submit span { font-size: 1.25rem; }
 @media (max-width: 767px) {
-    .zingiber-enquiry__grid { grid-template-columns: 1fr; gap: 3rem; }
-    .zingiber-enquiry__art { padding: 2.5rem 0 0 1.5rem; }
-    .zingiber-enquiry__photo { aspect-ratio: 5 / 4; max-height: 24rem; }
+    .zingiber-enquiry {
+        padding: 3rem 0 6.75rem;
+        scroll-margin-top: 5.75rem;
+    }
+    .zingiber-enquiry__grid { grid-template-columns: 1fr; gap: 2.25rem; }
+    .zingiber-enquiry__art { padding: 2rem 0 0 1rem; }
+    .zingiber-enquiry__photo { aspect-ratio: 5 / 4; max-height: 20rem; }
+    .zingiber-enquiry__roots { width: 70%; top: -1.5rem; left: -0.5rem; }
+    .zingiber-enquiry__content h2 { font-size: clamp(2.25rem, 9vw, 3rem); }
     .zingiber-enquiry__fields { grid-template-columns: 1fr; gap: 1.75rem; }
-    .zingiber-enquiry__submit-row { gap: 1.25rem; }
+    .zingiber-enquiry__field label { scroll-margin-top: 5.75rem; }
+    .zingiber-enquiry__submit-row {
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        margin-top: 2rem;
+    }
+    /* Footer bar already carries the mailto — drop the twin. */
+    .zingiber-enquiry__submit-row p { display: none; }
+    .zingiber-enquiry__submit {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
 }
 @media (prefers-reduced-motion: reduce) {
     .zingiber-enquiry__submit { transition: none; }
@@ -3922,10 +3968,18 @@ html.zingiber-menu-open {
 .zingiber-principles-controls progress::-webkit-progress-value { background: var(--zingiber-charcoal); }
 .zingiber-principles-controls progress::-moz-progress-bar { background: var(--zingiber-charcoal); }
 @media (max-width: 767px) {
+    .zingiber-header,
+    .zingiber-header.is-sticky {
+        top: 0.65rem;
+        width: calc(100% - 1.25rem);
+    }
     .zingiber-header .zingiber-header__inner, .zingiber-navigation__masthead { padding-inline: 4px; }
     .zingiber-book-link { padding-inline: 0.6rem; font-size: 0.65rem; }
     .zingiber-principle-cards > li { flex-basis: 86%; }
     .zingiber-principle-card { min-height: 30rem; }
+    .zingiber-site {
+        scroll-padding-top: 5.75rem;
+    }
 }
 @media (prefers-reduced-transparency: reduce) {
     .zingiber-header, .zingiber-header.is-sticky { background: var(--zingiber-charcoal); }
