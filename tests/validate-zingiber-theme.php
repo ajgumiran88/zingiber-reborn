@@ -219,6 +219,7 @@ if (in_array('templates', $groups, true)) {
         'template-zingiber-page.php',
         'assets/css/zingiber.css',
         'assets/js/zingiber.js',
+        'assets/js/vendor/lenis.min.js',
     ];
 
     foreach ($requiredFiles as $relativePath) {
@@ -290,7 +291,7 @@ if (in_array('templates', $groups, true)) {
 
     $script = $read('assets/js/zingiber.js');
     if ($script !== null) {
-        foreach (['aria-expanded', 'Escape', 'focus'] as $contract) {
+        foreach (['aria-expanded', 'Escape', 'focus', 'window.Lenis', 'stopLenis'] as $contract) {
             if (strpos($script, $contract) === false) {
                 $fail('templates', sprintf('Mobile navigation behaviour missing: %s.', $contract));
             }
@@ -311,6 +312,7 @@ if (in_array('templates', $groups, true)) {
             'wp_create_nav_menu',
             "'zingiber-fonts'",
             "'zingiber-site'",
+            "'zingiber-lenis'",
         ] as $contract) {
             if (strpos($setup, $contract) === false) {
                 $fail('templates', sprintf('Theme bootstrap contract missing: %s.', $contract));

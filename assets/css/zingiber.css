@@ -37,9 +37,9 @@
     --zingiber-header-height: 6.5rem;
     --zingiber-header-height-sticky: 4.5rem;
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --zingiber-ease-lux: cubic-bezier(0.22, 0.61, 0.24, 1);
+    --zingiber-ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
     --zingiber-duration: 220ms;
-    --zingiber-duration-lux: 900ms;
+    --zingiber-duration-lux: 880ms;
     /* Layered rather than one flat drop, so plates and interiors sit on the page. */
     --zingiber-shadow-raised:
         0 1px 1px rgba(15, 15, 15, 0.04),
@@ -70,6 +70,17 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--zingiber-header-height-sticky);
+}
+/* Lenis owns wheel inertia — keep native scroll-behavior from fighting it. */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+html.lenis.lenis-stopped {
+    overflow: clip;
 }
 /*
  * Brand guidelines allow two families only: Estratto Var (display) and
@@ -559,7 +570,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-enhanced-motion [data-zingiber-reveal] {
     opacity: 0;
-    transform: translateY(0.75rem);
+    transform: translateY(1.25rem);
     transition:
         opacity var(--zingiber-duration-lux) var(--zingiber-ease-lux),
         transform var(--zingiber-duration-lux) var(--zingiber-ease-lux);
@@ -570,13 +581,13 @@ html.zingiber-preload body.zingiber-site {
 }
 /* Cards and tiles arrive in sequence rather than all at once. */
 .zingiber-enhanced-motion :where( .zingiber-page-principles ol, .zingiber-page-gallery__grid)
-> [data-zingiber-reveal]:nth-child(2) { transition-delay: 70ms; }
+> [data-zingiber-reveal]:nth-child(2) { transition-delay: 90ms; }
 .zingiber-enhanced-motion :where( .zingiber-page-principles ol, .zingiber-page-gallery__grid)
-> [data-zingiber-reveal]:nth-child(3) { transition-delay: 140ms; }
+> [data-zingiber-reveal]:nth-child(3) { transition-delay: 180ms; }
 .zingiber-enhanced-motion :where( .zingiber-page-principles ol, .zingiber-page-gallery__grid)
-> [data-zingiber-reveal]:nth-child(4) { transition-delay: 210ms; }
+> [data-zingiber-reveal]:nth-child(4) { transition-delay: 260ms; }
 .zingiber-enhanced-motion :where( .zingiber-page-gallery__grid)
-> [data-zingiber-reveal]:nth-child(n + 5) { transition-delay: 280ms; }
+> [data-zingiber-reveal]:nth-child(n + 5) { transition-delay: 320ms; }
 .zingiber-enhanced-motion [data-zingiber-reveal].is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -3715,9 +3726,9 @@ html.zingiber-menu-open {
     }
 }
 
-.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(2) { transition-delay: 80ms; }
-.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(3) { transition-delay: 160ms; }
-.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(4) { transition-delay: 240ms; }
+.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(2) { transition-delay: 100ms; }
+.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(3) { transition-delay: 180ms; }
+.zingiber-enhanced-motion .zingiber-footer__grid > [data-zingiber-reveal]:nth-child(4) { transition-delay: 260ms; }
 
 @media (prefers-reduced-motion: reduce) {
     .zingiber-gallery-teaser__tile img {

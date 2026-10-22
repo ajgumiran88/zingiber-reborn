@@ -5,6 +5,31 @@
 
     var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* Ballena-style wheel inertia. Off when user asks for reduced motion. */
+    var lenis = null;
+    if (!reducedMotion && typeof window.Lenis === 'function') {
+        lenis = new window.Lenis({
+            autoRaf: true,
+            lerp: 0.09,
+            smoothWheel: true,
+            syncTouch: true,
+            syncTouchLerp: 0.075,
+            touchInertiaMultiplier: 35
+        });
+        document.documentElement.classList.add('zingiber-lenis');
+    }
+
+    var stopLenis = function () {
+        if (lenis) {
+            lenis.stop();
+        }
+    };
+    var startLenis = function () {
+        if (lenis) {
+            lenis.start();
+        }
+    };
+
     (function initPreloader() {
         var preloader = document.querySelector('[data-zingiber-preloader]');
         if (!preloader) {
@@ -152,11 +177,14 @@
         };
 
         backToTop.addEventListener('click', function () {
+            if (lenis && !reducedMotion) {
+                lenis.scrollTo(0);
+                return;
+            }
             if (reducedMotion) {
                 window.scrollTo(0, 0);
                 return;
             }
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
@@ -193,10 +221,12 @@
             toggle.setAttribute('aria-expanded', 'false');
             document.documentElement.classList.remove('zingiber-menu-open');
             toggle.focus({ preventScroll: true });
+            startLenis();
         });
 
         toggle.addEventListener('click', function () {
             window.clearTimeout(enterTimer);
+            stopLenis();
             menu.classList.remove('is-entering');
             menu.showModal();
             toggle.setAttribute('aria-expanded', 'true');
@@ -282,6 +312,11 @@
         });
         updateCoast();
     }
+
+    /* Keep nested horizontal rails off Lenis touch so swipe stays local. */
+    document.querySelectorAll('.zingiber-principle-cards, .zingiber-coastal__track').forEach(function (rail) {
+        rail.setAttribute('data-lenis-prevent-touch', '');
+    });
 
     var principles = document.querySelector('.zingiber-principle-cards');
     if (principles) {
@@ -598,6 +633,7 @@
                 lightboxImage.removeAttribute('src');
                 document.documentElement.style.overflow = '';
                 document.documentElement.style.paddingRight = '';
+                startLenis();
 
                 if (lastFocused && typeof lastFocused.focus === 'function') {
                     lastFocused.focus();
@@ -717,6 +753,7 @@
 
             var scrollbar = window.innerWidth - document.documentElement.clientWidth;
 
+            stopLenis();
             document.documentElement.style.overflow = 'hidden';
 
             if (scrollbar > 0) {

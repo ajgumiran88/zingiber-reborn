@@ -270,10 +270,19 @@ if (!function_exists('zingiber_enqueue_assets')) {
         if ($licensedFaces !== '') {
             wp_add_inline_style('zingiber-site', $licensedFaces);
         }
+
+        $lenisPath = get_theme_file_path('assets/js/vendor/lenis.min.js');
+        wp_enqueue_script(
+            'zingiber-lenis',
+            zingiber_theme_asset_url('assets/js/vendor/lenis.min.js'),
+            [],
+            is_file($lenisPath) ? (string) filemtime($lenisPath) : '1.1.18',
+            true
+        );
         wp_enqueue_script(
             'zingiber-site',
             zingiber_theme_asset_url('assets/js/zingiber.js'),
-            [],
+            ['zingiber-lenis'],
             is_file($jsPath) ? (string) filemtime($jsPath) : null,
             true
         );
