@@ -27,6 +27,7 @@ $sent = !$errors && ($_GET['enquiry'] ?? '') === 'sent';
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+            <p class="zingiber-enquiry__note"><?php esc_html_e('All fields are required.', 'vonaco'); ?></p>
             <form method="post" action="<?php echo esc_url(home_url('/contact/#zingiber-enquiry')); ?>" class="zingiber-enquiry__form">
                 <input type="hidden" name="zingiber_action" value="enquiry">
                 <?php wp_nonce_field('zingiber_enquiry', 'zingiber_nonce', false); ?>
@@ -45,7 +46,7 @@ $sent = !$errors && ($_GET['enquiry'] ?? '') === 'sent';
                 </div>
                 <div hidden><label for="enquiry-website">Leave this field empty</label><input id="enquiry-website" name="enquiry_website" type="text" tabindex="-1" autocomplete="off"></div>
                 <div class="zingiber-enquiry__submit-row" data-zingiber-reveal>
-                    <button class="zingiber-enquiry__submit" type="submit"><?php esc_html_e('Submit', 'vonaco'); ?><span aria-hidden="true">↗</span></button>
+                    <button class="zingiber-enquiry__submit" type="submit"><?php esc_html_e('Send enquiry', 'vonaco'); ?><span aria-hidden="true">↗</span></button>
                     <p><?php esc_html_e('Prefer email?', 'vonaco'); ?><br><a href="mailto:<?php echo esc_attr($contact['email']); ?>"><?php echo esc_html($contact['email']); ?></a></p>
                 </div>
             </form>
