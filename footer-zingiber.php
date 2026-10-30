@@ -10,13 +10,34 @@ get_template_part('template-parts/zingiber-enquiry');
 ?>
 <footer class="zingiber-footer">
     <div class="zingiber-footer__invitation">
-        <img class="zingiber-footer__roots" data-zingiber-reveal src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/ginger-cluster.png')); ?>" alt="" width="1536" height="1024" loading="lazy" aria-hidden="true">
-        <div class="zingiber-container zingiber-footer__invitation-inner">
+        <img class="zingiber-footer__roots zingiber-root-motion" src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/roots.svg')); ?>" alt="" width="1200" height="163" loading="lazy" aria-hidden="true">
+        <div class="zingiber-container zingiber-footer__invitation-inner" data-zingiber-reveal>
             <a class="zingiber-footer__email" href="mailto:<?php echo esc_attr($contact['email']); ?>"><?php echo esc_html($contact['email']); ?></a>
-            <a class="zingiber-footer__book" href="<?php echo esc_url(home_url('/contact/#zingiber-enquiry')); ?>"><?php esc_html_e('Book a table', 'vonaco'); ?><span aria-hidden="true">↗</span></a>
+            <a class="zingiber-footer__book" href="<?php echo esc_url(zingiber_page_url('/contact/#zingiber-enquiry')); ?>"><?php esc_html_e('Book Now', 'vonaco'); ?><span aria-hidden="true">↗</span></a>
         </div>
     </div>
     <div class="zingiber-container zingiber-footer__grid">
+        <div class="zingiber-footer__brand" data-zingiber-reveal>
+            <?php zingiber_theme_image($siteContent['home']['sections']['chef_story']['image'], ['width' => 768, 'height' => 1152, 'class' => 'zingiber-footer__photo', 'sizes' => '(min-width: 1025px) 20vw, 40vw']); ?>
+            <div class="zingiber-footer__story">
+                <p><?php echo esc_html(zingiber_prevent_widows($siteContent['home']['hero']['subheading'])); ?></p>
+                <a href="<?php echo esc_url(zingiber_page_url($siteContent['home']['calls_to_action']['story']['url'])); ?>"><?php echo esc_html($siteContent['home']['calls_to_action']['story']['label']); ?><span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+        <nav class="zingiber-footer__nav" data-zingiber-reveal aria-label="<?php esc_attr_e('Footer navigation', 'vonaco'); ?>">
+            <p class="zingiber-footer__heading"><?php esc_html_e('Explore', 'vonaco'); ?></p>
+            <ul>
+                <?php foreach ($footerOrder as $slug) : ?>
+                    <li><a href="<?php echo esc_url(zingiber_page_url('/' . $slug . '/')); ?>"><?php echo esc_html($siteContent[$slug]['title']); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="zingiber-footer__social" data-zingiber-reveal>
+                <p class="zingiber-footer__heading"><?php esc_html_e('Follow Along', 'vonaco'); ?></p>
+                <a href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+                <a href="https://www.tiktok.com/@zingiberdubai" target="_blank" rel="noopener noreferrer">TikTok <span aria-hidden="true">↗</span></a>
+                <span>Facebook <?php echo esc_html($contact['facebook']); ?></span>
+            </div>
+        </nav>
         <div class="zingiber-footer__contact" data-zingiber-reveal>
             <h3 class="zingiber-footer__heading"><?php esc_html_e('Visit Zingiber', 'vonaco'); ?></h3>
             <address>
@@ -26,30 +47,16 @@ get_template_part('template-parts/zingiber-enquiry');
             <?php if (!empty($contact['phone'])) : ?>
                 <a href="tel:<?php echo esc_attr(preg_replace('/[^+0-9]/', '', $contact['phone'])); ?>"><?php echo esc_html($contact['phone']); ?></a>
             <?php else : ?>
-                <span><?php echo esc_html($contact['phone_label']); ?></span>
+                <span class="zingiber-phone" dir="ltr"><?php echo esc_html($contact['phone_label']); ?></span>
             <?php endif; ?>
-        </div>
-        <div class="zingiber-footer__hours" data-zingiber-reveal>
-            <h3 class="zingiber-footer__heading"><?php esc_html_e('Opening Hours', 'vonaco'); ?></h3>
-            <p><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></p>
-        </div>
-        <nav class="zingiber-footer__nav" data-zingiber-reveal aria-label="<?php esc_attr_e('Footer navigation', 'vonaco'); ?>">
-            <p class="zingiber-footer__heading"><?php esc_html_e('Explore', 'vonaco'); ?></p>
-            <ul>
-                <?php foreach ($footerOrder as $slug) : ?>
-                    <li><a href="<?php echo esc_url(home_url('/' . $slug . '/')); ?>"><?php echo esc_html($siteContent[$slug]['title']); ?></a></li>
-                <?php endforeach; ?>
-            </ul>
-        </nav>
-        <div class="zingiber-footer__social" data-zingiber-reveal>
-            <p class="zingiber-footer__heading"><?php esc_html_e('Follow Along', 'vonaco'); ?></p>
-            <a href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <?php echo esc_html($contact['instagram']); ?></a>
-            <a href="https://www.tiktok.com/@zingiberdubai" target="_blank" rel="noopener noreferrer">TikTok <?php echo esc_html($contact['tiktok']); ?></a>
-            <span>Facebook <?php echo esc_html($contact['facebook']); ?></span>
+            <div class="zingiber-footer__hours" data-zingiber-reveal>
+                <h3 class="zingiber-footer__heading"><?php esc_html_e('Opening Hours', 'vonaco'); ?></h3>
+                <p><?php echo esc_html(zingiber_prevent_widows($contact['hours'])); ?></p>
+            </div>
         </div>
     </div>
-    <a class="zingiber-container zingiber-footer__wordmark" data-zingiber-reveal href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
-        <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/zingiber-logo-dark.png')); ?>" alt="Zingiber" width="1400" height="235" loading="lazy">
+    <a class="zingiber-container zingiber-footer__wordmark" data-zingiber-reveal href="<?php echo esc_url(zingiber_page_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
+        <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-wordmark.svg')); ?>" alt="Zingiber" width="635" height="130" loading="lazy">
     </a>
     <div class="zingiber-container zingiber-footer__bottom">
         <p>&copy; <?php echo esc_html(date_i18n('Y')); ?> <?php esc_html_e('Zingiber Restaurant. All rights reserved.', 'vonaco'); ?></p>

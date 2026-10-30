@@ -7,6 +7,7 @@
  * only the custom Zingiber page experience and its packaged assets.
  */
 
+require_once __DIR__ . '/language.php';
 require_once __DIR__ . '/content.php';
 require_once __DIR__ . '/enquiry.php';
 
@@ -138,6 +139,11 @@ if (!function_exists('zingiber_icon_svg')) {
             'innovation' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path d="M18 6v3.5M18 26.5V30M8.5 18H5M31 18h-3.5M10.4 10.4l2.5 2.5M23.1 23.1l2.5 2.5M25.6 10.4l-2.5 2.5M12.9 23.1l-2.5 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="18" r="5.2" stroke="currentColor" stroke-width="1.2"/></svg>',
             'consistency' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><circle cx="18" cy="18" r="10.5" stroke="currentColor" stroke-width="1.2"/><circle cx="18" cy="18" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M18 7.5V12M18 24v4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>',
             'storytelling' => '<svg class="zingiber-icon zingiber-icon--principle" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path d="M8 9.5h9.5A4.5 4.5 0 0 1 22 14v13.5H12A4 4 0 0 1 8 23.5v-14Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M28 9.5h-9.5A4.5 4.5 0 0 0 14 14v13.5h10A4 4 0 0 0 28 23.5v-14Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M18 14v13.5" stroke="currentColor" stroke-width="1.2"/></svg>',
+            // Ballena pill arrow; CSS mirrors it for "previous".
+            'long-arrow' => '<svg class="zingiber-icon zingiber-icon--long-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M3 12h18m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            // JF slider chevrons: tall hairline strokes ending in small open dots.
+            'previous' => '<svg class="zingiber-icon zingiber-icon--chevron" width="20" height="40" viewBox="0 0 20 40" fill="none" aria-hidden="true" focusable="false"><path d="M14 5 6 20l8 15" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="5" r="1.7" stroke="currentColor" stroke-width="1"/><circle cx="14" cy="35" r="1.7" stroke="currentColor" stroke-width="1"/></svg>',
+            'next' => '<svg class="zingiber-icon zingiber-icon--chevron" width="20" height="40" viewBox="0 0 20 40" fill="none" aria-hidden="true" focusable="false"><path d="m6 5 8 15-8 15" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="5" r="1.7" stroke="currentColor" stroke-width="1"/><circle cx="6" cy="35" r="1.7" stroke="currentColor" stroke-width="1"/></svg>',
         ];
 
         return $icons[$name] ?? '';
@@ -256,7 +262,7 @@ if (!function_exists('zingiber_enqueue_assets')) {
 
         wp_enqueue_style(
             'zingiber-fonts',
-            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500&display=swap',
+            'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&family=Noto+Sans+Arabic:wght@300;400;500&display=swap',
             [],
             null
         );
@@ -477,3 +483,32 @@ if (!function_exists('zingiber_output_meta_description')) {
     }
 }
 add_action('wp_head', 'zingiber_output_meta_description', 2);
+
+if (!function_exists('zingiber_output_gtm_head')) {
+    function zingiber_output_gtm_head(): void
+    {
+        ?>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KD728N3M');</script>
+<!-- End Google Tag Manager -->
+        <?php
+    }
+}
+add_action('wp_head', 'zingiber_output_gtm_head', 0);
+
+if (!function_exists('zingiber_output_gtm_body')) {
+    function zingiber_output_gtm_body(): void
+    {
+        ?>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD728N3M"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+        <?php
+    }
+}
+add_action('wp_body_open', 'zingiber_output_gtm_body', 0);

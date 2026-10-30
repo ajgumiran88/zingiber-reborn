@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 
-const task = await taskSpace('Zingiber PDF structure');
+const task = await taskSpace('Zingiber interaction QA');
 const page = task.page('p1');
 const output = '/tmp/zingiber-pdf-structure';
 await mkdir(output, { recursive: true });
@@ -53,7 +53,7 @@ for (const width of [375, 768, 1024, 1440]) {
         return menu.width < innerWidth - 16 && !!document.querySelector('.zingiber-navigation__image img');
     }), `${width}: contained menu with food image`);
     assert.equal(await page.evaluate(() => document.activeElement.hasAttribute('data-zingiber-menu-close')), true);
-    assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).overflow), 'hidden');
+    assert.ok(['hidden', 'clip'].includes(await page.evaluate(() => getComputedStyle(document.documentElement).overflow)), 'Dialog locks page scrolling');
     await page.focus('.zingiber-navigation__social');
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.matches('dialog .zingiber-book-link')), true);
@@ -65,23 +65,23 @@ for (const width of [375, 768, 1024, 1440]) {
         && !document.documentElement.classList.contains('zingiber-menu-open'));
 
     await page.evaluate(() => document.querySelector('.zingiber-coastal__controls').scrollIntoView({ behavior: 'instant', block: 'center' }));
-    await page.click('[data-zingiber-coast-step="1"]');
-    await page.waitForFunction(() => document.querySelector('[data-zingiber-coast-index]').textContent === '02');
-    await page.focus('[data-zingiber-coast-track]');
+    await page.click('#coastal-regions [data-zingiber-coast-step="1"]');
+    await page.waitForFunction(() => document.querySelector('#coastal-regions [data-zingiber-coast-index]').textContent === '02');
+    await page.focus('#coastal-regions [data-zingiber-coast-track]');
     await page.keyboard.press('End');
-    await page.waitForFunction(() => document.querySelector('[data-zingiber-coast-index]').textContent === '04');
-    assert.equal(await page.evaluate(() => document.querySelector('[data-zingiber-coast-step="1"]').disabled), true);
+    await page.waitForFunction(() => document.querySelector('#coastal-regions [data-zingiber-coast-index]').textContent === '04');
+    assert.equal(await page.evaluate(() => document.querySelector('#coastal-regions [data-zingiber-coast-step="1"]').disabled), true);
     await page.keyboard.press('Home');
-    await page.waitForFunction(() => document.querySelector('[data-zingiber-coast-index]').textContent === '01');
+    await page.waitForFunction(() => document.querySelector('#coastal-regions [data-zingiber-coast-index]').textContent === '01');
 
-    await page.evaluate(() => document.querySelector('.zingiber-principles-controls').scrollIntoView({ behavior: 'instant', block: 'center' }));
-    await page.click('[data-zingiber-principles-step="1"]');
-    await page.waitForFunction(() => document.querySelector('.zingiber-principle-cards').scrollLeft > 10);
-    await page.focus('.zingiber-principle-cards');
-    await page.keyboard.press('End');
-    await page.waitForFunction(() => document.querySelector('[data-zingiber-principles-step="1"]').disabled);
-    await page.keyboard.press('Home');
-    await page.waitForFunction(() => document.querySelector('[data-zingiber-principles-step="-1"]').disabled);
+    // Principles page two at a time: next steps the counter and stops at the last pair.
+    await page.evaluate(() => document.querySelector('#principles').scrollIntoView({ behavior: 'instant' }));
+    await page.click('#principles [data-zingiber-coast-step="1"]');
+    await page.waitForFunction(() => document.querySelector('#principles [data-zingiber-coast-index]').textContent === '02');
+    await page.click('#principles [data-zingiber-coast-step="1"]');
+    await page.waitForFunction(() => document.querySelector('#principles [data-zingiber-coast-step="1"]').disabled);
+    await page.click('#principles [data-zingiber-coast-step="-1"]');
+    await page.waitForFunction(() => !document.querySelector('#principles [data-zingiber-coast-step="1"]').disabled);
 
     // Visit each reveal target so full-page screenshots show actual scrolled content.
     await page.evaluate(async () => {
@@ -138,6 +138,8 @@ for (const slug of ['about', 'menu', 'gallery', 'careers', 'contact']) {
     assert.equal(await page.evaluate(() => document.querySelectorAll('main h1').length), 1, `${slug}: page title`);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, `${slug}: overflow`);
     assert.equal(await page.evaluate(() => document.querySelectorAll('.zingiber-footer__wordmark').length), 1);
+    // Body, main and a section can share the zingiber-page-<slug> class; only the section may take section spacing.
+    assert.ok(await page.evaluate(() => !document.querySelector('.zingiber-page-hero') || document.querySelector('.zingiber-page-hero').getBoundingClientRect().top + scrollY === 0), `${slug}: hero sits under the floating header`);
     await page.click('[data-zingiber-menu-toggle]');
     await page.click(`dialog nav a[href$="/${slug}/"]`);
     await page.waitForLoadState();
@@ -192,3 +194,5 @@ await page.evaluate(() => document.querySelector('#video-check').remove());
 console.log('PASS failed-source poster fallback and reduced-motion playback suppression');
 
 console.log(`Browser checks passed; screenshots: ${output}`);
+
+await task.finish({ keep: [] });

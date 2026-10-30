@@ -10,7 +10,7 @@
     if (!reducedMotion && typeof window.Lenis === 'function') {
         lenis = new window.Lenis({
             autoRaf: true,
-            lerp: 0.09,
+            lerp: 0.08,
             smoothWheel: true,
             syncTouch: true,
             syncTouchLerp: 0.075,
@@ -267,8 +267,8 @@
         });
     }
 
-    var coast = document.querySelector('[data-zingiber-coast]');
-    if (coast) {
+    /* Coastal regions (centred slides) and principles (two-up, start-aligned) share one slider. */
+    document.querySelectorAll('[data-zingiber-coast]').forEach(function (coast) {
         var track = coast.querySelector('[data-zingiber-coast-track]');
         var slides = Array.prototype.slice.call(track.children);
         var indexLabel = coast.querySelector('[data-zingiber-coast-index]');
@@ -276,12 +276,19 @@
         var previous = coast.querySelector('[data-zingiber-coast-step="-1"]');
         var next = coast.querySelector('[data-zingiber-coast-step="1"]');
         var activeSlide = 0;
+        var startAligned = getComputedStyle(slides[0]).scrollSnapAlign.indexOf('center') === -1;
+        /* Distance from a slide's snap edge to where the track snaps it, in viewport pixels. */
+        var offsetOf = function (slide) {
+            var bounds = slide.getBoundingClientRect();
+            var frame = track.getBoundingClientRect();
+            return startAligned
+                ? bounds.left - frame.left - (parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0)
+                : bounds.left + bounds.width / 2 - (frame.left + track.clientWidth / 2);
+        };
         var updateCoast = function () {
-            var center = track.getBoundingClientRect().left + track.clientWidth / 2;
             var closest = Infinity;
             slides.forEach(function (slide, index) {
-                var bounds = slide.getBoundingClientRect();
-                var distance = Math.abs(bounds.left + bounds.width / 2 - center);
+                var distance = Math.abs(offsetOf(slide));
                 if (distance < closest) {
                     closest = distance;
                     activeSlide = index;
@@ -290,14 +297,11 @@
             indexLabel.textContent = String(activeSlide + 1).padStart(2, '0');
             progress.value = activeSlide + 1;
             previous.disabled = activeSlide === 0;
-            next.disabled = activeSlide === slides.length - 1;
+            next.disabled = activeSlide === slides.length - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
         };
         var goToCoast = function (index) {
             var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
-            track.scrollTo({
-                left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
-                behavior: reducedMotion ? 'instant' : 'smooth'
-            });
+            track.scrollBy({ left: offsetOf(slide), behavior: reducedMotion ? 'instant' : 'smooth' });
         };
         previous.addEventListener('click', function () { goToCoast(activeSlide - 1); });
         next.addEventListener('click', function () { goToCoast(activeSlide + 1); });
@@ -311,44 +315,33 @@
             }
         });
         updateCoast();
-    }
+    });
 
     /* Keep nested horizontal rails off Lenis touch so swipe stays local. */
-    document.querySelectorAll('.zingiber-principle-cards, .zingiber-coastal__track').forEach(function (rail) {
+    document.querySelectorAll('[data-zingiber-coast-track]').forEach(function (rail) {
         rail.setAttribute('data-lenis-prevent-touch', '');
     });
 
-    var principles = document.querySelector('.zingiber-principle-cards');
-    if (principles) {
-        var previousPrinciple = document.querySelector('[data-zingiber-principles-step="-1"]');
-        var nextPrinciple = document.querySelector('[data-zingiber-principles-step="1"]');
-        var principlesProgress = document.querySelector('[data-zingiber-principles-progress]');
-        var updatePrinciples = function () {
-            var maximum = principles.scrollWidth - principles.clientWidth;
-            previousPrinciple.disabled = principles.scrollLeft <= 2;
-            nextPrinciple.disabled = principles.scrollLeft >= maximum - 2;
-            principlesProgress.value = maximum > 0 ? principles.scrollLeft / maximum * 100 : 100;
-        };
-        var movePrinciples = function (direction) {
-            var cards = principles.children;
-            var step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : principles.clientWidth;
-            principles.scrollTo({ left: principles.scrollLeft + direction * step, behavior: reducedMotion ? 'instant' : 'smooth' });
-        };
-        previousPrinciple.addEventListener('click', function () { movePrinciples(-1); });
-        nextPrinciple.addEventListener('click', function () { movePrinciples(1); });
-        principles.addEventListener('scroll', updatePrinciples, { passive: true });
-        window.addEventListener('resize', updatePrinciples, { passive: true });
-        principles.addEventListener('keydown', function (event) {
-            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-                event.preventDefault();
-                movePrinciples(event.key === 'ArrowLeft' ? -1 : 1);
-            } else if (event.key === 'Home' || event.key === 'End') {
-                event.preventDefault();
-                principles.scrollTo({ left: event.key === 'Home' ? 0 : principles.scrollWidth, behavior: reducedMotion ? 'instant' : 'smooth' });
-            }
+    /* JF statements: each word inks in as the line scrolls through view (CSS scroll timeline). Split on plain spaces so widow-guard NBSPs stay inside a word. */
+    document.querySelectorAll('[data-zingiber-split]').forEach(function (heading) {
+        var words = heading.textContent.trim().split(/ +/);
+        heading.textContent = '';
+        words.forEach(function (word, index) {
+            var span = document.createElement('span');
+            span.className = 'zingiber-split-word';
+            span.style.setProperty('--i', index);
+            span.textContent = word;
+            heading.appendChild(span);
+            heading.appendChild(document.createTextNode(' '));
         });
-        updatePrinciples();
-    }
+    });
+
+    document.querySelectorAll('.zingiber-story__image, .zingiber-page-editorial__image, .zingiber-enquiry__art').forEach(function (image) {
+        image.setAttribute('data-zingiber-reveal', 'image');
+    });
+    document.querySelectorAll('.zingiber-enquiry__field').forEach(function (field) {
+        field.setAttribute('data-zingiber-reveal', '');
+    });
 
     var revealItems = document.querySelectorAll('[data-zingiber-reveal]');
 
@@ -789,5 +782,82 @@
                 open(item, trigger);
             });
         });
+    }());
+
+    /* JF menu navigation stays inside the menu's full sticky boundary. */
+    (function initMenuTabs() {
+        var tabsRoot = document.querySelector('[data-zingiber-menu-tabs]');
+        if (!tabsRoot) return;
+        var rail = tabsRoot.querySelector('[data-zingiber-menu-rail]');
+        var steps = tabsRoot.querySelectorAll('[data-zingiber-menu-step]');
+        var tabs = Array.prototype.slice.call(tabsRoot.querySelectorAll('.zingiber-page-menu__tab'));
+        var regions = Array.prototype.slice.call(document.querySelectorAll('[data-zingiber-menu-region]'));
+        if (!rail || !tabs.length || !regions.length) return;
+        rail.setAttribute('data-lenis-prevent-touch', '');
+        var current = regions[0].id;
+        var updateRail = function () {
+            var overflow = rail.scrollWidth > rail.clientWidth + 1;
+            steps.forEach(function (button) {
+                button.hidden = !overflow;
+                button.disabled = button.dataset.zingiberMenuStep === '-1'
+                    ? rail.scrollLeft <= 1 : rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 1;
+            });
+        };
+        var setCurrent = function (id) {
+            current = id;
+            tabs.forEach(function (tab) {
+                if (tab.getAttribute('href') === '#' + id) {
+                    tab.setAttribute('aria-current', 'true');
+                    var left = tab.offsetLeft - rail.offsetLeft;
+                    if (left < rail.scrollLeft || left + tab.offsetWidth > rail.scrollLeft + rail.clientWidth) {
+                        rail.scrollTo({ left: Math.max(0, left - (rail.clientWidth - tab.offsetWidth) / 2), behavior: reducedMotion ? 'instant' : 'smooth' });
+                    }
+                } else tab.removeAttribute('aria-current');
+            });
+        };
+        var syncMenu = function () {
+            var nav = tabsRoot.getBoundingClientRect();
+            tabsRoot.classList.toggle('is-stuck', nav.top <= parseFloat(getComputedStyle(tabsRoot).top) + 1);
+            var line = Math.max(0, nav.bottom) + 32;
+            var visible = regions.filter(function (region) {
+                var rect = region.getBoundingClientRect();
+                return rect.top <= line && rect.bottom > line;
+            });
+            var active = visible.find(function (region) { return '#' + region.id === window.location.hash; })
+                || visible.find(function (region) { return region.id === current; }) || visible[0];
+            if (!active) {
+                var above = regions.filter(function (region) { return region.getBoundingClientRect().top <= line; });
+                active = above[above.length - 1] || regions[0];
+            }
+            if (active && active.id !== current) setCurrent(active.id);
+            updateRail();
+        };
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function (event) {
+                if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                var id = tab.getAttribute('href').slice(1);
+                var target = document.getElementById(id);
+                if (!target) return;
+                event.preventDefault();
+                setCurrent(id);
+                history.replaceState(null, '', tab.getAttribute('href'));
+                var offset = parseFloat(getComputedStyle(tabsRoot).top) + tabsRoot.offsetHeight + 20;
+                // Entrance transforms must not shift the anchor destination.
+                var top = 0;
+                for (var node = target; node; node = node.offsetParent) top += node.offsetTop;
+                if (lenis) lenis.scrollTo(top, { offset: -offset, immediate: reducedMotion });
+                else window.scrollTo({ top: top - offset, behavior: reducedMotion ? 'instant' : 'smooth' });
+            });
+        });
+        steps.forEach(function (button) {
+            button.addEventListener('click', function () {
+                rail.scrollBy({ left: Number(button.dataset.zingiberMenuStep) * Math.max(150, rail.clientWidth * 0.75), behavior: reducedMotion ? 'instant' : 'smooth' });
+            });
+        });
+        rail.addEventListener('scroll', updateRail, { passive: true });
+        window.addEventListener('scroll', syncMenu, { passive: true });
+        window.addEventListener('resize', syncMenu);
+        setCurrent(current);
+        syncMenu();
     }());
 }());

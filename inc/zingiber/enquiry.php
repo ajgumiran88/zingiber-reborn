@@ -56,7 +56,7 @@ function zingiber_handle_enquiry(): void
     nocache_headers();
     $GLOBALS['zingiber_enquiry'] = zingiber_submit_enquiry($_POST);
     if (!empty($GLOBALS['zingiber_enquiry']['sent'])) {
-        wp_safe_redirect(home_url('/contact/?enquiry=sent#zingiber-enquiry'), 303);
+        wp_safe_redirect(zingiber_page_url('/contact/?enquiry=sent#zingiber-enquiry'), 303);
         exit;
     }
 }

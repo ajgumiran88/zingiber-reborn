@@ -9,8 +9,7 @@ $sent = !$errors && ($_GET['enquiry'] ?? '') === 'sent';
 <section class="zingiber-enquiry" id="zingiber-enquiry" aria-labelledby="zingiber-enquiry-title">
     <div class="zingiber-container zingiber-enquiry__grid">
         <div class="zingiber-enquiry__art" data-zingiber-reveal aria-hidden="true">
-            <img class="zingiber-enquiry__roots" src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/ginger-cluster.png')); ?>" alt="" width="1536" height="1024" loading="lazy">
-            <?php zingiber_theme_image(['src' => 'assets/images/zingiber/food-dessert.jpg', 'alt' => ''], ['width' => 1024, 'height' => 1536, 'class' => 'zingiber-enquiry__photo', 'sizes' => '(min-width: 768px) 40vw, 90vw', 'aria_hidden' => true]); ?>
+            <?php zingiber_theme_image(['src' => 'assets/images/zingiber/interior-dining-room.jpg', 'alt' => ''], ['width' => 1024, 'height' => 1536, 'class' => 'zingiber-enquiry__photo', 'sizes' => '(min-width: 768px) 40vw, 90vw', 'aria_hidden' => true]); ?>
         </div>
         <div class="zingiber-enquiry__content">
             <p class="zingiber-eyebrow"><?php esc_html_e('Contact & Reservations', 'vonaco'); ?></p>
@@ -28,7 +27,7 @@ $sent = !$errors && ($_GET['enquiry'] ?? '') === 'sent';
                 </div>
             <?php endif; ?>
             <p class="zingiber-enquiry__note"><?php esc_html_e('All fields are required.', 'vonaco'); ?></p>
-            <form method="post" action="<?php echo esc_url(home_url('/contact/#zingiber-enquiry')); ?>" class="zingiber-enquiry__form">
+            <form method="post" action="<?php echo esc_url(zingiber_page_url('/contact/#zingiber-enquiry')); ?>" class="zingiber-enquiry__form">
                 <input type="hidden" name="zingiber_action" value="enquiry">
                 <?php wp_nonce_field('zingiber_enquiry', 'zingiber_nonce', false); ?>
                 <div class="zingiber-enquiry__fields">

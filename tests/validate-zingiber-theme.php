@@ -145,8 +145,8 @@ if (in_array('content', $groups, true)) {
             $fail('content', 'The incomplete phone placeholder must not appear as public contact data.');
         }
 
-        if (strpos($allCopy, 'Phone details coming soon') === false) {
-            $fail('content', 'The editable phone status label is missing.');
+        if (strpos($allCopy, '+971 50 123 4567') === false) {
+            $fail('content', 'The requested phone placeholder is missing.');
         }
 
         if (($content['contact']['details']['hours'] ?? '') !== 'Opening hours coming soon') {
@@ -268,7 +268,7 @@ if (in_array('templates', $groups, true)) {
             'wp_footer()',
             'zingiber-footer__invitation',
             'zingiber-footer__wordmark',
-            'assets/images/zingiber/ginger-cluster.png',
+            'assets/svg/zingiber/roots.svg',
             "template-parts/zingiber-enquiry",
             "\$contact['phone_label']",
             'Jumeirah Lakes Towers',
@@ -336,10 +336,10 @@ if (in_array('templates', $groups, true)) {
             }
         }
         if (strpos($homeTemplate, 'zingiber-principle-cards') === false || strpos($homeTemplate, 'Explore %s') === false) {
-            $fail('templates', 'Home principles must be an image card strip with accessible Explore links.');
+            $fail('templates', 'Home principles must be image cards with accessible Explore links.');
         }
-        if (strpos($homeTemplate, 'data-zingiber-principles-step="1"') === false || strpos($header, 'zingiber-navigation__image') === false) {
-            $fail('templates', 'Reference navigation needs a food image and principles need arrow controls.');
+        if (strpos($homeTemplate, 'zingiber-principle-cards') === false || strpos($header, 'zingiber-navigation__image') === false) {
+            $fail('templates', 'Reference navigation needs a food image and a visible principles grid.');
         }
         $homeSectionIds = ['hero', 'chef', 'coastal-regions', 'principles', 'gallery'];
         preg_match_all('/<section\b[^>]*\bid="([^"]+)"/i', $homeTemplate, $sectionMatches);
@@ -359,7 +359,7 @@ if (in_array('templates', $groups, true)) {
             "\$home['regions']",
             "\$home['featured_images']",
             'data-zingiber-reveal',
-            "home_url('/menu/')",
+            "zingiber_page_url('/menu/')",
             'array_slice($home[\'featured_images\'], 0, 4)',
         ] as $contract) {
             if (strpos($homeTemplate, $contract) === false) {
@@ -376,11 +376,11 @@ if (in_array('templates', $groups, true)) {
         } else {
             $heroMarkup = $heroMatch[1];
 
-            if (substr_count($heroMarkup, "home_url('/menu/')") !== 1) {
+            if (substr_count($heroMarkup, "zingiber_page_url('/menu/')") !== 1) {
                 $fail('templates', 'The homepage hero must contain exactly one Menu CTA.');
             }
 
-            if (strpos($heroMarkup, "home_url('/contact/')") !== false) {
+            if (strpos($heroMarkup, "zingiber_page_url('/contact/')") !== false) {
                 $fail('templates', 'The homepage hero must keep reservation actions in the header, not inside the photo.');
             }
 
@@ -432,8 +432,8 @@ if (in_array('templates', $groups, true)) {
             }
         }
 
-        if (preg_match_all('/<h1\b/i', $pageTemplate) !== 1) {
-            $fail('templates', 'Supporting-page template must contain exactly one H1.');
+            if (preg_match_all('/<h1\b/i', $pageTemplate) !== 2 || strpos($pageTemplate, "\$zingiberPage['slug'] !== 'menu'") === false) {
+                $fail('templates', 'Supporting-page template must keep editorial and menu H1 branches mutually exclusive.');
         }
     }
 
@@ -545,6 +545,12 @@ if (in_array('brand', $groups, true)) {
             $fail('brand', 'Open substitutes for Estratto Var and Luxora Grotesk must be enqueued.');
         }
 
+        if (strpos($setupSource, 'GTM-KD728N3M') === false
+            || strpos($setupSource, "add_action('wp_head', 'zingiber_output_gtm_head'") === false
+            || strpos($setupSource, "add_action('wp_body_open', 'zingiber_output_gtm_body'") === false) {
+            $fail('brand', 'Google Tag Manager GTM-KD728N3M must load via wp_head and wp_body_open.');
+        }
+
         foreach ([':focus-visible', '@media (prefers-reduced-motion: reduce)', '@media (max-width: 767px)'] as $requirement) {
             if (strpos($css, $requirement) === false) {
                 $fail('brand', sprintf('Responsive/accessibility rule missing: %s.', $requirement));
@@ -571,9 +577,9 @@ if (in_array('brand', $groups, true)) {
             $fail('brand', 'Primary CTAs must share a single button radius token.');
         }
 
-        if (strpos($css, '--zingiber-footer-max') === false
-            || !preg_match('/\.zingiber-footer\s*>\s*\.zingiber-container\s*\{[^}]*width:\s*min\(\s*var\(--zingiber-footer-max\)/s', $css)) {
-            $fail('brand', 'Footer navigation must be grouped inside a constrained max-width container.');
+        if (strpos($css, '--zingiber-gutter') === false
+            || !preg_match('/\.zingiber-footer\s*>\s*\.zingiber-container\s*\{[^}]*width:\s*var\(--zingiber-container\)/s', $css)) {
+            $fail('brand', 'Footer navigation must use the shared full-width page gutters.');
         }
 
         if (!preg_match('/\.zingiber-page-menu__images img\s*\{[^}]*aspect-ratio:\s*1\s*\/\s*1/s', $css)) {

@@ -52,7 +52,7 @@ if (!function_exists('zingiber_get_site_content')) {
             ];
         };
 
-        return [
+        $content = [
             'home' => [
                 'slug' => 'home',
                 'title' => 'Zingiber',
@@ -134,9 +134,9 @@ if (!function_exists('zingiber_get_site_content')) {
                 'featured_images' => [
                     $image('food-grilled-lamb.jpg', 'Grilled dish with layered coastal Indian flavours'),
                     $image('interior-bar.jpg', 'Warm bar and dining details inside Zingiber'),
-                    $image('food-coastal-thali.jpg', 'Contemporary presentation inspired by India’s coastal regions'),
-                    $image('food-seafood-rice.jpg', 'Seafood rice dish served with refined garnishes'),
                     $image('food-dessert.jpg', 'Elegant dessert presentation at Zingiber'),
+                    $image('food-seafood-rice.jpg', 'Seafood rice dish served with refined garnishes'),
+                    $image('food-coastal-thali.jpg', 'Contemporary presentation inspired by India’s coastal regions'),
                     $image('interior-dining-room.jpg', 'Contemporary seating and understated elegance in the Zingiber dining room'),
                     $image('interior-feature-wall.jpg', 'Sculptural feature wall and crafted coastal textures at Zingiber'),
                 ],
@@ -309,7 +309,7 @@ if (!function_exists('zingiber_get_site_content')) {
                     'address' => 'Jumeirah Lakes Towers (JLT), Dubai, UAE',
                     'email' => 'reservations@zingiber.ae',
                     'phone' => '',
-                    'phone_label' => 'Phone details coming soon',
+                    'phone_label' => '+971 50 123 4567',
                     'hours' => 'Opening hours coming soon',
                     'instagram' => '@zingiberdubai',
                     'tiktok' => '@zingiberdubai',
@@ -318,6 +318,7 @@ if (!function_exists('zingiber_get_site_content')) {
                 ],
             ],
         ];
+        return function_exists('zingiber_localize_content') ? zingiber_localize_content($content) : $content;
     }
 }
 

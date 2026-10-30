@@ -13,8 +13,8 @@
     --zingiber-body: "Luxora Grotesk", "Manrope", Arial, sans-serif;
     --zingiber-display-weight: 400;
     --zingiber-ui-weight: 500;
-    --zingiber-type-hero: clamp(2.6rem, 3.7vw, 3.9rem);
-    --zingiber-type-section: clamp(1.9rem, 3.05vw, 3.05rem);
+    --zingiber-type-hero: clamp(1.9rem, 3vw, 3rem);
+    --zingiber-type-section: clamp(1.6rem, 2.4vw, 2.35rem);
     --zingiber-type-body: 1rem;
     /* One supporting size for every subheading, lede, summary and caption. */
     --zingiber-type-sub: 1rem;
@@ -23,23 +23,23 @@
     /* One size for every uppercase UI label: nav, buttons, text links, toggle. */
     --zingiber-type-ui: 0.75rem;
     /* One size for the numerals and the short names they label. */
-    --zingiber-type-feature: clamp(1.5rem, 1.95vw, 1.95rem);
+    --zingiber-type-feature: clamp(1.35rem, 1.75vw, 1.75rem);
     --zingiber-type-eyebrow: 0.76rem;
     --zingiber-type-eyebrow-tracking: 0.22em;
     --zingiber-tracking-display: -0.018em;
     --zingiber-tracking-display-hero: -0.028em;
     --zingiber-tracking-ui: 0.14em;
     --zingiber-tracking-body: 0.012em;
-    --zingiber-container: min(88rem, calc(100vw - 3.5rem));
-    --zingiber-footer-max: 75rem;
+    --zingiber-gutter: clamp(0.75rem, 2.08vw, 2.5rem);
+    --zingiber-container: calc(100% - var(--zingiber-gutter) * 2);
     --zingiber-button-radius: 4px;
     --zingiber-section-space: clamp(4.75rem, 8.4vw, 9.5rem);
     --zingiber-header-height: 6.5rem;
     --zingiber-header-height-sticky: 4.5rem;
     --zingiber-ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --zingiber-ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+    --zingiber-ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
     --zingiber-duration: 220ms;
-    --zingiber-duration-lux: 880ms;
+    --zingiber-duration-lux: 900ms;
     /* Layered rather than one flat drop, so plates and interiors sit on the page. */
     --zingiber-shadow-raised:
         0 1px 1px rgba(15, 15, 15, 0.04),
@@ -160,10 +160,10 @@ body.zingiber-site {
 .zingiber-preloader__logo {
     display: block;
     width: min(22rem, 78vw);
-    aspect-ratio: 1400 / 235;
+    aspect-ratio: 635 / 390;
     background-color: var(--zingiber-copper);
-    -webkit-mask: url("../images/zingiber/zingiber-logo-light.png") center / contain no-repeat;
-    mask: url("../images/zingiber/zingiber-logo-light.png") center / contain no-repeat;
+    -webkit-mask: url("../svg/zingiber/english-logo-light.svg") center / contain no-repeat;
+    mask: url("../svg/zingiber/english-logo-light.svg") center / contain no-repeat;
     -webkit-mask-size: contain;
     mask-size: contain;
     transform: translateZ(0);
@@ -289,8 +289,7 @@ html.zingiber-preload body.zingiber-site {
     background-color: rgba(15, 15, 15, 0.68);
     -webkit-backdrop-filter: blur(16px) saturate(120%);
     backdrop-filter: blur(16px) saturate(120%);
-    border-bottom: none !important;
-    box-shadow: none !important;
+    border-bottom: none;
     transition: color var(--zingiber-duration) var(--zingiber-ease), background-color var(--zingiber-duration) var(--zingiber-ease), border-color var(--zingiber-duration) var(--zingiber-ease), box-shadow var(--zingiber-duration) var(--zingiber-ease), background-image var(--zingiber-duration) var(--zingiber-ease), backdrop-filter var(--zingiber-duration) var(--zingiber-ease);
 }
 .zingiber-header.is-sticky {
@@ -299,8 +298,7 @@ html.zingiber-preload body.zingiber-site {
     /* Frosted glass — brand sand, lighter than solid banner */
     background-color: rgba(237, 231, 225, 0.94);
     background-image: none;
-    border-bottom: 1px solid rgba(184, 115, 51, 0.22) !important;
-    box-shadow: none !important;
+    border-bottom: 1px solid rgba(184, 115, 51, 0.22);
     backdrop-filter: blur(18px) saturate(135%);
     -webkit-backdrop-filter: blur(18px) saturate(135%);
 }
@@ -493,6 +491,7 @@ html.zingiber-preload body.zingiber-site {
 }
 .zingiber-main {
     overflow: hidden;
+    overflow: clip; /* clip keeps main out of the scroll-container chain so view() timelines track the page */
 }
 .zingiber-section {
     padding-block: var(--zingiber-section-space);
@@ -570,7 +569,7 @@ html.zingiber-preload body.zingiber-site {
 
 .zingiber-enhanced-motion [data-zingiber-reveal] {
     opacity: 0;
-    transform: translateY(1.25rem);
+    transform: translate3d(0, 2rem, 0) scale(0.97);
     transition:
         opacity var(--zingiber-duration-lux) var(--zingiber-ease-lux),
         transform var(--zingiber-duration-lux) var(--zingiber-ease-lux);
@@ -578,6 +577,11 @@ html.zingiber-preload body.zingiber-site {
 }
 .zingiber-enhanced-motion [data-zingiber-reveal].is-visible {
     will-change: auto;
+}
+/* Menu keeps its Ballena-pattern timing; the JF feel pass is Home and chrome only. */
+.zingiber-page-menu {
+    --zingiber-ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+    --zingiber-duration-lux: 880ms;
 }
 /* Cards and tiles arrive in sequence rather than all at once. */
 .zingiber-enhanced-motion :where( .zingiber-page-principles ol, .zingiber-page-gallery__grid)
@@ -695,8 +699,14 @@ html.zingiber-preload body.zingiber-site {
 @media (prefers-reduced-motion: no-preference) {
 .zingiber-hero__media img,
 .zingiber-hero__photo {
-        animation: zingiber-hero-drift 28s cubic-bezier(0.22, 0.61, 0.36, 1) 400ms forwards;
+        animation:
+            zingiber-hero-drift 28s cubic-bezier(0.22, 0.61, 0.36, 1) 400ms forwards,
+            zingiber-hero-fade 1.4s var(--zingiber-ease-lux) both;
     }
+}
+
+@keyframes zingiber-hero-fade {
+    from { opacity: 0; }
 }
 
 @keyframes zingiber-hero-drift {
@@ -859,6 +869,10 @@ to {
 }
 .zingiber-enhanced-motion .zingiber-hero__scroll-guide[data-zingiber-reveal] {
     transition-delay: 760ms;
+}
+/* Eyebrow, title, then CTA land as three beats rather than one block. */
+.zingiber-enhanced-motion .zingiber-hero h1[data-zingiber-reveal] {
+    transition-delay: 140ms;
 }
 
 @keyframes zingiber-hero-scroll-marker {
@@ -1145,33 +1159,235 @@ to {
     background-color: var(--zingiber-sand);
     padding-bottom: clamp(1.85rem, 3.4vw, 3.5rem);
 }
-.zingiber-page-menu__intro h2 {
-    max-width: 11em;
+/* JF-inspired menu: centered display, region pills, organic plates — Zingiber tokens only. */
+.zingiber-page-menu__mast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-block: clamp(1rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3.5rem);
+}
+.zingiber-page-menu__display {
+    margin: 0;
+    font-size: clamp(2.75rem, 6vw, 4.25rem);
     font-weight: var(--zingiber-display-weight);
-    text-wrap: pretty;
+    line-height: 1.05;
+    letter-spacing: var(--zingiber-tracking-display);
+    /* JF showup: charcoal wipe across clipped text */
+    background-image: linear-gradient(to right, var(--zingiber-charcoal), var(--zingiber-charcoal), var(--zingiber-charcoal), rgba(15, 15, 15, 0));
+    background-size: 500% auto;
+    background-position: 150% center;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+html:not([lang="ar"]) .zingiber-page-menu__display {
+    text-transform: lowercase;
+}
+.zingiber-enhanced-motion .zingiber-page-menu__display.is-visible {
+    animation: zingiber-menu-showup 2.6s linear forwards;
+}
+html:not(.zingiber-enhanced-motion) .zingiber-page-menu__display,
+html:not(.zingiber-enhanced-motion) .zingiber-menu-plate__title {
+    background: none;
+    color: var(--zingiber-charcoal);
+    -webkit-text-fill-color: var(--zingiber-charcoal);
+}
+.zingiber-page-menu__lede {
+    margin: 0;
+    max-width: 22ch;
+    font-family: var(--zingiber-display);
+    font-size: var(--zingiber-type-feature);
+    line-height: 1.25;
+    text-wrap: balance;
 }
 .zingiber-page-menu__intro {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: clamp(3rem, 8vw, 9rem);
+    gap: 0.85rem;
+    max-width: 38rem;
 }
 .zingiber-page-menu__intro p {
+    margin: 0;
     color: var(--zingiber-ink-soft);
+}
+.zingiber-page-menu__tabs {
+    position: sticky;
+    top: 5.75rem;
+    z-index: 30;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem 0.75rem;
+    width: 100%;
+    max-width: 52rem;
+    margin-top: 0.75rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgba(15, 15, 15, 0.08);
+    border-radius: 999px;
+    background: rgba(237, 231, 225, 0.88);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    transition: box-shadow 280ms var(--zingiber-ease), background-color 280ms var(--zingiber-ease);
+}
+.zingiber-page-menu__tabs.is-stuck {
+    box-shadow: 0 10px 28px rgba(15, 15, 15, 0.1);
+    background: rgba(237, 231, 225, 0.96);
+}
+.zingiber-page-menu__tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1.35rem;
+    border: 1px solid rgba(15, 15, 15, 0.55);
+    border-radius: 999px;
+    color: var(--zingiber-charcoal);
+    font: 500 var(--zingiber-type-ui) / 1.2 var(--zingiber-body);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: background-color 280ms var(--zingiber-ease), color 280ms var(--zingiber-ease), border-color 280ms var(--zingiber-ease), transform 280ms var(--zingiber-ease);
+}
+.zingiber-site .zingiber-page-menu__tab:hover,
+.zingiber-site .zingiber-page-menu__tab:focus-visible,
+.zingiber-site .zingiber-page-menu__tab[aria-current="true"] {
+    background: var(--zingiber-charcoal);
+    border-color: var(--zingiber-charcoal);
+    color: var(--zingiber-sand);
+}
+.zingiber-page-menu__tab:active {
+    transform: scale(0.97);
+}
+html[lang="ar"] .zingiber-page-menu__tab {
+    text-transform: none;
 }
 .zingiber-page-menu__images {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
-    gap: clamp(0.75rem, 2vw, 2rem);
-    margin-top: clamp(3rem, 6vw, 5.5rem);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(1.75rem, 3.5vw, 3rem) clamp(1rem, 2.4vw, 2rem);
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    list-style: none;
+    padding: 0;
 }
-.zingiber-page-menu__images figure {
-    margin: 0;
+.zingiber-menu-plate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    scroll-margin-top: 9.5rem;
+}
+.zingiber-menu-plate__figure {
+    margin: 0 0 1.35rem;
+    width: min(100%, 16rem);
+    overflow: hidden;
 }
 .zingiber-page-menu__images img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    box-shadow: 0 18px 40px rgba(15, 15, 15, 0.12);
+    transition: transform 700ms var(--zingiber-ease);
+}
+.zingiber-menu-plate:nth-child(4n + 1) .zingiber-menu-plate__figure {
+    border-radius: 0 48% 48% 0 / 0 50% 50% 0;
+}
+.zingiber-menu-plate:nth-child(4n + 2) .zingiber-menu-plate__figure {
+    border-radius: 50%;
+}
+.zingiber-menu-plate:nth-child(4n + 3) .zingiber-menu-plate__figure {
+    border-radius: 48% 0 0 48% / 50% 0 0 50%;
+}
+.zingiber-menu-plate:nth-child(4n + 4) .zingiber-menu-plate__figure {
+    border-radius: 42% 42% 18% 18% / 48% 48% 22% 22%;
+}
+.zingiber-menu-plate:nth-child(4n + 1) .zingiber-menu-plate__figure img,
+.zingiber-menu-plate:nth-child(4n + 2) .zingiber-menu-plate__figure img,
+.zingiber-menu-plate:nth-child(4n + 3) .zingiber-menu-plate__figure img,
+.zingiber-menu-plate:nth-child(4n + 4) .zingiber-menu-plate__figure img {
+    border-radius: inherit;
+}
+.zingiber-menu-plate__title {
+    margin: 0 0 0.55rem;
+    font-family: var(--zingiber-display);
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+    font-weight: var(--zingiber-display-weight);
+    line-height: 1.2;
+    background-image: linear-gradient(to right, var(--zingiber-charcoal), var(--zingiber-charcoal), var(--zingiber-charcoal), rgba(15, 15, 15, 0));
+    background-size: 500% auto;
+    background-position: 150% center;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.zingiber-enhanced-motion .zingiber-menu-plate.is-visible .zingiber-menu-plate__title {
+    animation: zingiber-menu-showup 2.2s linear forwards;
+}
+.zingiber-menu-plate__copy {
+    margin: 0;
+    max-width: 18rem;
+    color: var(--zingiber-ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .zingiber-menu-plate:hover .zingiber-menu-plate__figure img,
+    .zingiber-menu-plate:focus-within .zingiber-menu-plate__figure img {
+        transform: scale(1.045);
+    }
+}
+@media (max-width: 1100px) {
+    .zingiber-page-menu__images {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .zingiber-page-menu__tabs {
+        top: 6.4rem;
+        border-radius: 1.25rem;
+    }
+}
+@media (max-width: 767px) {
+    .zingiber-page-menu__images {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .zingiber-menu-plate__figure {
+        width: min(100%, 18rem);
+    }
+    .zingiber-page-menu__tabs {
+        top: 5.6rem;
+        max-width: calc(100vw - 1.5rem);
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .zingiber-page-menu__tabs::-webkit-scrollbar {
+        display: none;
+    }
+}
+@keyframes zingiber-menu-showup {
+    from { background-position: 150% center; }
+    to { background-position: 0 center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .zingiber-page-menu__display,
+    .zingiber-menu-plate__title {
+        background: none;
+        color: var(--zingiber-charcoal);
+        -webkit-text-fill-color: var(--zingiber-charcoal);
+        animation: none !important;
+    }
+    .zingiber-menu-plate.is-visible .zingiber-menu-plate__figure {
+        animation: none !important;
+    }
 }
 .zingiber-page-menu__note {
     display: flex;
@@ -1486,7 +1702,7 @@ to {
     border-top: 1px solid rgba(156, 71, 34, 0.28);
 }
 .zingiber-footer > .zingiber-container {
-    width: min(var(--zingiber-footer-max), var(--zingiber-container));
+    width: var(--zingiber-container);
 }
 .zingiber-footer__grid {
     display: grid;
@@ -1595,12 +1811,11 @@ to {
 
 @media (max-width: 900px) {
 :root {
-        --zingiber-container: min(calc(100% - 2rem), 46rem);
         --zingiber-section-space: clamp(4rem, 9vw, 7rem);
         --zingiber-header-height: 4.5rem;
         --zingiber-header-height-sticky: 4rem;
-        --zingiber-type-hero: clamp(2.05rem, 3.9vw, 3.1rem);
-        --zingiber-type-section: clamp(1.7rem, 3.05vw, 2.5rem);
+        --zingiber-type-hero: clamp(1.85rem, 3.5vw, 2.7rem);
+        --zingiber-type-section: clamp(1.55rem, 2.75vw, 2.2rem);
     }
 html {
         scroll-padding-top: var(--zingiber-header-height-sticky);
@@ -1704,13 +1919,12 @@ html {
 
 @media (max-width: 767px) {
 :root {
-        --zingiber-container: min(calc(100% - 1.5rem), 46rem);
         --zingiber-section-space: clamp(3.25rem, 11vw, 4.75rem);
         --zingiber-header-height: 4rem;
         --zingiber-header-height-sticky: 3.75rem;
         --zingiber-type-ui: 0.7rem;
-        --zingiber-type-hero: clamp(1.6rem, 6.6vw, 2.15rem);
-        --zingiber-type-section: clamp(1.65rem, 5.8vw, 2.2rem);
+        --zingiber-type-hero: clamp(1.45rem, 5.9vw, 1.9rem);
+        --zingiber-type-section: clamp(1.5rem, 5.2vw, 1.95rem);
     }
 html {
         scroll-padding-top: calc(var(--zingiber-header-height-sticky) + 0.5rem);
@@ -1857,13 +2071,6 @@ html {
 .zingiber-page-principles li strong {
         font-size: var(--zingiber-type-feature);
         line-height: 1.15;
-    }
-.zingiber-page-menu__images {
-        grid-template-columns: 1fr 1fr;
-    }
-.zingiber-page-menu__images figure:nth-child(2) {
-        grid-column: 1 / -1;
-        grid-row: 1;
     }
 .zingiber-page-menu__note {
         align-items: center;
@@ -2063,9 +2270,8 @@ html {
 }
 .zingiber-page-editorial__image,
 .zingiber-page-gallery__item,
-.zingiber-page-menu__images figure {
+.zingiber-menu-plate__figure {
     position: relative;
-    box-shadow: var(--zingiber-shadow-raised);
 }
 
 /* Responsive Frame Adjustments */
@@ -2403,13 +2609,12 @@ body.zingiber-site {
 
 @media (min-width: 768px) and (max-width: 1024px) {
 :root {
-        --zingiber-container: min(calc(100% - 2.5rem), 52rem);
         --zingiber-section-space: clamp(3.75rem, 7vw, 5.5rem);
-        --zingiber-type-hero: clamp(2.15rem, 4.2vw, 3.15rem);
-        --zingiber-type-section: clamp(1.85rem, 3.2vw, 2.55rem);
+        --zingiber-type-hero: clamp(1.95rem, 3.8vw, 2.8rem);
+        --zingiber-type-section: clamp(1.65rem, 2.9vw, 2.25rem);
     }
 .zingiber-hero__content {
-        width: min(36rem, calc(100% - 2.5rem));
+        width: var(--zingiber-container);
         padding-block: calc(var(--zingiber-header-height) + 1.15rem) 2.75rem;
         transform: translateY(clamp(-1.1rem, -1.8vh, -0.4rem));
     }
@@ -2426,13 +2631,6 @@ body.zingiber-site {
 .zingiber-page-hero__content {
         padding-top: calc(var(--zingiber-header-height) + 1.75rem);
         padding-bottom: clamp(3rem, 7vh, 4.5rem);
-    }
-.zingiber-page-menu__images {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-.zingiber-page-menu__images figure:nth-child(2) {
-        grid-column: auto;
-        grid-row: auto;
     }
 .zingiber-page-gallery__item {
         flex: 1 1 calc(50% - 1rem);
@@ -2501,8 +2699,14 @@ body.zingiber-site {
     font-size: var(--zingiber-type-ui);
     letter-spacing: var(--zingiber-tracking-ui);
     text-transform: uppercase;
-    text-decoration: underline;
-    text-underline-offset: 0.5em;
+    text-decoration: none;
+}
+
+.zingiber-header__end {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
 }
 
 .zingiber-menu-toggle {
@@ -2573,9 +2777,9 @@ html.zingiber-menu-open {
     translate: 0 -1.25rem;
     scale: 0.985;
     transition:
-        opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
-        translate 560ms cubic-bezier(0.16, 1, 0.3, 1),
-        scale 560ms cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 420ms var(--zingiber-ease-lux),
+        translate 560ms var(--zingiber-ease-lux),
+        scale 560ms var(--zingiber-ease-lux),
         overlay 480ms allow-discrete,
         display 480ms allow-discrete;
 }
@@ -2593,7 +2797,7 @@ html.zingiber-menu-open {
     opacity: 0;
     -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
-    transition: opacity 480ms cubic-bezier(0.16, 1, 0.3, 1), overlay 480ms allow-discrete;
+    transition: opacity 480ms var(--zingiber-ease-lux), overlay 480ms allow-discrete;
 }
 
 .zingiber-navigation[open]::backdrop {
@@ -2695,7 +2899,7 @@ html.zingiber-menu-open {
 
 /* Poster-first hero; the still stays behind video until playback succeeds. */
 .zingiber-hero .zingiber-hero__content {
-    width: min(75rem, calc(100% - 3rem));
+    width: var(--zingiber-container);
     padding-block: 9rem 6rem;
     transform: none;
 }
@@ -2707,7 +2911,7 @@ html.zingiber-menu-open {
 .zingiber-hero h1 {
     max-width: none;
     margin: 0;
-    font-size: clamp(2.5rem, 5.3vw, 5.25rem);
+    font-size: var(--zingiber-type-hero);
     line-height: 1.08;
 }
 
@@ -2725,20 +2929,36 @@ html.zingiber-menu-open {
     min-height: 0;
     margin: 2.75rem 0 0;
     padding: 0;
-    border: 1px solid rgba(237,231,225,0.3);
+    border: 0;
     border-radius: 50%;
-    background: rgba(15,15,15,0.68);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    box-shadow: inset 0 1px rgba(237,231,225,0.12);
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
     color: var(--zingiber-sand);
     text-decoration: none;
     transition: background-color 200ms ease;
+    /* Decorative rings stay independent of the label reading direction. */
+    direction: ltr;
+    unicode-bidi: isolate;
 }
 
 .zingiber-hero .zingiber-hero__cta:hover {
-    background: rgba(112, 22, 22, 0.65);
+    background: rgba(237, 231, 225, 0.1);
     transform: none;
+}
+
+/* The CTA's own transition above would otherwise drop the shared reveal fade. */
+.zingiber-enhanced-motion .zingiber-hero .zingiber-hero__cta[data-zingiber-reveal] {
+    transition:
+        opacity var(--zingiber-duration-lux) var(--zingiber-ease-lux) 280ms,
+        transform var(--zingiber-duration-lux) var(--zingiber-ease-lux) 280ms,
+        background-color 200ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-circle-link__ring { transition: scale 700ms var(--zingiber-ease-lux); }
+    .zingiber-circle-link:is(:hover, :focus-visible) .zingiber-circle-link__ring { scale: 1.08; }
 }
 
 .zingiber-circle-link__ring {
@@ -2749,24 +2969,15 @@ html.zingiber-menu-open {
     animation: zingiber-menu-orbit 24s linear infinite;
 }
 
-.zingiber-circle-link__ring text {
-    fill: currentColor;
-    font: 500 10px var(--zingiber-body);
-    letter-spacing: 3px;
-}
-
-.zingiber-circle-link__arrow {
-    display: grid;
-    place-items: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-}
-
-.zingiber-circle-link__arrow svg {
-    width: 1.25rem;
-    height: 1.25rem;
+.zingiber-circle-link__ring path { fill: none; stroke: currentColor; stroke-width: 0.65; }
+.zingiber-circle-link__label {
+    max-width: 6ch;
+    font: 400 1rem/1.2 var(--zingiber-body);
+    text-align: center;
+    text-transform: uppercase;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
 }
 
 .zingiber-hero__video {
@@ -3125,38 +3336,37 @@ html.zingiber-menu-open {
 }
 
 .zingiber-card-section__heading {
-    margin-bottom: 3rem;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
+/* PDF #11: quieter principles H2 so pillars lead the first glance. */
 .zingiber-card-section h2 {
-    max-width: 14em;
-    font-size: clamp(2.5rem, 4.2vw, 4.5rem);
+    max-width: 18em;
+    font-size: clamp(1.35rem, 1.9vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: var(--zingiber-tracking-display);
 }
 
+/* PDF #11: all four pillars at a glance on desktop; 2×2 under 1100px. */
 .zingiber-principle-cards {
-    display: flex;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
     margin: 0;
-    padding: 0.5rem 0 1.5rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
+    padding: 0;
+    overflow: visible;
     list-style: none;
-    scrollbar-width: thin;
-    scrollbar-color: var(--zingiber-burnt-red) transparent;
 }
 
 .zingiber-principle-cards > li {
     min-width: 0;
-    flex: 0 0 calc((100% - 3.75rem) / 3.2);
-    scroll-snap-align: start;
 }
 
 .zingiber-principle-card {
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: 32rem;
+    min-height: 22rem;
     height: 100%;
     isolation: isolate;
     overflow: hidden;
@@ -3234,18 +3444,15 @@ html.zingiber-menu-open {
     outline-offset: -5px;
 }
 
-@media (max-width: 1024px) {
-    .zingiber-principle-cards > li {
-        flex-basis: 43%;
+@media (max-width: 1100px) {
+    .zingiber-principle-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 767px) {
-    .zingiber-principle-cards > li {
-        flex-basis: 86%;
-    }
     .zingiber-principle-card {
-        min-height: 30rem;
+        min-height: 20rem;
     }
 }
 
@@ -3255,36 +3462,90 @@ html.zingiber-menu-open {
     }
 }
 
-/* A brief gallery glimpse leads into the shared visit invitation. */
+/*
+ * The Zingiber Experience, after JF's "what sets us apart": a narrow centred
+ * column flanked by copper pinstripes and whole spices floating at three
+ * depths, then a staggered photo collage. Spices sit behind the photographs.
+ */
 .zingiber-gallery-teaser {
-    padding-top: 0;
-    padding-bottom: clamp(3rem, 6vw, 6rem);
     background: var(--zingiber-sand);
 }
 
+.zingiber-gallery-teaser__stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(28rem, 44vw, 38rem);
+}
+
 .zingiber-gallery-teaser__heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    width: min(29rem, var(--zingiber-container));
 }
 
 .zingiber-gallery-teaser h2 {
-    font-size: clamp(2.25rem, 3.8vw, 4rem);
-    margin: 0;
+    margin: 0 0 1.75rem;
+    font-size: var(--zingiber-type-section);
 }
 
+.zingiber-gallery-teaser__heading > p:not(.zingiber-eyebrow) {
+    margin: 0 0 2rem;
+    color: var(--zingiber-ink-soft);
+    line-height: 1.8;
+}
+
+.zingiber-spice {
+    position: absolute;
+    height: auto;
+    rotate: var(--tilt, 0deg);
+    filter: blur(var(--blur, 0));
+    pointer-events: none;
+}
+
+/* Slots: near (large, sharp, fast), mid, far (small, soft, slow). */
+.zingiber-spice--leaf { right: calc(50% + 21rem); top: 20%; width: clamp(9rem, 15vw, 15rem); --tilt: -26deg; --rise: 7rem; --float: 13s; }
+.zingiber-spice--anise { right: calc(50% + 15.5rem); top: 64%; width: clamp(5.5rem, 9vw, 9rem); --tilt: 14deg; --rise: 4rem; --float: 11s; }
+.zingiber-spice--pepper { right: calc(50% + 15rem); top: 47%; width: clamp(1.6rem, 2.4vw, 2.4rem); --rise: 5rem; --float: 9s; }
+.zingiber-spice--clove { right: calc(50% + 33rem); top: 72%; width: clamp(1.8rem, 2.8vw, 2.8rem); --tilt: 58deg; --blur: 1.5px; --rise: 2rem; --float: 15s; }
+.zingiber-spice--chili { left: calc(50% + 22rem); top: 3%; width: clamp(4.5rem, 7.5vw, 7.5rem); --tilt: 36deg; --rise: 8rem; --float: 12s; }
+.zingiber-spice--cardamom { left: calc(50% + 16.5rem); top: 47%; width: clamp(2.4rem, 3.6vw, 3.6rem); --tilt: 24deg; --blur: 1.8px; --rise: 2.5rem; --float: 14s; }
+.zingiber-spice--cinnamon { left: calc(50% + 17rem); top: 70%; width: clamp(10rem, 17vw, 17rem); --tilt: -16deg; --rise: 5rem; --float: 16s; }
+.zingiber-spice--pepper-far { left: calc(50% + 34rem); top: 40%; width: clamp(1.3rem, 1.9vw, 1.9rem); --blur: 1.2px; --rise: 1.5rem; --float: 10s; }
+
 .zingiber-gallery-teaser__strip {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.75rem;
+    align-items: start;
+    gap: clamp(0.75rem, 1.6vw, 1.5rem);
 }
 
 .zingiber-gallery-teaser__tile {
     margin: 0;
     overflow: hidden;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 5;
+}
+
+/* Collage rhythm: alternate tiles sit lower, and drift further on scroll. */
+.zingiber-gallery-teaser__tile:nth-child(even) {
+    margin-top: clamp(2.5rem, 6vw, 6rem);
+}
+
+@media (max-width: 1023px) {
+    .zingiber-gallery-teaser__stage {
+        min-height: 0;
+        padding-block: 10rem 11rem;
+    }
+    .zingiber-spices { --rise-scale: 0.35; }
+    .zingiber-spice--leaf { inset: -1rem auto auto -1.5rem; width: 8rem; }
+    .zingiber-spice--chili { inset: 0.5rem 1.5rem auto auto; width: 4rem; }
+    .zingiber-spice--pepper { inset: 4rem auto auto 44%; width: 1.5rem; }
+    .zingiber-spice--anise { inset: auto auto 1rem 8%; width: 5.5rem; }
+    .zingiber-spice--cardamom { inset: auto 36% 3rem auto; width: 2.4rem; }
+    .zingiber-spice--cinnamon { inset: auto -2.5rem 2.5rem auto; width: 10rem; }
+    .zingiber-spices :is(.zingiber-spice--clove, .zingiber-spice--pepper-far) { display: none; }
 }
 
 .zingiber-gallery-teaser__tile a, .zingiber-gallery-teaser__tile picture {
@@ -3355,8 +3616,8 @@ html.zingiber-menu-open {
     opacity: 0;
     transform: translate3d(2.5rem, -0.6rem, 0) scale(0.97);
     transition:
-        opacity 780ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 920ms cubic-bezier(0.16, 1, 0.3, 1);
+        opacity 780ms var(--zingiber-ease-lux),
+        transform 920ms var(--zingiber-ease-lux);
     will-change: opacity, transform;
 }
 
@@ -3421,23 +3682,27 @@ html.zingiber-menu-open {
     align-items: center;
     gap: 0.85rem;
     flex-shrink: 0;
-    min-height: 44px;
-    padding: 0;
-    font-family: var(--zingiber-display);
-    font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+    min-height: 48px;
+    padding: 0.8rem 1.4rem;
+    font-family: var(--zingiber-body);
+    font-size: 0.8rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--zingiber-sand);
-    background: none;
+    background: transparent;
     text-decoration: none;
-    border-bottom: 1px solid currentColor;
+    border: 1px solid var(--zingiber-sand);
+    border-radius: var(--zingiber-button-radius);
 }
 
 .zingiber-footer .zingiber-footer__grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 0.8fr 1fr;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    width: var(--zingiber-container);
     gap: 2.5rem;
-    padding-top: clamp(3rem, 5vw, 5rem);
+    padding-block: clamp(3rem, 5vw, 5rem);
 }
 
 .zingiber-footer__grid > * {
@@ -3445,6 +3710,7 @@ html.zingiber-menu-open {
 }
 
 .zingiber-footer .zingiber-footer__heading {
+    margin-bottom: clamp(2rem, 4vw, 4rem);
     font-family: var(--zingiber-body);
     font-size: 0.875rem;
     font-weight: var(--zingiber-ui-weight);
@@ -3453,13 +3719,53 @@ html.zingiber-menu-open {
     line-height: 1.5;
 }
 
-.zingiber-footer__brand h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+.zingiber-footer__brand {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: end;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
-.zingiber-footer__brand p {
-    font-style: normal;
+.zingiber-footer .zingiber-footer__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 30rem;
+    aspect-ratio: 3 / 5;
+    object-fit: cover;
+    border-radius: var(--zingiber-button-radius);
+}
+
+.zingiber-footer__story p {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    line-height: 1.5;
+}
+
+.zingiber-footer__story a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+    font-size: 0.75rem;
+    font-weight: var(--zingiber-ui-weight);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.zingiber-footer__social,
+.zingiber-footer__hours {
+    margin-top: 2rem;
+}
+
+.zingiber-footer .zingiber-footer__social .zingiber-footer__heading,
+.zingiber-footer .zingiber-footer__hours .zingiber-footer__heading {
+    margin-bottom: 0.75rem;
+}
+
+.zingiber-footer__hours p {
+    margin: 0;
 }
 
 .zingiber-footer__nav a, .zingiber-footer__social a {
@@ -3467,6 +3773,7 @@ html.zingiber-menu-open {
     min-width: 44px;
     min-height: 44px;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .zingiber-footer__nav li + li {
@@ -3484,10 +3791,10 @@ html.zingiber-menu-open {
 /* Ballena-style closing mark: wide wordmark, quiet bottom meta. */
 .zingiber-footer > .zingiber-footer__wordmark {
     display: block;
-    width: min(94vw, 92rem);
-    margin: clamp(3.5rem, 8vw, 8rem) auto 0;
-    padding-top: 0;
-    border-top: 0;
+    width: var(--zingiber-container);
+    margin: 0 auto;
+    padding-top: clamp(1.5rem, 3vw, 3rem);
+    border-top: 1px solid var(--zingiber-line);
 }
 
 .zingiber-footer__wordmark img {
@@ -3497,27 +3804,28 @@ html.zingiber-menu-open {
 }
 
 .zingiber-footer .zingiber-footer__bottom {
-    margin-top: 2rem;
+    width: var(--zingiber-container);
+    margin-top: 1.5rem;
+    padding-top: 0;
+    border-top: 0;
 }
 
 @media (max-width: 1024px) {
     .zingiber-footer .zingiber-footer__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .zingiber-footer__brand {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 767px) {
-    .zingiber-gallery-teaser__heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 1rem;
-    }
     .zingiber-gallery-teaser__strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     /* JF mobile: vine across seam, centered hero contact, CTA under. */
     .zingiber-footer__invitation {
-        padding: 3.75rem 1.25rem 3.5rem;
+        padding: 3.75rem 1.25rem 3.4rem;
         text-align: center;
     }
     .zingiber-footer__invitation-inner {
@@ -3558,13 +3866,15 @@ html.zingiber-menu-open {
         z-index: 1;
     }
     .zingiber-footer .zingiber-footer__grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 2.5rem 1.5rem;
         padding-top: 2.5rem;
     }
+    .zingiber-footer .zingiber-footer__photo {
+        height: 19rem;
+    }
     .zingiber-footer > .zingiber-footer__wordmark {
-        width: calc(100% - 2rem);
-        margin-top: 3rem;
+        width: var(--zingiber-container);
     }
 }
 
@@ -3576,7 +3886,7 @@ html.zingiber-menu-open {
 }
 .zingiber-enquiry__grid {
     display: grid;
-    max-width: var(--zingiber-footer-max);
+    max-width: none;
     grid-template-columns: 0.95fr 1.05fr;
     gap: clamp(3rem, 6vw, 6rem);
     align-items: center;
@@ -3593,20 +3903,6 @@ html.zingiber-menu-open {
     z-index: -1;
     inset: 1rem 0 2rem 2rem;
     background: var(--zingiber-charcoal) var(--zingiber-texture-stone) center / cover;
-}
-.zingiber-enquiry__roots {
-    position: absolute;
-    z-index: -1;
-    top: -2.5rem;
-    left: -1.5rem;
-    width: 65%;
-    height: auto;
-    filter:
-        sepia(0.34)
-        saturate(1.08)
-        hue-rotate(-14deg)
-        brightness(0.98)
-        contrast(1.04);
 }
 .zingiber-enquiry__photo {
     display: block;
@@ -3703,7 +3999,6 @@ html.zingiber-menu-open {
     .zingiber-enquiry__grid { grid-template-columns: 1fr; gap: 2.25rem; }
     .zingiber-enquiry__art { padding: 1.5rem 1rem 0 0; }
     .zingiber-enquiry__photo { aspect-ratio: 5 / 4; max-height: 20rem; }
-    .zingiber-enquiry__roots { width: 55%; top: -1.5rem; left: -0.5rem; }
     .zingiber-enquiry__content h2 { font-size: clamp(2.25rem, 9vw, 3rem); }
     .zingiber-enquiry__fields { grid-template-columns: 1fr; gap: 1.75rem; }
     .zingiber-enquiry__field label { scroll-margin-top: 5.75rem; }
@@ -3777,13 +4072,13 @@ html.zingiber-menu-open {
 @media (prefers-reduced-motion: no-preference) {
     /* is-entering is toggled in JS so stagger restarts on every open. */
     .zingiber-navigation.is-entering .zingiber-navigation__masthead {
-        animation: zingiber-nav-chrome-enter 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation: zingiber-nav-chrome-enter 520ms var(--zingiber-ease-lux) both;
     }
     .zingiber-navigation.is-entering .zingiber-navigation__links {
-        animation: zingiber-nav-chrome-enter 560ms cubic-bezier(0.16, 1, 0.3, 1) 40ms both;
+        animation: zingiber-nav-chrome-enter 560ms var(--zingiber-ease-lux) 40ms both;
     }
     .zingiber-navigation.is-entering .zingiber-navigation__links li {
-        animation: zingiber-nav-enter 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation: zingiber-nav-enter 620ms var(--zingiber-ease-lux) both;
     }
     .zingiber-navigation.is-entering .zingiber-navigation__links li:nth-child(1) { animation-delay: 70ms; }
     .zingiber-navigation.is-entering .zingiber-navigation__links li:nth-child(2) { animation-delay: 110ms; }
@@ -3792,21 +4087,23 @@ html.zingiber-menu-open {
     .zingiber-navigation.is-entering .zingiber-navigation__links li:nth-child(5) { animation-delay: 230ms; }
     .zingiber-navigation.is-entering .zingiber-navigation__links li:nth-child(6) { animation-delay: 270ms; }
     .zingiber-navigation.is-entering .zingiber-navigation__social {
-        animation: zingiber-nav-enter 620ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+        animation: zingiber-nav-enter 620ms var(--zingiber-ease-lux) 300ms both;
     }
     .zingiber-navigation.is-entering .zingiber-navigation__image {
-        animation: zingiber-nav-image-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+        animation: zingiber-nav-image-enter 720ms var(--zingiber-ease-lux) 160ms both;
     }
     .zingiber-navigation__links li a { transition: color 200ms ease, transform 300ms ease; }
     .zingiber-navigation__links li a:is(:hover, :focus-visible) { transform: translateX(0.35rem); }
-    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(2) { transition-delay: 70ms; }
-    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(3) { transition-delay: 140ms; }
-    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(4) { transition-delay: 210ms; }
+    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(2) { transition-delay: 110ms; }
+    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(3) { transition-delay: 220ms; }
+    .zingiber-enhanced-motion :is(.zingiber-principle-cards, .zingiber-gallery-teaser__strip) > :nth-child(4) { transition-delay: 330ms; }
+    .zingiber-enhanced-motion :is(.zingiber-story__copy, .zingiber-coastal__controls)[data-zingiber-reveal] { transition-delay: 160ms; }
+    .zingiber-coastal__buttons svg { transition: translate 300ms var(--zingiber-ease); }
+    .zingiber-coastal__buttons button:hover:not(:disabled) svg { translate: 3px 0; }
+    .zingiber-coastal__buttons [data-zingiber-coast-step="-1"]:hover:not(:disabled) svg { translate: -3px 0; }
     .zingiber-coastal__slide img,
     .zingiber-story__image img { transition: transform 900ms var(--zingiber-ease); }
-    .zingiber-circle-link__arrow svg,
     .zingiber-principle-card__explore svg { transition: transform 300ms var(--zingiber-ease); }
-    .zingiber-hero__cta:is(:hover, :focus-visible) .zingiber-circle-link__arrow svg,
     .zingiber-principle-card:is(:hover, :focus-visible) .zingiber-principle-card__explore svg { transform: translate(2px, -2px); }
     .zingiber-gallery-teaser__tile:focus-within img,
     .zingiber-principle-card:focus-visible img { transform: scale(1.035); }
@@ -3830,18 +4127,21 @@ html.zingiber-menu-open {
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Ballena reference: a floating masthead and a contained menu over the page. */
+/* Ballena reference: floating glass masthead wide enough for Book + lang + menu. */
 .zingiber-header,
 .zingiber-header.is-sticky {
     position: fixed;
     top: 1rem;
     left: 50%;
     right: auto;
-    width: min(42rem, calc(100% - 2rem));
+    width: min(56rem, calc(100% - 1.5rem));
     transform: translateX(-50%);
     border-radius: 5px;
     color: var(--zingiber-sand);
-    background: rgba(15,15,15,0.76);
+    background: rgba(15,15,15,0.42);
+    border: 1px solid rgba(237,231,225,0.22);
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
 .admin-bar .zingiber-header { top: 48px; }
 .zingiber-header .zingiber-header__inner,
@@ -3921,13 +4221,10 @@ html.zingiber-menu-open {
 .zingiber-navigation__image picture,
 .zingiber-navigation__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-/* Three photographic cards, top titles and quiet bottom copy, as in the PDF. */
-.zingiber-principle-cards { gap: 1rem; padding-bottom: 0; scrollbar-width: none; }
-.zingiber-principle-cards::-webkit-scrollbar { display: none; }
-.zingiber-principle-cards > li { flex-basis: calc((100% - 2rem) / 3); }
+/* Photographic principle cards: title at top, quiet copy at bottom. */
 .zingiber-principle-card {
-    min-height: 32rem;
-    aspect-ratio: 0.8;
+    min-height: 22rem;
+    aspect-ratio: auto;
     border-radius: 6px;
     text-align: center;
 }
@@ -3940,45 +4237,17 @@ html.zingiber-menu-open {
     left: 1rem;
     right: 1rem;
     margin: 0;
-    font: 500 clamp(1rem, 1.65vw, 1.5rem)/1.3 var(--zingiber-body);
+    font: 500 clamp(0.8rem, 1.1vw, 1.1rem)/1.3 var(--zingiber-body);
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
 .zingiber-principle-card__copy {
     width: 100%;
     margin: 0;
-    padding: 1.5rem 1.25rem 1rem;
+    padding: 1rem 0.75rem;
 }
 .zingiber-principle-card p { max-width: 22rem; margin: 0 auto 0.75rem; }
 .zingiber-principle-card__explore { gap: 0.6rem; }
-.zingiber-principles-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: fit-content;
-    margin: 2rem auto 0;
-    padding: 0 0.4rem;
-    border: 1px solid rgba(15,15,15,0.2);
-    border-radius: 2rem;
-}
-.zingiber-principles-controls button {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--zingiber-charcoal);
-}
-.zingiber-principles-controls button:hover { background: var(--zingiber-burnt-red); color: var(--zingiber-sand); }
-.zingiber-principles-controls button:disabled { opacity: 0.35; cursor: default; }
-.zingiber-principles-controls svg { width: 24px; height: 24px; }
-.zingiber-principles-controls progress { appearance: none; width: 5.5rem; height: 1px; border: 0; background: rgba(15,15,15,0.2); }
-.zingiber-principles-controls progress::-webkit-progress-bar { background: rgba(15,15,15,0.2); }
-.zingiber-principles-controls progress::-webkit-progress-value { background: var(--zingiber-charcoal); }
-.zingiber-principles-controls progress::-moz-progress-bar { background: var(--zingiber-charcoal); }
 @media (max-width: 767px) {
     .zingiber-header,
     .zingiber-header.is-sticky {
@@ -3987,8 +4256,6 @@ html.zingiber-menu-open {
     }
     .zingiber-header .zingiber-header__inner, .zingiber-navigation__masthead { padding-inline: 4px; }
     .zingiber-book-link { padding-inline: 0.6rem; font-size: 0.65rem; }
-    .zingiber-principle-cards > li { flex-basis: 86%; }
-    .zingiber-principle-card { min-height: 30rem; }
     .zingiber-site {
         scroll-padding-top: 5.75rem;
     }
@@ -3999,4 +4266,649 @@ html.zingiber-menu-open {
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .zingiber-header, .zingiber-header.is-sticky { background: var(--zingiber-charcoal); }
+}
+
+/* October client revisions: quieter type, Ballena flush story, JF orbit CTA, fine roots. */
+:root { --zingiber-section-space: clamp(5rem, 9vw, 10rem); }
+.zingiber-hero h1, .zingiber-page-hero h1 { font-size: var(--zingiber-type-hero); }
+.zingiber-main h2,
+.zingiber-enquiry__content h2,
+.zingiber-story h2 { font-size: var(--zingiber-type-section); line-height: 1.18; }
+/* Beat .zingiber-main h2 so principles stay smaller than other section titles. */
+#principles .zingiber-card-section__heading h2 {
+    font-size: clamp(1.35rem, 1.9vw, 1.85rem);
+    line-height: 1.2;
+}
+.zingiber-coastal__caption h3 { font-size: var(--zingiber-type-feature); }
+/* Ballena: story abuts hero — whitespace lives inside later sections, not a dead sand strip. */
+.zingiber-story { margin: 0; }
+.zingiber-gallery-teaser,
+.zingiber-page-contact.zingiber-section,
+.zingiber-coastal.zingiber-section,
+.zingiber-card-section.zingiber-section { position: relative; padding-block: var(--zingiber-section-space); overflow: hidden; overflow: clip; } /* clip, not hidden: a hidden box is a scroll container and freezes view() timelines inside it */
+/* Keep principles airy but pull pillars into the first viewport with the heading. */
+#principles.zingiber-card-section {
+    padding-block: clamp(3.5rem, 6vw, 6.5rem) var(--zingiber-section-space);
+}
+.zingiber-coastal h2 { max-width: 22ch; text-wrap: balance; }
+.zingiber-coastal__intro { grid-template-columns: 1.15fr 0.85fr; gap: clamp(2rem, 5vw, 5rem); }
+.zingiber-header.is-sticky { background: rgba(15,15,15,0.72); }
+.zingiber-header .zingiber-header__inner,
+.zingiber-navigation__masthead { min-height: 5rem; }
+.zingiber-header .zingiber-logo,
+.zingiber-header.is-sticky .zingiber-logo,
+.zingiber-navigation__logo { width: 6rem; height: auto; aspect-ratio: 635 / 390; }
+.zingiber-hero .zingiber-hero__cta { width: 6.25rem; height: 6.25rem; margin-top: 2rem; }
+.zingiber-enquiry__art { padding: 0; }
+.zingiber-enquiry__art::before { inset: 1rem -1rem -1rem 1rem; }
+.zingiber-enquiry__photo { aspect-ratio: 4 / 5; object-position: center; }
+/* Runner sits 36.8% down roots.svg; capped width keeps the hanging rootlets inside the bar. */
+.zingiber-footer .zingiber-footer__roots { inset: 0 0 auto; width: min(100%, 75rem); margin-inline: auto; translate: 0 -36.8%; opacity: 0.7; filter: none; z-index: 0; }
+.zingiber-footer__email { font-size: clamp(1rem, 1.7vw, 1.55rem); min-height: 44px; }
+.zingiber-footer__book:hover,
+.zingiber-footer__book:focus-visible { background: var(--zingiber-sand); color: var(--zingiber-charcoal); }
+.zingiber-footer__grid > .zingiber-footer__nav { border-inline-start: 1px solid var(--zingiber-line); padding-inline-start: 2rem; }
+@media (max-width: 1024px) {
+    .zingiber-footer__grid > .zingiber-footer__nav { border-inline-start: 0; padding-inline-start: 0; }
+}
+.zingiber-language { display: flex; gap: 2px; padding: 3px; border: 1px solid rgba(237,231,225,.3); border-radius: 4px; background: rgba(15,15,15,.48); backdrop-filter: blur(14px); color: var(--zingiber-sand); direction: ltr; }
+.zingiber-language a { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding-inline: 0.4rem; color: inherit; font: 500 0.75rem/1.3 var(--zingiber-body); text-decoration: none; }
+.zingiber-language a[aria-current] { background: var(--zingiber-sand); color: var(--zingiber-charcoal); border-radius: 2px; }
+.zingiber-header.is-sticky .zingiber-language { border-color: rgba(237,231,225,.22); }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-root-motion { animation: zingiber-root-drift 12s ease-in-out infinite alternate; transform-origin: 50% 0; }
+    .zingiber-footer .zingiber-footer__roots { animation-name: zingiber-root-sway; }
+    .zingiber-menu-plate.is-visible { animation: zingiber-menu-plate 900ms var(--zingiber-ease) both; }
+    .zingiber-menu-plate:nth-child(2).is-visible { animation-delay: 80ms; }
+    .zingiber-menu-plate:nth-child(3).is-visible { animation-delay: 160ms; }
+    .zingiber-menu-plate:nth-child(4).is-visible { animation-delay: 240ms; }
+    .zingiber-menu-plate.is-visible .zingiber-menu-plate__figure {
+        animation: zingiber-menu-plate-float 8s ease-in-out 900ms infinite alternate;
+    }
+    .zingiber-menu-plate:nth-child(even).is-visible .zingiber-menu-plate__figure {
+        animation-delay: 1.2s;
+        animation-direction: alternate-reverse;
+    }
+    .zingiber-page-contact__copy.is-visible { animation: zingiber-experience-rise 650ms var(--zingiber-ease) both; }
+    .zingiber-page-contact__copy:nth-child(2).is-visible { animation-delay: 90ms; }
+}
+@keyframes zingiber-root-drift { from { transform: translateY(0) rotate(-1.5deg); } to { transform: translateY(5px) rotate(1.5deg); } }
+@keyframes zingiber-root-sway { from { transform: translate(-0.6rem, 0); } to { transform: translate(0.6rem, 3px); } }
+@keyframes zingiber-menu-plate { from { opacity: 0; transform: translate3d(3rem, 0, 0) rotate(3deg); } to { opacity: 1; transform: none; } }
+@keyframes zingiber-menu-plate-float { from { transform: translateY(0); } to { transform: translateY(-0.55rem); } }
+@keyframes zingiber-experience-rise { from { opacity: 0; transform: translateY(1rem); } to { opacity: 1; transform: none; } }
+@media (max-width: 1100px) {
+    .zingiber-page-hero__content { padding-top: 11rem; }
+    .zingiber-coastal__intro { grid-template-columns: 1fr; }
+    .zingiber-coastal h2 { max-width: 25ch; }
+    .zingiber-principle-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+    .zingiber-site { --zingiber-type-hero: clamp(1.7rem, 5.9vw, 2.3rem); --zingiber-type-section: clamp(1.5rem, 5vw, 1.85rem); }
+    .zingiber-coastal h2 { font-size: clamp(1.4rem, 5.3vw, 2rem); max-width: none; }
+    .zingiber-principle-cards { gap: 0.65rem; }
+    .zingiber-principle-card { min-height: 20rem; }
+    .zingiber-principle-card h3 { left: 0.35rem; right: 0.35rem; font-size: 0.75rem; letter-spacing: 0.02em; }
+    .zingiber-principle-card p { font-size: 0.8rem; line-height: 1.5; }
+    .zingiber-principle-card__explore { font-size: 0.65rem; gap: 0.3rem; }
+    .zingiber-footer__email { font-size: clamp(1rem, 4.2vw, 1.4rem); }
+    .zingiber-language a { min-width: 40px; padding-inline: 0.3rem; font-size: 0.68rem; }
+    .zingiber-header__end { gap: 0.25rem; }
+}
+/* Experience motion: spices bloom in, idle-float, and parallax by depth (native scroll timeline, no JS). */
+.zingiber-spices { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-spice { animation: zingiber-spice-float var(--float) ease-in-out infinite alternate; }
+    @supports (animation-timeline: view()) {
+        .zingiber-spice { animation: zingiber-spice-float var(--float) ease-in-out infinite alternate, zingiber-spice-parallax linear both; animation-timeline: auto, view(); }
+        .zingiber-gallery-teaser__tile:nth-child(even) { animation: zingiber-tile-parallax linear both; animation-timeline: view(); }
+    }
+    .zingiber-enhanced-motion .zingiber-spice { opacity: 0; scale: 0.82; transition: opacity 1.4s var(--zingiber-ease-lux), scale 1.8s var(--zingiber-ease-lux); }
+    .zingiber-enhanced-motion .zingiber-spice:nth-child(2n) { transition-delay: 160ms; }
+    .zingiber-enhanced-motion .zingiber-spice:nth-child(3n) { transition-delay: 320ms; }
+    .zingiber-enhanced-motion .zingiber-spices.is-visible .zingiber-spice { opacity: 1; scale: 1; }
+}
+@keyframes zingiber-spice-float { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-0.6rem) rotate(3deg); } }
+@keyframes zingiber-spice-parallax { from { translate: 0 calc(var(--rise) * var(--rise-scale, 1)); } to { translate: 0 calc(var(--rise) * var(--rise-scale, 1) * -1); } }
+@keyframes zingiber-tile-parallax { from { translate: 0 2.5rem; } to { translate: 0 -2.5rem; } }
+@media (prefers-reduced-motion: reduce) { .zingiber-root-motion { animation: none; } }
+@media (prefers-reduced-transparency: reduce) { .zingiber-header, .zingiber-header.is-sticky, .zingiber-language { background: var(--zingiber-charcoal); } }
+/* Arabic: Noto Naskh for display, Noto Sans for UI — keep chrome LTR for Book/lang/menu. */
+html[lang="ar"] .zingiber-site {
+    --zingiber-display: "Noto Naskh Arabic", "Cormorant Garamond", serif;
+    --zingiber-body: "Noto Sans Arabic", "Manrope", sans-serif;
+    --zingiber-tracking-display: 0;
+    --zingiber-tracking-display-hero: 0;
+    --zingiber-tracking-body: 0;
+}
+html[lang="ar"] .zingiber-site :is(h1, h2, h3, p, a, label, button) { letter-spacing: normal; }
+html[lang="ar"] .zingiber-hero h1 { line-height: 1.55; max-width: 18ch; margin-inline: auto; text-wrap: balance; }
+html[lang="ar"] .zingiber-hero__title-line--italic { font-style: normal; }
+html[lang="ar"] .zingiber-main h2 { line-height: 1.5; }
+html[lang="ar"] :is(.zingiber-coastal__track, .zingiber-principle-cards, .zingiber-principles__nav, .zingiber-coastal__controls, .zingiber-header__inner, .zingiber-navigation__masthead, .zingiber-header__end) { direction: ltr; }
+html[lang="ar"] .zingiber-coastal__caption { direction: rtl; text-align: right; }
+html[lang="ar"] :is(a[href^="mailto:"], a[href^="tel:"], input[type="email"], .zingiber-phone) { direction: ltr; unicode-bidi: isolate; }
+/* JF-inspired plate lift inside existing menu image grid. */
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-menu-plate.is-visible .zingiber-menu-plate__figure img {
+        animation: zingiber-menu-plate-img 1s var(--zingiber-ease) both;
+    }
+    .zingiber-menu-plate:nth-child(2).is-visible .zingiber-menu-plate__figure img { animation-delay: 90ms; }
+    .zingiber-menu-plate:nth-child(3).is-visible .zingiber-menu-plate__figure img { animation-delay: 160ms; }
+    .zingiber-menu-plate:nth-child(4).is-visible .zingiber-menu-plate__figure img { animation-delay: 230ms; }
+    .zingiber-story__copy.is-visible { animation: zingiber-experience-rise 700ms var(--zingiber-ease) both; }
+}
+@keyframes zingiber-menu-plate-img {
+    from { opacity: 0.2; transform: scale(1.06) translateY(0.85rem); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Final editorial pass: one quiet masthead and a balanced invitation. */
+:root { --zingiber-section-space: clamp(5rem, 8vw, 8.25rem); }
+
+.zingiber-header {
+    background: linear-gradient(135deg, rgba(237, 231, 225, 0.12), transparent 65%), rgba(15, 15, 15, 0.38);
+    border-color: rgba(237, 231, 225, 0.35);
+    box-shadow: inset 0 1px 0 rgba(237, 231, 225, 0.18), 0 12px 32px rgba(15, 15, 15, 0.12);
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+.zingiber-header .zingiber-header__inner { min-height: 4.5rem; }
+.zingiber-book-link {
+    padding-inline: 0.75rem;
+    border-color: rgba(237, 231, 225, 0.6);
+}
+.zingiber-language {
+    gap: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.zingiber-language a[aria-current] {
+    border-radius: 0;
+    color: inherit;
+    background: rgba(237, 231, 225, 0.16);
+    box-shadow: inset 0 -1px 0 var(--zingiber-copper);
+}
+.zingiber-header.is-sticky {
+    color: var(--zingiber-charcoal);
+    background: rgba(237, 231, 225, 0.72);
+    border-color: rgba(112, 22, 22, 0.16);
+    box-shadow: 0 8px 24px rgba(15, 15, 15, 0.08);
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+.zingiber-header.is-sticky .zingiber-logo--light { opacity: 0; }
+.zingiber-header.is-sticky .zingiber-logo--dark { opacity: 1; }
+.zingiber-header.is-sticky .zingiber-book-link { border-color: rgba(15, 15, 15, 0.35); }
+.zingiber-header.is-sticky .zingiber-language { color: var(--zingiber-charcoal); }
+.zingiber-header.is-sticky .zingiber-language a[aria-current] {
+    background: rgba(15, 15, 15, 0.06);
+    box-shadow: inset 0 -1px 0 var(--zingiber-burnt-red);
+}
+
+.zingiber-enquiry { padding-bottom: clamp(5rem, 8vw, 8rem); }
+
+@media (max-width: 767px) {
+    :root { --zingiber-section-space: clamp(3.75rem, 11vw, 5.25rem); }
+    .zingiber-header,
+    .zingiber-header.is-sticky {
+        top: 0.5rem;
+        width: calc(100% - 1.25rem);
+    }
+    .zingiber-header .zingiber-header__inner {
+        min-height: 3.5rem;
+        gap: 0.25rem;
+        padding-inline: 0.25rem;
+    }
+    .zingiber-header.is-sticky .zingiber-header__inner { min-height: 3.5rem; }
+    .zingiber-header .zingiber-logo,
+    .zingiber-header.is-sticky .zingiber-logo { width: 3.75rem; }
+    .zingiber-book-link { padding-inline: 0.4rem; }
+    .zingiber-language a { min-width: 44px; min-height: 44px; }
+    .zingiber-enquiry { padding: 4rem 0 5rem; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    .zingiber-header { background: var(--zingiber-charcoal); }
+    .zingiber-header.is-sticky { background: var(--zingiber-sand); }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .zingiber-header { background: var(--zingiber-charcoal); }
+    .zingiber-header.is-sticky { background: var(--zingiber-sand); }
+}
+
+/* Lofty-inspired entrances reuse the shared observer on every public page. */
+/* Clip horizontally without creating a body scroller that traps view timelines. */
+.zingiber-site { overflow-x: clip; overflow-y: visible; }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-enhanced-motion [data-zingiber-reveal="image"] {
+        transform: translate3d(0, 2rem, 0) rotate(-1deg) scale(0.96);
+    }
+    .zingiber-enhanced-motion [data-zingiber-reveal="image"].is-visible { transform: none; }
+    .zingiber-enhanced-motion :is(.zingiber-page-hero__content, .zingiber-page-contact__grid, .zingiber-enquiry__fields) > [data-zingiber-reveal]:nth-child(2) { transition-delay: 90ms; }
+    .zingiber-enhanced-motion :is(.zingiber-page-hero__content, .zingiber-page-contact__grid, .zingiber-enquiry__fields) > [data-zingiber-reveal]:nth-child(3) { transition-delay: 180ms; }
+    .zingiber-enhanced-motion .zingiber-page-hero__content > [data-zingiber-reveal]:nth-child(4) { transition-delay: 270ms; }
+    @supports (animation-timeline: view()) {
+        :is(.zingiber-page-hero__photo, .zingiber-story__image img, .zingiber-page-editorial__image img, .zingiber-enquiry__photo) {
+            animation: zingiber-scroll-image linear both;
+            animation-timeline: view();
+            animation-range: entry 0% exit 100%;
+        }
+    }
+}
+@keyframes zingiber-scroll-image {
+    from { translate: 0 1.5%; scale: 1.04; }
+    to { translate: 0 -1.5%; scale: 1.04; }
+}
+
+/* JF menu: the rail belongs to the whole menu, not the short masthead. */
+body.zingiber-page-menu .zingiber-header { position: fixed; color: var(--zingiber-charcoal); background: rgba(237,231,225,0.68); border-color: rgba(15,15,15,0.15); }
+body.zingiber-page-menu .zingiber-header .zingiber-logo--light { opacity: 0; }
+body.zingiber-page-menu .zingiber-header .zingiber-logo--dark { opacity: 1; }
+body.zingiber-page-menu .zingiber-header .zingiber-language { color: inherit; }
+body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgba(15,15,15,0.35); }
+.zingiber-main.zingiber-page-menu { overflow: clip; }
+.zingiber-page-menu.zingiber-section { overflow: visible; padding-top: clamp(10rem, 16vw, 15rem); }
+.zingiber-page-menu__mast { padding-block: 0 2.5rem; }
+.zingiber-page-menu__display { font-size: var(--zingiber-type-hero); }
+.zingiber-page-menu__intro { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); margin-block: clamp(2rem, 4vw, 4rem); }
+.zingiber-page-menu__tabs {
+    top: 6.25rem;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: var(--zingiber-container);
+    max-width: none;
+    margin-inline: auto;
+    padding: 0.75rem;
+    border: 1px solid rgba(15, 15, 15, 0.15);
+    border-radius: 999px;
+    background: rgba(237, 231, 225, 0.7);
+    box-shadow: inset 0 1px 0 rgba(237, 231, 225, 0.6), 0 8px 24px rgba(15, 15, 15, 0.06);
+    backdrop-filter: blur(24px) saturate(145%);
+    -webkit-backdrop-filter: blur(24px) saturate(145%);
+}
+.zingiber-page-menu__tabs.is-stuck { background: rgba(237, 231, 225, 0.78); box-shadow: 0 8px 24px rgba(15,15,15,0.1); }
+.zingiber-page-menu__rail { display: flex; gap: 0.65rem; max-width: 52rem; padding: 0.4rem; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; direction: ltr; }
+.zingiber-page-menu__rail::-webkit-scrollbar { display: none; }
+.zingiber-page-menu__tab { flex: 0 0 auto; white-space: nowrap; }
+.zingiber-page-menu__step { display: grid; place-items: center; flex: 0 0 44px; min-height: 44px; padding: 0; border: 1px solid var(--zingiber-charcoal); border-radius: 50%; background: var(--zingiber-charcoal); color: var(--zingiber-sand); }
+.zingiber-page-menu__step[hidden] { display: none; }
+.zingiber-page-menu__step svg { width: 1rem; height: 1rem; rotate: 45deg; }
+.zingiber-page-menu__step[data-zingiber-menu-step="-1"] svg { rotate: -135deg; }
+.zingiber-page-menu__step:disabled { opacity: 0.35; cursor: default; }
+.zingiber-page-menu__images { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem); margin-top: 0; }
+.zingiber-menu-plate { scroll-margin-top: 6rem; }
+.zingiber-menu-plate__figure { width: 100%; aspect-ratio: 1; margin-bottom: 2rem; }
+.zingiber-menu-plate__copy { max-width: 18rem; }
+.zingiber-page-menu__dock { display: none; }
+@media (min-width: 1025px) {
+    .zingiber-menu-plate:last-child:nth-child(3n + 1) { grid-column: 2; }
+}
+@media (max-width: 767px) {
+    .zingiber-page-menu__tabs { top: 4.5rem; }
+    .zingiber-page-menu__intro { grid-template-columns: 1fr; }
+    body.zingiber-page-menu { padding-bottom: 6rem; }
+    .zingiber-page-menu__dock { position: fixed; inset: auto 0 0; z-index: 55; display: block; height: 3.25rem; background: var(--zingiber-charcoal); color: var(--zingiber-sand); }
+    .zingiber-page-menu__dock a { position: relative; display: grid; place-items: center; width: 5.5rem; height: 5.5rem; margin: -1.75rem auto 0; border: 1px solid currentColor; border-radius: 49% 47% 45% 52%; background: var(--zingiber-charcoal); text-decoration: none; }
+    .zingiber-page-menu__dock a::before, .zingiber-page-menu__dock a::after { position: absolute; inset: 3px; border: 1px solid currentColor; border-radius: 47% 51% 49% 46%; content: ''; pointer-events: none; rotate: -4deg; }
+    .zingiber-page-menu__dock a::after { inset: -2px; rotate: 3deg; opacity: 0.6; }
+    .zingiber-page-menu__dock span { max-width: 5.5ch; font: 400 0.8rem/1.3 var(--zingiber-body); text-transform: uppercase; text-align: center; }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+    .zingiber-page-menu__images { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+    .zingiber-page-menu__images { grid-template-columns: 1fr; }
+    .zingiber-page-menu__tabs { padding-block: 0.65rem; }
+    .zingiber-page-menu__rail { flex: 1 1 auto; min-width: 0; }
+    .zingiber-page-menu__tab { padding-inline: 1.2rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-menu-plate.is-visible { animation-duration: 650ms; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    body.zingiber-page-menu .zingiber-header,
+    .zingiber-page-menu__tabs,
+    .zingiber-page-menu__tabs.is-stuck { background: var(--zingiber-sand); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    body.zingiber-page-menu .zingiber-header,
+    .zingiber-page-menu__tabs,
+    .zingiber-page-menu__tabs.is-stuck { background: var(--zingiber-sand); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .zingiber-enhanced-motion [data-zingiber-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   JF format pass (jfvegancafe.com): centred statements inked in on scroll,
+   a numbered dish counter, an arch of pinstripe rings, organic photo masks
+   and full-height centred page heroes. Zingiber colour, section order and
+   the Ballena header/overlay stay as they are.
+   ========================================================================== */
+
+/* Statements: words wake from faint to full ink as the line scrolls through view. */
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .zingiber-split-word {
+            animation: zingiber-word-ink linear both;
+            animation-timeline: view();
+            animation-range: cover calc(8% + var(--i) * 3%) cover calc(30% + var(--i) * 3%);
+        }
+    }
+}
+@keyframes zingiber-word-ink { from { opacity: 0.14; } to { opacity: 1; } }
+
+/* Culinary direction reads as one centred statement, as JF's opening line does. */
+.zingiber-coastal__intro { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 1.5rem; text-align: center; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.zingiber-coastal__copy { padding-top: 0; }
+.zingiber-coastal__copy p { margin-inline: auto; max-width: 44rem; }
+@media (min-width: 768px) {
+    .zingiber-coastal h2 { max-width: 19ch; margin-inline: auto; font-size: clamp(2rem, 3.3vw, 3.15rem); line-height: 1.18; }
+}
+
+/* JF dish counter: large serif index, small total, short rule, bare chevrons pushed to the far edge. */
+.zingiber-coastal__index { display: flex; align-items: baseline; gap: 0.35rem; font: 400 clamp(2rem, 3vw, 2.75rem)/1 var(--zingiber-display); }
+.zingiber-coastal__total { font-size: 0.4em; opacity: 0.5; }
+.zingiber-coastal__progress { flex: 0 0 auto; width: clamp(5rem, 10vw, 9rem); }
+.zingiber-coastal__buttons { margin-inline-start: auto; }
+.zingiber-coastal__buttons button { border-color: transparent; background: transparent; }
+.zingiber-coastal__buttons button svg { width: 1.25rem; height: 2.5rem; }
+/* JF chevrons stay bare on hover: ink deepens and the stroke steps out, no filled disc. */
+.zingiber-coastal__buttons button:hover:not(:disabled) { background: transparent; color: var(--zingiber-burnt-red); }
+
+/* Experience: statement on top, then a round photograph inside an arch of pinstripe rings (rings and legs share one W/28 rhythm). */
+.zingiber-gallery-teaser__stage { min-height: 0; padding-block: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem); }
+.zingiber-gallery-teaser__heading { width: min(34rem, var(--zingiber-container)); text-align: center; }
+.zingiber-gallery-teaser__heading .zingiber-text-link { justify-content: center; }
+.zingiber-gallery-teaser__arch { position: relative; z-index: 1; display: grid; place-items: center; width: min(36rem, 92vw); aspect-ratio: 1; margin-top: clamp(2rem, 4vw, 3.5rem); }
+.zingiber-gallery-teaser__arch::before,
+.zingiber-gallery-teaser__arch::after { content: ""; position: absolute; left: 0; right: 0; pointer-events: none; }
+.zingiber-gallery-teaser__arch::before {
+    top: 0;
+    bottom: 0;
+    background: repeating-radial-gradient(circle closest-side, rgba(184, 115, 51, 0.2) 0 1.5px, transparent 1.5px calc(100% / 14 - 1.5px), rgba(184, 115, 51, 0.2) calc(100% / 14 - 1.5px) calc(100% / 14));
+    -webkit-mask: linear-gradient(#000 50%, transparent 50%), radial-gradient(circle closest-side, transparent 64%, #000 64% 100%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask: linear-gradient(#000 50%, transparent 50%) intersect, radial-gradient(circle closest-side, transparent 64%, #000 64% 100%, transparent 100%);
+}
+.zingiber-gallery-teaser__arch::after {
+    top: 50%;
+    bottom: 0;
+    background: repeating-linear-gradient(90deg, rgba(184, 115, 51, 0.2) 0 1.5px, transparent 1.5px calc(100% / 28 - 1.5px), rgba(184, 115, 51, 0.2) calc(100% / 28 - 1.5px) calc(100% / 28));
+    -webkit-mask: linear-gradient(90deg, #000 18%, transparent 18% 82%, #000 82%), linear-gradient(#000 40%, transparent);
+    -webkit-mask-composite: source-in;
+    mask: linear-gradient(90deg, #000 18%, transparent 18% 82%, #000 82%) intersect, linear-gradient(#000 40%, transparent);
+}
+.zingiber-gallery-teaser__plate { width: 56%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: 0 2.5rem 4rem -2rem rgba(112, 22, 22, 0.55); }
+.zingiber-gallery-teaser__plate :is(picture, img) { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Spices drift around the arch rather than the old pinstripe bands. */
+.zingiber-spice--leaf { top: 14%; }
+.zingiber-spice--anise { top: 70%; }
+.zingiber-spice--pepper { top: 52%; }
+.zingiber-spice--chili { top: 6%; }
+.zingiber-spice--cardamom { top: 58%; }
+.zingiber-spice--cinnamon { top: 76%; }
+
+/* Collage: JF's organic masks — arch, soft rectangle, stadium, quadrant — with a hairline frame on two of them. */
+.zingiber-gallery-teaser__tile:nth-child(1) { border-radius: 999px 999px 0.5rem 0.5rem; }
+.zingiber-gallery-teaser__tile:nth-child(2) { border-radius: 1.25rem; }
+.zingiber-gallery-teaser__tile:nth-child(3) { border-radius: 999px; }
+.zingiber-gallery-teaser__tile:nth-child(4) { border-radius: 0.5rem 60% 0.5rem 0.5rem; }
+.zingiber-gallery-teaser__tile:is(:nth-child(1), :nth-child(3)) { outline: 1px solid rgba(15, 15, 15, 0.28); outline-offset: 0.55rem; }
+
+/* Enquiry photograph becomes a JF stadium with a hairline offset frame. */
+.zingiber-enquiry__photo { border-radius: 999px; }
+.zingiber-enquiry__art::before { background: none; border: 1px solid rgba(15, 15, 15, 0.3); border-radius: 999px; }
+
+/* Inner pages open like JF's About: full-height photograph, centred statement. */
+.zingiber-page-hero { min-height: 100svh; align-items: center; }
+.zingiber-page-hero__content { display: grid; justify-items: center; text-align: center; padding-block: 7rem 5rem; }
+.zingiber-page-hero h1,
+.zingiber-page-hero__content > p:last-child { margin-inline: auto; }
+
+@media (max-width: 1023px) {
+    .zingiber-gallery-teaser__stage { padding-block: 9rem 2rem; }
+    .zingiber-spice--leaf { top: -1rem; }
+    .zingiber-spice--chili { top: 0.5rem; }
+    .zingiber-spice--pepper { top: 4rem; }
+    .zingiber-spice--anise { top: auto; }
+    .zingiber-spice--cardamom { top: auto; }
+    .zingiber-spice--cinnamon { top: auto; }
+}
+
+/* Story and editorial photos drift inside their frames; clip so the drift never crosses into the hero above. */
+.zingiber-story__image,
+.zingiber-page-editorial__image { overflow: clip; }
+
+/* JF: See Menu sits under the round photograph, between the arch legs. */
+.zingiber-gallery-teaser__arch { margin-bottom: 3.5rem; }
+.zingiber-site a.zingiber-gallery-teaser__cta {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 50%;
+    display: grid;
+    place-items: center;
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
+    color: var(--zingiber-burnt-red);
+    text-decoration: none;
+    direction: ltr;
+    unicode-bidi: isolate;
+    transition: background-color 500ms var(--zingiber-ease-lux);
+}
+.zingiber-site a.zingiber-gallery-teaser__cta:hover { background: rgba(112, 22, 22, 0.06); }
+
+/* See Menu hover: the three sketch rings drift apart at their own angles, then the label opens up. */
+.zingiber-circle-link__ring { overflow: visible; }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-circle-link__ring path { transform-box: view-box; transform-origin: 50% 50%; transition: transform 1s var(--zingiber-ease-lux), stroke-width 600ms ease; }
+    .zingiber-circle-link__ring path:nth-child(2) { transition-delay: 70ms; }
+    .zingiber-circle-link__ring path:nth-child(3) { transition-delay: 140ms; }
+    .zingiber-circle-link:is(:hover, :focus-visible) .zingiber-circle-link__ring path:nth-child(1) { transform: rotate(-26deg) scale(1.03); }
+    .zingiber-circle-link:is(:hover, :focus-visible) .zingiber-circle-link__ring path:nth-child(2) { transform: rotate(34deg) scale(1.1); }
+    .zingiber-circle-link:is(:hover, :focus-visible) .zingiber-circle-link__ring path:nth-child(3) { transform: rotate(-52deg) scale(1.18); stroke-width: 0.9; }
+    .zingiber-circle-link__label { transition: letter-spacing 700ms var(--zingiber-ease-lux), scale 700ms var(--zingiber-ease-lux); }
+    .zingiber-circle-link:is(:hover, :focus-visible) .zingiber-circle-link__label { letter-spacing: 0.14em; scale: 0.92; }
+}
+
+/* Principles (Ballena): full-bleed track, two cards per view, centred pill with arrows either side of a progress line. */
+.zingiber-principle-cards {
+    --gap: 1rem;
+    --edge: 1rem;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - var(--gap)) / 2);
+    gap: var(--gap);
+    margin-inline: calc(50% - 50vw);
+    padding-inline: var(--edge);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--edge);
+    scrollbar-width: none;
+}
+.zingiber-principle-cards::-webkit-scrollbar { display: none; }
+.zingiber-principle-cards:focus-visible { outline: 1px solid currentColor; outline-offset: -2px; }
+.zingiber-principle-cards > li { scroll-snap-align: start; }
+.zingiber-principle-card { aspect-ratio: 4 / 3; min-height: 0; height: auto; border-radius: 8px; }
+.zingiber-principles__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    width: max-content;
+    margin: 2rem auto 0;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid rgba(15, 15, 15, 0.22);
+    border-radius: 999px;
+}
+.zingiber-principles__nav button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: none; color: var(--zingiber-charcoal); cursor: pointer; }
+.zingiber-principles__nav button:disabled { opacity: 0.3; cursor: default; }
+.zingiber-principles__nav [data-zingiber-coast-step="-1"] svg { scale: -1 1; }
+.zingiber-principles__nav .zingiber-coastal__progress { flex: none; width: clamp(5rem, 9vw, 7rem); }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-principles__nav svg { transition: translate 400ms var(--zingiber-ease-lux); }
+    .zingiber-principles__nav [data-zingiber-coast-step="1"]:hover:not(:disabled) svg { translate: 4px 0; }
+    .zingiber-principles__nav [data-zingiber-coast-step="-1"]:hover:not(:disabled) svg { translate: -4px 0; }
+}
+@media (max-width: 1023px) {
+    .zingiber-principle-card { aspect-ratio: 4 / 5; }
+}
+@media (max-width: 767px) {
+    .zingiber-principle-cards { --gap: 0.6rem; --edge: 0.75rem; }
+    .zingiber-principle-card { aspect-ratio: 3 / 5; }
+}
+
+/* Experience dish: warm, lifted grade and a slow turn of the plate inside its round frame. */
+.zingiber-gallery-teaser__plate .zingiber-gallery-teaser__dish { scale: 1.1; filter: brightness(1.2) saturate(1.15) contrast(1.05); }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-gallery-teaser__plate .zingiber-gallery-teaser__dish { animation: zingiber-dish-turn 70s linear infinite; }
+}
+@keyframes zingiber-dish-turn { to { rotate: 360deg; } }
+
+/* ==========================================================================
+   Premium motion layer: one easing (ease-lux), slow fades, short travel.
+   ========================================================================== */
+
+/* Pages cross-fade (native cross-document View Transitions); the floating header holds still through the swap. */
+@view-transition { navigation: auto; }
+.zingiber-header { view-transition-name: zingiber-header; }
+::view-transition-old(root) { animation: zingiber-page-out 360ms var(--zingiber-ease-lux) both; }
+::view-transition-new(root) { animation: zingiber-page-in 760ms var(--zingiber-ease-lux) 100ms both; }
+@keyframes zingiber-page-out { to { opacity: 0; } }
+@keyframes zingiber-page-in { from { opacity: 0; translate: 0 1rem; } }
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+}
+
+/* Inner heroes land like Home: the photograph settles from a slight zoom. Clip, not hidden, keeps its scroll drift alive. */
+.zingiber-page-hero { overflow: clip; }
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-page-hero__media { animation: zingiber-page-land 2.4s var(--zingiber-ease-lux) both; }
+}
+@keyframes zingiber-page-land { from { opacity: 0; scale: 1.06; } }
+
+/* Hairline rules draw out from the centre instead of sliding. */
+.zingiber-enhanced-motion .zingiber-rule[data-zingiber-reveal] { transform: scaleX(0); }
+.zingiber-enhanced-motion .zingiber-rule[data-zingiber-reveal].is-visible { transform: none; }
+
+/* Text links: a hairline underline rises into place on hover and focus. */
+.zingiber-site a:is(.zingiber-text-link, .zingiber-footer__email) {
+    text-decoration: underline 1px transparent;
+    text-underline-offset: 0.6em;
+    transition: text-decoration-color 500ms ease, text-underline-offset 500ms var(--zingiber-ease-lux);
+}
+.zingiber-site a:is(.zingiber-text-link, .zingiber-footer__email):is(:hover, :focus-visible) { text-decoration-color: currentColor; text-underline-offset: 0.3em; }
+
+/* About: an editorial opening, generous rectangular photography and a quiet values ledger. */
+body.zingiber-page-about .zingiber-header { color: var(--zingiber-charcoal); background: rgba(237, 231, 225, 0.82); border-color: rgba(15, 15, 15, 0.15); }
+body.zingiber-page-about .zingiber-header .zingiber-logo--light { opacity: 0; }
+body.zingiber-page-about .zingiber-header .zingiber-logo--dark { opacity: 1; }
+body.zingiber-page-about .zingiber-header .zingiber-book-link { border-color: rgba(15, 15, 15, 0.35); }
+body.zingiber-page-about .zingiber-header .zingiber-menu-toggle { color: var(--zingiber-charcoal); }
+body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
+.zingiber-about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 6rem);
+    min-height: 0;
+    padding: 8rem var(--zingiber-gutter) 4rem;
+    background: var(--zingiber-sand);
+    border-bottom: 0;
+    box-shadow: none;
+}
+.zingiber-about-hero .zingiber-page-hero__media {
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1;
+    z-index: 0;
+    height: clamp(32rem, 68svh, 46rem);
+    overflow: clip;
+}
+.zingiber-about-hero .zingiber-page-hero__media img { height: 100%; object-position: 50% 50%; filter: none; scale: none; transform: none; }
+.zingiber-about-hero .zingiber-page-hero__veil,
+.zingiber-about-hero .zingiber-rule { display: none; }
+.zingiber-about-hero .zingiber-page-hero__content {
+    grid-column: 1;
+    grid-row: 1;
+    justify-items: start;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    color: var(--zingiber-charcoal);
+    text-align: start;
+}
+.zingiber-about-hero .zingiber-eyebrow { margin-bottom: 2.25rem; color: var(--zingiber-burnt-red); text-shadow: none; }
+.zingiber-about-hero h1 { margin: 0 0 2rem; max-width: 12ch; font-size: clamp(3.3rem, 6.1vw, 6.5rem); line-height: 1.04; letter-spacing: -0.035em; text-shadow: none; }
+.zingiber-about-hero .zingiber-heading-line { white-space: normal; text-wrap: balance; }
+.zingiber-about-hero h1 .zingiber-heading-line:last-child { color: var(--zingiber-burnt-red); font-style: italic; }
+.zingiber-about-hero .zingiber-page-hero__content > p:not(.zingiber-eyebrow) { max-width: 31rem; margin: 0; font-size: 1rem; line-height: 1.75; color: var(--zingiber-ink-soft); text-shadow: none; }
+.zingiber-about-hero__links { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin-top: 2rem; }
+.zingiber-about-hero__links a { display: inline-flex; align-items: center; gap: 0.75rem; min-height: 44px; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.zingiber-page-editorial--about { padding-block: clamp(3rem, 6vw, 6rem) clamp(4rem, 8vw, 8rem); }
+.zingiber-about__story { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(2rem, 8vw, 8rem); padding-block: clamp(2rem, 4vw, 4rem) clamp(4rem, 7vw, 7rem); border-top: 1px solid var(--zingiber-line); scroll-margin-top: 8rem; }
+.zingiber-about__story h2,
+.zingiber-about__statement h2 { max-width: 12ch; margin: 0; font-size: clamp(2.75rem, 4.5vw, 5rem); line-height: 1.08; letter-spacing: -0.025em; }
+.zingiber-about__columns { max-width: 43rem; color: var(--zingiber-ink-soft); }
+.zingiber-about__columns p { margin: 0 0 1.5rem; line-height: 1.8; }
+.zingiber-about__columns p:first-child { font-size: clamp(1.15rem, 1.6vw, 1.65rem); line-height: 1.65; }
+.zingiber-about__columns p:last-child { margin-bottom: 0; }
+.zingiber-about__pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(2rem, 8vw, 8rem); }
+.zingiber-about__photograph { min-width: 0; margin: 0; }
+.zingiber-about__photograph picture { display: block; }
+.zingiber-about__photograph img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.zingiber-about__photograph figcaption { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--zingiber-line); color: var(--zingiber-burnt-red); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.zingiber-about__experience { min-width: 0; padding-top: clamp(2rem, 5vw, 5rem); }
+.zingiber-about__statement { max-width: 38rem; }
+.zingiber-about__statement h2 { margin-bottom: 2rem; }
+.zingiber-about__statement p:not(.zingiber-eyebrow) { color: var(--zingiber-ink-soft); line-height: 1.8; }
+.zingiber-about__room { margin-top: clamp(2rem, 4vw, 4rem); }
+.zingiber-about__room img { aspect-ratio: 4 / 3; }
+.zingiber-about__principles { background: var(--zingiber-burnt-red); text-align: start; }
+.zingiber-about__principles > .zingiber-container { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); align-items: start; gap: clamp(2rem, 8vw, 8rem); }
+.zingiber-about__principles .zingiber-principles__heading { display: block; margin: 0; text-align: start; }
+.zingiber-about__principles .zingiber-eyebrow { margin-bottom: 2rem; }
+.zingiber-about__principles h2 { max-width: 17ch; margin: 0; font-size: clamp(2.5rem, 4vw, 4.5rem); line-height: 1.12; white-space: normal; text-align: start; text-wrap: balance; }
+.zingiber-about__principles ol { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; }
+.zingiber-about__principles li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); align-content: start; align-items: start; gap: 0.75rem; min-height: 0; padding: 1.75rem 0 2rem; border-top: 1px solid rgba(237, 231, 225, 0.3); background: none; }
+.zingiber-about__principles li:hover { background: none; }
+.zingiber-about__principles .zingiber-principles__index { grid-row: span 2; font: 400 0.75rem/2 var(--zingiber-body); color: var(--zingiber-sand); opacity: 0.75; }
+.zingiber-about__principles li strong { font: 400 clamp(1.5rem, 2vw, 2rem)/1.2 var(--zingiber-display); }
+.zingiber-about__principles .zingiber-principles__summary { grid-column: 2; margin: 0; font-size: 0.875rem; line-height: 1.7; }
+@media (max-width: 1023px) {
+    .zingiber-about-hero { gap: 2rem; }
+    .zingiber-about-hero h1 { font-size: clamp(3.25rem, 6.5vw, 4.5rem); }
+    .zingiber-about__story,
+    .zingiber-about__pair { gap: 2.5rem; }
+    .zingiber-about__principles > .zingiber-container { grid-template-columns: 1fr; gap: 3rem; }
+    .zingiber-about__principles h2 { max-width: 20ch; }
+}
+@media (max-width: 767px) {
+    .zingiber-about-hero { grid-template-columns: 1fr; padding-block: 7.5rem 2rem; }
+    .zingiber-about-hero .zingiber-page-hero__media { grid-column: 1; grid-row: 2; height: auto; aspect-ratio: 5 / 6; }
+    .zingiber-about-hero h1 { max-width: 12ch; font-size: clamp(3rem, 12vw, 4.5rem); }
+    .zingiber-about-hero .zingiber-eyebrow { margin-bottom: 1.5rem; }
+    .zingiber-about-hero__links { gap: 0.25rem 1.5rem; margin-top: 1.5rem; }
+    .zingiber-about__story,
+    .zingiber-about__pair { grid-template-columns: 1fr; gap: 2rem; }
+    .zingiber-about__story { padding-bottom: 3rem; }
+    .zingiber-about__experience { padding-top: 1rem; }
+    .zingiber-about__principles ol { grid-template-columns: 1fr; }
+    .zingiber-about__principles li { padding-block: 1.5rem; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    body.zingiber-page-about .zingiber-header { background: var(--zingiber-sand); }
 }

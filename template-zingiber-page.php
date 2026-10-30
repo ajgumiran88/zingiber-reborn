@@ -11,7 +11,8 @@ $home = $siteContent['home'];
 get_header('zingiber');
 ?>
 <main id="zingiber-main" class="zingiber-main zingiber-page zingiber-page-<?php echo esc_attr($zingiberPage['slug']); ?>">
-    <section class="zingiber-page-hero">
+    <?php if ($zingiberPage['slug'] !== 'menu') : ?>
+    <section class="zingiber-page-hero<?php echo $zingiberPage['slug'] === 'about' ? ' zingiber-about-hero' : ''; ?>">
         <div class="zingiber-page-hero__media" aria-hidden="true">
             <?php
             zingiber_theme_image($zingiberPage['hero']['image'], [
@@ -20,6 +21,7 @@ get_header('zingiber');
                 'loading' => 'eager',
                 'fetchpriority' => 'high',
                 'sizes' => '100vw',
+                'class' => 'zingiber-page-hero__photo',
                 'aria_hidden' => true,
             ]);
             ?>
@@ -30,55 +32,71 @@ get_header('zingiber');
             <div class="zingiber-rule" aria-hidden="true" data-zingiber-reveal></div>
             <h1 data-zingiber-reveal>
                 <?php if ($zingiberPage['slug'] === 'menu') : ?>
-                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('A Journey Across')); ?></span>
-                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('India’s Coastline')); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('A Journey Across', 'vonaco'))); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('India’s Coastline', 'vonaco'))); ?></span>
                 <?php elseif ($zingiberPage['slug'] === 'about') : ?>
-                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('A Modern Expression')); ?></span>
-                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows('of Coastal India')); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('A Modern Expression', 'vonaco'))); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('of Coastal India', 'vonaco'))); ?></span>
                 <?php else : ?>
                     <?php echo esc_html(zingiber_prevent_widows($zingiberPage['hero']['heading'])); ?>
                 <?php endif; ?>
             </h1>
             <p data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows($zingiberPage['hero']['subheading'])); ?></p>
+            <?php if ($zingiberPage['slug'] === 'about') : ?>
+                <div class="zingiber-about-hero__links" data-zingiber-reveal>
+                    <a class="zingiber-text-link" href="#about-story"><?php echo esc_html($home['calls_to_action']['story']['label']); ?><span aria-hidden="true">↓</span></a>
+                    <a class="zingiber-text-link" href="<?php echo esc_url(zingiber_page_url('/menu/')); ?>"><?php echo esc_html($home['calls_to_action']['secondary']['label']); ?><span aria-hidden="true">↗</span></a>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
+    <?php endif; ?>
 
     <?php if ($zingiberPage['slug'] === 'about') : ?>
         <section class="zingiber-section zingiber-page-editorial zingiber-page-editorial--about">
             <div class="zingiber-container">
-                <?php foreach ($zingiberPage['sections'] as $index => $section) : ?>
-                    <article class="zingiber-page-editorial__row<?php echo $index % 2 ? ' is-reversed' : ''; ?>">
-                        <div class="zingiber-page-editorial__copy" data-zingiber-reveal>
-                            <p class="zingiber-eyebrow"><?php echo esc_html(sprintf('%02d / Our Story', $index + 1)); ?></p>
-                            <h2><?php echo esc_html(zingiber_prevent_widows($section['heading'])); ?></h2>
-                            <?php foreach ($section['body'] as $paragraph) : ?>
+                <?php [$story, $heritage] = $zingiberPage['sections']; ?>
+                <div class="zingiber-about__story" id="about-story">
+                    <div class="zingiber-about__chapter" data-zingiber-reveal>
+                        <p class="zingiber-eyebrow"><?php echo esc_html(sprintf(__('%02d / Our Story', 'vonaco'), 1)); ?></p>
+                        <h2><?php echo esc_html(zingiber_prevent_widows($story['heading'])); ?></h2>
+                    </div>
+                    <div class="zingiber-about__columns" data-zingiber-reveal>
+                        <?php foreach ($story['body'] as $paragraph) : ?>
+                            <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="zingiber-about__pair">
+                    <figure class="zingiber-about__photograph zingiber-about__dish" data-zingiber-reveal="image">
+                        <?php zingiber_theme_image($story['image'], ['width' => 1024, 'height' => 1280, 'sizes' => '(min-width: 768px) 48vw, 94vw']); ?>
+                        <figcaption><?php echo esc_html($home['hero']['eyebrow']); ?></figcaption>
+                    </figure>
+                    <div class="zingiber-about__experience">
+                        <div class="zingiber-about__statement" data-zingiber-reveal>
+                            <p class="zingiber-eyebrow"><?php echo esc_html(sprintf(__('%02d / Our Story', 'vonaco'), 2)); ?></p>
+                            <h2><?php echo esc_html(zingiber_prevent_widows($heritage['heading'])); ?></h2>
+                            <?php foreach ($heritage['body'] as $paragraph) : ?>
                                 <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                             <?php endforeach; ?>
                         </div>
-                        <figure class="zingiber-page-editorial__image" data-zingiber-reveal>
-                            <?php
-                            zingiber_theme_image($section['image'], [
-                                'width' => 1536,
-                                'height' => 1024,
-                                'sizes' => '(min-width: 1025px) 42vw, 100vw',
-                            ]);
-                            ?>
+                        <figure class="zingiber-about__photograph zingiber-about__room" data-zingiber-reveal="image">
+                            <?php zingiber_theme_image($heritage['image'], ['width' => 1200, 'height' => 900, 'sizes' => '(min-width: 768px) 42vw, 94vw']); ?>
                         </figure>
-                    </article>
-                <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="zingiber-page-principles" aria-labelledby="about-principles-title">
+        <section class="zingiber-page-principles zingiber-about__principles" aria-labelledby="about-principles-title">
             <div class="zingiber-container">
                 <div class="zingiber-principles__heading" data-zingiber-reveal>
                     <p class="zingiber-eyebrow"><?php esc_html_e('What Guides Us', 'vonaco'); ?></p>
-                    <h2 id="about-principles-title"><?php echo esc_html(zingiber_prevent_widows('Four Principles. One Point of View.')); ?></h2>
+                    <h2 id="about-principles-title"><?php echo esc_html(zingiber_prevent_widows(__('Four Principles. One Point of View.', 'vonaco'))); ?></h2>
                 </div>
                 <ol>
                     <?php foreach ($home['principles'] as $index => $principle) : ?>
                         <li data-zingiber-reveal>
-                            <span class="zingiber-principles__icon"><?php echo zingiber_icon_svg($principle['icon']); ?></span>
                             <span class="zingiber-principles__index"><?php echo esc_html(sprintf('%02d', $index + 1)); ?></span>
                             <strong><?php echo esc_html($principle['title']); ?></strong>
                             <?php if (!empty($principle['summary'])) : ?>
@@ -91,70 +109,74 @@ get_header('zingiber');
         </section>
 
     <?php elseif ($zingiberPage['slug'] === 'menu') : ?>
-        <section class="zingiber-section zingiber-page-menu">
-            <div class="zingiber-container zingiber-page-menu__intro">
-                <div data-zingiber-reveal>
-                    <p class="zingiber-eyebrow"><?php esc_html_e('The Culinary Journey', 'vonaco'); ?></p>
-                    <h2><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></h2>
-                </div>
-                <div data-zingiber-reveal>
-                    <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
-                        <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+        <?php
+        // JF-inspired menu rhythm: region pills + organic plates. Copy stays approved coastal regions — no invented dishes/prices.
+        $menuRegions = $home['regions'];
+        $menuPlatePool = [
+            ['src' => 'assets/images/zingiber/food-prawn-curry.jpg', 'alt' => __('Coastal Indian prawn curry with refined presentation', 'vonaco')],
+            ['src' => 'assets/images/zingiber/food-seafood-rice.jpg', 'alt' => __('Seafood rice inspired by India’s coastal culinary traditions', 'vonaco')],
+            ['src' => 'assets/images/zingiber/food-grilled-lamb.jpg', 'alt' => __('A precisely plated grilled dish from the Zingiber kitchen', 'vonaco')],
+            ['src' => 'assets/images/zingiber/food-coastal-thali.jpg', 'alt' => __('A modern composition inspired by India’s coastal regions', 'vonaco')],
+        ];
+        ?>
+        <section class="zingiber-section zingiber-page-menu" data-zingiber-menu-page>
+            <div class="zingiber-container zingiber-page-menu__mast">
+                <p class="zingiber-eyebrow" data-zingiber-reveal><?php esc_html_e('The Culinary Journey', 'vonaco'); ?></p>
+                <h1 class="zingiber-page-menu__display" data-zingiber-reveal><?php echo esc_html($zingiberPage['title']); ?></h1>
+                <p class="zingiber-page-menu__lede" data-zingiber-reveal><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][0]['heading'])); ?></p>
+            </div>
+        <nav class="zingiber-page-menu__tabs" aria-label="<?php esc_attr_e('Menu regions', 'vonaco'); ?>" data-zingiber-menu-tabs>
+            <button class="zingiber-page-menu__step" type="button" data-zingiber-menu-step="-1" aria-label="<?php esc_attr_e('Previous menu region', 'vonaco'); ?>" hidden><?php echo zingiber_icon_svg('arrow'); ?></button>
+            <div class="zingiber-page-menu__rail" data-zingiber-menu-rail>
+                    <?php foreach ($menuRegions as $region) :
+                        $regionId = sanitize_title($region['name']);
+                        ?>
+                        <a class="zingiber-page-menu__tab" href="#<?php echo esc_attr($regionId); ?>"><?php echo esc_html($region['name']); ?></a>
                     <?php endforeach; ?>
-                </div>
+                            </div>
+            <button class="zingiber-page-menu__step" type="button" data-zingiber-menu-step="1" aria-label="<?php esc_attr_e('Next menu region', 'vonaco'); ?>" hidden><?php echo zingiber_icon_svg('arrow'); ?></button>
+        </nav>
+
+            <div class="zingiber-container zingiber-page-menu__intro" data-zingiber-reveal>
+                <?php foreach ($zingiberPage['sections'][0]['body'] as $paragraph) : ?>
+                    <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                <?php endforeach; ?>
             </div>
-            <div class="zingiber-container zingiber-page-menu__images">
-                <figure data-zingiber-reveal>
-                    <?php
-                    zingiber_theme_image(
-                        [
-                            'src' => 'assets/images/zingiber/food-prawn-curry.jpg',
-                            'alt' => __('Coastal Indian prawn curry with refined presentation', 'vonaco'),
-                        ],
-                        [
-                            'width' => 1024,
-                            'height' => 1536,
-                            'sizes' => '(min-width: 1025px) 28vw, 90vw',
-                        ]
-                    );
+            <div class="zingiber-container zingiber-page-menu__images" role="list">
+                <?php foreach ($menuRegions as $index => $region) :
+                    $regionId = sanitize_title($region['name']);
+                    $plate = $menuPlatePool[$index] ?? $region['image'];
                     ?>
-                </figure>
-                <figure data-zingiber-reveal>
-                    <?php
-                    zingiber_theme_image(
-                        [
-                            'src' => 'assets/images/zingiber/food-coastal-thali.jpg',
-                            'alt' => __('A modern composition inspired by India’s coastal regions', 'vonaco'),
-                        ],
-                        [
-                            'width' => 1672,
-                            'height' => 941,
-                            'sizes' => '(min-width: 1025px) 28vw, 90vw',
-                        ]
-                    );
-                    ?>
-                </figure>
-                <figure data-zingiber-reveal>
-                    <?php
-                    zingiber_theme_image(
-                        [
-                            'src' => 'assets/images/zingiber/food-dessert.jpg',
-                            'alt' => __('Elegant dessert presentation from the Zingiber kitchen', 'vonaco'),
-                        ],
-                        [
-                            'width' => 1024,
-                            'height' => 1536,
-                            'sizes' => '(min-width: 1025px) 28vw, 90vw',
-                        ]
-                    );
-                    ?>
-                </figure>
+                    <article class="zingiber-menu-plate" id="<?php echo esc_attr($regionId); ?>" role="listitem" data-zingiber-reveal data-zingiber-menu-region>
+                        <figure class="zingiber-menu-plate__figure">
+                            <?php
+                            zingiber_theme_image(
+                                [
+                                    'src' => $plate['src'],
+                                    'alt' => $plate['alt'],
+                                ],
+                                [
+                                    'width' => 1024,
+                                    'height' => 1024,
+                                    'sizes' => '(min-width: 1025px) 30vw, (min-width: 600px) 46vw, 94vw',
+                                ]
+                            );
+                            ?>
+                        </figure>
+                        <h3 class="zingiber-menu-plate__title"><?php echo esc_html($region['name']); ?></h3>
+                        <p class="zingiber-menu-plate__copy"><?php echo esc_html(zingiber_prevent_widows($region['summary'])); ?></p>
+                    </article>
+                <?php endforeach; ?>
             </div>
-            <div class="zingiber-container zingiber-page-menu__note zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
+
+        <div class="zingiber-container zingiber-page-menu__note zingiber-panel zingiber-panel--sand" data-zingiber-reveal>
                 <p><?php echo esc_html(zingiber_prevent_widows($zingiberPage['sections'][1]['body'][0])); ?></p>
-                <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Plan Your Visit', 'vonaco'); ?></a>
+                <a class="zingiber-button zingiber-button--dark zingiber-button--prominent" href="<?php echo esc_url(zingiber_page_url('/contact/')); ?>"><?php esc_html_e('Plan Your Visit', 'vonaco'); ?></a>
             </div>
-        </section>
+            <div class="zingiber-page-menu__dock">
+            <a href="<?php echo esc_url(zingiber_page_url('/contact/')); ?>"><span><?php esc_html_e('Book Now', 'vonaco'); ?></span></a>
+        </div>
+    </section>
 
     <?php elseif ($zingiberPage['slug'] === 'gallery') : ?>
         <section class="zingiber-section zingiber-page-gallery">
