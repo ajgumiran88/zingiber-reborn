@@ -210,14 +210,11 @@
 
     if (toggle && menu) {
         var closeToggle = menu.querySelector('[data-zingiber-menu-close]');
-        var enterTimer = 0;
         var closeMenu = function () {
             menu.close();
         };
 
         menu.addEventListener('close', function () {
-            window.clearTimeout(enterTimer);
-            menu.classList.remove('is-entering');
             toggle.setAttribute('aria-expanded', 'false');
             document.documentElement.classList.remove('zingiber-menu-open');
             toggle.focus({ preventScroll: true });
@@ -225,26 +222,16 @@
         });
 
         toggle.addEventListener('click', function () {
-            window.clearTimeout(enterTimer);
             stopLenis();
-            menu.classList.remove('is-entering');
             menu.showModal();
             toggle.setAttribute('aria-expanded', 'true');
             document.documentElement.classList.add('zingiber-menu-open');
-
-            // Restart staggered entrance on every open (keyframes do not re-fire alone).
-            if (!reducedMotion) {
-                void menu.offsetWidth;
-                menu.classList.add('is-entering');
-                enterTimer = window.setTimeout(function () {
-                    menu.classList.remove('is-entering');
-                }, 900);
-            }
         });
 
         closeToggle.addEventListener('click', closeMenu);
         menu.addEventListener('click', function (event) {
-            if (event.target.closest('a')) {
+            // Ballena: a click on the page around the sheet closes it too.
+            if (event.target === menu || event.target.closest('a')) {
                 closeMenu();
             }
         });

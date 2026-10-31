@@ -14,10 +14,10 @@ for (const width of [375, 768, 1024, 1440]) {
         const cards = [...document.querySelectorAll('.zingiber-principle-cards > li')];
         return {
             overflow: document.documentElement.scrollWidth - innerWidth,
-            languages: document.querySelectorAll('.zingiber-language a').length,
+            languages: document.querySelectorAll('header .zingiber-language a').length,
             langInHeader: !!document.querySelector('.zingiber-header .zingiber-language'),
             langAfterMenu: rect('.zingiber-language').left >= rect('[data-zingiber-menu-toggle]').right,
-            languageTargets: [...document.querySelectorAll('.zingiber-language a')].every(a => a.getBoundingClientRect().width >= 44 && a.getBoundingClientRect().height >= 44),
+            languageTargets: [...document.querySelectorAll('header .zingiber-language a')].every(a => a.getBoundingClientRect().width >= 44 && a.getBoundingClientRect().height >= 44),
             languageSelectionContrast: getComputedStyle(document.querySelector('.zingiber-language a[aria-current]')).color === getComputedStyle(document.querySelector('.zingiber-language')).color,
             langNearMenu: (() => {
                 const lang = document.querySelector('.zingiber-language').getBoundingClientRect();
@@ -110,7 +110,7 @@ for (const width of [375, 1440]) {
     }
     await page.screenshot({ path: `/tmp/zingiber-revisions/arabic-contact-${width}.png` });
 }
-await page.click('.zingiber-language a[lang="en"]');
+await page.click('header .zingiber-language a[lang="en"]');
 await page.waitForFunction(() => document.documentElement.lang.startsWith('en'));
 assert.ok((await page.url()).includes('/contact/'), 'Language switch stays on the current page');
 console.log('PASS Arabic: six pages, RTL, English return, internal links and enquiry action');

@@ -133,14 +133,16 @@ $navigationLabels = [
                 data-zingiber-menu-toggle
             >
                 <span class="zingiber-menu-toggle__label"><?php esc_html_e('Menu', 'vonaco'); ?></span>
-                <span class="zingiber-menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+                <span class="zingiber-menu-toggle__icon" aria-hidden="true"><span></span><span></span><span></span></span>
             </button>
+            <?php ob_start(); // Reused in the open masthead so the toggle morphs in place. ?>
             <nav class="zingiber-language" aria-label="<?php echo zingiber_is_arabic() ? 'اللغة' : 'Language'; ?>">
                 <?php $languagePath = zingiber_current_page_content()['slug'];
                 $languageUrl = home_url($languagePath === 'home' ? '/' : '/' . $languagePath . '/'); ?>
                 <a href="<?php echo esc_url($languageUrl); ?>" lang="en" hreflang="en"<?php echo !zingiber_is_arabic() ? ' aria-current="true"' : ''; ?>>EN<span class="zingiber-sr-only"> English</span></a>
                 <a href="<?php echo esc_url(add_query_arg('lang', 'ar', $languageUrl)); ?>" lang="ar" hreflang="ar"<?php echo zingiber_is_arabic() ? ' aria-current="true"' : ''; ?>>العربية</a>
             </nav>
+            <?php $languageNav = ob_get_clean(); echo $languageNav; ?>
         </div>
 
     </div>
@@ -152,17 +154,20 @@ $navigationLabels = [
         <a class="zingiber-navigation__logo" href="<?php echo esc_url(zingiber_page_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
             <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-logo.svg')); ?>" alt="Zingiber" width="635" height="390">
         </a>
-        <button class="zingiber-menu-toggle" type="button" aria-label="<?php esc_attr_e('Close navigation', 'vonaco'); ?>" data-zingiber-menu-close autofocus>
-            <span class="zingiber-menu-toggle__label"><?php esc_html_e('Close', 'vonaco'); ?></span>
-            <span class="zingiber-menu-toggle__cross" aria-hidden="true"></span>
-        </button>
+        <div class="zingiber-header__end">
+            <button class="zingiber-menu-toggle" type="button" aria-label="<?php esc_attr_e('Close navigation', 'vonaco'); ?>" data-zingiber-menu-close autofocus>
+                <span class="zingiber-menu-toggle__label"><?php esc_html_e('Close', 'vonaco'); ?></span>
+                <span class="zingiber-menu-toggle__icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            </button>
+            <?php echo $languageNav; ?>
+        </div>
     </div>
     <nav class="zingiber-navigation__links" aria-label="Primary navigation">
         <ul id="zingiber-primary-menu">
-            <?php foreach ($navigationOrder as $slug) : ?>
+            <?php foreach ($navigationOrder as $index => $slug) : ?>
                 <?php if (!isset($navigationPages[$slug])) { continue; } ?>
                 <?php $isCurrent = ($slug === 'home' && is_front_page()) || is_page($slug); ?>
-                <li>
+                <li style="--i: <?php echo (int) $index; ?>">
                     <a href="<?php echo esc_url($slug === 'home' ? zingiber_page_url('/') : zingiber_page_url('/' . $slug . '/')); ?>"<?php echo $isCurrent ? ' aria-current="page"' : ''; ?>><?php echo esc_html(__($navigationLabels[$slug], 'vonaco')); ?></a>
                 </li>
             <?php endforeach; ?>
@@ -170,6 +175,11 @@ $navigationLabels = [
         <a class="zingiber-navigation__social" href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <?php echo zingiber_icon_svg('arrow'); ?></a>
         <figure class="zingiber-navigation__image" aria-hidden="true">
             <?php zingiber_theme_image($navigationPages['home']['sections']['chef_story']['image'], ['width' => 1536, 'height' => 1024, 'sizes' => '(min-width: 768px) 42rem, 90vw']); ?>
+            <figcaption class="zingiber-navigation__caption">
+                <span><?php esc_html_e('Introducing a Modern Indian', 'vonaco'); ?></span>
+                <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-logo-light.svg')); ?>" alt="" width="635" height="390">
+                <span><?php esc_html_e('Coastal Dining Experience.', 'vonaco'); ?></span>
+            </figcaption>
         </figure>
     </nav>
 </dialog>
