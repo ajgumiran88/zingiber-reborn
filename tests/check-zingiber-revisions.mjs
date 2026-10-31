@@ -55,7 +55,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.languageSelectionContrast, `${width}: selected language retains light header contrast`);
     assert.ok(result.logo.includes('english-logo'), 'Supplied English logo');
     assert.ok(result.circle <= 110, 'Smaller menu circle');
-    assert.ok(result.heroStoryGap < 8, `${width}: story flush under hero (Ballena)`);
+    assert.ok(result.heroStoryGap >= 48, `${width}: white space between hero and story (PDF item 9)`);
     assert.match(result.circleLabel, /See Menu/i, 'Centered menu label');
     assert.equal(result.sketchRings, 3, 'Three sketch rings match supplied circle reference');
     assert.ok(result.headingLines <= 2.1, `${width}: coastal heading fits two lines`);
@@ -75,7 +75,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.bookButton, 'Book Now is a defined button');
     assert.ok(result.phone, 'Requested phone placeholder');
     assert.ok(result.roots >= 1, 'Animated footer roots replace ginger illustrations');
-    assert.equal(result.spices, width < 1024 ? 6 : 8, `${width}: Experience floats whole-spice art at every depth`);
+    assert.equal(result.spices, width < 1024 ? 6 : 9, `${width}: Experience floats whole-spice art at every depth`);
     assert.ok(result.headerGlass, 'Glass header overlay');
     await page.evaluate(() => scrollTo(0, innerHeight));
     await page.waitForFunction(() => document.querySelector('.zingiber-header').classList.contains('is-sticky'));

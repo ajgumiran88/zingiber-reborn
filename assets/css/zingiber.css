@@ -3168,6 +3168,7 @@ html.zingiber-menu-open {
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 10vw;
     scrollbar-width: none;
     list-style: none;
 }
@@ -3178,6 +3179,18 @@ html.zingiber-menu-open {
 
 .zingiber-coastal__track:focus-visible {
     outline-offset: -4px;
+}
+
+.zingiber-coastal__track.is-sliding,
+.zingiber-principle-cards.is-sliding {
+    scroll-snap-type: none;
+    scroll-behavior: auto !important;
+}
+
+.zingiber-coastal__track.is-resetting,
+.zingiber-principle-cards.is-resetting {
+    opacity: 0;
+    transition: opacity 180ms ease-in;
 }
 
 .zingiber-coastal__slide {
@@ -3263,6 +3276,40 @@ html.zingiber-menu-open {
 
 .zingiber-coastal__progress::-moz-progress-bar {
     background: var(--zingiber-burnt-red);
+}
+
+.zingiber-coast-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 2.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--zingiber-burnt-red);
+    cursor: pointer;
+}
+
+.zingiber-coast-toggle__icon {
+    display: block;
+    width: 0.65rem;
+    height: 0.85rem;
+    background: linear-gradient(90deg, currentColor 0 30%, transparent 30% 70%, currentColor 70% 100%);
+}
+
+.zingiber-coast-toggle[aria-pressed="true"] .zingiber-coast-toggle__icon {
+    width: 0;
+    height: 0;
+    border-block: 0.45rem solid transparent;
+    border-inline-start: 0.65rem solid currentColor;
+    background: none;
+    transform: translateX(1px);
+}
+
+.zingiber-coast-toggle:hover,
+.zingiber-coast-toggle:focus-visible {
+    color: var(--zingiber-charcoal);
 }
 
 .zingiber-coastal__buttons {
@@ -3504,7 +3551,7 @@ html.zingiber-menu-open {
 }
 
 /* Slots: near (large, sharp, fast), mid, far (small, soft, slow). */
-.zingiber-spice--leaf { right: calc(50% + 21rem); top: 20%; width: clamp(9rem, 15vw, 15rem); --tilt: -26deg; --rise: 7rem; --float: 13s; }
+.zingiber-spice--leaf { right: calc(50% + 21rem); top: 20%; width: clamp(5rem, 8.5vw, 8.5rem); --tilt: -26deg; --rise: 7rem; --float: 13s; }
 .zingiber-spice--anise { right: calc(50% + 15.5rem); top: 64%; width: clamp(5.5rem, 9vw, 9rem); --tilt: 14deg; --rise: 4rem; --float: 11s; }
 .zingiber-spice--pepper { right: calc(50% + 15rem); top: 47%; width: clamp(1.6rem, 2.4vw, 2.4rem); --rise: 5rem; --float: 9s; }
 .zingiber-spice--clove { right: calc(50% + 33rem); top: 72%; width: clamp(1.8rem, 2.8vw, 2.8rem); --tilt: 58deg; --blur: 1.5px; --rise: 2rem; --float: 15s; }
@@ -3512,6 +3559,7 @@ html.zingiber-menu-open {
 .zingiber-spice--cardamom { left: calc(50% + 16.5rem); top: 47%; width: clamp(2.4rem, 3.6vw, 3.6rem); --tilt: 24deg; --blur: 1.8px; --rise: 2.5rem; --float: 14s; }
 .zingiber-spice--cinnamon { left: calc(50% + 17rem); top: 70%; width: clamp(10rem, 17vw, 17rem); --tilt: -16deg; --rise: 5rem; --float: 16s; }
 .zingiber-spice--pepper-far { left: calc(50% + 34rem); top: 40%; width: clamp(1.3rem, 1.9vw, 1.9rem); --blur: 1.2px; --rise: 1.5rem; --float: 10s; }
+.zingiber-spice--ginger { right: calc(50% + 27rem); top: 44%; width: clamp(6rem, 9vw, 9rem); --tilt: -14deg; --rise: 6rem; --float: 14s; }
 
 .zingiber-gallery-teaser__strip {
     position: relative;
@@ -3539,13 +3587,13 @@ html.zingiber-menu-open {
         padding-block: 10rem 11rem;
     }
     .zingiber-spices { --rise-scale: 0.35; }
-    .zingiber-spice--leaf { inset: -1rem auto auto -1.5rem; width: 8rem; }
+    .zingiber-spice--leaf { inset: -1rem auto auto -1.5rem; width: 4.5rem; }
     .zingiber-spice--chili { inset: 0.5rem 1.5rem auto auto; width: 4rem; }
     .zingiber-spice--pepper { inset: 4rem auto auto 44%; width: 1.5rem; }
     .zingiber-spice--anise { inset: auto auto 1rem 8%; width: 5.5rem; }
     .zingiber-spice--cardamom { inset: auto 36% 3rem auto; width: 2.4rem; }
     .zingiber-spice--cinnamon { inset: auto -2.5rem 2.5rem auto; width: 10rem; }
-    .zingiber-spices :is(.zingiber-spice--clove, .zingiber-spice--pepper-far) { display: none; }
+    .zingiber-spices :is(.zingiber-spice--clove, .zingiber-spice--pepper-far, .zingiber-spice--ginger) { display: none; }
 }
 
 .zingiber-gallery-teaser__tile a, .zingiber-gallery-teaser__tile picture {
@@ -4112,6 +4160,33 @@ html.zingiber-menu-open {
     .zingiber-coastal__slide:hover img,
     .zingiber-story__image:hover img { transform: scale(1.025); }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-coastal__slide img,
+    .zingiber-principle-card img {
+        transform: scale(1.035);
+        transition: transform 650ms var(--zingiber-ease-lux);
+    }
+    .zingiber-coastal__slide.is-active:not(:hover) img,
+    .zingiber-principle-cards > li.is-active .zingiber-principle-card:not(:hover, :focus-visible) img {
+        transform: scale(1);
+    }
+    .zingiber-coastal__caption {
+        opacity: 0.82;
+        transform: translateY(0.5rem);
+        transition: opacity 500ms var(--zingiber-ease-lux), transform 650ms var(--zingiber-ease-lux);
+    }
+    .zingiber-coastal__slide.is-active .zingiber-coastal__caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .zingiber-coastal__progress::-webkit-progress-value,
+    .zingiber-principles__nav .zingiber-coastal__progress::-webkit-progress-value,
+    .zingiber-coastal__progress::-moz-progress-bar {
+        transition: width 500ms var(--zingiber-ease-lux);
+    }
+}
+
 @keyframes zingiber-nav-enter {
     from { opacity: 0; transform: translateY(0.85rem); }
     to { opacity: 1; transform: translateY(0); }
@@ -4280,8 +4355,36 @@ html.zingiber-menu-open {
     line-height: 1.2;
 }
 .zingiber-coastal__caption h3 { font-size: var(--zingiber-type-feature); }
-/* Ballena: story abuts hero — whitespace lives inside later sections, not a dead sand strip. */
-.zingiber-story { margin: 0; }
+/* PDF item 9 (JF): no panel — a quarter-curve photograph with a hairline inner frame, copy on open sand. */
+.zingiber-story {
+    width: min(var(--zingiber-container), 80rem);
+    margin: var(--zingiber-section-space) auto 0;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: clamp(2.5rem, 7vw, 7.5rem);
+    background: none;
+    color: var(--zingiber-charcoal);
+}
+.zingiber-story__image { position: relative; min-height: 0; aspect-ratio: 4 / 5; overflow: clip; border-radius: 0.5rem 60% 0.5rem 0.5rem / 0.5rem 45% 0.5rem 0.5rem; }
+.zingiber-story__image::after { content: ""; position: absolute; inset: 0.85rem; border: 1px solid rgba(237, 231, 225, 0.6); border-radius: inherit; pointer-events: none; }
+.zingiber-story__copy { padding: 0; }
+.zingiber-story .zingiber-eyebrow { color: var(--zingiber-burnt-red); }
+.zingiber-story__copy p:not(.zingiber-eyebrow) { color: var(--zingiber-ink-soft); line-height: 1.8; }
+@media (max-width: 767px) {
+    .zingiber-story { grid-template-columns: 1fr; }
+    .zingiber-story__image { aspect-ratio: 4 / 5; }
+    .zingiber-story__copy { padding: 0; }
+}
+/* The photograph rises open from its base, like JF's image curtains. */
+@media (prefers-reduced-motion: no-preference) {
+    .zingiber-enhanced-motion .zingiber-story__image[data-zingiber-reveal] { opacity: 1; transform: none; }
+    /* Clip the child, not the observed figure: a fully clipped target never intersects. */
+    .zingiber-enhanced-motion .zingiber-story__image[data-zingiber-reveal] > :is(picture, img) {
+        clip-path: inset(100% 0 0 0);
+        transition: clip-path 1400ms var(--zingiber-ease-lux);
+    }
+    .zingiber-enhanced-motion .zingiber-story__image[data-zingiber-reveal].is-visible > :is(picture, img) { clip-path: inset(0); }
+}
 .zingiber-gallery-teaser,
 .zingiber-page-contact.zingiber-section,
 .zingiber-coastal.zingiber-section,
@@ -4594,17 +4697,28 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
    the Ballena header/overlay stay as they are.
    ========================================================================== */
 
-/* Statements: words wake from faint to full ink as the line scrolls through view. */
+/* Statements: JF's SplitText entrance, scrubbed by scroll — each word drops in from a narrowed, faded state. */
 @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
-        .zingiber-split-word {
+        .zingiber-split-word,
+        [data-zingiber-split] + .zingiber-punct {
+            display: inline-block;
+            transform-origin: 50% 0;
             animation: zingiber-word-ink linear both;
             animation-timeline: view();
-            animation-range: cover calc(8% + var(--i) * 3%) cover calc(30% + var(--i) * 3%);
+            animation-range: cover calc(8% + var(--i) * var(--split-step, 3%)) cover calc(30% + var(--i) * var(--split-step, 3%));
         }
+        [data-zingiber-split] + .zingiber-punct { --i: 2; }
+        /* Body copy runs ~40 words; a tight step lets the last word land while the paragraph is still on screen. */
+        p[data-zingiber-split] { --split-step: 0.5%; }
     }
 }
-@keyframes zingiber-word-ink { from { opacity: 0.14; } to { opacity: 1; } }
+@keyframes zingiber-word-ink {
+    from { opacity: 0; transform: translateY(-0.25em) scaleX(0.7); }
+    to { opacity: 1; transform: none; }
+}
+/* Inline-block collapses the splitter's trailing space, so the comma stays tight to its word. */
+span[data-zingiber-split] { display: inline-block; }
 
 /* Culinary direction reads as one centred statement, as JF's opening line does. */
 .zingiber-coastal__intro { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 1.5rem; text-align: center; margin-bottom: clamp(3rem, 6vw, 5rem); }

@@ -275,8 +275,15 @@
         var progress = coast.querySelector('[data-zingiber-coast-progress]');
         var previous = coast.querySelector('[data-zingiber-coast-step="-1"]');
         var next = coast.querySelector('[data-zingiber-coast-step="1"]');
+        var toggle = coast.querySelector('[data-zingiber-coast-toggle]');
         var activeSlide = 0;
         var startAligned = getComputedStyle(slides[0]).scrollSnapAlign.indexOf('center') === -1;
+        var isScrolling = false;
+        var isPaused = false;
+        var isInView = !('IntersectionObserver' in window);
+        var animationFrame = 0;
+        var loopTimer = 0;
+        var lastActiveSlide = -1;
         /* Distance from a slide's snap edge to where the track snaps it, in viewport pixels. */
         var offsetOf = function (slide) {
             var bounds = slide.getBoundingClientRect();
@@ -297,15 +304,89 @@
             indexLabel.textContent = String(activeSlide + 1).padStart(2, '0');
             progress.value = activeSlide + 1;
             previous.disabled = activeSlide === 0;
-            next.disabled = activeSlide === slides.length - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+            next.disabled = (!startAligned && activeSlide === slides.length - 1) || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+            if (activeSlide !== lastActiveSlide) {
+                slides.forEach(function (slide, index) {
+                    slide.classList.toggle('is-active', index === activeSlide);
+                });
+                lastActiveSlide = activeSlide;
+            }
         };
-        var goToCoast = function (index) {
+        var cancelSlideMotion = function () {
+            if (!animationFrame && !loopTimer) return;
+            window.cancelAnimationFrame(animationFrame);
+            window.clearTimeout(loopTimer);
+            animationFrame = 0;
+            loopTimer = 0;
+            track.classList.remove('is-sliding', 'is-resetting');
+            isScrolling = false;
+            updateCoast();
+        };
+        var goToCoast = function (index, loop) {
+            window.cancelAnimationFrame(animationFrame);
+            window.clearTimeout(loopTimer);
+            animationFrame = 0;
+            loopTimer = 0;
+            track.classList.remove('is-sliding', 'is-resetting');
+            isScrolling = false;
             var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
-            track.scrollBy({ left: offsetOf(slide), behavior: reducedMotion ? 'instant' : 'smooth' });
+            var target = loop ? 0 : track.scrollLeft + offsetOf(slide);
+            target = Math.max(0, Math.min(track.scrollWidth - track.clientWidth, target));
+            if (loop && !reducedMotion) {
+                isScrolling = true;
+                track.classList.add('is-resetting');
+                loopTimer = window.setTimeout(function () {
+                    track.scrollTo({ left: 0, behavior: 'instant' });
+                    updateCoast();
+                    track.classList.remove('is-resetting');
+                    loopTimer = window.setTimeout(function () {
+                        loopTimer = 0;
+                        isScrolling = false;
+                    }, 260);
+                }, 180);
+                return;
+            }
+            if (reducedMotion) {
+                track.scrollTo({ left: target, behavior: 'instant' });
+                return updateCoast();
+            }
+            var start = track.scrollLeft;
+            var distance = target - start;
+            if (Math.abs(distance) < 1) return;
+            isScrolling = true;
+            track.classList.add('is-sliding');
+            var started = performance.now();
+            var duration = Math.min(680, Math.max(520, 470 + Math.abs(distance) * 0.12));
+            var move = function (now) {
+                var progress = Math.min(1, (now - started) / duration);
+                var eased = progress * progress * (3 - 2 * progress);
+                track.scrollTo({ left: start + distance * eased, behavior: 'instant' });
+                if (progress < 1) {
+                    animationFrame = window.requestAnimationFrame(move);
+                    return;
+                }
+                track.scrollTo({ left: target, behavior: 'instant' });
+                track.classList.remove('is-sliding');
+                animationFrame = 0;
+                isScrolling = false;
+                updateCoast();
+            };
+            animationFrame = window.requestAnimationFrame(move);
         };
         previous.addEventListener('click', function () { goToCoast(activeSlide - 1); });
         next.addEventListener('click', function () { goToCoast(activeSlide + 1); });
+        if (toggle) {
+            toggle.hidden = reducedMotion;
+            toggle.addEventListener('click', function () {
+                isPaused = !isPaused;
+                toggle.setAttribute('aria-pressed', String(isPaused));
+                toggle.setAttribute('aria-label', isPaused ? toggle.dataset.resumeLabel : toggle.dataset.pauseLabel);
+            });
+        }
         track.addEventListener('scroll', updateCoast, { passive: true });
+        ['pointerdown', 'touchstart', 'wheel'].forEach(function (eventName) {
+            track.addEventListener(eventName, cancelSlideMotion, { passive: true });
+        });
         window.addEventListener('resize', updateCoast, { passive: true });
         track.addEventListener('keydown', function (event) {
             var destinations = { ArrowLeft: activeSlide - 1, ArrowRight: activeSlide + 1, Home: 0, End: slides.length - 1 };
@@ -315,6 +396,26 @@
             }
         });
         updateCoast();
+        if (!reducedMotion && slides.length > 1) {
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    isInView = entries[0].isIntersecting;
+                }, { threshold: 0.35 }).observe(coast);
+            }
+            var autoplay = function () {
+                if (isPaused || !isInView || document.hidden || (coast.contains(document.activeElement) && document.activeElement !== toggle)) {
+                    window.setTimeout(autoplay, 2000);
+                    return;
+                }
+                if (isScrolling) {
+                    window.setTimeout(autoplay, 100);
+                    return;
+                }
+                goToCoast(next.disabled ? 0 : activeSlide + 1, next.disabled);
+                window.setTimeout(autoplay, 2000);
+            };
+            window.setTimeout(autoplay, 2000);
+        }
     });
 
     /* Keep nested horizontal rails off Lenis touch so swipe stays local. */

@@ -76,11 +76,11 @@ get_header('zingiber');
             <div class="zingiber-story__copy" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php echo esc_html($sections['chef_story']['eyebrow']); ?></p>
                 <h2 id="story-title">
-                    <span class="zingiber-heading-line"><?php echo esc_html(__('Coastal India', 'vonaco')); ?><span class="zingiber-punct">,</span></span>
-                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('Reimagined for Now', 'vonaco'))); ?></span>
+                    <span class="zingiber-heading-line"><span data-zingiber-split><?php echo esc_html(__('Coastal India', 'vonaco')); ?></span><span class="zingiber-punct">,</span></span>
+                    <span class="zingiber-heading-line" data-zingiber-split><?php echo esc_html(zingiber_prevent_widows(__('Reimagined for Now', 'vonaco'))); ?></span>
                 </h2>
                 <?php foreach ($sections['chef_story']['body'] as $paragraph) : ?>
-                    <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                    <p data-zingiber-split><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                 <?php endforeach; ?>
                 <a class="zingiber-arrow-link" href="<?php echo esc_url(zingiber_page_url('/menu/')); ?>"><?php esc_html_e('View Full Menu', 'vonaco'); ?><span aria-hidden="true"><?php echo zingiber_icon_svg('arrow'); ?></span></a>
             </div>
@@ -118,6 +118,7 @@ get_header('zingiber');
         <div class="zingiber-container zingiber-coastal__controls" data-zingiber-reveal>
             <p class="zingiber-coastal__index" aria-live="polite" aria-atomic="true"><span data-zingiber-coast-index>01</span><span class="zingiber-coastal__total"><span aria-hidden="true">/</span><span class="zingiber-sr-only"><?php esc_html_e('of', 'vonaco'); ?> </span><?php echo esc_html(sprintf('%02d', count($home['regions']))); ?></span></p>
             <progress class="zingiber-coastal__progress" value="1" max="<?php echo esc_attr((string) count($home['regions'])); ?>" aria-label="<?php esc_attr_e('Coastal region progress', 'vonaco'); ?>" data-zingiber-coast-progress></progress>
+            <button type="button" class="zingiber-coast-toggle" data-zingiber-coast-toggle data-pause-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>" data-resume-label="<?php esc_attr_e('Resume slider', 'vonaco'); ?>" aria-pressed="false" aria-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>"><span class="zingiber-coast-toggle__icon" aria-hidden="true"></span></button>
             <div class="zingiber-coastal__buttons">
                 <button type="button" data-zingiber-coast-step="-1" aria-label="<?php esc_attr_e('Previous coastal region', 'vonaco'); ?>" disabled><?php echo zingiber_icon_svg('previous'); ?></button>
                 <button type="button" data-zingiber-coast-step="1" aria-label="<?php esc_attr_e('Next coastal region', 'vonaco'); ?>"><?php echo zingiber_icon_svg('next'); ?></button>
@@ -150,6 +151,7 @@ get_header('zingiber');
                 <p class="zingiber-sr-only" aria-live="polite" aria-atomic="true"><span data-zingiber-coast-index>01</span> <?php esc_html_e('of', 'vonaco'); ?> <?php echo esc_html(sprintf('%02d', count($home['principles']))); ?></p>
                 <button type="button" data-zingiber-coast-step="-1" aria-label="<?php esc_attr_e('Previous principle', 'vonaco'); ?>" aria-controls="zingiber-principle-cards" disabled><?php echo zingiber_icon_svg('long-arrow'); ?></button>
                 <progress class="zingiber-coastal__progress" value="1" max="<?php echo esc_attr((string) count($home['principles'])); ?>" aria-label="<?php esc_attr_e('Principles progress', 'vonaco'); ?>" data-zingiber-coast-progress></progress>
+                <button type="button" class="zingiber-coast-toggle" data-zingiber-coast-toggle data-pause-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>" data-resume-label="<?php esc_attr_e('Resume slider', 'vonaco'); ?>" aria-pressed="false" aria-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>"><span class="zingiber-coast-toggle__icon" aria-hidden="true"></span></button>
                 <button type="button" data-zingiber-coast-step="1" aria-label="<?php esc_attr_e('Next principle', 'vonaco'); ?>" aria-controls="zingiber-principle-cards"><?php echo zingiber_icon_svg('long-arrow'); ?></button>
             </div>
         </div>
@@ -157,10 +159,10 @@ get_header('zingiber');
 
     <section id="gallery" class="zingiber-section zingiber-gallery-teaser" aria-labelledby="gallery-title">
         <div class="zingiber-gallery-teaser__stage">
-            <?php /* JF-style floating ingredients: slot => artwork; slots carry position and depth in CSS. */ ?>
+            <?php /* JF-style floating ingredients: slot => photo cutout; slots carry position and depth in CSS. Sources: assets/images/zingiber/spices/CREDITS.md. */ ?>
             <div class="zingiber-spices" aria-hidden="true" data-zingiber-reveal>
-                <?php foreach (['leaf' => 'curry-leaf', 'anise' => 'star-anise', 'pepper' => 'peppercorn', 'clove' => 'clove', 'chili' => 'chili', 'cardamom' => 'cardamom', 'cinnamon' => 'cinnamon', 'pepper-far' => 'peppercorn'] as $slot => $spice) : ?>
-                    <img class="zingiber-spice zingiber-spice--<?php echo esc_attr($slot); ?>" src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/spices/' . $spice . '.svg')); ?>" alt="" decoding="async">
+                <?php foreach (['leaf' => 'curry-leaf', 'anise' => 'star-anise', 'pepper' => 'peppercorn', 'clove' => 'clove', 'chili' => 'chili', 'cardamom' => 'cardamom', 'cinnamon' => 'cinnamon', 'pepper-far' => 'peppercorn', 'ginger' => 'ginger'] as $slot => $spice) : ?>
+                    <img class="zingiber-spice zingiber-spice--<?php echo esc_attr($slot); ?>" src="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/spices/' . $spice . '.webp')); ?>" alt="" decoding="async">
                 <?php endforeach; ?>
             </div>
             <div class="zingiber-gallery-teaser__heading" data-zingiber-reveal>
