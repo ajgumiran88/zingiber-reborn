@@ -596,6 +596,15 @@ html.zingiber-preload body.zingiber-site {
     opacity: 1;
     transform: translateY(0);
 }
+/* Keep the traced wordmark solid while its container rises into view. */
+.zingiber-enhanced-motion .zingiber-footer__wordmark[data-zingiber-reveal] {
+    opacity: 1;
+    transition: transform var(--zingiber-duration-lux) var(--zingiber-ease-lux);
+}
+.zingiber-enhanced-motion .zingiber-footer__wordmark[data-zingiber-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 .zingiber-heading-line {
     display: block;
     position: relative;
@@ -4260,11 +4269,12 @@ html.zingiber-menu-open {
     }
     html:not(.zingiber-intro-skip, .zingiber-preload) .zingiber-header .zingiber-header__end { animation-delay: 450ms; }
     html:not(.zingiber-intro-skip, .zingiber-preload) .zingiber-header .zingiber-logo-link {
-        animation: zingiber-header-in 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 300ms both;
+        animation: zingiber-header-logo-in 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 300ms both;
         --zingiber-header-rise: 20px;
     }
 }
 @keyframes zingiber-header-in { from { opacity: 0; translate: 0 var(--zingiber-header-rise, -10px); } }
+@keyframes zingiber-header-logo-in { from { translate: 0 var(--zingiber-header-rise, -10px); } }
 .zingiber-navigation__image {
     position: relative;
     width: 100%;
@@ -4702,6 +4712,7 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
 }
 @media (prefers-reduced-motion: reduce) {
     .zingiber-enhanced-motion [data-zingiber-reveal] { opacity: 1; transform: none; transition: none; }
+    .zingiber-enhanced-motion .zingiber-footer__wordmark[data-zingiber-reveal] { transition: none; }
 }
 
 /* ==========================================================================

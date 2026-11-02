@@ -448,6 +448,12 @@
         });
 
         revealItems.forEach(function (item) {
+            // display:none / zero-box nodes never intersect (e.g. About hides .zingiber-rule).
+            var box = item.getBoundingClientRect();
+            if (window.getComputedStyle(item).display === 'none' || (box.width === 0 && box.height === 0)) {
+                item.classList.add('is-visible');
+                return;
+            }
             observer.observe(item);
         });
     }
