@@ -500,6 +500,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 add_action('wp_head', 'zingiber_output_gtm_head', 0);
 
+if (!function_exists('zingiber_output_clarity')) {
+    function zingiber_output_clarity(): void
+    {
+        ?>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "z7vygd5bpn");
+</script>
+        <?php
+    }
+}
+add_action('wp_head', 'zingiber_output_clarity', 0);
+
 if (!function_exists('zingiber_output_gtm_body')) {
     function zingiber_output_gtm_body(): void
     {

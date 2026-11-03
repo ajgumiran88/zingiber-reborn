@@ -551,6 +551,11 @@ if (in_array('brand', $groups, true)) {
             $fail('brand', 'Google Tag Manager GTM-KD728N3M must load via wp_head and wp_body_open.');
         }
 
+        if (strpos($setupSource, 'z7vygd5bpn') === false
+            || strpos($setupSource, "add_action('wp_head', 'zingiber_output_clarity'") === false) {
+            $fail('brand', 'Microsoft Clarity z7vygd5bpn must load via wp_head.');
+        }
+
         foreach ([':focus-visible', '@media (prefers-reduced-motion: reduce)', '@media (max-width: 767px)'] as $requirement) {
             if (strpos($css, $requirement) === false) {
                 $fail('brand', sprintf('Responsive/accessibility rule missing: %s.', $requirement));
