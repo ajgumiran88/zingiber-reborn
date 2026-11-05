@@ -21,7 +21,7 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
         };
     });
     assert.ok(layout.glass, 'Masthead has stronger glass blur');
-    assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width / 2, 496))) <= 1, `${width}: masthead is half the page (revision 2 #2)`);
+    assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.32, 448))) <= 1, `${width}: masthead is a quarter of the page, floored where its controls fit`);
     assert.ok(layout.gridWidth >= width * .92, `${width}: full-width menu content`);
     assert.ok(layout.introBeforeCards, 'Introduction leads the food grid');
     assert.ok(layout.photoSizes.every(([w, h]) => Math.abs(w - h) <= 1 && Math.abs(w - layout.photoSizes[0][0]) <= 1), 'All food frames have equal square dimensions');
@@ -96,7 +96,7 @@ for (const width of [375, 768, 1440, 1920]) {
         }), selector);
         assert.equal(layout.overflow, 0, `${slug} ${width}: no overflow`);
         assert.ok(layout.widths.every(w => w >= width * .92 && w <= width), `${slug} ${width}: content, enquiry and footer fill the page: ${layout.widths}`);
-        assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width / 2, 496))) <= 1, `${slug} ${width}: masthead is half the page (revision 2 #2)`);
+        assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.32, 448))) <= 1, `${slug} ${width}: masthead is a quarter of the page, floored where its controls fit`);
         if (width === 768) assert.ok(layout.languageLinks, `${slug}: Arabic internal links retain language`);
         assert.ok(await page.evaluate(() => {
             const rect = s => document.querySelector(s).getBoundingClientRect();

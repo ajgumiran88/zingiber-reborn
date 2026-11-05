@@ -19,7 +19,7 @@ for (const width of [375, 768, 1024, 1440]) {
             overflow: document.documentElement.scrollWidth - innerWidth,
             sections: [...document.querySelectorAll('main > section')].map(e => e.id),
             poster: document.querySelector('.zingiber-hero__photo').currentSrc,
-            video: document.querySelector('video source')?.src || '',
+            video: { hidden: document.querySelector('video').hidden, source: document.querySelector('video').currentSrc },
             tiles: document.querySelectorAll('.zingiber-gallery-teaser__tile').length,
             book: box('.zingiber-header .zingiber-book-link'),
             logo: box('.zingiber-logo-link'),
@@ -34,7 +34,8 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.equal(layout.overflow, 0, `${width}: page overflow`);
     assert.deepEqual(layout.sections, ['hero', 'chef', 'coastal-regions', 'principles', 'gallery']);
     assert.ok(layout.poster.includes('interior-hero'), `${width}: approved poster`);
-    assert.match(layout.video, /\.mp4$/, `${width}: sample hero video until the client's asset arrives`);
+    assert.equal(layout.video.hidden, true);
+    assert.equal(layout.video.source, '');
     assert.equal(layout.tiles, 4);
     assert.ok(layout.book.x < layout.logo.x && layout.logo.x < layout.toggle.x);
     assert.ok(Math.abs(layout.logo.x + layout.logo.width / 2 - width / 2) < 2, `${width}: centered logo`);

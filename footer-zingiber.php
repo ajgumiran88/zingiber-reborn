@@ -10,7 +10,7 @@ get_template_part('template-parts/zingiber-enquiry');
 ?>
 <footer class="zingiber-footer">
     <div class="zingiber-footer__invitation">
-        <img class="zingiber-footer__roots zingiber-root-motion" src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/roots.svg')); ?>" alt="" width="1200" height="260" loading="lazy" aria-hidden="true">
+        <img class="zingiber-footer__roots zingiber-root-motion" src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/roots.svg')); ?>" alt="" width="1200" height="240" aria-hidden="true">
         <div class="zingiber-container zingiber-footer__invitation-inner" data-zingiber-reveal>
             <a class="zingiber-footer__email" href="mailto:<?php echo esc_attr($contact['email']); ?>"><?php echo esc_html($contact['email']); ?></a>
             <a class="zingiber-footer__book" href="<?php echo esc_url(zingiber_page_url('/contact/#zingiber-enquiry')); ?>"><?php esc_html_e('Book Now', 'vonaco'); ?><span aria-hidden="true">↗</span></a>

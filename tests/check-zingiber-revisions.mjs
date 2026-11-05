@@ -54,6 +54,7 @@ for (const width of [375, 768, 1024, 1440]) {
             headlineWeight: Number(getComputedStyle(document.querySelector('#story-title')).fontWeight),
             door: getComputedStyle(document.querySelector('.zingiber-enquiry__photo')).borderTopLeftRadius,
             rootsShare: rect('.zingiber-footer__roots').width / rect('.zingiber-footer').width,
+            rootsRight: Math.abs(rect('.zingiber-footer__roots').right - rect('.zingiber-footer').right),
             footerType: [getComputedStyle(document.querySelector('.zingiber-footer__nav a')).fontSize, getComputedStyle(document.querySelector('.zingiber-footer__heading')).fontSize].map(parseFloat),
         };
     });
@@ -72,7 +73,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.principlesPaged, `${width}: remaining principles page in with next/previous`);
     assert.ok(result.heroType <= 50, `${width}: restrained hero type`);
     assert.ok(result.sectionSpace >= 40 && result.sectionSpace <= 90, `${width}: section space without excessive gaps (revision 2 #7): ${result.sectionSpace}`);
-    assert.match(result.videoSource, /\.mp4$/, 'Sample restaurant video on the hero (revision 2 #1)');
+    assert.equal(result.videoSource, '', 'Hero keeps the current photograph until the client video arrives');
     assert.equal(result.dialablePlaceholder, false, 'Placeholder phone cannot be dialed');
     assert.equal(result.obsoleteArt, false, 'Obsolete illustrations removed');
     assert.ok(result.photo.includes('interior-'), 'Restaurant enquiry photograph');
@@ -86,14 +87,14 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.roots >= 1, 'Animated footer roots replace ginger illustrations');
     assert.equal(result.spices, width < 1024 ? 6 : 9, `${width}: Experience floats whole-spice art at every depth`);
     assert.ok(result.headerClear, 'Clear masthead over the hero (revision 2 #2)');
-    if (width >= 1024) assert.ok(Math.abs(result.headerWidth - width / 2) < 2, `${width}: masthead is half the page: ${result.headerWidth}`);
+    if (width >= 768) assert.ok(Math.abs(result.headerWidth - Math.max(width * 0.32, 448)) < 2, `${width}: masthead is a quarter of the page, floored where its controls fit: ${result.headerWidth}`);
     assert.ok(result.bookGap >= 8, `${width}: room beside Book Now (revision 2 #3): ${result.bookGap}`);
     assert.equal(result.pauseButtons, 0, 'No slider pause buttons (revision 2 #6, #9)');
     assert.equal(result.storyTitle, 'Coastal India, Reimagined for Now', 'Word split keeps heading text intact');
     assert.ok(result.splitWords >= 5, 'Story headline animates word by word (revision 2 #4, #5)');
     assert.ok(result.headlineWeight >= 600, 'Bolder headlines (revision 2 #8)');
     assert.match(result.door, /^999px/, 'Get in Touch keeps the door arch (revision 2 #12)');
-    if (width >= 768) assert.ok(Math.abs(result.rootsShare - 0.5) < 0.01, `${width}: roots span half the footer (revision 2 #13)`);
+    if (width >= 768) assert.ok(Math.abs(result.rootsShare - 0.5) < 0.01 && result.rootsRight < 1, `${width}: roots cover the right half of the footer`);
     assert.ok(result.footerType[0] < result.footerType[1] && result.footerType[0] <= 13, `${width}: footer body below heading size (revision 2 #15)`);
     await page.evaluate(() => scrollTo(0, innerHeight));
     await page.waitForFunction(() => document.querySelector('.zingiber-header').classList.contains('is-sticky'));

@@ -286,10 +286,14 @@
                     activeSlide = index;
                 }
             });
+            // Start-aligned rails cannot snap their last slide to the edge; at the end of the rail it is the active one.
+            if (startAligned && closest > 2 && track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+                activeSlide = slides.length - 1;
+            }
             indexLabel.textContent = String(activeSlide + 1).padStart(2, '0');
             progress.value = activeSlide + 1;
             previous.disabled = activeSlide === 0;
-            next.disabled = (!startAligned && activeSlide === slides.length - 1) || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+            next.disabled = activeSlide === slides.length - 1 || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
             if (activeSlide !== lastActiveSlide) {
                 slides.forEach(function (slide, index) {
                     slide.classList.toggle('is-active', index === activeSlide);
@@ -402,7 +406,7 @@
     });
 
     /*
-     * Headlines on every page: each word fades up in sequence once the heading is in view.
+     * Headlines and section ledes on every page animate word by word (CSS: scroll-linked below the fold, on load above it).
      * Text nodes are split in place so line spans, <br> and punctuation keep their markup; only
      * ASCII whitespace splits, so widow-guard NBSPs stay inside a word. The menu title keeps its own wipe.
      */
@@ -432,10 +436,21 @@
         });
     };
     if (!reducedMotion) {
-        document.querySelectorAll('.zingiber-main :is(h1, h2):not(.zingiber-page-menu__display), .zingiber-enquiry h2').forEach(function (heading) {
+        document.querySelectorAll([
+            '.zingiber-main :is(h1, h2):not(.zingiber-page-menu__display)',
+            '.zingiber-enquiry h2',
+            '.zingiber-story__copy > p:not(.zingiber-eyebrow)',
+            '.zingiber-coastal__copy p',
+            '.zingiber-gallery-teaser__heading > p:not(.zingiber-eyebrow)',
+            '.zingiber-page-hero__content > p:not(.zingiber-eyebrow)'
+        ].join(', ')).forEach(function (heading) {
             wordIndex = 0;
             splitWords(heading);
             heading.classList.add('zingiber-split');
+            // Text already on screen at load has no scroll left to drive it, so it fades up on its own.
+            if (heading.getBoundingClientRect().top < window.innerHeight) {
+                heading.classList.add('zingiber-split--now');
+            }
             if (!heading.closest('[data-zingiber-reveal]')) {
                 heading.setAttribute('data-zingiber-reveal', '');
             }

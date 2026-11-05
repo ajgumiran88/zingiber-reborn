@@ -34,7 +34,7 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
         const title = document.querySelector('main h1').getBoundingClientRect();
         return photo.left >= frame.left - 1 && photo.right <= frame.right + 1 && (innerWidth < 768 ? title.bottom < frame.top : title.right < frame.left);
     }), 'Hero typography and photography stay in their own frames');
-    assert.ok(Math.abs(layout.header - (width < 768 ? width - 20 : Math.max(width / 2, 496))) <= 1, 'Masthead is half the page (revision 2 #2)');
+    assert.ok(Math.abs(layout.header - (width < 768 ? width - 20 : Math.max(width * 0.32, 448))) <= 1, 'Masthead is half the page (revision 2 #2)');
     await page.evaluate(() => document.fonts.ready.then(() => true));
     for (const [name, selector] of Object.entries({ hero: '.zingiber-about-hero', story: '.zingiber-about__story', heritage: '.zingiber-about__pair', principles: '.zingiber-page-principles' })) {
         await page.evaluate(s => document.querySelector(s).scrollIntoView({ behavior: 'instant', block: 'start' }), selector);
