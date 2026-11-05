@@ -19,7 +19,7 @@ for (const width of [375, 768, 1024, 1440]) {
             overflow: document.documentElement.scrollWidth - innerWidth,
             sections: [...document.querySelectorAll('main > section')].map(e => e.id),
             poster: document.querySelector('.zingiber-hero__photo').currentSrc,
-            video: { hidden: document.querySelector('video').hidden, source: document.querySelector('video').currentSrc },
+            video: document.querySelector('video source')?.src || '',
             tiles: document.querySelectorAll('.zingiber-gallery-teaser__tile').length,
             book: box('.zingiber-header .zingiber-book-link'),
             logo: box('.zingiber-logo-link'),
@@ -34,8 +34,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.equal(layout.overflow, 0, `${width}: page overflow`);
     assert.deepEqual(layout.sections, ['hero', 'chef', 'coastal-regions', 'principles', 'gallery']);
     assert.ok(layout.poster.includes('interior-hero'), `${width}: approved poster`);
-    assert.equal(layout.video.hidden, true);
-    assert.equal(layout.video.source, '');
+    assert.match(layout.video, /\.mp4$/, `${width}: sample hero video until the client's asset arrives`);
     assert.equal(layout.tiles, 4);
     assert.ok(layout.book.x < layout.logo.x && layout.logo.x < layout.toggle.x);
     assert.ok(Math.abs(layout.logo.x + layout.logo.width / 2 - width / 2) < 2, `${width}: centered logo`);
@@ -76,6 +75,10 @@ for (const width of [375, 768, 1024, 1440]) {
 
     // Principles page two at a time: next steps the counter and stops at the last pair.
     await page.evaluate(() => document.querySelector('#principles').scrollIntoView({ behavior: 'instant' }));
+    // Tighter sections (revision 2 #7) let autoplay run while the coast is tested; focus holds it, Home resets it.
+    await page.focus('#principles [data-zingiber-coast-track]');
+    await page.keyboard.press('Home');
+    await page.waitForFunction(() => document.querySelector('#principles [data-zingiber-coast-index]').textContent === '01');
     await page.click('#principles [data-zingiber-coast-step="1"]');
     await page.waitForFunction(() => document.querySelector('#principles [data-zingiber-coast-index]').textContent === '02');
     await page.click('#principles [data-zingiber-coast-step="1"]');

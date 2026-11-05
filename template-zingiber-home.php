@@ -76,11 +76,11 @@ get_header('zingiber');
             <div class="zingiber-story__copy" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php echo esc_html($sections['chef_story']['eyebrow']); ?></p>
                 <h2 id="story-title">
-                    <span class="zingiber-heading-line"><span data-zingiber-split><?php echo esc_html(__('Coastal India', 'vonaco')); ?></span><span class="zingiber-punct">,</span></span>
-                    <span class="zingiber-heading-line" data-zingiber-split><?php echo esc_html(zingiber_prevent_widows(__('Reimagined for Now', 'vonaco'))); ?></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(__('Coastal India', 'vonaco')); ?><span class="zingiber-punct">,</span></span>
+                    <span class="zingiber-heading-line"><?php echo esc_html(zingiber_prevent_widows(__('Reimagined for Now', 'vonaco'))); ?></span>
                 </h2>
                 <?php foreach ($sections['chef_story']['body'] as $paragraph) : ?>
-                    <p data-zingiber-split><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
+                    <p><?php echo esc_html(zingiber_prevent_widows($paragraph)); ?></p>
                 <?php endforeach; ?>
                 <a class="zingiber-arrow-link" href="<?php echo esc_url(zingiber_page_url('/menu/')); ?>"><?php esc_html_e('View Full Menu', 'vonaco'); ?><span aria-hidden="true"><?php echo zingiber_icon_svg('arrow'); ?></span></a>
             </div>
@@ -90,7 +90,7 @@ get_header('zingiber');
         <div class="zingiber-container zingiber-coastal__intro" data-zingiber-reveal>
             <div>
                 <p class="zingiber-eyebrow"><?php echo esc_html($sections['coastal_expression']['eyebrow']); ?></p>
-                <h2 id="coast-title" data-zingiber-split><?php echo esc_html(zingiber_prevent_widows($sections['coastal_expression']['heading'])); ?></h2>
+                <h2 id="coast-title"><?php echo esc_html(zingiber_prevent_widows($sections['coastal_expression']['heading'])); ?></h2>
             </div>
             <div class="zingiber-coastal__copy">
                 <?php foreach ($sections['coastal_expression']['body'] as $paragraph) : ?>
@@ -118,7 +118,6 @@ get_header('zingiber');
         <div class="zingiber-container zingiber-coastal__controls" data-zingiber-reveal>
             <p class="zingiber-coastal__index" aria-live="polite" aria-atomic="true"><span data-zingiber-coast-index>01</span><span class="zingiber-coastal__total"><span aria-hidden="true">/</span><span class="zingiber-sr-only"><?php esc_html_e('of', 'vonaco'); ?> </span><?php echo esc_html(sprintf('%02d', count($home['regions']))); ?></span></p>
             <progress class="zingiber-coastal__progress" value="1" max="<?php echo esc_attr((string) count($home['regions'])); ?>" aria-label="<?php esc_attr_e('Coastal region progress', 'vonaco'); ?>" data-zingiber-coast-progress></progress>
-            <button type="button" class="zingiber-coast-toggle" data-zingiber-coast-toggle data-pause-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>" data-resume-label="<?php esc_attr_e('Resume slider', 'vonaco'); ?>" aria-pressed="false" aria-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>"><span class="zingiber-coast-toggle__icon" aria-hidden="true"></span></button>
             <div class="zingiber-coastal__buttons">
                 <button type="button" data-zingiber-coast-step="-1" aria-label="<?php esc_attr_e('Previous coastal region', 'vonaco'); ?>" disabled><?php echo zingiber_icon_svg('previous'); ?></button>
                 <button type="button" data-zingiber-coast-step="1" aria-label="<?php esc_attr_e('Next coastal region', 'vonaco'); ?>"><?php echo zingiber_icon_svg('next'); ?></button>
@@ -151,7 +150,6 @@ get_header('zingiber');
                 <p class="zingiber-sr-only" aria-live="polite" aria-atomic="true"><span data-zingiber-coast-index>01</span> <?php esc_html_e('of', 'vonaco'); ?> <?php echo esc_html(sprintf('%02d', count($home['principles']))); ?></p>
                 <button type="button" data-zingiber-coast-step="-1" aria-label="<?php esc_attr_e('Previous principle', 'vonaco'); ?>" aria-controls="zingiber-principle-cards" disabled><?php echo zingiber_icon_svg('long-arrow'); ?></button>
                 <progress class="zingiber-coastal__progress" value="1" max="<?php echo esc_attr((string) count($home['principles'])); ?>" aria-label="<?php esc_attr_e('Principles progress', 'vonaco'); ?>" data-zingiber-coast-progress></progress>
-                <button type="button" class="zingiber-coast-toggle" data-zingiber-coast-toggle data-pause-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>" data-resume-label="<?php esc_attr_e('Resume slider', 'vonaco'); ?>" aria-pressed="false" aria-label="<?php esc_attr_e('Pause slider', 'vonaco'); ?>"><span class="zingiber-coast-toggle__icon" aria-hidden="true"></span></button>
                 <button type="button" data-zingiber-coast-step="1" aria-label="<?php esc_attr_e('Next principle', 'vonaco'); ?>" aria-controls="zingiber-principle-cards"><?php echo zingiber_icon_svg('long-arrow'); ?></button>
             </div>
         </div>
@@ -167,14 +165,14 @@ get_header('zingiber');
             </div>
             <div class="zingiber-gallery-teaser__heading" data-zingiber-reveal>
                 <p class="zingiber-eyebrow"><?php echo esc_html($siteContent['gallery']['hero']['eyebrow']); ?></p>
-                <h2 id="gallery-title" data-zingiber-split><?php echo esc_html(zingiber_prevent_widows($siteContent['gallery']['hero']['heading'])); ?></h2>
+                <h2 id="gallery-title"><?php echo esc_html(zingiber_prevent_widows($siteContent['gallery']['hero']['heading'])); ?></h2>
                 <p><?php echo esc_html(zingiber_prevent_widows($siteContent['gallery']['sections'][0]['body'][1])); ?></p>
                 <a class="zingiber-text-link zingiber-text-link--dark" href="<?php echo esc_url(zingiber_page_url('/gallery/')); ?>"><?php esc_html_e('View the Gallery', 'vonaco'); ?><?php echo zingiber_icon_svg('arrow'); ?></a>
             </div>
             <?php /* JF arch: concentric pinstripe rings framing one round photograph. */ ?>
             <div class="zingiber-gallery-teaser__arch" data-zingiber-reveal>
-                <?php /* Top-down thali: its plate sits dead centre, so it can turn in place like JF's dishes. */ ?>
-                <div class="zingiber-gallery-teaser__plate"><?php zingiber_theme_image($home['regions'][3]['image'], ['width' => 1672, 'height' => 941, 'class' => 'zingiber-gallery-teaser__dish', 'sizes' => '(min-width: 768px) 22rem, 60vw', 'aria_hidden' => true]); ?></div>
+                <?php /* Top-down crab plate, cropped square on the plate's centre so it can sway in place. */ ?>
+                <div class="zingiber-gallery-teaser__plate"><?php zingiber_theme_image(['src' => 'assets/images/zingiber/food-crab-plate.jpg', 'alt' => ''], ['width' => 960, 'height' => 960, 'class' => 'zingiber-gallery-teaser__dish', 'sizes' => '(min-width: 768px) 22rem, 60vw', 'aria_hidden' => true]); ?></div>
                 <a class="zingiber-circle-link zingiber-gallery-teaser__cta" href="<?php echo esc_url(zingiber_page_url('/menu/')); ?>">
                     <svg class="zingiber-circle-link__ring" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
                         <path d="M60 7 C88 5 113 29 113 59 C115 87 90 113 60 113 C30 115 6 91 7 61 C5 32 29 8 60 7 Z" />

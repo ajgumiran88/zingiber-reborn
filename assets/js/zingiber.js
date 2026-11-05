@@ -262,11 +262,9 @@
         var progress = coast.querySelector('[data-zingiber-coast-progress]');
         var previous = coast.querySelector('[data-zingiber-coast-step="-1"]');
         var next = coast.querySelector('[data-zingiber-coast-step="1"]');
-        var toggle = coast.querySelector('[data-zingiber-coast-toggle]');
         var activeSlide = 0;
         var startAligned = getComputedStyle(slides[0]).scrollSnapAlign.indexOf('center') === -1;
         var isScrolling = false;
-        var isPaused = false;
         var isInView = !('IntersectionObserver' in window);
         var animationFrame = 0;
         var loopTimer = 0;
@@ -362,14 +360,6 @@
         };
         previous.addEventListener('click', function () { goToCoast(activeSlide - 1); });
         next.addEventListener('click', function () { goToCoast(activeSlide + 1); });
-        if (toggle) {
-            toggle.hidden = reducedMotion;
-            toggle.addEventListener('click', function () {
-                isPaused = !isPaused;
-                toggle.setAttribute('aria-pressed', String(isPaused));
-                toggle.setAttribute('aria-label', isPaused ? toggle.dataset.resumeLabel : toggle.dataset.pauseLabel);
-            });
-        }
         track.addEventListener('scroll', updateCoast, { passive: true });
         ['pointerdown', 'touchstart', 'wheel'].forEach(function (eventName) {
             track.addEventListener(eventName, cancelSlideMotion, { passive: true });
@@ -390,7 +380,8 @@
                 }, { threshold: 0.35 }).observe(coast);
             }
             var autoplay = function () {
-                if (isPaused || !isInView || document.hidden || (coast.contains(document.activeElement) && document.activeElement !== toggle)) {
+                // No pause button (client revision 2): hovering or focusing the slider holds it still instead.
+                if (!isInView || document.hidden || coast.matches(':hover') || coast.contains(document.activeElement)) {
                     window.setTimeout(autoplay, 2000);
                     return;
                 }
@@ -410,19 +401,46 @@
         rail.setAttribute('data-lenis-prevent-touch', '');
     });
 
-    /* JF statements: each word inks in as the line scrolls through view (CSS scroll timeline). Split on plain spaces so widow-guard NBSPs stay inside a word. */
-    document.querySelectorAll('[data-zingiber-split]').forEach(function (heading) {
-        var words = heading.textContent.trim().split(/ +/);
-        heading.textContent = '';
-        words.forEach(function (word, index) {
-            var span = document.createElement('span');
-            span.className = 'zingiber-split-word';
-            span.style.setProperty('--i', index);
-            span.textContent = word;
-            heading.appendChild(span);
-            heading.appendChild(document.createTextNode(' '));
+    /*
+     * Headlines on every page: each word fades up in sequence once the heading is in view.
+     * Text nodes are split in place so line spans, <br> and punctuation keep their markup; only
+     * ASCII whitespace splits, so widow-guard NBSPs stay inside a word. The menu title keeps its own wipe.
+     */
+    var wordIndex = 0;
+    var splitWords = function (node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+            if (child.nodeType === 1) {
+                splitWords(child);
+                return;
+            }
+            if (child.nodeType !== 3 || !child.textContent.trim()) {
+                return;
+            }
+            var fragment = document.createDocumentFragment();
+            child.textContent.split(/([ \t\r\n]+)/).forEach(function (part) {
+                if (!part.trim()) {
+                    if (part) fragment.appendChild(document.createTextNode(part));
+                    return;
+                }
+                var word = document.createElement('span');
+                word.className = 'zingiber-split-word';
+                word.style.setProperty('--i', wordIndex++);
+                word.textContent = part;
+                fragment.appendChild(word);
+            });
+            child.parentNode.replaceChild(fragment, child);
         });
-    });
+    };
+    if (!reducedMotion) {
+        document.querySelectorAll('.zingiber-main :is(h1, h2):not(.zingiber-page-menu__display), .zingiber-enquiry h2').forEach(function (heading) {
+            wordIndex = 0;
+            splitWords(heading);
+            heading.classList.add('zingiber-split');
+            if (!heading.closest('[data-zingiber-reveal]')) {
+                heading.setAttribute('data-zingiber-reveal', '');
+            }
+        });
+    }
 
     document.querySelectorAll('.zingiber-story__image, .zingiber-page-editorial__image, .zingiber-enquiry__art').forEach(function (image) {
         image.setAttribute('data-zingiber-reveal', 'image');

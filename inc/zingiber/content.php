@@ -64,7 +64,8 @@ if (!function_exists('zingiber_get_site_content')) {
                     'heading' => 'Introducing a Modern Indian Coastal Dining Experience.',
                     'subheading' => 'A chef-led coastal Indian dining experience, shaped by mastery, heritage, and storytelling.',
                     'image' => $image('interior-hero.jpg', 'Warm, atmospheric interior of Zingiber restaurant in Dubai'),
-                    'video' => '',
+                    // shortcut: free Mixkit sample (clip 4043) until the client's restaurant video arrives; swap for a theme-hosted file then.
+                    'video' => 'https://assets.mixkit.co/videos/4043/4043-720.mp4',
                 ],
                 'sections' => [
                     'chef_story' => [
