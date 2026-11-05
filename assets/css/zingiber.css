@@ -5085,3 +5085,13 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
 }
 .zingiber-footer__story p { max-width: 24rem; }
 .zingiber-footer .zingiber-footer__bottom p { font-size: 0.75rem; }
+
+/* Menu pills clear the floating masthead (4.5rem bar + 1rem inset + hairlines); the admin bar drops the masthead a further 2rem. */
+.zingiber-page-menu__tabs { top: 6.9rem; }
+.admin-bar .zingiber-page-menu__tabs { top: 8.9rem; }
+@media (max-width: 767px) {
+    .zingiber-page-menu__tabs { top: 4.9rem; }
+    .admin-bar .zingiber-page-menu__tabs { top: 6.9rem; }
+}
+/* The rail scrolls, so an outer focus ring is clipped at its edge; keep it inside the pill. */
+.zingiber-page-menu__tab:focus-visible { outline-offset: -4px; }
