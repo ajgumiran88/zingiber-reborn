@@ -315,6 +315,20 @@ if (!function_exists('zingiber_drop_foreign_fonts')) {
 }
 add_action('wp_enqueue_scripts', 'zingiber_drop_foreign_fonts', 100);
 
+if (!function_exists('zingiber_drop_elementor_base_styles')) {
+    function zingiber_drop_elementor_base_styles(): void
+    {
+        if (!zingiber_is_site_template()) {
+            return;
+        }
+
+        // Native templates do not use Elementor's generated responsive base CSS.
+        wp_dequeue_style('base-desktop');
+        wp_dequeue_style('base-mobile');
+    }
+}
+add_action('wp_print_styles', 'zingiber_drop_elementor_base_styles', 100);
+
 if (!function_exists('zingiber_body_classes')) {
     function zingiber_body_classes(array $classes): array
     {

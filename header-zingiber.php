@@ -20,7 +20,6 @@ $navigationLabels = [
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-logo-light.svg')); ?>">
-    <link rel="preload" as="image" href="<?php echo esc_url(zingiber_theme_asset_url('assets/images/zingiber/brand-contour-deboss-red.webp')); ?>">
     <?php
     $zingiberHeroAsset = $navigationPages['home']['hero']['image']['src'] ?? '';
     if (function_exists('zingiber_current_page_content')) {
