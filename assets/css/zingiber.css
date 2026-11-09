@@ -5078,15 +5078,15 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
 .zingiber-about__photograph img { border-radius: var(--zingiber-photo-radius); }
 
 /* #13 (round 3): premium red roots enter from the right edge and drape over the seam across the right half, as JF's vine does.
-   Runner sits 24% down roots.svg; the width cap keeps the longest roots inside the bar on wide screens. */
+   Runner sits ~19.7% down roots.webp (cropped photoreal artwork); the width cap keeps the longest roots inside the bar on wide screens. */
 .zingiber-footer .zingiber-footer__roots {
     inset: 0 0 auto auto;
     width: min(50%, 52rem);
     margin: 0;
-    translate: 0 -24%;
+    translate: 0 -19.7%;
     opacity: 1;
     filter: drop-shadow(0 6px 10px rgba(15, 15, 15, 0.45));
-    transform-origin: 100% 24%; /* sway pivots where the roots leave the page edge */
+    transform-origin: 100% 19.7%; /* sway pivots where the roots leave the page edge */
 }
 @media (max-width: 767px) {
     .zingiber-footer .zingiber-footer__roots { width: 80%; }

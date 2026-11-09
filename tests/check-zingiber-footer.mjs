@@ -17,7 +17,7 @@ for (const width of [375, 768, 1024, 1440]) {
         logo: document.querySelector('.zingiber-footer__wordmark').getBoundingClientRect().width,
     }));
     assert.equal(layout.forms, 1, 'Exactly one working enquiry form per page');
-    assert.ok(await page.evaluate(() => document.querySelector('.zingiber-footer__roots').src.includes('roots.svg')), 'Footer uses fine roots without ginger illustrations');
+    assert.ok(await page.evaluate(() => document.querySelector('.zingiber-footer__roots').src.includes('roots.webp')), 'Footer uses fine roots without ginger illustrations');
     assert.ok(await page.evaluate(() => document.querySelectorAll('footer [data-zingiber-reveal]').length >= 5), 'Footer groups have entrance animations');
     assert.equal(layout.overflow, 0, `${width}: no page overflow`);
     assert.ok(layout.labels, 'Every form field has a visible label');

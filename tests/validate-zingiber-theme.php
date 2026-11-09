@@ -268,7 +268,7 @@ if (in_array('templates', $groups, true)) {
             'wp_footer()',
             'zingiber-footer__invitation',
             'zingiber-footer__wordmark',
-            'assets/svg/zingiber/roots.svg',
+            'assets/images/zingiber/roots.webp',
             "template-parts/zingiber-enquiry",
             "\$contact['phone_label']",
             'Jumeirah Lakes Towers',
