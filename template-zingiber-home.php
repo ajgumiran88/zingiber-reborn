@@ -19,7 +19,7 @@ get_header('zingiber');
         <div class="zingiber-hero__media" aria-hidden="true">
             <video class="zingiber-hero__video" playsinline muted loop preload="none" poster="<?php echo esc_url(zingiber_theme_asset_url($home['hero']['image']['src'])); ?>" hidden data-zingiber-hero-video>
                 <?php if (!empty($home['hero']['video'])) : ?>
-                    <source src="<?php echo esc_url($home['hero']['video']); ?>" type="video/mp4">
+                    <source src="<?php echo esc_url(zingiber_theme_asset_url($home['hero']['video'])); ?>" type="video/mp4">
                 <?php endif; ?>
             </video>
             <?php
