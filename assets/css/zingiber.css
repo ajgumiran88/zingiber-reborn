@@ -5140,7 +5140,27 @@ body.zingiber-site .zingiber-header.is-sticky {
 .zingiber-coastal__intro > :first-child { width: 100%; }
 .zingiber-coastal__intro .zingiber-eyebrow { margin-inline: auto; }
 .zingiber-coastal__caption { border-radius: var(--zingiber-photo-radius); }
-.zingiber-coastal__caption h3 { flex-shrink: 0; white-space: nowrap; }
+@media (min-width: 768px) {
+    .zingiber-coastal__caption {
+        align-items: center;
+        gap: clamp(1rem, 2vw, 1.5rem);
+        padding-block: 1.35rem 1.1rem;
+    }
+    .zingiber-coastal__caption h3 {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+        font-weight: 700;
+        line-height: 1;
+    }
+    .zingiber-coastal__caption p {
+        white-space: nowrap;
+        font-weight: 500;
+    }
+}
+@media (max-width: 767px) {
+    .zingiber-coastal__caption h3 { white-space: nowrap; }
+}
 .zingiber-principle-card h3 {
     top: 26%;
     font-size: clamp(0.875rem, 1.65vw, 1.5rem);

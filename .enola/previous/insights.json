@@ -1,0 +1,3110 @@
+[
+  {
+    "title": "Cyclic dependency detected (4 modules)",
+    "source": "cycles",
+    "description": "The 4 modules inc, inc/merlin, inc/merlin/includes, inc/woocommerce depend on each other through more than one cycle. One of them: inc -\u003e inc/merlin -\u003e inc. This can cause initialization issues, make refactoring harder, and indicates tight coupling.",
+    "confidence": 1,
+    "evidence": [
+      {
+        "fact": "inc",
+        "detail": "module \"inc\" is part of the cycle",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "fact": "inc/merlin",
+        "detail": "module \"inc/merlin\" is part of the cycle",
+        "fact_id": "a0872d39fe9e27769c2fb1a283994311"
+      },
+      {
+        "fact": "inc/merlin/includes",
+        "detail": "module \"inc/merlin/includes\" is part of the cycle",
+        "fact_id": "3ac1892d79a737208b723f4fd2ed95ef"
+      },
+      {
+        "fact": "inc/woocommerce",
+        "detail": "module \"inc/woocommerce\" is part of the cycle",
+        "fact_id": "7d33a2a0d7d3e315f30dab83773ab201"
+      }
+    ],
+    "suggested_actions": [
+      "Introduce an interface to break the cycle",
+      "Extract shared types to a separate package",
+      "Consider merging tightly coupled modules"
+    ]
+  },
+  {
+    "title": "High fan-in symbol: vonaco_elementor_get_render_attribute_string (16 dependents)",
+    "source": "god-class",
+    "description": "\"vonaco_elementor_get_render_attribute_string\" is depended upon by 16 other symbols — well above the repo average. High fan-in concentrates change risk: edits here ripple across many call sites, and it often indicates a missing or overly broad abstraction.",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "file": "inc/elementor/functions-elementor.php",
+        "symbol": "vonaco_elementor_get_render_attribute_string",
+        "detail": "16 symbols depend on this",
+        "line": 3,
+        "fact_id": "78f292fd091a8ac3da533067a2f19adb"
+      },
+      {
+        "symbol": "Elementor\\Vonaco_Elementor_Tabs::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "9f0c4ed50024967b440764377259684b"
+      },
+      {
+        "symbol": "Vonaco_Call_To_Action::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "5f0209f3a136fd2572d928d3fa8601bf"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Brand::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "2c4e49e0b2b927fab3f6ceb2f03b2f0f"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Button_Popup::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "1ba58e60cc3de15107531ccc083c017e"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Button_Popup::render_text",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "1a0773109775789362299a2944315fa4"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Header_Group::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "72350647862f44469f0aa8a8be2c3d84"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Image_Gallery::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "157d59fd2ce5a79902c79e4bd32c9e9a"
+      },
+      {
+        "symbol": "Vonaco_Elementor_MenuList::render",
+        "detail": "depends on vonaco_elementor_get_render_attribute_string",
+        "fact_id": "67848371f3f8007538942473474c3030"
+      }
+    ],
+    "suggested_actions": [
+      "Split the symbol along distinct responsibilities its callers use",
+      "Introduce narrower interfaces so callers depend only on what they need",
+      "Stabilize its public contract to limit churn for dependents"
+    ]
+  },
+  {
+    "title": "High fan-in symbol: vonaco_get_theme_option (15 dependents)",
+    "source": "god-class",
+    "description": "\"vonaco_get_theme_option\" is depended upon by 15 other symbols — well above the repo average. High fan-in concentrates change risk: edits here ripple across many call sites, and it often indicates a missing or overly broad abstraction.",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_get_theme_option",
+        "detail": "15 symbols depend on this",
+        "line": 211,
+        "fact_id": "3c6df277c487faaa8c0345c3dafe2084"
+      },
+      {
+        "symbol": "Vonaco::body_classes",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "0010ae983ba32e4acf00e461bec82049"
+      },
+      {
+        "symbol": "Vonaco_WooCommerce::__construct",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "4debe50a3651d4fdaee56a7482b190d1"
+      },
+      {
+        "symbol": "Vonaco_WooCommerce::set_sidebar",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "84bbede0045c7bd53f1d95f7bc35da99"
+      },
+      {
+        "symbol": "Vonaco_WooCommerce::thumbnail_columns",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "a5b8fa8bd69f71c8c229f841f5022db4"
+      },
+      {
+        "symbol": "Vonaco_WooCommerce::woocommerce_body_class",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "683ab19b929efc5524cfdde5526b900d"
+      },
+      {
+        "symbol": "vonaco_header_account",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "0d1a345333b61e228c78d42940d520bf"
+      },
+      {
+        "symbol": "vonaco_header_cart",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "6659d8429fd77c620043424b5f955dac"
+      },
+      {
+        "symbol": "vonaco_header_contact_info",
+        "detail": "depends on vonaco_get_theme_option",
+        "fact_id": "40a5cc61f1c55bae05daa572ba6dca5a"
+      }
+    ],
+    "suggested_actions": [
+      "Split the symbol along distinct responsibilities its callers use",
+      "Introduce narrower interfaces so callers depend only on what they need",
+      "Stabilize its public contract to limit churn for dependents"
+    ]
+  },
+  {
+    "title": "High fan-in symbol: vonaco_is_woocommerce_activated (13 dependents)",
+    "source": "god-class",
+    "description": "\"vonaco_is_woocommerce_activated\" is depended upon by 13 other symbols — well above the repo average. High fan-in concentrates change risk: edits here ripple across many call sites, and it often indicates a missing or overly broad abstraction.",
+    "confidence": 0.95,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_is_woocommerce_activated",
+        "detail": "13 symbols depend on this",
+        "line": 36,
+        "fact_id": "0b5e8aa63e05d390841bf40e9a5e8c1f"
+      },
+      {
+        "symbol": "Vonaco_Customize::customize_register",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "da5d1ef54a5d0aca8c510be4c70c47d1"
+      },
+      {
+        "symbol": "Vonaco_Elementor::woocommerce_fix_notice",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "a9cad7b82784a34a50bcd2bccc8548e5"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Header_Group::render",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "72350647862f44469f0aa8a8be2c3d84"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Search::render",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "0249836f43d072988a087649103f30de"
+      },
+      {
+        "symbol": "Vonaco_Merlin_Config::widgets_init",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "6ea1d53b46f45b30d5710008ac393b9a"
+      },
+      {
+        "symbol": "vonaco_account_dropdown",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "d4e72fd4e9e6ffcbc590809ba97fe982"
+      },
+      {
+        "symbol": "vonaco_elementor_breakpoints",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "1ce26f73c30e101517cc49ab6fd2636f"
+      },
+      {
+        "symbol": "vonaco_header_account",
+        "detail": "depends on vonaco_is_woocommerce_activated",
+        "fact_id": "0d1a345333b61e228c78d42940d520bf"
+      }
+    ],
+    "suggested_actions": [
+      "Split the symbol along distinct responsibilities its callers use",
+      "Introduce narrower interfaces so callers depend only on what they need",
+      "Stabilize its public contract to limit churn for dependents"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: Merlin::svg (fan-in 7, fan-out 7)",
+    "source": "hotspots",
+    "description": "\"Merlin::svg\" is a pinch point: 7 symbols call into it and it calls out to 7 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::svg",
+        "detail": "fan-in 7 × fan-out 7 = score 49",
+        "line": 604,
+        "fact_id": "0545e427d1a49b096a7d03615cf2cf54"
+      },
+      {
+        "symbol": "Merlin",
+        "detail": "calls into Merlin::svg",
+        "fact_id": "2ebc61a8cbf5dfb4e034e5ee367ef273"
+      },
+      {
+        "symbol": "Merlin::child",
+        "detail": "calls into Merlin::svg",
+        "fact_id": "07097f0577113be64d4a83cacce0775b"
+      },
+      {
+        "symbol": "Merlin::content",
+        "detail": "calls into Merlin::svg",
+        "fact_id": "fe08d194fee7f42709ebb20fd03efd23"
+      },
+      {
+        "symbol": "Merlin::license",
+        "detail": "calls into Merlin::svg",
+        "fact_id": "838eb833ac81c378f8f9f9951c778560"
+      },
+      {
+        "symbol": "Merlin::plugins",
+        "detail": "calls into Merlin::svg",
+        "fact_id": "2edfd5e4dc7c073b2523ca485cdb0d48"
+      },
+      {
+        "symbol": "array_key_exists",
+        "detail": "called by Merlin::svg"
+      },
+      {
+        "symbol": "empty",
+        "detail": "called by Merlin::svg"
+      },
+      {
+        "symbol": "esc_attr",
+        "detail": "called by Merlin::svg"
+      },
+      {
+        "symbol": "esc_html",
+        "detail": "called by Merlin::svg"
+      },
+      {
+        "symbol": "esc_html__",
+        "detail": "called by Merlin::svg"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: vonaco_product_search (fan-in 3, fan-out 12)",
+    "source": "hotspots",
+    "description": "\"vonaco_product_search\" is a pinch point: 3 symbols call into it and it calls out to 12 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_product_search",
+        "detail": "fan-in 3 × fan-out 12 = score 36",
+        "line": 269,
+        "fact_id": "bce12ca03f23b3293c0ee8469f4db446"
+      },
+      {
+        "symbol": "Vonaco_Elementor_Search::render",
+        "detail": "calls into vonaco_product_search",
+        "fact_id": "0249836f43d072988a087649103f30de"
+      },
+      {
+        "symbol": "vonaco_handheld_footer_bar_search",
+        "detail": "calls into vonaco_product_search",
+        "fact_id": "a7cf0f6c44569c8e821b017981d23d88"
+      },
+      {
+        "symbol": "vonaco_header_search_popup",
+        "detail": "calls into vonaco_product_search",
+        "fact_id": "2f7afd0cbca703fac8598041a7073642"
+      },
+      {
+        "symbol": "absint",
+        "detail": "called by vonaco_product_search"
+      },
+      {
+        "symbol": "esc_attr__",
+        "detail": "called by vonaco_product_search"
+      },
+      {
+        "symbol": "esc_attr_x",
+        "detail": "called by vonaco_product_search"
+      },
+      {
+        "symbol": "esc_html_e",
+        "detail": "called by vonaco_product_search"
+      },
+      {
+        "symbol": "esc_html_x",
+        "detail": "called by vonaco_product_search"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: zingiber_theme_asset_url (fan-in 5, fan-out 7)",
+    "source": "hotspots",
+    "description": "\"zingiber_theme_asset_url\" is a pinch point: 5 symbols call into it and it calls out to 7 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_theme_asset_url",
+        "detail": "fan-in 5 × fan-out 7 = score 35",
+        "line": 15,
+        "fact_id": "edec1b1deeb10e23926ced3187d38be2"
+      },
+      {
+        "symbol": "zingiber_enqueue_assets",
+        "detail": "calls into zingiber_theme_asset_url",
+        "fact_id": "44573a77e500b5f5245fba28061aa730"
+      },
+      {
+        "symbol": "zingiber_licensed_font_faces",
+        "detail": "calls into zingiber_theme_asset_url",
+        "fact_id": "8e8e4a29700393adf623bdb4a8f94fea"
+      },
+      {
+        "symbol": "zingiber_output_site_icons",
+        "detail": "calls into zingiber_theme_asset_url",
+        "fact_id": "6269b8df98832e29ea0265c61705ab9e"
+      },
+      {
+        "symbol": "zingiber_theme_image",
+        "detail": "calls into zingiber_theme_asset_url",
+        "fact_id": "a8005627d79ed28f4a623dbfcc7c9e2c"
+      },
+      {
+        "symbol": "zingiber_theme_image_display_src",
+        "detail": "calls into zingiber_theme_asset_url",
+        "fact_id": "a2856b9e20822d063b9badc4d4975ea5"
+      },
+      {
+        "symbol": "add_query_arg",
+        "detail": "called by zingiber_theme_asset_url"
+      },
+      {
+        "symbol": "filemtime",
+        "detail": "called by zingiber_theme_asset_url"
+      },
+      {
+        "symbol": "get_theme_file_path",
+        "detail": "called by zingiber_theme_asset_url"
+      },
+      {
+        "symbol": "get_theme_file_uri",
+        "detail": "called by zingiber_theme_asset_url"
+      },
+      {
+        "symbol": "inc/zingiber",
+        "detail": "called by zingiber_theme_asset_url",
+        "fact_id": "ad1244aa0fa32202a115fdb2acd5cf43"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: Vonaco_Woocommerce_Extra::end_deal (fan-in 3, fan-out 10)",
+    "source": "hotspots",
+    "description": "\"Vonaco_Woocommerce_Extra::end_deal\" is a pinch point: 3 symbols call into it and it calls out to 10 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/class-woocommerce-extra.php",
+        "symbol": "Vonaco_Woocommerce_Extra::end_deal",
+        "detail": "fan-in 3 × fan-out 10 = score 30",
+        "line": 146,
+        "fact_id": "f939f9571cbd8fab4406594a96b08181"
+      },
+      {
+        "symbol": "Vonaco_Woocommerce_Extra",
+        "detail": "calls into Vonaco_Woocommerce_Extra::end_deal",
+        "fact_id": "6f5b0f7e0bcf3f6888176364e6327de0"
+      },
+      {
+        "symbol": "Vonaco_Woocommerce_Extra::save_product_data",
+        "detail": "calls into Vonaco_Woocommerce_Extra::end_deal",
+        "fact_id": "b806d764f51f150e7a44c35ccfbbfa67"
+      },
+      {
+        "symbol": "Vonaco_Woocommerce_Extra::update_deal_sales",
+        "detail": "calls into Vonaco_Woocommerce_Extra::end_deal",
+        "fact_id": "7b9bbb7b0cd757a991ba92250d7eb024"
+      },
+      {
+        "symbol": "delete_transient",
+        "detail": "called by Vonaco_Woocommerce_Extra::end_deal"
+      },
+      {
+        "symbol": "get_regular_price",
+        "detail": "called by Vonaco_Woocommerce_Extra::end_deal"
+      },
+      {
+        "symbol": "inc/woocommerce",
+        "detail": "called by Vonaco_Woocommerce_Extra::end_deal",
+        "fact_id": "7d33a2a0d7d3e315f30dab83773ab201"
+      },
+      {
+        "symbol": "save",
+        "detail": "called by Vonaco_Woocommerce_Extra::end_deal"
+      },
+      {
+        "symbol": "set_date_on_sale_from",
+        "detail": "called by Vonaco_Woocommerce_Extra::end_deal"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: TGM_Plugin_Activation::get_plugins_api (fan-in 4, fan-out 7)",
+    "source": "hotspots",
+    "description": "\"TGM_Plugin_Activation::get_plugins_api\" is a pinch point: 4 symbols call into it and it calls out to 7 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::get_plugins_api",
+        "detail": "fan-in 4 × fan-out 7 = score 28",
+        "line": 1635,
+        "fact_id": "1b40decc49be5e4c1354529e1bae0b0b"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation",
+        "detail": "calls into TGM_Plugin_Activation::get_plugins_api",
+        "fact_id": "d17a59ac2afd75623ee27b86eb4ef6e3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::can_plugin_update",
+        "detail": "calls into TGM_Plugin_Activation::get_plugins_api",
+        "fact_id": "8077e10a8004fa69db3cd4c2edadf31a"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::do_plugin_install",
+        "detail": "calls into TGM_Plugin_Activation::get_plugins_api",
+        "fact_id": "7b842ce076258fbbc5427e64b126dd5e"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::get_wp_repo_download_url",
+        "detail": "calls into TGM_Plugin_Activation::get_plugins_api",
+        "fact_id": "d859ecf4e5106d70daa31b11464bb6ce"
+      },
+      {
+        "symbol": "esc_html",
+        "detail": "called by TGM_Plugin_Activation::get_plugins_api"
+      },
+      {
+        "symbol": "function_exists",
+        "detail": "called by TGM_Plugin_Activation::get_plugins_api"
+      },
+      {
+        "symbol": "inc",
+        "detail": "called by TGM_Plugin_Activation::get_plugins_api",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "symbol": "is_wp_error",
+        "detail": "called by TGM_Plugin_Activation::get_plugins_api"
+      },
+      {
+        "symbol": "isset",
+        "detail": "called by TGM_Plugin_Activation::get_plugins_api"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: Merlin::get_import_files_paths (fan-in 3, fan-out 9)",
+    "source": "hotspots",
+    "description": "\"Merlin::get_import_files_paths\" is a pinch point: 3 symbols call into it and it calls out to 9 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::get_import_files_paths",
+        "detail": "fan-in 3 × fan-out 9 = score 27",
+        "line": 2207,
+        "fact_id": "7f993048dcfaa261e3dbc4e754002007"
+      },
+      {
+        "symbol": "Merlin",
+        "detail": "calls into Merlin::get_import_files_paths",
+        "fact_id": "2ebc61a8cbf5dfb4e034e5ee367ef273"
+      },
+      {
+        "symbol": "Merlin::_ajax_get_total_content_import_items",
+        "detail": "calls into Merlin::get_import_files_paths",
+        "fact_id": "e4ead20245a0c1a728e1df1fdba139e0"
+      },
+      {
+        "symbol": "Merlin::get_import_data",
+        "detail": "calls into Merlin::get_import_files_paths",
+        "fact_id": "c2453734b145d86cdae6cad512d9bbbc"
+      },
+      {
+        "symbol": "Merlin::set_import_file_base_name",
+        "detail": "called by Merlin::get_import_files_paths",
+        "fact_id": "52f8bbc90c790d5be737d4020b4a54d8"
+      },
+      {
+        "symbol": "Merlin_Downloader",
+        "detail": "called by Merlin::get_import_files_paths",
+        "fact_id": "0013e59229114fdb3d1d54884c3d7f35"
+      },
+      {
+        "symbol": "download_file",
+        "detail": "called by Merlin::get_import_files_paths"
+      },
+      {
+        "symbol": "empty",
+        "detail": "called by Merlin::get_import_files_paths"
+      },
+      {
+        "symbol": "fetch_existing_file",
+        "detail": "called by Merlin::get_import_files_paths"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: TGM_Plugin_Activation::can_plugin_activate (fan-in 5, fan-out 5)",
+    "source": "hotspots",
+    "description": "\"TGM_Plugin_Activation::can_plugin_activate\" is a pinch point: 5 symbols call into it and it calls out to 5 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::can_plugin_activate",
+        "detail": "fan-in 5 × fan-out 5 = score 25",
+        "line": 1882,
+        "fact_id": "834c6caad66eafa3c2306e701949ac7a"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation",
+        "detail": "calls into TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "d17a59ac2afd75623ee27b86eb4ef6e3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::activate_single_plugin",
+        "detail": "calls into TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "1a4cebbc6b050775adcdd1f1edf65e27"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::add_plugin_action_link_filters",
+        "detail": "calls into TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "873828e13be8b572d22aa6bf1f9d2147"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::force_activation",
+        "detail": "calls into TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "d619da2a921b5b90e1e04685a32e653b"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::notices",
+        "detail": "calls into TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "13a8aea8aaa7b1688a2ca1954146f0fd"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::does_plugin_require_update",
+        "detail": "called by TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "df46c48f9a2071a705566a9f11d44809"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::is_plugin_active",
+        "detail": "called by TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "7acc5c1cf3ee5fbdbf50303f1764d0d7"
+      },
+      {
+        "symbol": "does_plugin_require_update",
+        "detail": "called by TGM_Plugin_Activation::can_plugin_activate"
+      },
+      {
+        "symbol": "inc",
+        "detail": "called by TGM_Plugin_Activation::can_plugin_activate",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "symbol": "is_plugin_active",
+        "detail": "called by TGM_Plugin_Activation::can_plugin_activate"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: vonaco_megamenu_get_post_related_menu (fan-in 5, fan-out 5)",
+    "source": "hotspots",
+    "description": "\"vonaco_megamenu_get_post_related_menu\" is a pinch point: 5 symbols call into it and it calls out to 5 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/megamenu/includes/core-functions.php",
+        "symbol": "vonaco_megamenu_get_post_related_menu",
+        "detail": "fan-in 5 × fan-out 5 = score 25",
+        "line": 41,
+        "fact_id": "4e9cb0db422fad5a2811539a1b53c8e3"
+      },
+      {
+        "symbol": "Vonaco_Admin_MegaMenu::process_create_related",
+        "detail": "calls into vonaco_megamenu_get_post_related_menu",
+        "fact_id": "fb4e91d8b7bbc95062c6e2be2a5fa23d"
+      },
+      {
+        "symbol": "Vonaco_Megamenu::check_megamenu",
+        "detail": "calls into vonaco_megamenu_get_post_related_menu",
+        "fact_id": "e140baf762a2795ef17d316a6b19930e"
+      },
+      {
+        "symbol": "Vonaco_Megamenu_Walker::render_megamenu_elementor",
+        "detail": "calls into vonaco_megamenu_get_post_related_menu",
+        "fact_id": "bd50409fd9e2359338da23febd55770f"
+      },
+      {
+        "symbol": "vonaco_megamenu_load_menu_data",
+        "detail": "calls into vonaco_megamenu_get_post_related_menu",
+        "fact_id": "585158ea9c41421d697c2de09977b004"
+      },
+      {
+        "symbol": "vonaco_megamenu_on_delete_menu_item",
+        "detail": "calls into vonaco_megamenu_get_post_related_menu",
+        "fact_id": "028663a9c1ff4fb4801a5234c3d15fa2"
+      },
+      {
+        "symbol": "apply_filters",
+        "detail": "called by vonaco_megamenu_get_post_related_menu"
+      },
+      {
+        "symbol": "get_page_by_path",
+        "detail": "called by vonaco_megamenu_get_post_related_menu"
+      },
+      {
+        "symbol": "get_post_meta",
+        "detail": "called by vonaco_megamenu_get_post_related_menu"
+      },
+      {
+        "symbol": "inc/megamenu/includes",
+        "detail": "called by vonaco_megamenu_get_post_related_menu",
+        "fact_id": "4839451e80918752a4e279874f207255"
+      },
+      {
+        "symbol": "isset",
+        "detail": "called by vonaco_megamenu_get_post_related_menu"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: Merlin::step_next_link (fan-in 6, fan-out 4)",
+    "source": "hotspots",
+    "description": "\"Merlin::step_next_link\" is a pinch point: 6 symbols call into it and it calls out to 4 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::step_next_link",
+        "detail": "fan-in 6 × fan-out 4 = score 24",
+        "line": 816,
+        "fact_id": "ebbfd81d903adfef84c20c41ccf5c2f8"
+      },
+      {
+        "symbol": "Merlin",
+        "detail": "calls into Merlin::step_next_link",
+        "fact_id": "2ebc61a8cbf5dfb4e034e5ee367ef273"
+      },
+      {
+        "symbol": "Merlin::child",
+        "detail": "calls into Merlin::step_next_link",
+        "fact_id": "07097f0577113be64d4a83cacce0775b"
+      },
+      {
+        "symbol": "Merlin::content",
+        "detail": "calls into Merlin::step_next_link",
+        "fact_id": "fe08d194fee7f42709ebb20fd03efd23"
+      },
+      {
+        "symbol": "Merlin::license",
+        "detail": "calls into Merlin::step_next_link",
+        "fact_id": "838eb833ac81c378f8f9f9951c778560"
+      },
+      {
+        "symbol": "Merlin::plugins",
+        "detail": "calls into Merlin::step_next_link",
+        "fact_id": "2edfd5e4dc7c073b2523ca485cdb0d48"
+      },
+      {
+        "symbol": "add_query_arg",
+        "detail": "called by Merlin::step_next_link"
+      },
+      {
+        "symbol": "array_keys",
+        "detail": "called by Merlin::step_next_link"
+      },
+      {
+        "symbol": "array_search",
+        "detail": "called by Merlin::step_next_link"
+      },
+      {
+        "symbol": "inc/merlin",
+        "detail": "called by Merlin::step_next_link",
+        "fact_id": "a0872d39fe9e27769c2fb1a283994311"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: TGM_Plugin_Activation::does_plugin_require_update (fan-in 6, fan-out 4)",
+    "source": "hotspots",
+    "description": "\"TGM_Plugin_Activation::does_plugin_require_update\" is a pinch point: 6 symbols call into it and it calls out to 4 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::does_plugin_require_update",
+        "detail": "fan-in 6 × fan-out 4 = score 24",
+        "line": 1913,
+        "fact_id": "df46c48f9a2071a705566a9f11d44809"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation",
+        "detail": "calls into TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "d17a59ac2afd75623ee27b86eb4ef6e3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::activate_single_plugin",
+        "detail": "calls into TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "1a4cebbc6b050775adcdd1f1edf65e27"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::add_plugin_action_link_filters",
+        "detail": "calls into TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "873828e13be8b572d22aa6bf1f9d2147"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::can_plugin_activate",
+        "detail": "calls into TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "834c6caad66eafa3c2306e701949ac7a"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::does_plugin_have_update",
+        "detail": "calls into TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "18266c43e5c828a133487e0f305872f3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::get_installed_version",
+        "detail": "called by TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "ee5afb56eebc1fd755f6baaea4d641b0"
+      },
+      {
+        "symbol": "get_installed_version",
+        "detail": "called by TGM_Plugin_Activation::does_plugin_require_update"
+      },
+      {
+        "symbol": "inc",
+        "detail": "called by TGM_Plugin_Activation::does_plugin_require_update",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "symbol": "version_compare",
+        "detail": "called by TGM_Plugin_Activation::does_plugin_require_update"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: TGM_Plugin_Activation::get_tgmpa_url (fan-in 4, fan-out 6)",
+    "source": "hotspots",
+    "description": "\"TGM_Plugin_Activation::get_tgmpa_url\" is a pinch point: 4 symbols call into it and it calls out to 6 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::get_tgmpa_url",
+        "detail": "fan-in 4 × fan-out 6 = score 24",
+        "line": 1747,
+        "fact_id": "dd0ac7591cedb654c57d3d0297b85e3a"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation",
+        "detail": "calls into TGM_Plugin_Activation::get_tgmpa_url",
+        "fact_id": "d17a59ac2afd75623ee27b86eb4ef6e3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::activate_single_plugin",
+        "detail": "calls into TGM_Plugin_Activation::get_tgmpa_url",
+        "fact_id": "1a4cebbc6b050775adcdd1f1edf65e27"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::do_plugin_install",
+        "detail": "calls into TGM_Plugin_Activation::get_tgmpa_url",
+        "fact_id": "7b842ce076258fbbc5427e64b126dd5e"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::get_tgmpa_status_url",
+        "detail": "calls into TGM_Plugin_Activation::get_tgmpa_url",
+        "fact_id": "2b23eac98b9b984217012530951e3653"
+      },
+      {
+        "symbol": "add_query_arg",
+        "detail": "called by TGM_Plugin_Activation::get_tgmpa_url"
+      },
+      {
+        "symbol": "inc",
+        "detail": "called by TGM_Plugin_Activation::get_tgmpa_url",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "symbol": "isset",
+        "detail": "called by TGM_Plugin_Activation::get_tgmpa_url"
+      },
+      {
+        "symbol": "self_admin_url",
+        "detail": "called by TGM_Plugin_Activation::get_tgmpa_url"
+      },
+      {
+        "symbol": "strpos",
+        "detail": "called by TGM_Plugin_Activation::get_tgmpa_url"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: TGM_Plugin_Activation::is_plugin_active (fan-in 6, fan-out 4)",
+    "source": "hotspots",
+    "description": "\"TGM_Plugin_Activation::is_plugin_active\" is a pinch point: 6 symbols call into it and it calls out to 4 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::is_plugin_active",
+        "detail": "fan-in 6 × fan-out 4 = score 24",
+        "line": 1827,
+        "fact_id": "7acc5c1cf3ee5fbdbf50303f1764d0d7"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation",
+        "detail": "calls into TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "d17a59ac2afd75623ee27b86eb4ef6e3"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::activate_single_plugin",
+        "detail": "calls into TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "1a4cebbc6b050775adcdd1f1edf65e27"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::can_plugin_activate",
+        "detail": "calls into TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "834c6caad66eafa3c2306e701949ac7a"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::do_plugin_install",
+        "detail": "calls into TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "7b842ce076258fbbc5427e64b126dd5e"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::is_tgmpa_complete",
+        "detail": "calls into TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "cc87ca1f4cc87e2b2ba1e49938143f4e"
+      },
+      {
+        "symbol": "empty",
+        "detail": "called by TGM_Plugin_Activation::is_plugin_active"
+      },
+      {
+        "symbol": "inc",
+        "detail": "called by TGM_Plugin_Activation::is_plugin_active",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "symbol": "is_callable",
+        "detail": "called by TGM_Plugin_Activation::is_plugin_active"
+      },
+      {
+        "symbol": "is_plugin_active",
+        "detail": "called by TGM_Plugin_Activation::is_plugin_active"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Call-graph hotspot: zingiber_current_page_content (fan-in 3, fan-out 8)",
+    "source": "hotspots",
+    "description": "\"zingiber_current_page_content\" is a pinch point: 3 symbols call into it and it calls out to 8 others, so a large share of call chains pass through it (degree-centrality proxy for betweenness). Such chokepoints are high-risk to change and high-value to test.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_current_page_content",
+        "detail": "fan-in 3 × fan-out 8 = score 24",
+        "line": 167,
+        "fact_id": "8a5b3cd92ebb6c593f9f2e663f29fa0f"
+      },
+      {
+        "symbol": "zingiber_body_classes",
+        "detail": "calls into zingiber_current_page_content",
+        "fact_id": "654e9a966768bdc5a1745ab5394da0ce"
+      },
+      {
+        "symbol": "zingiber_filter_document_title",
+        "detail": "calls into zingiber_current_page_content",
+        "fact_id": "77a3d3905acabac193c142eaf7aff171"
+      },
+      {
+        "symbol": "zingiber_output_meta_description",
+        "detail": "calls into zingiber_current_page_content",
+        "fact_id": "9f48634dc6af352eaaa4caa23fca5a6b"
+      },
+      {
+        "symbol": "get_post_field",
+        "detail": "called by zingiber_current_page_content"
+      },
+      {
+        "symbol": "get_queried_object_id",
+        "detail": "called by zingiber_current_page_content"
+      },
+      {
+        "symbol": "inc/zingiber",
+        "detail": "called by zingiber_current_page_content",
+        "fact_id": "ad1244aa0fa32202a115fdb2acd5cf43"
+      },
+      {
+        "symbol": "is_front_page",
+        "detail": "called by zingiber_current_page_content"
+      },
+      {
+        "symbol": "is_string",
+        "detail": "called by zingiber_current_page_content"
+      }
+    ],
+    "suggested_actions": [
+      "Add focused tests around this chokepoint before refactoring",
+      "Consider decomposing it so call paths don't all funnel through one symbol",
+      "Verify it isn't doing orchestration that belongs in callers"
+    ]
+  },
+  {
+    "title": "Deep dependency chain: inc/elementor/widgets (depth 6)",
+    "source": "dependency-depth",
+    "description": "Module \"inc/elementor/widgets\" has a longest dependency chain of 6 modules: inc/elementor/widgets -\u003e inc/elementor -\u003e {inc, inc/merlin, inc/merlin/includes, inc/woocommerce}. Modules in braces depend on each other in a cycle and count together. Deep chains slow comprehension and widen rebuild/retest impact when a module near the bottom changes.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "fact": "inc/elementor/widgets",
+        "fact_id": "1f2df44eada345eafbe377de3dd1c5f3"
+      },
+      {
+        "fact": "inc/elementor",
+        "fact_id": "7323d603a3e9668ba343e013620aca0c"
+      },
+      {
+        "fact": "inc",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "fact": "inc/merlin",
+        "fact_id": "a0872d39fe9e27769c2fb1a283994311"
+      },
+      {
+        "fact": "inc/merlin/includes",
+        "fact_id": "3ac1892d79a737208b723f4fd2ed95ef"
+      },
+      {
+        "fact": "inc/woocommerce",
+        "fact_id": "7d33a2a0d7d3e315f30dab83773ab201"
+      }
+    ],
+    "suggested_actions": [
+      "Flatten the chain by depending on shared abstractions instead of deep transitive modules",
+      "Check whether intermediate modules are pass-through layers that can be removed",
+      "Introduce interfaces to decouple the deepest modules from their consumers"
+    ]
+  },
+  {
+    "title": "Deep dependency chain: inc/elementor (depth 5)",
+    "source": "dependency-depth",
+    "description": "Module \"inc/elementor\" has a longest dependency chain of 5 modules: inc/elementor -\u003e {inc, inc/merlin, inc/merlin/includes, inc/woocommerce}. Modules in braces depend on each other in a cycle and count together. Deep chains slow comprehension and widen rebuild/retest impact when a module near the bottom changes.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "fact": "inc/elementor",
+        "fact_id": "7323d603a3e9668ba343e013620aca0c"
+      },
+      {
+        "fact": "inc",
+        "fact_id": "5f648caa4bfb2f188782ea1f57995eaa"
+      },
+      {
+        "fact": "inc/merlin",
+        "fact_id": "a0872d39fe9e27769c2fb1a283994311"
+      },
+      {
+        "fact": "inc/merlin/includes",
+        "fact_id": "3ac1892d79a737208b723f4fd2ed95ef"
+      },
+      {
+        "fact": "inc/woocommerce",
+        "fact_id": "7d33a2a0d7d3e315f30dab83773ab201"
+      }
+    ],
+    "suggested_actions": [
+      "Flatten the chain by depending on shared abstractions instead of deep transitive modules",
+      "Check whether intermediate modules are pass-through layers that can be removed",
+      "Introduce interfaces to decouple the deepest modules from their consumers"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Elementor_MenuList::render (39)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Elementor_MenuList::render\" has a cyclomatic complexity of 39 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/elementor/widgets/menu-list.php",
+        "symbol": "Vonaco_Elementor_MenuList::render",
+        "detail": "cyclomatic complexity 39 at line 465",
+        "line": 465,
+        "fact_id": "67848371f3f8007538942473474c3030"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: TGMPA_List_Table::process_bulk_actions (34)",
+    "source": "complexity-outliers",
+    "description": "\"TGMPA_List_Table::process_bulk_actions\" has a cyclomatic complexity of 34 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGMPA_List_Table::process_bulk_actions",
+        "detail": "cyclomatic complexity 34 at line 2826",
+        "line": 2826,
+        "fact_id": "05c8473f98a4b9b19ca8b10e2cea34a8"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: TGM_Plugin_Activation::notices (34)",
+    "source": "complexity-outliers",
+    "description": "\"TGM_Plugin_Activation::notices\" has a cyclomatic complexity of 34 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::notices",
+        "detail": "cyclomatic complexity 34 at line 1106",
+        "line": 1106,
+        "fact_id": "13a8aea8aaa7b1688a2ca1954146f0fd"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Elementor_Testimonials::render (32)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Elementor_Testimonials::render\" has a cyclomatic complexity of 32 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/elementor/widgets/testimonial.php",
+        "symbol": "Vonaco_Elementor_Testimonials::render",
+        "detail": "cyclomatic complexity 32 at line 1355",
+        "line": 1355,
+        "fact_id": "a7079a42ce41b2fe976c0d3a4a6677a1"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Call_To_Action::render (30)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Call_To_Action::render\" has a cyclomatic complexity of 30 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/elementor/widgets/call-to-action.php",
+        "symbol": "Vonaco_Call_To_Action::render",
+        "detail": "cyclomatic complexity 30 at line 1423",
+        "line": 1423,
+        "fact_id": "5f0209f3a136fd2572d928d3fa8601bf"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Merlin::get_import_files_paths (27)",
+    "source": "complexity-outliers",
+    "description": "\"Merlin::get_import_files_paths\" has a cyclomatic complexity of 27 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::get_import_files_paths",
+        "detail": "cyclomatic complexity 27 at line 2207",
+        "line": 2207,
+        "fact_id": "7f993048dcfaa261e3dbc4e754002007"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Merlin_Widget_Importer::import_data (25)",
+    "source": "complexity-outliers",
+    "description": "\"Merlin_Widget_Importer::import_data\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-merlin-widget-importer.php",
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "cyclomatic complexity 25 at line 98",
+        "line": 98,
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: TGM_Plugin_Activation::do_plugin_install (25)",
+    "source": "complexity-outliers",
+    "description": "\"TGM_Plugin_Activation::do_plugin_install\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::do_plugin_install",
+        "detail": "cyclomatic complexity 25 at line 791",
+        "line": 791,
+        "fact_id": "7b842ce076258fbbc5427e64b126dd5e"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Elementor_Widget_Products::woocommerce_default (25)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Elementor_Widget_Products::woocommerce_default\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/elementor/widgets/products.php",
+        "symbol": "Vonaco_Elementor_Widget_Products::woocommerce_default",
+        "detail": "cyclomatic complexity 25 at line 384",
+        "line": 384,
+        "fact_id": "31d37c46c7e99ac979f7fd6982d3fa8c"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Megamenu_Walker::start_el (25)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Megamenu_Walker::start_el\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/megamenu/includes/class-menu-walker.php",
+        "symbol": "Vonaco_Megamenu_Walker::start_el",
+        "detail": "cyclomatic complexity 25 at line 26",
+        "line": 26,
+        "fact_id": "011f20b62b4071be5bd4c0f2a03fbce9"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Widget_Layered_Nav::layered_nav_list (25)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Widget_Layered_Nav::layered_nav_list\" has a cyclomatic complexity of 25 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-wc-widget-layered-nav.php",
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "cyclomatic complexity 25 at line 264",
+        "line": 264,
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: zingiber_licensed_font_faces (24)",
+    "source": "complexity-outliers",
+    "description": "\"zingiber_licensed_font_faces\" has a cyclomatic complexity of 24 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_licensed_font_faces",
+        "detail": "cyclomatic complexity 24 at line 181",
+        "line": 181,
+        "fact_id": "8e8e4a29700393adf623bdb4a8f94fea"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco::body_classes (21)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco::body_classes\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/class-main.php",
+        "symbol": "Vonaco::body_classes",
+        "detail": "cyclomatic complexity 21 at line 455",
+        "line": 455,
+        "fact_id": "0010ae983ba32e4acf00e461bec82049"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Elementor_Brand::render (21)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Elementor_Brand::render\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/elementor/widgets/brand.php",
+        "symbol": "Vonaco_Elementor_Brand::render",
+        "detail": "cyclomatic complexity 21 at line 460",
+        "line": 460,
+        "fact_id": "2c4e49e0b2b927fab3f6ceb2f03b2f0f"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "High cyclomatic complexity: Vonaco_Widget_Product_Brands::widget (21)",
+    "source": "complexity-outliers",
+    "description": "\"Vonaco_Widget_Product_Brands::widget\" has a cyclomatic complexity of 21 — well above the repo average. Highly branched functions are hard to test fully and are frequent defect sites.",
+    "confidence": 0.7,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-wc-widget-product-brands.php",
+        "symbol": "Vonaco_Widget_Product_Brands::widget",
+        "detail": "cyclomatic complexity 21 at line 97",
+        "line": 97,
+        "fact_id": "ee51aa09dc2b84b98ae343b79dc42816"
+      }
+    ],
+    "suggested_actions": [
+      "Extract guard clauses and nested branches into helper functions",
+      "Replace deep conditionals with table/strategy dispatch where possible",
+      "Add tests covering the distinct branches before refactoring"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_comment_form_defaults",
+    "source": "dead-code",
+    "description": "function \"vonaco_comment_form_defaults\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_comment_form_defaults",
+        "detail": "function · isolated · inc/template-functions.php:88",
+        "line": 88,
+        "fact_id": "a422791ed41a6326347e9446106bd586"
+      },
+      {
+        "symbol": "vonaco_comment_form_defaults",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "a422791ed41a6326347e9446106bd586"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_container",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_container\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_container",
+        "detail": "function · isolated · inc/template-functions.php:742",
+        "line": 742,
+        "fact_id": "8fdb915464b35a3b9bde3752b1d1789b"
+      },
+      {
+        "symbol": "vonaco_header_container",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "8fdb915464b35a3b9bde3752b1d1789b"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_container_close",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_container_close\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_container_close",
+        "detail": "function · isolated · inc/template-functions.php:751",
+        "line": 751,
+        "fact_id": "ad938c13749092fba1ea74a8fe82d15f"
+      },
+      {
+        "symbol": "vonaco_header_container_close",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "ad938c13749092fba1ea74a8fe82d15f"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_primary_navigation_wrapper",
+    "source": "dead-code",
+    "description": "function \"vonaco_primary_navigation_wrapper\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_primary_navigation_wrapper",
+        "detail": "function · isolated · inc/template-functions.php:724",
+        "line": 724,
+        "fact_id": "e5810c6c97c1d8ad184f8c9efbcbfd55"
+      },
+      {
+        "symbol": "vonaco_primary_navigation_wrapper",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "e5810c6c97c1d8ad184f8c9efbcbfd55"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_primary_navigation_wrapper_close",
+    "source": "dead-code",
+    "description": "function \"vonaco_primary_navigation_wrapper_close\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_primary_navigation_wrapper_close",
+        "detail": "function · isolated · inc/template-functions.php:733",
+        "line": 733,
+        "fact_id": "01b3e1af374ab6cbe70d34e8042c712a"
+      },
+      {
+        "symbol": "vonaco_primary_navigation_wrapper_close",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "01b3e1af374ab6cbe70d34e8042c712a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_ajax_live_search_template",
+    "source": "dead-code",
+    "description": "function \"vonaco_ajax_live_search_template\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_ajax_live_search_template",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1443",
+        "line": 1443,
+        "fact_id": "2eaa0f485578416c0ca913c27a8ecb29"
+      },
+      {
+        "symbol": "vonaco_ajax_live_search_template",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "2eaa0f485578416c0ca913c27a8ecb29"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_ajax_search_result",
+    "source": "dead-code",
+    "description": "function \"vonaco_ajax_search_result\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_ajax_search_result",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1433",
+        "line": 1433,
+        "fact_id": "10a4a5495993b3ae6107c96b1f4de7d8"
+      },
+      {
+        "symbol": "vonaco_ajax_search_result",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "10a4a5495993b3ae6107c96b1f4de7d8"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_before_content",
+    "source": "dead-code",
+    "description": "function \"vonaco_before_content\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_before_content",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:11",
+        "line": 11,
+        "fact_id": "574db87e6a0bd834b8d1834d09cbbf51"
+      },
+      {
+        "symbol": "vonaco_before_content",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "574db87e6a0bd834b8d1834d09cbbf51"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_product_columns_wrapper_close",
+    "source": "dead-code",
+    "description": "function \"vonaco_product_columns_wrapper_close\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_product_columns_wrapper_close",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:417",
+        "line": 417,
+        "fact_id": "1e26432a30a3d46883707808b2f02968"
+      },
+      {
+        "symbol": "vonaco_product_columns_wrapper_close",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "1e26432a30a3d46883707808b2f02968"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_quick_shop_wrapper",
+    "source": "dead-code",
+    "description": "function \"vonaco_quick_shop_wrapper\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_quick_shop_wrapper",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1387",
+        "line": 1387,
+        "fact_id": "645f56750c25a8cf49b549b5876ed0e8"
+      },
+      {
+        "symbol": "vonaco_quick_shop_wrapper",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "645f56750c25a8cf49b549b5876ed0e8"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_single_product_gallery_wrap_end",
+    "source": "dead-code",
+    "description": "function \"vonaco_single_product_gallery_wrap_end\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_single_product_gallery_wrap_end",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1152",
+        "line": 1152,
+        "fact_id": "815ae117c133180f753d339c57ad9248"
+      },
+      {
+        "symbol": "vonaco_single_product_gallery_wrap_end",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "815ae117c133180f753d339c57ad9248"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_single_product_gallery_wrap_start",
+    "source": "dead-code",
+    "description": "function \"vonaco_single_product_gallery_wrap_start\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_single_product_gallery_wrap_start",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1147",
+        "line": 1147,
+        "fact_id": "8711872b91f7cfe7fb5db033b242634a"
+      },
+      {
+        "symbol": "vonaco_single_product_gallery_wrap_start",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "8711872b91f7cfe7fb5db033b242634a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_sorting_wrapper",
+    "source": "dead-code",
+    "description": "function \"vonaco_sorting_wrapper\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_sorting_wrapper",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:362",
+        "line": 362,
+        "fact_id": "3b169d2566a778b82a039a2473787e3e"
+      },
+      {
+        "symbol": "vonaco_sorting_wrapper",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "3b169d2566a778b82a039a2473787e3e"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_sorting_wrapper_close",
+    "source": "dead-code",
+    "description": "function \"vonaco_sorting_wrapper_close\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_sorting_wrapper_close",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:374",
+        "line": 374,
+        "fact_id": "a19c4f8e972dc75a2d40ae962ec52a54"
+      },
+      {
+        "symbol": "vonaco_sorting_wrapper_close",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "a19c4f8e972dc75a2d40ae962ec52a54"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_unsupported_theme_remove_review_tab",
+    "source": "dead-code",
+    "description": "function \"vonaco_unsupported_theme_remove_review_tab\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-functions.php",
+        "symbol": "vonaco_unsupported_theme_remove_review_tab",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-functions.php:77",
+        "line": 77,
+        "fact_id": "bda3a2d78fdf97842deab966b9052a8c"
+      },
+      {
+        "symbol": "vonaco_unsupported_theme_remove_review_tab",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "bda3a2d78fdf97842deab966b9052a8c"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_list_show_rating_arg",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_list_show_rating_arg\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_list_show_rating_arg",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1017",
+        "line": 1017,
+        "fact_id": "abe8848ebfc744efc1db657b91ec3b28"
+      },
+      {
+        "symbol": "vonaco_woocommerce_list_show_rating_arg",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "abe8848ebfc744efc1db657b91ec3b28"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_product_caption_end",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_product_caption_end\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_product_caption_end",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:712",
+        "line": 712,
+        "fact_id": "1a64141abc4cc62ec2c1d5d6bff3d814"
+      },
+      {
+        "symbol": "vonaco_woocommerce_product_caption_end",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "1a64141abc4cc62ec2c1d5d6bff3d814"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_product_caption_start",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_product_caption_start\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_product_caption_start",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:706",
+        "line": 706,
+        "fact_id": "4b5368857950df928be673f28580b6a2"
+      },
+      {
+        "symbol": "vonaco_woocommerce_product_caption_start",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "4b5368857950df928be673f28580b6a2"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_product_loop_end",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_product_loop_end\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_product_loop_end",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:700",
+        "line": 700,
+        "fact_id": "bfb9a34323b4df0ceaaefbc02683f5f6"
+      },
+      {
+        "symbol": "vonaco_woocommerce_product_loop_end",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "bfb9a34323b4df0ceaaefbc02683f5f6"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_product_loop_start",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_product_loop_start\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_product_loop_start",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:694",
+        "line": 694,
+        "fact_id": "0a31152dcf58a4bacfd28a835a247a9c"
+      },
+      {
+        "symbol": "vonaco_woocommerce_product_loop_start",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "0a31152dcf58a4bacfd28a835a247a9c"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_single_content_wrapper_end",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_single_content_wrapper_end\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_single_content_wrapper_end",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1240",
+        "line": 1240,
+        "fact_id": "a4e18f3467ac00937ee62a828c95dd8b"
+      },
+      {
+        "symbol": "vonaco_woocommerce_single_content_wrapper_end",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "a4e18f3467ac00937ee62a828c95dd8b"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_woocommerce_single_content_wrapper_start",
+    "source": "dead-code",
+    "description": "function \"vonaco_woocommerce_single_content_wrapper_start\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "vonaco_woocommerce_single_content_wrapper_start",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1234",
+        "line": 1234,
+        "fact_id": "b63503fb46722d2d72f57c9890e542e4"
+      },
+      {
+        "symbol": "vonaco_woocommerce_single_content_wrapper_start",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "b63503fb46722d2d72f57c9890e542e4"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function woocommerce_checkout_order_review_end",
+    "source": "dead-code",
+    "description": "function \"woocommerce_checkout_order_review_end\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "woocommerce_checkout_order_review_end",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1216",
+        "line": 1216,
+        "fact_id": "523321f0bbec05e859ca62f370649dc0"
+      },
+      {
+        "symbol": "woocommerce_checkout_order_review_end",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "523321f0bbec05e859ca62f370649dc0"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function woocommerce_checkout_order_review_start",
+    "source": "dead-code",
+    "description": "function \"woocommerce_checkout_order_review_start\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "woocommerce_checkout_order_review_start",
+        "detail": "function · isolated · inc/woocommerce/woocommerce-template-functions.php:1209",
+        "line": 1209,
+        "fact_id": "0f3cfe7db51f88dc24cf3dc2e4147025"
+      },
+      {
+        "symbol": "woocommerce_checkout_order_review_start",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "0f3cfe7db51f88dc24cf3dc2e4147025"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function zingiber_icon_svg",
+    "source": "dead-code",
+    "description": "function \"zingiber_icon_svg\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_icon_svg",
+        "detail": "function · isolated · inc/zingiber/setup.php:133",
+        "line": 133,
+        "fact_id": "eeeecf53c0a713be019d6a21a77d0f55"
+      },
+      {
+        "symbol": "zingiber_icon_svg",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "eeeecf53c0a713be019d6a21a77d0f55"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function zingiber_output_clarity",
+    "source": "dead-code",
+    "description": "function \"zingiber_output_clarity\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_output_clarity",
+        "detail": "function · isolated · inc/zingiber/setup.php:521",
+        "line": 521,
+        "fact_id": "83d0a8869092c409ab4360f667a2b619"
+      },
+      {
+        "symbol": "zingiber_output_clarity",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "83d0a8869092c409ab4360f667a2b619"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function zingiber_output_gtm_body",
+    "source": "dead-code",
+    "description": "function \"zingiber_output_gtm_body\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_output_gtm_body",
+        "detail": "function · isolated · inc/zingiber/setup.php:537",
+        "line": 537,
+        "fact_id": "925700b1c19eda7ad68e7838f1d4aa2d"
+      },
+      {
+        "symbol": "zingiber_output_gtm_body",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "925700b1c19eda7ad68e7838f1d4aa2d"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function zingiber_output_gtm_head",
+    "source": "dead-code",
+    "description": "function \"zingiber_output_gtm_head\" is isolated — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_output_gtm_head",
+        "detail": "function · isolated · inc/zingiber/setup.php:505",
+        "line": 505,
+        "fact_id": "82217961bd9fc68c886a4ada45bc51b4"
+      },
+      {
+        "symbol": "zingiber_output_gtm_head",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "82217961bd9fc68c886a4ada45bc51b4"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function load_tgm_plugin_activation",
+    "source": "dead-code",
+    "description": "function \"load_tgm_plugin_activation\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "load_tgm_plugin_activation",
+        "detail": "function · unreferenced · inc/class-tgm-plugin-activation.php:2096",
+        "line": 2096,
+        "fact_id": "aa9256184853d08046ba300dfdce7703"
+      },
+      {
+        "symbol": "load_tgm_plugin_activation",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "aa9256184853d08046ba300dfdce7703"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_adjust_color_brightness",
+    "source": "dead-code",
+    "description": "function \"vonaco_adjust_color_brightness\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_adjust_color_brightness",
+        "detail": "function · unreferenced · inc/functions.php:117",
+        "line": 117,
+        "fact_id": "d8f614b68de50c44285a25f126c666a7"
+      },
+      {
+        "symbol": "vonaco_adjust_color_brightness",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "d8f614b68de50c44285a25f126c666a7"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_breadcrumb_title_swapper",
+    "source": "dead-code",
+    "description": "function \"vonaco_breadcrumb_title_swapper\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_breadcrumb_title_swapper",
+        "detail": "function · unreferenced · inc/template-functions.php:1112",
+        "line": 1112,
+        "fact_id": "10b203dd2057bec81220551c95ce84b9"
+      },
+      {
+        "symbol": "vonaco_breadcrumb_title_swapper",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "10b203dd2057bec81220551c95ce84b9"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_categories_link",
+    "source": "dead-code",
+    "description": "function \"vonaco_categories_link\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_categories_link",
+        "detail": "function · unreferenced · inc/template-functions.php:567",
+        "line": 567,
+        "fact_id": "bcfd4a117e49e04540edab885aa38c7b"
+      },
+      {
+        "symbol": "vonaco_categories_link",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "bcfd4a117e49e04540edab885aa38c7b"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_comment",
+    "source": "dead-code",
+    "description": "function \"vonaco_comment\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_comment",
+        "detail": "function · unreferenced · inc/template-functions.php:27",
+        "line": 27,
+        "fact_id": "2777b31a8772ccd0444d002c125d87ec"
+      },
+      {
+        "symbol": "vonaco_comment",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "2777b31a8772ccd0444d002c125d87ec"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_credit",
+    "source": "dead-code",
+    "description": "function \"vonaco_credit\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_credit",
+        "detail": "function · unreferenced · inc/template-functions.php:103",
+        "line": 103,
+        "fact_id": "8b25d6c6abbc4bd94ffb08e540c628c4"
+      },
+      {
+        "symbol": "vonaco_credit",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "8b25d6c6abbc4bd94ffb08e540c628c4"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_display_comments",
+    "source": "dead-code",
+    "description": "function \"vonaco_display_comments\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_display_comments",
+        "detail": "function · unreferenced · inc/template-functions.php:9",
+        "line": 9,
+        "fact_id": "4825631f013ae466450a39431805da33"
+      },
+      {
+        "symbol": "vonaco_display_comments",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "4825631f013ae466450a39431805da33"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_edit_post_link",
+    "source": "dead-code",
+    "description": "function \"vonaco_edit_post_link\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_edit_post_link",
+        "detail": "function · unreferenced · inc/template-functions.php:545",
+        "line": 545,
+        "fact_id": "0ca5f8dcb2821c34777995f1b3b85e32"
+      },
+      {
+        "symbol": "vonaco_edit_post_link",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "0ca5f8dcb2821c34777995f1b3b85e32"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_footer_default",
+    "source": "dead-code",
+    "description": "function \"vonaco_footer_default\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_footer_default",
+        "detail": "function · unreferenced · inc/template-functions.php:984",
+        "line": 984,
+        "fact_id": "455be1abc7de3ebe7df113d527b2ddbe"
+      },
+      {
+        "symbol": "vonaco_footer_default",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "455be1abc7de3ebe7df113d527b2ddbe"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_get_allowed_html",
+    "source": "dead-code",
+    "description": "function \"vonaco_get_allowed_html\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_get_allowed_html",
+        "detail": "function · unreferenced · inc/template-functions.php:513",
+        "line": 513,
+        "fact_id": "cbb03e5941ecd4297212575cb87f3627"
+      },
+      {
+        "symbol": "vonaco_get_allowed_html",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "cbb03e5941ecd4297212575cb87f3627"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_get_post_meta",
+    "source": "dead-code",
+    "description": "function \"vonaco_get_post_meta\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_get_post_meta",
+        "detail": "function · unreferenced · inc/functions.php:223",
+        "line": 223,
+        "fact_id": "b5ddb6b30eb6ab94af50de19e4e15a4c"
+      },
+      {
+        "symbol": "vonaco_get_post_meta",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "b5ddb6b30eb6ab94af50de19e4e15a4c"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_get_sidebar",
+    "source": "dead-code",
+    "description": "function \"vonaco_get_sidebar\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_get_sidebar",
+        "detail": "function · unreferenced · inc/template-functions.php:680",
+        "line": 680,
+        "fact_id": "affa16b7777be5a6dc25945dad5edd16"
+      },
+      {
+        "symbol": "vonaco_get_sidebar",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "affa16b7777be5a6dc25945dad5edd16"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_contact_info",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_contact_info\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_contact_info",
+        "detail": "function · unreferenced · inc/template-functions.php:764",
+        "line": 764,
+        "fact_id": "40a5cc61f1c55bae05daa572ba6dca5a"
+      },
+      {
+        "symbol": "vonaco_header_contact_info",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "40a5cc61f1c55bae05daa572ba6dca5a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_custom_link",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_custom_link\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_custom_link",
+        "detail": "function · unreferenced · inc/template-functions.php:757",
+        "line": 757,
+        "fact_id": "40da6507b9ca7cc48b189e72f02cd6ec"
+      },
+      {
+        "symbol": "vonaco_header_custom_link",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "40da6507b9ca7cc48b189e72f02cd6ec"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_search_popup",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_search_popup\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_search_popup",
+        "detail": "function · unreferenced · inc/template-functions.php:902",
+        "line": 902,
+        "fact_id": "2f7afd0cbca703fac8598041a7073642"
+      },
+      {
+        "symbol": "vonaco_header_search_popup",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "2f7afd0cbca703fac8598041a7073642"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_header_sticky",
+    "source": "dead-code",
+    "description": "function \"vonaco_header_sticky\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_header_sticky",
+        "detail": "function · unreferenced · inc/template-functions.php:939",
+        "line": 939,
+        "fact_id": "e662a269e794f892d0098c090cb87c6a"
+      },
+      {
+        "symbol": "vonaco_header_sticky",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "e662a269e794f892d0098c090cb87c6a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_homepage_content",
+    "source": "dead-code",
+    "description": "function \"vonaco_homepage_content\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_homepage_content",
+        "detail": "function · unreferenced · inc/template-functions.php:663",
+        "line": 663,
+        "fact_id": "aa5eeac0e75a045b93b1a5b8f0407f04"
+      },
+      {
+        "symbol": "vonaco_homepage_content",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "aa5eeac0e75a045b93b1a5b8f0407f04"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_homepage_header",
+    "source": "dead-code",
+    "description": "function \"vonaco_homepage_header\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/template-functions.php",
+        "symbol": "vonaco_homepage_header",
+        "detail": "function · unreferenced · inc/template-functions.php:250",
+        "line": 250,
+        "fact_id": "542224157549701a79f503fded935ddc"
+      },
+      {
+        "symbol": "vonaco_homepage_header",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "542224157549701a79f503fded935ddc"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_is_bcn_nav_activated",
+    "source": "dead-code",
+    "description": "function \"vonaco_is_bcn_nav_activated\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_is_bcn_nav_activated",
+        "detail": "function · unreferenced · inc/functions.php:9",
+        "line": 9,
+        "fact_id": "0037e0909a370dda6b8db2e64a0626ee"
+      },
+      {
+        "symbol": "vonaco_is_bcn_nav_activated",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "0037e0909a370dda6b8db2e64a0626ee"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_is_cmb2_activated",
+    "source": "dead-code",
+    "description": "function \"vonaco_is_cmb2_activated\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_is_cmb2_activated",
+        "detail": "function · unreferenced · inc/functions.php:15",
+        "line": 15,
+        "fact_id": "83079ebaad4b586bcaa47566e7a3a3f6"
+      },
+      {
+        "symbol": "vonaco_is_cmb2_activated",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "83079ebaad4b586bcaa47566e7a3a3f6"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_is_contactform_activated",
+    "source": "dead-code",
+    "description": "function \"vonaco_is_contactform_activated\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_is_contactform_activated",
+        "detail": "function · unreferenced · inc/functions.php:60",
+        "line": 60,
+        "fact_id": "3fd786a40ba2445b140e0dbb5a3245ff"
+      },
+      {
+        "symbol": "vonaco_is_contactform_activated",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "3fd786a40ba2445b140e0dbb5a3245ff"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Dead code candidate: function vonaco_is_mailchimp_activated",
+    "source": "dead-code",
+    "description": "function \"vonaco_is_mailchimp_activated\" is unreferenced — nothing in the snapshot graph references it (high confidence). References are matched by short name and biased conservative, so verify against dynamic/reflective dispatch and consumers outside the snapshot before removing.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/functions.php",
+        "symbol": "vonaco_is_mailchimp_activated",
+        "detail": "function · unreferenced · inc/functions.php:66",
+        "line": 66,
+        "fact_id": "317898dc819377c8273275c0c1bd402e"
+      },
+      {
+        "symbol": "vonaco_is_mailchimp_activated",
+        "detail": "exported — may be used outside this snapshot; verify before removal",
+        "fact_id": "317898dc819377c8273275c0c1bd402e"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm no dynamic/reflective or out-of-snapshot callers, then remove the symbol"
+    ]
+  },
+  {
+    "title": "Additional dead-code candidates: 453 more (see find_orphans)",
+    "source": "dead-code",
+    "description": "137 further high/medium-confidence orphan(s) were omitted from individual insights and 316 low-confidence orphan(s) (methods/types/consts/vars — usage not edge-tracked) were not surfaced individually. Use the find_orphans tool (output_mode=full) for the complete list.",
+    "confidence": 0.4,
+    "evidence": null,
+    "suggested_actions": [
+      "Run find_orphans with confidence=high and visibility=unexported for the safest cleanup set"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, depth 2): Vonaco_Custom_Walker_Category::start_el",
+    "source": "performance",
+    "description": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/woocommerce-template-functions.php",
+        "symbol": "Vonaco_Custom_Walker_Category::start_el",
+        "detail": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do.",
+        "line": 84,
+        "fact_id": "4f80286ad6da4aefd578a19d7fa1f8ae"
+      },
+      {
+        "symbol": "Vonaco_Custom_Walker_Category::start_el",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=20",
+        "fact_id": "4f80286ad6da4aefd578a19d7fa1f8ae"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, depth 2): Vonaco_Widget_Layered_Nav::layered_nav_list",
+    "source": "performance",
+    "description": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do.",
+    "confidence": 0.8,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-wc-widget-layered-nav.php",
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do.",
+        "line": 264,
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      },
+      {
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "loop_depth=2, loop_count=2, cyclomatic=25",
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (recursion, O(?) — recursive): TGM_Plugin_Activation::get_plugins",
+    "source": "performance",
+    "description": "Directly recursive (calls itself); depth is bounded by input shape — verify a base case and stack-depth limits. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.5,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::get_plugins",
+        "detail": "Directly recursive (calls itself); depth is bounded by input shape — verify a base case and stack-depth limits.",
+        "line": 1978,
+        "fact_id": "bc058d736edbad31828dec5376873901"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (recursion, O(?) — recursive): TGM_Plugin_Activation::is_plugin_active",
+    "source": "performance",
+    "description": "Directly recursive (calls itself); depth is bounded by input shape — verify a base case and stack-depth limits. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.5,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::is_plugin_active",
+        "detail": "Directly recursive (calls itself); depth is bounded by input shape — verify a base case and stack-depth limits.",
+        "line": 1827,
+        "fact_id": "7acc5c1cf3ee5fbdbf50303f1764d0d7"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (nested-loop, depth 2): Merlin_Widget_Importer::import_data",
+    "source": "performance",
+    "description": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do. (Enclosing loops over bounded or constant ranges are already excluded.)",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-merlin-widget-importer.php",
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "Loops nest 2 deep. That is a count of nested loops, not a complexity: they multiply only when each walks an independent collection. A walk from parents to their children, a loop over a fixed list, or a callee finishing its caller's traversal nests without multiplying. Check which loops here do. (Enclosing loops over bounded or constant ranges are already excluded.)",
+        "line": 98,
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      },
+      {
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "loop_depth=3, loop_count=4, cyclomatic=25",
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      },
+      {
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "scaling_loop_depth=2 (bounded loops discounted)",
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Merlin::get_import_files_paths",
+    "source": "performance",
+    "description": "Calls fetch_existing_file inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::get_import_files_paths",
+        "detail": "Calls fetch_existing_file inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 2207,
+        "fact_id": "7f993048dcfaa261e3dbc4e754002007"
+      },
+      {
+        "symbol": "Merlin::get_import_files_paths",
+        "detail": "call_in_loop=fetch_existing_file",
+        "fact_id": "7f993048dcfaa261e3dbc4e754002007"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Merlin::get_tgmpa_plugins",
+    "source": "performance",
+    "description": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/class-merlin.php",
+        "symbol": "Merlin::get_tgmpa_plugins",
+        "detail": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 1331,
+        "fact_id": "4a96f4d5d2c111c7396d4f525804b365"
+      },
+      {
+        "symbol": "Merlin::get_tgmpa_plugins",
+        "detail": "call_in_loop=does_plugin_have_update",
+        "fact_id": "4a96f4d5d2c111c7396d4f525804b365"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Merlin_Customizer_Importer::import_customizer_images",
+    "source": "performance",
+    "description": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-merlin-customizer-importer.php",
+        "symbol": "Merlin_Customizer_Importer::import_customizer_images",
+        "detail": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 142,
+        "fact_id": "29df45db03b3687ebfb4b69929b1f27a"
+      },
+      {
+        "symbol": "Merlin_Customizer_Importer::import_customizer_images",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "29df45db03b3687ebfb4b69929b1f27a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Merlin_Widget_Importer::import_data",
+    "source": "performance",
+    "description": "Calls update_option inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-merlin-widget-importer.php",
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "Calls update_option inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 98,
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      },
+      {
+        "symbol": "Merlin_Widget_Importer::import_data",
+        "detail": "call_in_loop=update_option",
+        "fact_id": "26f1030880afcc53e11f8e8e19a5ca00"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGMPA_List_Table::_gather_plugin_data",
+    "source": "performance",
+    "description": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGMPA_List_Table::_gather_plugin_data",
+        "detail": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 2251,
+        "fact_id": "38758512a6835f97cae2392e265c533a"
+      },
+      {
+        "symbol": "TGMPA_List_Table::_gather_plugin_data",
+        "detail": "call_in_loop=does_plugin_have_update",
+        "fact_id": "38758512a6835f97cae2392e265c533a"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGMPA_List_Table::categorize_plugins_to_views",
+    "source": "performance",
+    "description": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGMPA_List_Table::categorize_plugins_to_views",
+        "detail": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 2303,
+        "fact_id": "f09638a73289eda3e719711a48d11305"
+      },
+      {
+        "symbol": "TGMPA_List_Table::categorize_plugins_to_views",
+        "detail": "call_in_loop=does_plugin_have_update",
+        "fact_id": "f09638a73289eda3e719711a48d11305"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGMPA_List_Table::get_row_actions",
+    "source": "performance",
+    "description": "Calls add_query_arg inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGMPA_List_Table::get_row_actions",
+        "detail": "Calls add_query_arg inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 2681,
+        "fact_id": "a07141f187daf6ea16fb3de1e7d1c745"
+      },
+      {
+        "symbol": "TGMPA_List_Table::get_row_actions",
+        "detail": "call_in_loop=add_query_arg",
+        "fact_id": "a07141f187daf6ea16fb3de1e7d1c745"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGM_Plugin_Activation::add_plugin_action_link_filters",
+    "source": "performance",
+    "description": "Calls does_plugin_require_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::add_plugin_action_link_filters",
+        "detail": "Calls does_plugin_require_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 549,
+        "fact_id": "873828e13be8b572d22aa6bf1f9d2147"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::add_plugin_action_link_filters",
+        "detail": "call_in_loop=does_plugin_require_update",
+        "fact_id": "873828e13be8b572d22aa6bf1f9d2147"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGM_Plugin_Activation::is_tgmpa_complete",
+    "source": "performance",
+    "description": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::is_tgmpa_complete",
+        "detail": "Calls does_plugin_have_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 1793,
+        "fact_id": "cc87ca1f4cc87e2b2ba1e49938143f4e"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::is_tgmpa_complete",
+        "detail": "call_in_loop=does_plugin_have_update",
+        "fact_id": "cc87ca1f4cc87e2b2ba1e49938143f4e"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): TGM_Plugin_Activation::notices",
+    "source": "performance",
+    "description": "Calls does_plugin_have_update, does_plugin_require_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/class-tgm-plugin-activation.php",
+        "symbol": "TGM_Plugin_Activation::notices",
+        "detail": "Calls does_plugin_have_update, does_plugin_require_update inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 1106,
+        "fact_id": "13a8aea8aaa7b1688a2ca1954146f0fd"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::notices",
+        "detail": "call_in_loop=does_plugin_have_update",
+        "fact_id": "13a8aea8aaa7b1688a2ca1954146f0fd"
+      },
+      {
+        "symbol": "TGM_Plugin_Activation::notices",
+        "detail": "call_in_loop=does_plugin_require_update",
+        "fact_id": "13a8aea8aaa7b1688a2ca1954146f0fd"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Megamenu::enqueue_scripts",
+    "source": "performance",
+    "description": "Calls enqueue inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/megamenu/megamenu.php",
+        "symbol": "Vonaco_Megamenu::enqueue_scripts",
+        "detail": "Calls enqueue inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 62,
+        "fact_id": "f741bb3e5f10cd4adb9be3dd5b8098c2"
+      },
+      {
+        "symbol": "Vonaco_Megamenu::enqueue_scripts",
+        "detail": "call_in_loop=enqueue",
+        "fact_id": "f741bb3e5f10cd4adb9be3dd5b8098c2"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Merlin_Config::after_import_setup",
+    "source": "performance",
+    "description": "Calls update_option inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin-config.php",
+        "symbol": "Vonaco_Merlin_Config::after_import_setup",
+        "detail": "Calls update_option inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 102,
+        "fact_id": "23e8ef6fc4f9d2b1fbe6d466cb5ceb88"
+      },
+      {
+        "symbol": "Vonaco_Merlin_Config::after_import_setup",
+        "detail": "call_in_loop=update_option",
+        "fact_id": "23e8ef6fc4f9d2b1fbe6d466cb5ceb88"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Merlin_Config::reset_header_footer",
+    "source": "performance",
+    "description": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin-config.php",
+        "symbol": "Vonaco_Merlin_Config::reset_header_footer",
+        "detail": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 402,
+        "fact_id": "911ce5d453977af3a3d5ce76b2872224"
+      },
+      {
+        "symbol": "Vonaco_Merlin_Config::reset_header_footer",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "911ce5d453977af3a3d5ce76b2872224"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Merlin_Config::set_hf",
+    "source": "performance",
+    "description": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin-config.php",
+        "symbol": "Vonaco_Merlin_Config::set_hf",
+        "detail": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 434,
+        "fact_id": "fc5449ac2b06c80ca480983c778392fe"
+      },
+      {
+        "symbol": "Vonaco_Merlin_Config::set_hf",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "fc5449ac2b06c80ca480983c778392fe"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Widget_Layered_Nav::layered_nav_list",
+    "source": "performance",
+    "description": "Calls remove_query_arg, add_query_arg inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/merlin/includes/class-wc-widget-layered-nav.php",
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "Calls remove_query_arg, add_query_arg inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 264,
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      },
+      {
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "call_in_loop=remove_query_arg",
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      },
+      {
+        "symbol": "Vonaco_Widget_Layered_Nav::layered_nav_list",
+        "detail": "call_in_loop=add_query_arg",
+        "fact_id": "a99d38a71c4a00119a3624f695b83f0b"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Woocommerce_Extra::schedule_deals",
+    "source": "performance",
+    "description": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/class-woocommerce-extra.php",
+        "symbol": "Vonaco_Woocommerce_Extra::schedule_deals",
+        "detail": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 121,
+        "fact_id": "df630f3247a963069f5c1e6f77331d3f"
+      },
+      {
+        "symbol": "Vonaco_Woocommerce_Extra::schedule_deals",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "df630f3247a963069f5c1e6f77331d3f"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): Vonaco_Woocommerce_Extra::update_deal_sales",
+    "source": "performance",
+    "description": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/woocommerce/class-woocommerce-extra.php",
+        "symbol": "Vonaco_Woocommerce_Extra::update_deal_sales",
+        "detail": "Calls update_post_meta inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 82,
+        "fact_id": "7b9bbb7b0cd757a991ba92250d7eb024"
+      },
+      {
+        "symbol": "Vonaco_Woocommerce_Extra::update_deal_sales",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "7b9bbb7b0cd757a991ba92250d7eb024"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  },
+  {
+    "title": "Performance risk (call-in-loop, O(n)): zingiber_install_site_pages",
+    "source": "performance",
+    "description": "Calls wp_insert_post, update_post_meta, wp_update_nav_menu_item inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop. Big-O is a deterministic estimate of structural worst case from parser facts, not a proof — treat as a lead to verify.",
+    "confidence": 0.6,
+    "evidence": [
+      {
+        "file": "inc/zingiber/setup.php",
+        "symbol": "zingiber_install_site_pages",
+        "detail": "Calls wp_insert_post, update_post_meta, wp_update_nav_menu_item inside a loop — a likely N+1 / per-iteration I/O pattern; batch or hoist out of the loop.",
+        "line": 352,
+        "fact_id": "cc6d5f7899144e6b4ab9680bd86604db"
+      },
+      {
+        "symbol": "zingiber_install_site_pages",
+        "detail": "call_in_loop=wp_insert_post",
+        "fact_id": "cc6d5f7899144e6b4ab9680bd86604db"
+      },
+      {
+        "symbol": "zingiber_install_site_pages",
+        "detail": "call_in_loop=update_post_meta",
+        "fact_id": "cc6d5f7899144e6b4ab9680bd86604db"
+      },
+      {
+        "symbol": "zingiber_install_site_pages",
+        "detail": "call_in_loop=wp_update_nav_menu_item",
+        "fact_id": "cc6d5f7899144e6b4ab9680bd86604db"
+      }
+    ],
+    "suggested_actions": [
+      "Confirm the hot path with a profiler or benchmark before optimizing",
+      "Batch or hoist per-iteration I/O out of loops; add memoization or an iterative rewrite for recursion"
+    ]
+  }
+]

@@ -1,0 +1,137 @@
+{
+  "snapshot_id": "sha256:f9ab94455df3a09ca9ddb86d672894900fd45fe5cb5c3118f40de2114e949245",
+  "format_version": 1,
+  "enola_version": "0.4.30",
+  "extractor_version": "v351",
+  "generated_at": "2026-11-10T11:57:21Z",
+  "duration": "416.388625ms",
+  "repo_path": "/Users/arneljayvgumiran/zingiber-reborn",
+  "git": {
+    "ref": "main",
+    "commit": "6b9d982ae1a03c5ab499e825e4e2ef8785e93263",
+    "dirty": false,
+    "remote": "github.com/ajgumiran88/zingiber-reborn"
+  },
+  "extractors": [
+    "mdintent",
+    "php"
+  ],
+  "explainers": [
+    "cycles",
+    "layers",
+    "crossrepo",
+    "coverage",
+    "unused-routes",
+    "domain",
+    "query-loops",
+    "dead-methods",
+    "entry-points",
+    "messaging-coverage",
+    "god-class",
+    "hotspots",
+    "dependency-depth",
+    "exported-surface",
+    "complexity-outliers",
+    "intent",
+    "constraints",
+    "vendored-candidates",
+    "import-closure",
+    "package-metrics",
+    "dead-code",
+    "performance"
+  ],
+  "renderers": [
+    "llm_context",
+    "flows"
+  ],
+  "config_hash": "sha256:3adc688a0f1dadd7c001cfc90ef05ce328f08b9a61c74a15e5f9839f222d0f08",
+  "ignore_glob_hash": "sha256:9ee2ed929411f65a0acebb88a0e8d236226c27d8061975f304e3b1ff2841c318",
+  "output_hashes": {
+    "facts.jsonl": "sha256:49cd1eb89a6d458d9aedff519f5c84be16b158ec6b767f5378895a7af9eeccc1",
+    "flows.json": "sha256:e19f2e3cbaea60c71e7cc6217dc07fc2f9ebd6fa21a4da916e8b30be654264ef",
+    "insights.json": "sha256:f01c5bb5163a883292b50bdb43bdcd7457b6b81d2334d359ceb7421efebdbad4",
+    "llm_context.md": "sha256:deb25735f3dd6f2317b980f6dc57b34766207f8fd0a057fdddf261a3c38cc49f"
+  },
+  "fact_count": 1253,
+  "insight_count": 108,
+  "quality": {
+    "files_seen": 618,
+    "files_parsed": 109,
+    "files_skipped": 22,
+    "dirs_skipped": 3,
+    "skipped_sample": [
+      ".git/ (glob: **/.git/**)",
+      "assets/js/admin/admin.min.js (glob: **/*.min.js)",
+      "assets/js/admin/editor.min.js (glob: **/*.min.js)",
+      "assets/js/admin/product-360.min.js (glob: **/*.min.js)",
+      "assets/js/admin/woocommerce-brand.min.js (glob: **/*.min.js)",
+      "assets/js/editor.min.js (glob: **/*.min.js)",
+      "assets/js/elementor-custom-css.min.js (glob: **/*.min.js)",
+      "assets/js/elementor-frontend.min.js (glob: **/*.min.js)",
+      "assets/js/footer.min.js (glob: **/*.min.js)",
+      "assets/js/isotope.pkgd.min.js (glob: **/*.min.js)",
+      "assets/js/skip-link-focus-fix.min.js (glob: **/*.min.js)",
+      "assets/js/sticky-add-to-cart.min.js (glob: **/*.min.js)",
+      "assets/js/tooltipster.bundle.js (glob: **/*.bundle.js)",
+      "assets/js/tooltipster.min.js (glob: **/*.min.js)",
+      "assets/js/vendor/ (glob: **/vendor/**)",
+      "assets/js/woocommerce/cart-canvas.min.js (glob: **/*.min.js)",
+      "assets/js/woocommerce/cart-side.min.js (glob: **/*.min.js)",
+      "assets/js/woocommerce/header-cart.min.js (glob: **/*.min.js)",
+      "assets/js/woocommerce/main.min.js (glob: **/*.min.js)",
+      "assets/js/woocommerce/off-canvas.min.js (glob: **/*.min.js)"
+    ],
+    "parse_errors": 0,
+    "heuristic_insights": 107,
+    "coverage": {
+      "services_total": 0,
+      "coverage_gaps": 0,
+      "unresolved_edges": 0,
+      "extractors_reporting": 1,
+      "extraction_unresolved": 42
+    },
+    "census": {
+      "files_walked": 640,
+      "parsed": 109,
+      "excluded_by_ignore": 22,
+      "excluded_by_kind": 401,
+      "excluded_kinds": {
+        "(no extension)": 3,
+        ".css": 28,
+        ".diff": 1,
+        ".ds_store": 7,
+        ".eot": 6,
+        ".gif": 1,
+        ".gitignore": 1,
+        ".gitkeep": 1,
+        ".ico": 1,
+        ".jpg": 24,
+        ".json": 5,
+        ".lock": 1,
+        ".log": 8,
+        ".map": 9,
+        ".mp4": 1,
+        ".pdf": 2,
+        ".png": 55,
+        ".pot": 2,
+        ".svg": 205,
+        ".ttf": 6,
+        ".webp": 15,
+        ".woff": 6,
+        ".woff2": 5,
+        ".xml": 8
+      },
+      "skipped_with_cause": 108,
+      "top_skip_causes": [
+        {
+          "cause": "claimed by typescript, which did not run this snapshot",
+          "count": 56
+        },
+        {
+          "cause": "claimed by php, no facts emitted",
+          "count": 52
+        }
+      ]
+    }
+  }
+}

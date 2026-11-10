@@ -1,0 +1,3236 @@
+{
+  "repo_path": "/Users/arneljayvgumiran/zingiber-reborn",
+  "repo_label": "zingiber-reborn",
+  "generated_at": "2026-11-10T12:12:15Z",
+  "duration": "990.884959ms",
+  "extractors": [
+    "mdintent",
+    "php"
+  ],
+  "explainers": [
+    "cycles",
+    "layers",
+    "crossrepo",
+    "coverage",
+    "unused-routes",
+    "domain",
+    "query-loops",
+    "dead-methods",
+    "entry-points",
+    "messaging-coverage",
+    "god-class",
+    "hotspots",
+    "dependency-depth",
+    "exported-surface",
+    "complexity-outliers",
+    "intent",
+    "constraints",
+    "vendored-candidates",
+    "import-closure",
+    "package-metrics",
+    "dead-code",
+    "performance"
+  ],
+  "renderers": [
+    "llm_context",
+    "flows"
+  ],
+  "file_hashes": [
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-glass-refinement/task-1-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T15:26:20Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/cinnamon.webp",
+      "hash": "5dd8d9ca8abd1eca6ae9f720c023cee910f8cec38dd5a056cc2af969f5821480",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/2core/meh.svg",
+      "hash": "0050b6ed5fed4d2107808e11bc762c46aa1016d544fb0c995d6f45888f4ff1e4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/image-box.php",
+      "hash": "ddb6e2b50cfbf9a43cd02f7649051d6825805c7a60392fce360637568af3f427",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/assets/css/admin.css",
+      "hash": "727b89a542f3baeb9182bb0fd23b7440071af636e8a4b8c069e1d41c6617827e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.8.eot",
+      "hash": "e85264d09a0910fd2dd74d7ad53a2aac98186d39ff89b3616741ab70d5517701",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/angle-left.svg",
+      "hash": "f61f252096fd7dcf2e4b19e279557c6d91f569c6eb978f4e172c3abaaf95df05",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/truck.svg",
+      "hash": "0f9278e5551e3e5c870a06afc09695417334e9b13cc883a55554f003935dae84",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "header-zingiber.php",
+      "hash": "2b43451ed67ddb6161f3757b3db7c4c1a829c35b6d2767e4f2277b078632892b",
+      "mod_time": "2026-11-09T07:44:03Z"
+    },
+    {
+      "path": "assets/images/language-switcher/en.png",
+      "hash": "91dc5713f650290106854cd55ad8ad7f07ad40eb60892e499ae9cba6c73ce483",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/sync.svg",
+      "hash": "85820ed3a976bf754bbf7607b06b301fb813fe0922cb3ca057d6abb8a356eba4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/link-brand.svg",
+      "hash": "ac298760ed0b77d87f592e6679eeb8238bf4a6d052388d04ff4d32022a1a94b2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-2.xml",
+      "hash": "e1a440a6724a6b959306cc8760463d4fdd985c71f3b7225a50e350350ce8ebc2",
+      "mod_time": "2026-09-15T14:37:26Z"
+    },
+    {
+      "path": "assets/css/base/icons.css.map",
+      "hash": "8daba6b4ea1023ff63584abe3e1848761536145a1da1f9ca36f8b663e8fd8a31",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/email-1.svg",
+      "hash": "85051fc82e367a53d5170c627cfd1d34cfe79f12b9080cc5b23432b1f2a18193",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "content-single.php",
+      "hash": "12a1a06c42965c1be64d0c1a7932f2bd506899fc6521ccee4271dca02a6c6b9c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/menu-list.php",
+      "hash": "27c78359bd1571e0245d8f46df884e83e78076446ea8a066a4da0d4232b111c9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-6-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:46:09Z"
+    },
+    {
+      "path": "Design Direction for Zingiber 22 Oct 2026.pdf",
+      "hash": "a40dc803fdde152d7726529769673d0f8febc2901ba9b10c423ec6907ddcc828",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/text-editor.php",
+      "hash": "28f67faca54f0a0156fc352ae3caadc79a3b06dc33c2bd914ab160ed48aef901",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/oct30_pdf_revisions_dd0b3642.plan/progress.md",
+      "hash": "e90a5a3d034866f51ab6417fa9347b67d4133ddc1fc4ffc8776834647cb11372",
+      "mod_time": "2026-10-30T13:21:48Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.9.svg",
+      "hash": "0bbe251b5f661cfd1cc7867954be8dcd6c09cf0d2876bf7b94af6d41f27eaea3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/404/404_background.png",
+      "hash": "1732152c701fb90a3d135ed3f501bdb67d648d72f0bdf0bcff535a5a4d6cab49",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-dining-room.jpg",
+      "hash": "0558fd5b6588b6ba7c47c8ed9ddf28d3f4fede681792ba583e61754f9a145d38",
+      "mod_time": "2026-09-15T14:36:36Z"
+    },
+    {
+      "path": "inc/megamenu/megamenu.php",
+      "hash": "edcc52232261c5e58bf6e5d06b148c511d8eca0b53ef94e22b8d04c385bdd148",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/zingiber.js",
+      "hash": "30528047009d604c23ea64dfde06681428f51b88948ac37f7204fb4850afb00b",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/plan-path",
+      "hash": "a0f36182a0d7a8bdb4a3c1eeecedea8c290d2bd5f6468f38de517e798da27eda",
+      "mod_time": "2026-10-22T14:35:09Z"
+    },
+    {
+      "path": "assets/js/frontend/text-editor.js",
+      "hash": "1ee604a8ebae7c45ee29a08ae29f936494d03c085583471aa6909e9e4f887fe2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/assets/js/merlin.js",
+      "hash": "880e27e6e56ef1e169f38b957503bbcd0f6a6f63aec7bbf8c9bc28945361b702",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/pattern-about.png",
+      "hash": "baf008f1e3b07c7bda45eae70d033a54a101e10ec33e6dd0151d6e49bb7594f2",
+      "mod_time": "2026-09-11T13:37:24Z"
+    },
+    {
+      "path": ".cursor/plans/pdf_structure_redesign_b511d6e8.plan.md",
+      "hash": "0b2645252e07fa7782187e715e0cc2cb9becb6a90be7a6e982b42916c86dbb91",
+      "mod_time": "2026-10-22T17:07:31Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce-rtl.css",
+      "hash": "c3af316b5351d00b0e21387133e543373f308bb6781fe9650cd51101c3a92cbf",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce.css.map",
+      "hash": "ad5ffbb173283b9b566e6aa8fd03ba0b7dabbb15a0835fd00b24345df57dcc5f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-feature-wall.webp",
+      "hash": "725eaabb8b5f0d190216a4ab8819b23723d078d3e7123fc451582d133f7e0151",
+      "mod_time": "2026-09-15T14:36:39Z"
+    },
+    {
+      "path": "assets/js/elementor-custom-css.js",
+      "hash": "0a65aa8e7db9b679d3a165dea1326998295744e3ebcc875170169f1058fffd59",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/woocommerce/cart-canvas.js",
+      "hash": "134f0ae1be6b749c11a0aa164f529bc68d2891e91733bb4689fa3c420f485aec",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/calendar.svg",
+      "hash": "c45f6eb36b3dff70a988a0a320ca65a305fcfb31500162ff6c2114f6885782d0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/clock.svg",
+      "hash": "0f4cbabecc7f1a1d0e1f6b64cdb9bfff06a595e13c652298dd228b0347ea7d6d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/caret-left.svg",
+      "hash": "43e25feb644d29eb59eaeef97680483bdaa4b1bb5919a04e0da74d055a9905c9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-customizer-importer.php",
+      "hash": "00a6daeb6e3417f8a6e16ef5ddf2261510eeed0bb4e7e63f8ea7a8bc4ad78e01",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-woocommerce-extra.php",
+      "hash": "2e8132b7da8a40e23bfbfc9e3e1dc32bd6290d451eba365dc81e76899494a012",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce.css",
+      "hash": "1ee840f4a6e3992b0d3787a3dc21970fa8cabdbf706d8ea11dbe276b37f863ee",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.1.ttf",
+      "hash": "c815b1f8e1e063eaeccd9f440d860306ca1f41b09cfff78575c5e937209199c0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/book-call.svg",
+      "hash": "6f2bdfcf07830a373e6cd868aeacc6aac9600d7b29de92a094a4cf4680039cd2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/heart-1.svg",
+      "hash": "e84dc9c6d56d6dbac52bcfbd7d74fdf18042ee1e8a24441ada8854ec4d80ec8b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/video/hero-placeholder.mp4",
+      "hash": "44cfb86553cb4ef4ab0697cfbdd77a1a752a2507f799bd5efc43922dd4b4f1d9",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "inc/elementor/widgets/brand.php",
+      "hash": "8cae36b98742cccb0c7a52311edff04db00e136d9af39064a54ae2dd790777cd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/products.php",
+      "hash": "9aa1fb7f4ba068c61415b5753f283cedd9d21e173282a93ff83d5fb23681f7c0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "single-elementor_library.php",
+      "hash": "9e11e2c2c4ae2942dcefbe62b3bb22c62c07ccb4c6fa6022857028a0266ff389",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/base/slick-theme.css.map",
+      "hash": "440968cbac6307ab8c161b041c9d30c608d0c01fc1ab127229cee1ff10465089",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/compare.svg",
+      "hash": "500513e150350a1ed7b086a9a965b1aba85e2307837f98d42c5684d0c613f142",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/reddit.svg",
+      "hash": "d0c3947e45a069085f3d751f967b16aa6cd294eeb75c6e1465ce34bd68e64931",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/widgets.json",
+      "hash": "af4d619e714be4a6120eafb44975035502d4a8a94563e19f838d324decee5354",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/icon-box.php",
+      "hash": "efcb417d44986ae95087ad5eeef2afeeb3c308d0f0740bde34f0be1b59e47eb3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/product-tab.php",
+      "hash": "fb4a2ebcf905aa464397b2be3c606c3b95a72c3a68dd519ef06d5fc37dea54c7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-1-brief.md",
+      "hash": "e8f6b101cf824816d40e4b0cceba73782182edd84bd0c99e9784be919b3b6758",
+      "mod_time": "2026-10-22T14:35:10Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-1-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:36:51Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-hero.jpg",
+      "hash": "09a520b1a4a59322a9b42bca340ee2207155fe7379a3a61ebba3e63e04097899",
+      "mod_time": "2026-09-15T14:36:36Z"
+    },
+    {
+      "path": "assets/js/elementor/brand.js",
+      "hash": "fe2f738745aced1e41b74e0d3509e01ca011358ee29c51525d0a89b9a69c4252",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-assets.php",
+      "hash": "c0afe6f36b934a61f3c74a6649453ea9e31e0b60c67f048a293a9fa912889021",
+      "mod_time": "2026-11-09T07:43:48Z"
+    },
+    {
+      "path": "work/qa/hero-scroll-guide.png",
+      "hash": "224f302b9c37269ce545ee79200c1dd9062f1ef09da4f5fa6d6d4cc80c8f90b1",
+      "mod_time": "2026-09-12T04:50:46Z"
+    },
+    {
+      "path": "inc/elementor/section-parallax.php",
+      "hash": "c7cba4189e3fb912f4896c67e46c2e2fefdb2bcf3cf644e94433017870258c86",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/image-gallery.php",
+      "hash": "76afd97d6c0dce640b00160f20983929e4a1702ede596eaf8fde756eb74017d0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/oct30_pdf_revisions_dd0b3642.plan/plan-path",
+      "hash": "92a290c8e90d7e3f8f1e44c00a948fe81f58f5a1618c03fc53d4a1ae7f64b218",
+      "mod_time": "2026-10-30T11:16:56Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-feature-wall.jpg",
+      "hash": "437d0bf8000796d357d5050882888b630cfa54dcbcde0cae593a214d4b4e285a",
+      "mod_time": "2026-09-15T14:36:36Z"
+    },
+    {
+      "path": "assets/svg/2core/comment.svg",
+      "hash": "85dfcd98dd5ad77a554a10b9a6e2fe950a32194e2e8fb6870f2fcfa884791f75",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/reply.svg",
+      "hash": "d81fc8bf4eb77920ad0ce46689cd3e9e7f175c10a6a000dcf83c28248b4994f6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/gulp.svg",
+      "hash": "e6f2114762077583e6f69c966ca242190cf34f02f55d950b92be6d793b013de2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/dokan/dokan-template-hooks.php",
+      "hash": "1c454352fd7f435c0088ebe21abe0e16396c1361d3c6a31639b82f6f761fb318",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/assets/css/merlin.min.css",
+      "hash": "5b6525017bb5548158432c0848a410c6c917c256d5cc1f00eeff2fcd32855b44",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/pattern-preview.png",
+      "hash": "4c0ff1151ae26399b68c2c4ebca1c9640b0d1f56f87909b5e7d9ce12d32cb55c",
+      "mod_time": "2026-09-11T13:35:54Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/icon.php",
+      "hash": "2eece48ddda4a0019160aa1302225f8755d9baca46dc0d39e73d0f69b7421626",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/templates/single-menu.php",
+      "hash": "11860c8af6f7d1972e9dc4063eed843fe8ec8c1f23a3a5d0e4a1f71269488eff",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/zingiber/content.php",
+      "hash": "76ec322458411f62d7b02136ef92dcaa8d4db134b99cb83827814e7b184938dc",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-6-brief.md",
+      "hash": "2ddb2e39895a29ad326e276547e57bcba03cf89e5e2047bbf600349e6a0aa212",
+      "mod_time": "2026-10-22T14:42:39Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce-legacy.css",
+      "hash": "5192698d6479913498dafbddb436b74e30bece9c8cd5e9d3f2231b524b3574e4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-crab-plate.webp",
+      "hash": "77102ef6684a93577defa6bd2989e77f6102b14c6050209d7e2d54ad06648c5b",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/images/zingiber/roots.webp",
+      "hash": "06b104f591a39700addda40a387968197d1e75b408949707ef376e5672096c2b",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/2core/caret-right.svg",
+      "hash": "6baa2947be69db0365cc1488eb1200b99ba777445b3ea9b6355ab7383e5bcd46",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "content.php",
+      "hash": "ce47eafbe751b994636bde9442068eb9c8d37d4394f1a9892ac7d84c0f8f54b4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/validate-zingiber-theme.php",
+      "hash": "9a2fae3ca3b43b15f25b57426fb0629893c377e97f25c2858ea887d579ba8a9b",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "work/qa/brand-experience.png",
+      "hash": "21240099684347a10ab839764d14ae58ec6a64f6a9eb91ebf4c42d6aa1fa1258",
+      "mod_time": "2026-09-11T13:02:47Z"
+    },
+    {
+      "path": "assets/css/base/icons.css",
+      "hash": "7040f040bef9a8d670566863c966dd7f5cce909883f13d05c69f4af2fc2540d6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-bar.jpg",
+      "hash": "f5a77bc8c78004ec7a6ab5ed0def0da913fb9accc6fce4542a5c80f138343509",
+      "mod_time": "2026-09-15T14:36:36Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-down.svg",
+      "hash": "668a5973a44a75538fcec6031615d9a741415fb6f1e4c39248fe06cf0d6dc9ae",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".DS_Store",
+      "hash": "c530f62cc24ed92a6699b04d5c7348ee8c89cf1b7adf03a5a13256410465a404",
+      "mod_time": "2026-09-02T01:01:35Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-right.svg",
+      "hash": "2b4ccf1b02ecdb2125844cb912c643d84742873f6eb79abde067ebd18476b65b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/slick.eot",
+      "hash": "e62ef498c186f374dd000d6b6075dc87af1dd04d30d154fbe8d19e445d463d93",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/woocommerce/off-canvas.js",
+      "hash": "29e10445f2dd4f673a8e45b128443eea365823665bf6799a7edd051f26a51ce4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/minus.svg",
+      "hash": "bcae300e3a0272ab38ef4edbf7e37e2873262dba757b7ec6da59909740cecd3b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/icon-list.php",
+      "hash": "4cb30205f25aa23965667fed9f250ff0163de2b9699043ab7d0dc191b4e78312",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/functions-elementor.php",
+      "hash": "170a44b315b2aa47d0c7e10bd715bd6059d4191015a4643fad9ab9293cbaaf63",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "loop.php",
+      "hash": "f9dd0a00e60dbe58586063ab6d705baccebdf0d637e8d8f6f2c104a4b5d650e9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-contour-deboss-red.webp",
+      "hash": "7c8f5c4b65f1fa581298b8e014a86acd4358340d24f29b264f4c6139033a0a3b",
+      "mod_time": "2026-09-12T05:11:43Z"
+    },
+    {
+      "path": "assets/svg/2core/random.svg",
+      "hash": "4efb8d9307bffc0b51c2e4eb2ac7c16bb9e523c7bad529d513c10d5e7a7e489c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/facebook.svg",
+      "hash": "ec43c3869175469daa048a777e494fe683ed34af4290db9043871b2c4300308d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.0.svg",
+      "hash": "dfcf63d1f82043bbb90878ca4643dfa5f5e61fcd81cf21e23c971a4fdd22eacf",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/edit.svg",
+      "hash": "0692678f4da4100a6c5acf633279d47b87b2a3995abf75a4447c59c8fbd96fbb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-10-23-zingiber-smooth-scroll.md",
+      "hash": "a17d5b77db953276ecf7c6b79d14d6b5811415381043fbed048c6680c604aa62",
+      "mod_time": "2026-10-22T17:17:22Z"
+    },
+    {
+      "path": "work/qa/brand-principles-texture.png",
+      "hash": "483278a494b4fab3471414b7cbf67cc1c9ea8a9b7ef3d80ffc97bcf58498b4d2",
+      "mod_time": "2026-09-11T13:02:47Z"
+    },
+    {
+      "path": ".superpowers/sdd/.gitignore",
+      "hash": "cdbcae15105d6b781e620813c79c7e868740d4e9cc53ce6f5fcbbc12387adf4b",
+      "mod_time": "2026-10-22T15:26:20Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_5.jpg",
+      "hash": "ccea9a8c0eca292759d01478e304ad805eed3d5d56fbfeb2717f7414e5c85965",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/cloud-download-alt.svg",
+      "hash": "a2487dbd079497c876e51598eebd072dbf676d44ce009261e714292b6813c0e1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/shopping-basket.svg",
+      "hash": "e70ed42f67fc02db6876fe6ecdf948b6d2101ceb7818bdc555c66d2eb2333e28",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-glass-refinement/progress.md",
+      "hash": "9abc07d3e067237de59c6aa8d576391594e5e2aa751d91d1e8527f178b1aa388",
+      "mod_time": "2026-10-22T15:27:09Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-blocks.css",
+      "hash": "6cc4dd52cfceaf7d5616d595032747a24ae47ec3a40d2e3fcda55c87469bb4c8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-32.png",
+      "hash": "f8efdba21e990fe3b56ccf4d6ec679997f3003f361d56e52787ccab562cf17b8",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-logger.php",
+      "hash": "e5ac610b79640aa549deff4322a9ab9fcc94fd5f19f4b104bfd9942c10abbb89",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/product-360-view.php",
+      "hash": "499c194767a7cacb3f9308f0e18350bc15527dbbbf216e3c89ef22f4c7247fcd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-motion.mjs",
+      "hash": "0f52ca31ff14fb6426115370144f7ef430020fb9b02ab227b31b14ce1069cdd8",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/js/woocommerce/single.js",
+      "hash": "63eb69bd53f844de51f3187123f38e7739c8b39e962353114778fcbd1cff7732",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/caret-down.svg",
+      "hash": "0f1b9199b359dd2b9217fdb1b98a94749f88f2dd996bd336034b67671ab2d13c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/chrome.svg",
+      "hash": "5e8a995813fac739e68b0519250bcdabfcbd3f29e1618229c55db8cd3b0e9bd6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/peppercorn.webp",
+      "hash": "9f431885f8c0e6b7ab783ac686961303306e45fbeee3e67142e7f294a488d9a5",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/brands/linkedin.svg",
+      "hash": "95ada28c319099c194b0e5748bc1298f4817c7b8c593655daa59b373151ebfeb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/assets/images/sprite.svg",
+      "hash": "a29b633a0ea0ed31e1cdac30cdf8932950d563674304b464f2447fcea67707bb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/breadcrumb.php",
+      "hash": "7dd99cf49c159e567d7e22fcb911a334d7f49e0a3e7254c3b41e8d904bcfea68",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/header/header-1.php",
+      "hash": "f3380273b7f7fff0aac254d8ebcfcacb3e5b6e24624e13db7862e6cdcdf742d8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/admin/editor.js",
+      "hash": "316deb26403824634d737e205923d090e811cec43ede0b60896568834b8d9cd9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor-frontend.js",
+      "hash": "ae4db68a463ec3b2823b178ff3a7271958a731a64686144a0de9fe548c8ad3ac",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-circle.svg",
+      "hash": "ce5c5c6b599d25efbbf293ee7195b5f6f5eb65abaac5d5d255936562c5c499c2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/rhombus.svg",
+      "hash": "8bc411eaa0ac2491233e122ffbd3fe2e0cc15560f1bd3488e9b3630e05479989",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/zingiber/texture-wood.svg",
+      "hash": "0373cc592d37070d79195129f9458d391c3922f1266acd110f697406fb943d87",
+      "mod_time": "2026-09-11T13:28:28Z"
+    },
+    {
+      "path": "inc/zingiber/enquiry.php",
+      "hash": "83f3a54cf3000777ae1360aa5dd021e328bf2932ee718e5159994b917f54dc3f",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "woocommerce/order/form-tracking.php",
+      "hash": "51f70aa64e417730c697833ae2594f9caaf138697149a0e7c0d50069047fc10e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-5-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:42:12Z"
+    },
+    {
+      "path": "assets/svg/brands/figma.svg",
+      "hash": "e844f36697f877768d23f7e2bf4af43609debb3607dfc1331b7f390ef2a87fa6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/opencart.svg",
+      "hash": "b12cd57047480b2f59402ddf4ca0f73b8712ca0dc568d16875c0946467748674",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "wpml-config.xml",
+      "hash": "55c6c3feac654af25e7c7817b017707b424bfa79e09595b0c195f9985e08c313",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/base/slick.css",
+      "hash": "bcac7a511172ebc6fb4161827f87cec1086ecc14e37248349ac85deee27d41fe",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/reservation-form.php",
+      "hash": "9f3a88f0e976e9b52067fc9b6cc9a1e3f40bd800da951743a7a9e6f707c4f8fb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/languages/merlin-wp.pot",
+      "hash": "9f4c5decb8d5f32952b08562f26e1be5d81209070ff00724f3374e374914405d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "rtl.css",
+      "hash": "ce5a68a365cdd2a4b5b3ffb683ed154940a3d7895fa580fa05a44c3ff9108139",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/zingiber-enquiry.php",
+      "hash": "983375c7f7c4ba6d98f5463334ad2f082e947c875d383bfc0bc1285b7260f4a5",
+      "mod_time": "2026-11-10T09:02:16Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-seafood-rice.jpg",
+      "hash": "12f7e945797de103c07d639cff111b76a72857abe032892fbaeb91a761407056",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/phone.svg",
+      "hash": "a4f8301ab55ba07248513b8bf1eb00824792e95182cffca9d1260c95b8ecb54c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/yoast.svg",
+      "hash": "37f1936766e2fc706e8245ab4f17f489f8d19ca2352dcb8dd8187b0777733d61",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-08-17-zingiber-home-2-implementation.md",
+      "hash": "da89bb57aba7598f9d3a67e4f7f1ba17460b197bcf06e6db519797acbe259c3f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/class-elementor-pro.php",
+      "hash": "9cd898cb070dde68d91e833348379dce619d1f1a7a8d1090e9d2047b8ad0e2f0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/zingiber/content-ar.php",
+      "hash": "9cc02ac4ef2d2b845228a4373d3aed637c6988af175b8f6c1f516a28334a2885",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_2.jpg",
+      "hash": "bb99f082ed45d45f78106ddc998d45849c5a044e8a95d272b9d2cdfa70fec591",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/single-product/tabs/tabs.php",
+      "hash": "68a5f3d95625d0341cc771eb7e6ca74bfd4212a763cd830c4784f7ec4ab229ee",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.9.ttf",
+      "hash": "f87afc7fafbcfb183268b07441ca5b5167ce8b9ef1acbf67e7e030adc4ae5ebe",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-10-22-zingiber-pdf-structure-design.md",
+      "hash": "7fcb23a9ff5fb6e433d446daeba5ca1a6a455dae1d5d27d1d756afe061b0eb9b",
+      "mod_time": "2026-10-22T17:07:26Z"
+    },
+    {
+      "path": "assets/css/airwarfare-hub-modal.css",
+      "hash": "8087fbf03452c3015012e56540dde3239cc3343a40440353e3879a62eda6a812",
+      "mod_time": "2026-09-02T04:29:29Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-blocks-rtl.css",
+      "hash": "c2d25739656c2b7519809f5706e0cf13d7a01fe284b5ac96b6c4f928aba375c3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/language-switcher/hi.png",
+      "hash": "a405b61aa0852fe1c866fb62bd47de926736b8c54917b2bcf5c413a969dd6c62",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-signature-plate.jpg",
+      "hash": "ef95a84a2577d1ee3efdfb1ef1e5ef5ac32d81b2201a10b6447e5d017038cadf",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/footer.js",
+      "hash": "deba3e8bd17443fa74d53eae0bb317f9f51466dd2e4552975a0c48b82a01b017",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/frontend/login.js",
+      "hash": "d130b853800cadc0142ec17bec59648cd148e9b855443aadadc58c0930d0058b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/frontend/main.js",
+      "hash": "b4e20ab813daa0a8789cd10ebe6097b93221cd6ebc4b7495ff9e2349c0cfe872",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/backtop.svg",
+      "hash": "7e7d89e89a090d05221d125402b416c987aea31fa2c8a8db5b8f611a41e30e8a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-3-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:39:38Z"
+    },
+    {
+      "path": "assets/js/woocommerce/header-cart.js",
+      "hash": "8fd3750d881b6df08eace98f1b168fcb1aa7cee17bd7b0fb56c5109618f0bbfa",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/account.svg",
+      "hash": "5711b7edd8cfa1e86e3d023d20a4809c0d547d99c39aa9fa9353015fb3af192f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/modish.svg",
+      "hash": "63ade3b99b5f0ce4237c24b4235ca9304f673aac552aececa13a67dbcb4a35d0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/shopping-bag.svg",
+      "hash": "055e9ba7af9202fc2eab2d4b2eddbe2a92d42faf3fabce3b862e13d439b543d1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/dropbox.svg",
+      "hash": "4b233a39a5836c1f8252dfd53e4073952eaf2dc88e4bf614c7a176595d36d0fa",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-5.xml",
+      "hash": "72e101fb9230b6de4503e0d9b1e7924d88d61bd97e180882c4d3b1db7a90353d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/template-hooks.php",
+      "hash": "e9c84b9d0497bdb3d3d149675d8da3a3b4fbc30f75bfce26b7c436b62bbf03d0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/dokan/dokan-rtl.css",
+      "hash": "91d266f0dbdaca5fbfd26ad7ff0995ae5a17188ce521889671db79a3affbf6dd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/times.svg",
+      "hash": "3b0b4335a4a9beb59048467dc7e16ed9234f0906414f47863a16834e7e5fad7e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/skype.svg",
+      "hash": "fd547129723d58fceb1065e95ad9f01a1715548aa61985fe9e6189b0a95c1c9c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/elementor-control/product-control.php",
+      "hash": "c16ba55c4ed6398504e8aa1f7a203ba0ba613a44d7eb91803a00685dfc44ef82",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/preload.php",
+      "hash": "96abebf111d0e08265d67f726745465ced642a7d1b965bece0ad98678b80b9b2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.9.woff2",
+      "hash": "30070e46c54f72253b0ec26c57db64a52e5dadb386e069898816c804b75a1349",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/star-anise.webp",
+      "hash": "9e1af1b45f6cb1b08e78e6c5df8023a62106ce92a119c46ab89ee8f8db4a150e",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "content-page.php",
+      "hash": "4457fb9b10b895a28e915757f4a299fe8b64c3c45cd8e2eee4cc096c9ef2f17e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/tabs.php",
+      "hash": "4d7de91d096c69af14c541adb112b61bb6e10ef9b02ba129374c062675a7a042",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-3-brief.md",
+      "hash": "1ce2a41f7a4ea8a8cde0021526186cc6c604cd53bfb969dd6777f2f351dea5cf",
+      "mod_time": "2026-10-22T14:39:37Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.8.svg",
+      "hash": "f155b1a5d34fc69fed1da1297b5c7b5e8820b11ac736ca79a19e2ca2f696ea0d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/tabs.js",
+      "hash": "bbab83e73e028e60b61d1e5452b4a13075a09726385329399ef16cbc9e9502a4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/bluetooth.svg",
+      "hash": "e7a04b3c0bb41f3dd841f4cf6ccd8d6907db00df58487a0e93d6c72e2d16995b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/pinterest-p.svg",
+      "hash": "4697806ba876f185948031cbe2817f0b047b00c0d3a3a9acffa01ea34a6380fe",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-woocommerce.php",
+      "hash": "9635cbfcd0e6fe25a4df6fd8846b1444b5d269efd4b3818694c35e233fd1ae47",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".cursor/plans/jf_motion_feel_pass_40ace7e1.plan.md",
+      "hash": "0328e90d121e372693935c007d1724db2108c4fc1b9af8d79ff69bb3f2503d5d",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/images/slick/ajax-loader.gif",
+      "hash": "fe779093c1119c0f1985395fecf27e2310559dd0025ca3a34c254cdc11e39c7d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/product-categories.js",
+      "hash": "93bcafb420f6dfc1fdb5a19ca38bacb1dda964caf1f57f6bed229344daa9792c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/grunt.svg",
+      "hash": "0ce8f8e56e85e1c1df4318ba3c3367c96aefffb18f52c1938909c504d76eeb52",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/mailchimp.svg",
+      "hash": "e34f259a3edfd7aed369f44a1d506a1be671a926cf8122bccf75a3607dc23561",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/call-to-action.php",
+      "hash": "ff15daa5eec566444a61c8f314c7491e6a8456a67f8e0b76a343f6ba1ae71010",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/includes/hook-functions.php",
+      "hash": "038c9164e495cfeeff5288d3d7fcd6b22a9f9539f9db4623a44d0e7e4c18eb81",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/favicon-32x32.png",
+      "hash": "f8efdba21e990fe3b56ccf4d6ec679997f3003f361d56e52787ccab562cf17b8",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-hero.webp",
+      "hash": "e3744dc3973d07077c11c18c0f95361db110f1865d174d04da85455f27ff46fb",
+      "mod_time": "2026-09-15T14:36:37Z"
+    },
+    {
+      "path": "assets/svg/1theme/long-arrow-right.svg",
+      "hash": "b7440f50b610b62642549d17f61a3ea6ddd4055fde9b71d51c326aa9bbf55a5e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/prev-left.svg",
+      "hash": "e65076bcb7d9a2dfc37b9d3a5bbff7968966db5bad338dfce4b0fa7425cef840",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/whatsapp.svg",
+      "hash": "cbc58ea684a9540991acc44cc40267f826430d1199edbf159e52bfb0ce55a341",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/zingiber/.gitkeep",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/discover.svg",
+      "hash": "12d50c359d73532c40ebda194d0fb99bb656d72be3fcd7e262d4af42e971ed34",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/home.svg",
+      "hash": "4b887f1254b5bb88f242ab5c1373146d9917dbf60f7683b289890966579dbbfc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/bity.svg",
+      "hash": "196cd4447ba1817e2ad0c65f496e185b531336c181658ccf1d05994d697372bc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.1.eot",
+      "hash": "02ddb5a74cb976402d255245234d79b13e5845af363a97ca7d565fb8f0c83aa4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/airwarfare-hub-modal.js",
+      "hash": "a97d7e2ec11106fd64e708750f1924c3f4fb8ff1d99a5050c2e345c680de6845",
+      "mod_time": "2026-09-02T04:29:39Z"
+    },
+    {
+      "path": "inc/elementor/widgets/countdown.php",
+      "hash": "3a1ae6d60fa0c83ba1294c195ab03480777dc4be320a518e37dc0771a05fa1c3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "page.php",
+      "hash": "8b17f4de56b3268cb8681bd323949fccf8f284124b901f40958d931fa11edf0f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/content-widget-reviews.php",
+      "hash": "6f7be4ff118f6d0d4b8ea1658a264755bcc007558ada743f17e06cffca16d751",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-ambience-bar.webp",
+      "hash": "a347998f921a25dde89a6d5479cfd2b95d222f687e98b05e8c9c191868ec584e",
+      "mod_time": "2026-09-16T06:58:51Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.1.woff2",
+      "hash": "200cefecae854f824174a40f0844176007e45b4bf232f9b1dc80e88aa8b89c1b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-48.png",
+      "hash": "b146c2a0d528aa2a198997735be59780978582464877d997a270f09312835844",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/2core/spinner.svg",
+      "hash": "d4201fa61dbce1c192291c65130215e256af7ed4e5637e1652b1987b67b16ad9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/sticky-section.php",
+      "hash": "58303f01c2134c82323bd2da3050ed4442d4796fe0d5d956284dda97748abbe6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/contactform.php",
+      "hash": "8addfa51c11f6f9509e282f3d2cb1dd5cd7dd46307b155722b4f8b204cc8a4de",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/babel/fixjquery/after.js",
+      "hash": "e3a7783daf8fff53b566fb893b3c26e79e7521cc94d9d10f90b376955d0b59fc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/shopping-cart.svg",
+      "hash": "a46f3ec4a69d9795298d7b70fbc2aafeb204a2bf6847fa9fa2ded9d3c0ead4b3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/myaccount/form-login.php",
+      "hash": "7d3e53ad16892c750f9786c69e08f5e0fd7942662bb117cf4cc31569352b3729",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-7-brief.md",
+      "hash": "0cd17ac41910f44ddeb4afd98604d532bfe1200e28b1ad4ac99473806822f16e",
+      "mod_time": "2026-10-22T14:49:06Z"
+    },
+    {
+      "path": "assets/css/base/elementor.css.map",
+      "hash": "37736856a2fabd50cdfdd0a6116901d60990f3a9908e2cc0d0ef1fc3f69a6fb5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/list-ul.svg",
+      "hash": "67cc4ef76da4c705b43c011b32f899be44f51adc074520b69e761440066aee91",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/money-bill.svg",
+      "hash": "58132d1ee043c5dfef439bc593cd822233728a5b5ceb7fd069201f31c86102a8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/language-switcher/de.png",
+      "hash": "a20e8d43078c5e424ba271d562f43a6a73f4aff113d788747739fb8d5326cf12",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/menu-canvas.php",
+      "hash": "3410d8fb75b426dc832ddccd90b3be8e9f42ecff6f6a3e791638115d2e81de68",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/preloader-hires.png",
+      "hash": "be43fd0cdc0d8fc435605dec3620e4e207db5fe06158d7c32f673d1dc981e290",
+      "mod_time": "2026-09-12T05:11:34Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.8.woff",
+      "hash": "5e310b4496239b26274b5e489fdcfc3e36f50d9ce12002d9a33b8af6da40529a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/base/select_arrow.png",
+      "hash": "b449fdd19b1f534b767ba14f11a8b75a8699fceb964bb6aa4385efd00f2ec210",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_4.jpg",
+      "hash": "7a88b9c3ff5eff9a7efca5d6b62edb82cdd7c5bec38d1aca7f17859f366c43fd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/apple-touch-icon.png",
+      "hash": "55525554eef70943524b469d097ae3430fca50fccfd0f9ad3c0ba49dc3fca88e",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/2core/tachometer-alt.svg",
+      "hash": "01df50f7f20669cc8475c0eb108f08992b1cbe9e0804b5b76d983639b28150db",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/folder-open.svg",
+      "hash": "388ea747a309f2a9864b51307766cdc505058c511cd69eea0c491c7873e0fe5c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/user-shield.svg",
+      "hash": "4ebb4b401e50fa000a32094eecd615de799a6f2fdbb7b9ce21734f6b408aed12",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/adobe.svg",
+      "hash": "66da0aaacfcd7828bcbc236e2bcbc9d6aa72e97d1378de8e33d3b7d127c963bb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/drupal.svg",
+      "hash": "d5954b435aab5d98cac4cced0c21b7e3f0dd3a06cdcc972919f364d94511424d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-css.php",
+      "hash": "0c99f169dff1b63c1314aee50ca69cafc4b51b038e7296a275fd4e5e93d06893",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.0.woff2",
+      "hash": "f2a79dad731465556751c1e4d00c4c5bc8b02e4ea5659cac3e87b83140d41845",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/menu-list.js",
+      "hash": "e2715bbfae4a61f57603d3630fbb1d52c62f1c92673a72779e6a811eaf159d29",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/joomla.svg",
+      "hash": "0e5678fb5244763cf4b5191a9e148a36fc22ba7cf5695d1f2c67e4bcf38be1fd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/slack.svg",
+      "hash": "0e4dc83c0709a6b3ade2f49ca34aac7a82171a886f0ee8be8164d34aeaff554c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-10-22-zingiber-glass-refinement.md",
+      "hash": "5717a5ab82a2ed50662a203bc7e1cc6984732fc2bf7dd2d0bbbd28e6b6e1c956",
+      "mod_time": "2026-10-22T17:07:26Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-3.xml",
+      "hash": "8a7b26cb617767744efeeb97d8752f7dcd60392bca9898bc97f266a428408f62",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/mastercard.svg",
+      "hash": "02f0d7d45c73a2b632c87086f82d7ea2163efb700fee108b0efc51b2af9c211c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/language-switcher/it.png",
+      "hash": "d5593f10d4a4c16ba9b9ab584800f476502a03971eb6ffec2afad08204e18d50",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/cornish.svg",
+      "hash": "d435d369d911e566eb4d91530989dff287a62f4763e0e987fe862ef33dfdd487",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/elementor.json",
+      "hash": "31820eb1a6705bccc249444579b00507a065da0774858f19a6f3af0c4640442e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/social-icons.php",
+      "hash": "8295c5507693eed3052c83b5295f5cc0690ac53f9416fbd6a2743a0688af9ee0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/slick.woff",
+      "hash": "f89651cc1b698bbc1e3227d085feec82dcabaaecb320930941499cc93c119c4f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/admin/product-360.js",
+      "hash": "b2d843eb4cb929e5f7a6bb3b195dcc83500862063e8d664157f923f249a61197",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/products.js",
+      "hash": "739f9a386d34736a3b05dabd16c1520907fe13762fc7fe18561912152b8ca9ff",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/search.svg",
+      "hash": "6bbe077b5599779786cbbf129502437d62a67c6dec3f5b99d8240e7bd8ecb51c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/header-group.php",
+      "hash": "9cf4d0b2e1ae888b5ffd84973a2d8d59238a25950e626987bbc9c2463156f7d1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/woocommerce-functions.php",
+      "hash": "8f575d039d39bc0e0ac4391ab0e5d13f55fc775b0da01c7fe0e95a69c19d1668",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/jcb.svg",
+      "hash": "17c578940926020afb021849ac9e1e1043acada4bb7221e66323fec71cc7206d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-512.png",
+      "hash": "f96a2aa6474203a9822e428bafa0698bbd75294f9ad791e128f37f80a9ca0d8c",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/js/frontend/nav-mobile.js",
+      "hash": "0598974d3d51f7842992a1aa57e7ea1621a16e7c44af286946f189f7d1747dfb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/facebook-f.svg",
+      "hash": "c49f88d97fe692a5d5e75e7dea11938748dce027f23b0b2bffe9ba88faebbdf4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/long-arrow-left.svg",
+      "hash": "031b187b34d7b2bb879285d7fdbb1a157cdd03d1a90de62d28f125407c809fd2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/filter.svg",
+      "hash": "93329cd885159f7402c6ff30ec357348b5c348cc81005bcb197ade10783c8d14",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/heart-fill.svg",
+      "hash": "9731284cf03b698c268561d9627afd56e883673825b58533b45e170c9e075aca",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/codepen.svg",
+      "hash": "aea2ade4cd6d46b7db03f5a990c6a7a6d35f709b4e0f91249dee189e998085e0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/libs/magnific-popup.css",
+      "hash": "07a0eda979fe4e4a151395451574257db3c2e6b82951caff61a663bfe2b73c1e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/posts-grid.js",
+      "hash": "0bfd1d7499343b1ec2b277422a8feb9ab985783ad304be58023a4f4ee02efdbd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/salad.svg",
+      "hash": "1289bcd6fd960498802b450eefef25f0bb93bcdeff7f5d1bc547d37a143db3aa",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/video.js",
+      "hash": "cd6cda2c918acd7026813d2cb0dd7faa26c430e4f6ac1368e4f87df91ce6f873",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/circle.svg",
+      "hash": "5ec0190e0894650b8ece774d0a2c23833a3288b6dc30ac9a955f67d6d4c5e956",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/dokan/dokan-template-functions.php",
+      "hash": "a3cd1fb50cfcf47598f05bec950a7852f576223d5a2c3e9bba67fe56d23eadd0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/button-popup.php",
+      "hash": "900314979df3ffb5b619e7ab9b022dd22e0a1469f74d1e40b02bac9bac8a90d6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/recent-post.php",
+      "hash": "2c7d722f9507987ef91ce82798f70ed4136f416f19dc3c461cc74228a3afc4df",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/woocommerce-template-hooks.php",
+      "hash": "cb95aee54f1e0c5926e2d818ed9acc02b25a7a1fbfe3c846bb0b872f70366a07",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-texture-wood.jpg",
+      "hash": "76d675df2d69c7c97f27f12906aad834852521d1e2cac0af843c2d032c887629",
+      "mod_time": "2026-09-12T03:14:17Z"
+    },
+    {
+      "path": "assets/js/woocommerce/quantity.js",
+      "hash": "dae0fb9679c90c3d623911af29b27eb73a7bc31833d8325867dce7ebea45e4d1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/pen.svg",
+      "hash": "c55b6df0044e91b71f54b7bcb83f6252ae57c2ceeff3e1bb6c3f3f7c8c8f61f7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/preloader-copper-no-cream.png",
+      "hash": "a2458d041b899e54365f7ebf16cbc518a0d8cc8dc75059bac0bfde1bce049dfd",
+      "mod_time": "2026-09-12T04:39:42Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-2-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:38:24Z"
+    },
+    {
+      "path": "assets/svg/1theme/long-arrow-up.svg",
+      "hash": "64579c96047af701f0d83474b5f8e62a8dcd8b2463e8a9356daa09e86ed4aac8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/square.svg",
+      "hash": "96607acdb93d19f2de3c5dba77da7fe49d1e08897596dfb7ef14b6c5df988eae",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/atlassian.svg",
+      "hash": "235ff1afc6b5a64c649e3e4055d24cd99fa0e0eb913b12f683d33afe2d194c46",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/assets/js/admin.js",
+      "hash": "63f13cbc61a011a62854d5a7ea4fde965e688d7187a4cc97e5a09245be6d807b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/assets/js/frontend.js",
+      "hash": "cfa8bf6e3b30798a1d74c122bc83b10977c71f50a19d7a5cbdd0e1ae230e8e57",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-5-brief.md",
+      "hash": "722666a32e6a54dc24bb0c0259519b8a7a3498181fa61448b46ec3306537e070",
+      "mod_time": "2026-10-22T14:42:10Z"
+    },
+    {
+      "path": "assets/svg/1theme/angle-down.svg",
+      "hash": "53452ac7debf41dfe6baafad929b382f9a92b2dddcb9300fe0cf3058973fa2bd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/times-circle.svg",
+      "hash": "bb29024f6af446a50a6720123842bf334cbebc0656ff7b95c7f3a71e82bae684",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/btc.svg",
+      "hash": "95d5083de16a0ce71824ce88c48b3bbb384ed8e661987981d9153437b67103e9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/template-hooks.php",
+      "hash": "e15c6fa04e1b6e70067fcb8aeb8ce4bb41a2395f194a7504269e61c3c30f9c35",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/heading-journey.png",
+      "hash": "be3cb0d289f327ca873549c0a85553c520f809370eb222a8bd7151ca1fae5a25",
+      "mod_time": "2026-09-11T14:08:50Z"
+    },
+    {
+      "path": "work/qa/preloader-deboss-pattern.png",
+      "hash": "5b0c839b4b2f1b25044f527a84c472928e91711a8d53e3ddb8e033e1969488aa",
+      "mod_time": "2026-09-12T04:58:42Z"
+    },
+    {
+      "path": "assets/css/dokan/dokan.css.map",
+      "hash": "6ad8cbf73dab300f2c1e7fe30c302a2a729c0f76fb6bfce4e919e0e3b42febe3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-texture-stone.jpg",
+      "hash": "e53a129f3a4d8c79cf97d678a946c9ecb81d1399c6a08331d3071857f6a323c7",
+      "mod_time": "2026-09-12T03:14:17Z"
+    },
+    {
+      "path": "assets/svg/1theme/chevron-up.svg",
+      "hash": "12b38a92fa18f7b6e4838cffb354cd7291c26df10d9cd6f6004d98b9a48929b3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/template-functions.php",
+      "hash": "cd4f48f01eebcad29c731d961d5ad346fec446cb3568baa6542986b052132e59",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "screenshot.jpg",
+      "hash": "99fb443c23ae4c84015bb0c1303e325346830cfdbe46f00dc32dba78f6ddbbb7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/review-working.diff",
+      "hash": "b7495b05756dc4f4adb695f5eed15f4601e32dace1efb6762fbac00ac433156c",
+      "mod_time": "2026-10-22T16:01:58Z"
+    },
+    {
+      "path": "assets/images/zingiber/zingiber-logo-dark.png",
+      "hash": "10590269d24dce87f619c10b3596931ee66b479204385bd83fd07f52bf0b294f",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/1theme/tweet.svg",
+      "hash": "13a0ee6b1b22512d0cd53f04c90cf312ef75cf907cd945ad525a794c6d2f88ab",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/video.svg",
+      "hash": "a80ba30723840b53721374c1ec8a7c43b6e01873db2d3abe26e14007935d063d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-woocommerce-settings.php",
+      "hash": "844dbab5b31b682aedbca01cea9ec206b95f39fd49a4fbb953968c98e5aa981e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.0.eot",
+      "hash": "e019b1ee23eb7057762607aaaae19ad51566d3fbccbc622fc3e1988764aa9d8f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/favicon.ico",
+      "hash": "770907f170a3a052000aef8bd933ba08122f3cd859a06e3391bf377d3e7c1b64",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-left.svg",
+      "hash": "c843be73b83a8a63ec6ae8a4c94d10ace709f0a64f0ce19454f185d751a5f9e7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/calendar-1.svg",
+      "hash": "b2a18a092c318252b6eb5ff3ef907fd711c30806d33dd417bc97ed4839772d8a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/angular.svg",
+      "hash": "93c496b5496440f14d171f6a49c8bdc8dd6d0a8c764d114b525c6b9c7e1c1fa9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-180.png",
+      "hash": "8d96ccbb700758ac6a3a663a374f2f3b6bd62b21ca9c2752196781b6d64da735",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/2core/file-archive.svg",
+      "hash": "25491fd3f7f320b402b632552453a269686ce179cc68e7ac5341d70d1e860471",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-6.xml",
+      "hash": "70e4b89cfd04238a601720acaccd9b19a64515d4ceead0c7ddfed1ff2160c754",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/hero-before.png",
+      "hash": "5f37d9907c1b0fd9ad0b4699b4f1d1db07b113cc1d8b3f174b6fac17c034af3e",
+      "mod_time": "2026-09-21T16:01:38Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_6.jpg",
+      "hash": "fdf059b6da4fcd9016b0ec5b65c0e95cf1d458e0026357585d1b1861d2df9471",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/frontend/countdown.js",
+      "hash": "63e715055dbbba661f44d59c41c00a53559a15a0720ea5ed98260b7f5c2b3a10",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/file-alt.svg",
+      "hash": "cc09993f474e000105c44286b3c2691f1385e815e3199caccd8e9d33bb08ef14",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/html5.svg",
+      "hash": "1adb1e3b57d32268f37fb56d436538ceed5516c17c10f02446bee529eeb1413e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/accordion.php",
+      "hash": "07330420489a27ffd6f15960a9df3293250613494c8c4e9dbb1c228e172a2246",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/image.php",
+      "hash": "6627645132aaf08f3edb6d1cee70f3eee0003eb3d070b902e3715d9de777358a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/.DS_Store",
+      "hash": "59639ca017723f615eebc8740fdbc19fa1577702df23ba1f3d24e2e602509260",
+      "mod_time": "2026-09-02T00:59:57Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/button.php",
+      "hash": "7dd71c70296340b6a4771c492b876ec57d599f2ede8f4d63fb9871583182bc9e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/product-categories.php",
+      "hash": "2ce881cc585ff42dec1b18510c060ed718f27b4b6e64e68a83e38d0ab539e98a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/assets/css/merlin.css",
+      "hash": "c2b0d65138e79da0e47f60ce79f8803c20380c0fad400947195d0a0b69364ed2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "languages/vonaco.pot",
+      "hash": "d47f66c18e4587b352591110e644c0067cc0ad9d08e4d9a522dd292752778854",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-zingiber-page.php",
+      "hash": "ef472cff93b4ee229160d802622ab74fd5f40a2c716a9df28a1138ad9a41aaae",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-glass-refinement/task-1-brief.md",
+      "hash": "53fbd0ee1bda6a3156764dc15d330fd3ddd075cb2b82ad011ea408f5c988e945",
+      "mod_time": "2026-10-22T15:25:07Z"
+    },
+    {
+      "path": "assets/svg/1theme/eye.svg",
+      "hash": "8a9434a88991fb198815ceb4138755ded87239447337258f80a3ace49857b45f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/spaghetti.svg",
+      "hash": "d0ac3197ae31a9fe854f8375cac4f8e30bbedbb6f0a3500bcbd610c0519b16c8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-about-hero.png",
+      "hash": "6496c6fe6ac67f590acdc5789a70880db53bb92edd67b3cfbd5bc2975ae4d0d8",
+      "mod_time": "2026-09-11T12:39:07Z"
+    },
+    {
+      "path": ".cursor/plans/oct30_pdf_revisions_dd0b3642.plan.md",
+      "hash": "695390cd0d271dd78e33ac55164542d5f0844abe1e653cd43cb01def9581c397",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/.DS_Store",
+      "hash": "474f00c31a0e5ddecbbb223d7917ab0c699c95fe6eef2bbe33a6e12bb1756225",
+      "mod_time": "2026-09-02T01:01:35Z"
+    },
+    {
+      "path": "template-parts/copyright.php",
+      "hash": "f9e77ddeddb3c60d814d5f55df9270e299b02e64aa181a4c85029e571d1b4ab4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-192.png",
+      "hash": "0d1d2d6d02a4f00449bd60b0732b5841da0462c454c37c10b29b816d44aaa5be",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/2core/reply-all.svg",
+      "hash": "a9ac50462468a1368a036a470bff77dea39be58041542e2b829c7b476f0318f5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/twitter.svg",
+      "hash": "082f579d2670dd6302b31a7be61ece128710bf84b8f46b6b7208967ed883a390",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/dokan/class-dokan.php",
+      "hash": "56b7c17835e2bb8903c1e5bd6a0a8fdbb29a7bc1f2641e72b9fa5d64f5837a4e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-contour-deboss-red.jpg",
+      "hash": "96f9d6dec78635a4ab995023e80d43f4c5a89ff480613b7d51fa3aab62985010",
+      "mod_time": "2026-09-12T05:11:43Z"
+    },
+    {
+      "path": "assets/svg/2core/grid.svg",
+      "hash": "534bc7473f58956244ad4bc5a113998b717c11421075ebf892d8bcde1415a18e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/shield-check.svg",
+      "hash": "2880601c1558aec326cb30f30fc0fdeba1dd575e4a2bfba893b38220b16005d3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/class-elementor.php",
+      "hash": "14bd62fdc607692e084ba399a3fa4858741f19dbb873d82a4a605c55ef1266e0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/woocommerce-template-functions.php",
+      "hash": "c8538a2dcc69ff7c30d6055cc9b8074d95e4fab6226b7e0dff304351647ec9b3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/socials.php",
+      "hash": "f177e1ad671bef41b593ff80aae435edfb14ec00f94245a80c1d7c04740a37dd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/menu-images.png",
+      "hash": "e6785d1485fdf73cc6a75e112e9e38514c14526d518184762293f0d70c49026c",
+      "mod_time": "2026-09-12T05:05:06Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.0.ttf",
+      "hash": "17cd5f38faef426fb204f556b41347a7a5dc8607dd7b1d292d841417db7fe4ab",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/CREDITS.md",
+      "hash": "1b251b1c525ed088e1a5e46f6888c88c3c7d48db6c9214b11ad7f637815e0350",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/js/sticky-add-to-cart.js",
+      "hash": "01337f21bd2cc153ee0b0e4e28be092c6bb7b7d9ae27414dc89fea4407552523",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/quote.svg",
+      "hash": "33c5109405154ed46a321d539221721576f433cf5a2c6ce04212c9b1e6c3305f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/info-circle.svg",
+      "hash": "34e440e9c0eb1a4fc4ba3b61fadc31fc466403c9d8a6ba3f4c4c4dad20807365",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/zingiber-mark.png",
+      "hash": "71219b4132de33ef44afa7cac044d81f29543f3c4be3ccdd98a657379350723a",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "inc/elementor/elementor-control/select2.js",
+      "hash": "2521b62d6227efcbcdcdecbaeb3ec5fc76d26cc1eb7a140fbe01c4ae64358fe8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/video.php",
+      "hash": "a99dd777dd6d767905944c29976b04ad959ffbd532b3863820bec68d382c8867",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/assets/images/spinner.php",
+      "hash": "22c18bfda23511f046052bd05a0dacc50e1b8f7397eafb65333369dc5f172ed7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-4-brief.md",
+      "hash": "ecad12c8002a7145863d5b8ba7973208f7d57d2022d3021c5463f5121d767dc3",
+      "mod_time": "2026-10-22T14:41:08Z"
+    },
+    {
+      "path": "Zingiber Website Revisions 30 oct 2026.pdf",
+      "hash": "c4540e0b45c48301c6008d0e401557594c2f018a2c8871b9437929b1c5aad81f",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/images/credit-cards/visa.svg",
+      "hash": "01f2c4c5671e0bddd475c69968d6b949ea81922498effce72964a14bd473f379",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/apper.svg",
+      "hash": "200c97bfbcc128aeb5d41851c38752dafe720ee3164384a7ffcb1fddd47cc991",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/zingiber/english-logo-light.svg",
+      "hash": "947eaea22ed2c0efc274b2693d1568c4a3f12763cf4808955e8ec0c1330e00d8",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "tests/check-zingiber-footer.mjs",
+      "hash": "72d0bd89e95600753dcb53350f168719c6c09df37d6d67f475dd3803ef8dccd8",
+      "mod_time": "2026-11-10T09:28:26Z"
+    },
+    {
+      "path": "tests/fixtures/required-copy.php",
+      "hash": "a362d232d023b74414505b60363e89bfa688c8276da74c8629450532774c4f71",
+      "mod_time": "2026-09-15T14:37:25Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce-legacy-rtl.css",
+      "hash": "c1ecc4f1f9ef099d816c07e85833d9118dd8993f9bd5f2b1d14e543bdb84570f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/image-gallery.js",
+      "hash": "555af71f67c7b13c181d85db145f1697ff0e8d107431a026994ed0ca0dbfdfcf",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/check-square-solid.svg",
+      "hash": "633909a0bbd0dc32e19256b60310ee94aec2f7aed3534e50bef6d5d45e629330",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/includes/admin/class-admin-assets.php",
+      "hash": "c326260703191eb7e5a840b07f29cdff72cd4c18d1c2196ff01646b49775b45d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/ginger.webp",
+      "hash": "a2cf3a177b0edad1cd0777221ccc8ac1ca7bc29315e39011b3016ea12535f1b1",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/2core/pencil-alt.svg",
+      "hash": "7a562ca66cb7f33176b9233d527ee0750dc6d89bee6e6a06807e31ef55ef1687",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/includes/core-functions.php",
+      "hash": "b967902b3eaffbb2c0199e81055422e1f7f69a66e247e1eec621d1e9db652c8f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/materials-about.png",
+      "hash": "123cedd164a05d03db09bcf1e533f38c656634a847917f72b694e5763db595fa",
+      "mod_time": "2026-09-11T13:27:29Z"
+    },
+    {
+      "path": ".claude/.headroom_wrap_settings.lock",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mod_time": "2026-09-21T15:57:06Z"
+    },
+    {
+      "path": "assets/images/credit-cards/diners.svg",
+      "hash": "77b4362d5eea9b9b614c690c198a14cc565fdb9156bf594d7921a14067f58240",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-texture-fabric.jpg",
+      "hash": "378e8b70707258473bf5181b473c011684465b8ed4b9692fa1ce87fc3e19e9ec",
+      "mod_time": "2026-09-12T03:14:17Z"
+    },
+    {
+      "path": "assets/svg/1theme/star-1.svg",
+      "hash": "654c4b81ee7e27b6e52bc5609c5045d0b4a62eb26eeaa6cc5d308b17b3bb99ed",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/youtube.svg",
+      "hash": "f3cbd72f664157aba0bc080ed61eaeb9330a7ae7089ba5ddd269656363961cb0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/zingiber/setup.php",
+      "hash": "ded31980ca22d98a8e7cb5fcda4e0a75937de51dea231224270f45963d9ee894",
+      "mod_time": "2026-11-10T09:00:29Z"
+    },
+    {
+      "path": "tests/check-zingiber-enquiry.php",
+      "hash": "82f77a1f6c71f26e511b07487e87b5ac0b0384ce65372f49308438ffdb35d56e",
+      "mod_time": "2026-10-22T17:07:26Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-prawn-curry.jpg",
+      "hash": "5e70dc625ee5fce3db1b7e778db4c25534508d750511e6dae1215d5e5217b638",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/class-tgm-plugin-activation.php",
+      "hash": "46cd56cc8bb94a9186369cc0c9e18c1737a3c2ab68ca3a73bf33ee1c22a99e79",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/pattern-removed-footer.png",
+      "hash": "e6d4f43de4ac3569662c258dc995e314664a554b07083a40bbf26229ec49aae2",
+      "mod_time": "2026-09-11T13:42:46Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/chili.webp",
+      "hash": "b1f14bc68955e14b068aa895524207c2627e27f37038b7273949f5a245742733",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/1theme/angle-right.svg",
+      "hash": "feb6168de30342d7c0f2aaaa9d85e3dc26567df4f85e0a5d4263a12f32bd84d2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/dot-circle.svg",
+      "hash": "b6baab61d17b2035c5ca20e6691e9f335c840070a23153e37aa9ee787cfa6623",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/behance.svg",
+      "hash": "5d77218061099354414442620984fad5410ca6fb29911d865de0c7dd4dcd6c24",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/babel/fixjquery/before.js",
+      "hash": "33b7199ac8a24134b51572bf59f8aba1992b53ae0d8fe387a131d8218862a6a8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-editor.css.map",
+      "hash": "ade057c94d91d7123a572e38a0149cea020161a9527cbc35a934f842978d017f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/maestro.svg",
+      "hash": "00916c5799e5b78b6b086af89ecdcaa781f07e71fa63af6f0616516fa937fc21",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/smile.svg",
+      "hash": "3cbfe7ebc09104dcf15af940c717a1b0a825b75a33b243c98bec9e1b905d7905",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/ticket.svg",
+      "hash": "c594e3fd6e4bc540e6aa4edb4666921ac782383615d71d7afbf30f3932661fe2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/mailchimp.php",
+      "hash": "f221e92aef58f95afd337cf1293f5b22c1177d89812e2557db81515739afdc22",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-woocommerce-adjacent-products.php",
+      "hash": "f0f5739e0dd7440f25d2f2338ba7174a88b54f22417bcb1b62a5d85109e7fd8f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-homepage.php",
+      "hash": "c2a4c27c9074a1f9f43ae3baec0eb32ceaa957a9a6e6c885f1a83c57e2c145d3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/admin/elementor/icons.css",
+      "hash": "29faa4f29d9d0ad4674d9f108e5e751f33e84b64703ffd0c74b843d945c335cc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/play-circle.svg",
+      "hash": "961a3eacb24e9690eed394934e7db4e2bec51554b23e42247e8637055bb9c4e5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "content-none.php",
+      "hash": "f1f70c11960d9bc7ad7ad0d05fdb0c2b3d663f453b0bd9bd9b83a88f83d64f5f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.0.woff",
+      "hash": "328e3bbf975be3f57dd2ca862406fcf9676f2f9e555668a484d1a7ef518da678",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/slick.svg",
+      "hash": "12459f221a0b787bf1eaebf2e4c48fca2bd9f8493f71256c3043e7a0c7e932f6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/trello.svg",
+      "hash": "4b1534f5b4f5ec35411a685252892ab1e147bbe4def037f86970250e18e91a55",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/search.php",
+      "hash": "118e631154a744a53b648dae7ec4c7dc989d3071343100462aeea21a1aee0f08",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/progress.md",
+      "hash": "a0296023a9ce5820eb16f7e773c61a9db578b02bf07eff2c65fd30df15fe0f35",
+      "mod_time": "2026-10-22T16:08:55Z"
+    },
+    {
+      "path": "assets/css/admin/admin.css",
+      "hash": "3870d11da313d6832380f3df9e4c586da9594726ac8152a0cd70530e06afb8f7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/base/slick-theme.css",
+      "hash": "0fc62cb9c69b07444bca172aad0ca07214457e10702b25b3a2036cb310d96098",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-dessert.jpg",
+      "hash": "9c8d29462f309e6fe3fdb5fa4cf3509ef7cbc2dcc366c44988efe7acdb3fd365",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/testimonial.js",
+      "hash": "8c794c6a30d3ea0cba4afc06a5b9d02f26f1e4ff79a4c1a1947b709b5f34ba48",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/th-large.svg",
+      "hash": "2154e69b757905ad1166cc2857e9565c45b1dcdd2624bff66a83e0afb4916ed3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/dribbble.svg",
+      "hash": "af85129d3fc27c92bfde1633112e2ecfb81d24560fbbcc895b0d20c52b0acade",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-zingiber-home.php",
+      "hash": "3093c6ac8b6c01de902d32894d33717e997073afd0e6dad74d76bd5b07c7a01e",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/js/elementor/header-group.js",
+      "hash": "10a5b9d468707dcb7bc5bbba29481002cdf10b2aa90afb45e952634cbdfbfa1a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/customize-control/editor.php",
+      "hash": "1f81f9d8f7b7f879ac1b3fdf136a21a58b8c6f965f63991246bce69bcf8b2415",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-redux-importer.php",
+      "hash": "c3efeaa65c79423419d579f2d44c2c73bff37391cbcde02e573e775486f33f57",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-home-hero.png",
+      "hash": "ca43d39e0f52de897cd319a926206fa2b8b482c7d6afd70f30ff1d9824c5840c",
+      "mod_time": "2026-09-11T12:37:37Z"
+    },
+    {
+      "path": "assets/svg/1theme/angle-up.svg",
+      "hash": "4f47c121d0d39467de9793039a9ddca77023bc75c2e42a036b056312d8282e50",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/sign-out-alt.svg",
+      "hash": "2ba4dab6e3ec55a12f50e87e776b654b42856953c3c963bed690eca9684849c4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/store.svg",
+      "hash": "0dd6b2e1f9b88b6b9d36cc6029ef3ad405d22b52b8e0fba911e5afc566ed1098",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/includes/admin/class-admin.php",
+      "hash": "e732a1024d3f8b21062c710e30d2c86020d6639682ad0ff3ab01e95fcd8b7895",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-wc-widget-product-brands.php",
+      "hash": "4e28551034607c52442b097b7dc6900219bbd0da55c31d8bdbee99b0ea441214",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/favicon-16x16.png",
+      "hash": "951d9798930e7fd8afa46041274fb9219fbdefbc2e3bd3ffb974191938e22fd1",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/js/elementor/button-popup.js",
+      "hash": "42dee5a5c256eb602cfe8b136ee4321de0ede0fb378adba236fca4a1406a6dee",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/.DS_Store",
+      "hash": "c39ba9df30b8f12487751ef40f2ec7fff69e33a07bf09cdcd4875bab71c7fcf6",
+      "mod_time": "2026-09-02T00:59:57Z"
+    },
+    {
+      "path": "assets/svg/1theme/chevron-left.svg",
+      "hash": "028e8e97abe8c4a590ddc471694b9b4a46fa724e97db944e41adc4f5f0c70813",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/phone-1.svg",
+      "hash": "f93188664f4a37348e4c9cf3b6388551ca5b31a99196a49a143a057adb99efc2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/paypal.svg",
+      "hash": "2c3fabcda50062b73aa6e327845135e811cb80e92633b3cdbb5fdfb7ea7d08f7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/filter-ul.svg",
+      "hash": "f1a927752ed223fa84abf8a278c510889bfaf56ecd8a4395d90ac7266dfae3f0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/grip-horizontal.svg",
+      "hash": "7a9c2ba8c5b98b0a420f13b280b39645dc6c4cb8f00bee716702725522686da5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/map-marker-check.svg",
+      "hash": "c5af8c9045ce36f88db1f911b121a5d6a7219b82f122048c4372a73ff69a2861",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-glass-refinement/plan-path",
+      "hash": "f1051208595d226cb0cf59dcfe200c45059026a11f0ede4f4ef0c6de2820a570",
+      "mod_time": "2026-10-22T15:23:01Z"
+    },
+    {
+      "path": "archive.php",
+      "hash": "7c2d00836a76ce788e2a6babe6a4a73be8e9c5c51bca17e1f4ccbd1368bee953",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.8.ttf",
+      "hash": "4be137cf2823611760482463c185d2b72b48709c52b09013a5fd7a594fec65e0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-circle-left.svg",
+      "hash": "b21db7fea41f526f179894360a1669d16386e7a019592143194044229e5e41af",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/.DS_Store",
+      "hash": "e40ded637d30379d32bea73e689bf96c95820d1f0798cf671bc7bc3c6b14be08",
+      "mod_time": "2026-09-02T00:59:57Z"
+    },
+    {
+      "path": "assets/js/skip-link-focus-fix.js",
+      "hash": "242935fc55f6b6e174c9545a4d949211cc874c670ae8f3a1650577b5732f8dd4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/pin.svg",
+      "hash": "793e46fe00b589abe7d21a794914b30a855a3afdaf8b4c314217e991e4195229",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/cart-empty.svg",
+      "hash": "f0143074f2fc086223d2c3b858456a00f12907e67eb81e58bb5c5d7962547362",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/instagram.svg",
+      "hash": "1146b2b5d06e2bd91e8e9fdd1f03ba25536e24358166cd47f6f0df3801a4d8df",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/plus-circle.svg",
+      "hash": "0b96e880cb6a362ccf283561691af7852f6749f464c5f0415f0f026a7010e240",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-4.xml",
+      "hash": "675cd0b9669dad18f9837d27d1bbb036153ca1b01c22ff6c71aa4175be0c0e43",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-widget-importer.php",
+      "hash": "4198669e1ee32b58e51fa0069550dcff974fa50429ed9ca1899f02539e20278f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/.DS_Store",
+      "hash": "6d9eb01a364b087b374aa7630792f050b04ae4a7fbc24c9dde0b248ed1338d4f",
+      "mod_time": "2026-09-02T00:59:57Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-blocks.css.map",
+      "hash": "94da9a74dd0c6f6db50a53a60491562f85c9d8a6ff5a7c6bb9745e5252398606",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.1.woff",
+      "hash": "0af3804df7052dda8d69bfbcba01de9ec33a5e33dec4f7bb78f31b46f488893f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-contour-pattern.png",
+      "hash": "e9ed6c09c2bfda0fcdf2ec1b8ce6129b49b273519a101dd9ba66434f730931db",
+      "mod_time": "2026-09-12T03:14:17Z"
+    },
+    {
+      "path": "assets/svg/1theme/chevron-down.svg",
+      "hash": "6b3f2199bd7d87231d9ec3e060e5322735576342f1661b693463d8fb3110c5bc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/spotify.svg",
+      "hash": "0087cbf3c07bafd61c9047c0565abe4b9a630ffcd452f923a6c10a3f400e1f20",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/location.svg",
+      "hash": "2710a2cdce78a7d6d32302bbdc49461128b6b14176633162d13b2fa6acd9b3d7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/cart/mini-cart.php",
+      "hash": "139c38aeffca51b3593c8e1032c1f0495852b186726f015d550ccd8287529cf8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-principles.png",
+      "hash": "0a5660e7ac65335d81ddcc5d64e3457c7efd0341e5c0e0d8621f7851b65fad87",
+      "mod_time": "2026-09-11T12:39:12Z"
+    },
+    {
+      "path": "work/qa/menu-footer.png",
+      "hash": "74c9985cbf4ed94ac38f66ad9d6d71ca1c48aef48beaee08f002e2d4fc8b66f2",
+      "mod_time": "2026-09-12T05:03:31Z"
+    },
+    {
+      "path": "assets/css/libs/tooltipster.bundle.min.css",
+      "hash": "b50550ca345cf1934954f31b86267ed97fd7ac4a239bb849dd099129ae92d3f4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-customizer-option.php",
+      "hash": "6362788c4c49de927ad471ba5263ddcbabe36ad678c5c01713dc892bb98db34b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-dining-room.webp",
+      "hash": "8ee9efcea6c5d9a37fc7edfcc7baffb95ce7c69015c144d13461c7b240b264a9",
+      "mod_time": "2026-09-15T14:36:38Z"
+    },
+    {
+      "path": "assets/svg/1theme/cart.svg",
+      "hash": "c8da8470628f4cd0213f275488bfc2e185072e42020caa22875a2e3691814ae2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/list.svg",
+      "hash": "1c93b881aaee8e875cac23ad5f08d89b46189ce05ff699814c248164e5c7d32a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/zingiber.css",
+      "hash": "05e3f3754407327454a9bfb370001ec8cc2501a74987e16004dd0258dc4431ee",
+      "mod_time": "2026-11-10T12:09:04Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_1.jpg",
+      "hash": "c9dcd8e0e31a68ceb6da8120f7e5e804eda142ff81e74bc8c31dcc24273642e8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/centos.svg",
+      "hash": "352c35be5d5082950779b51ae142280b3a7902203324a96200909b94e8d89669",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/content.xml",
+      "hash": "99cfbb7ba8ef5f45955d2153acb6fa1cb47d6f70118ba9b14c728d8faa832ea3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/breadcrumb.php",
+      "hash": "5861e74eabe40b65db9adfa6aa2d1956a8820a92643c4dcdc37899008bca48a4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-4-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T14:41:09Z"
+    },
+    {
+      "path": "assets/svg/1theme/location-1.svg",
+      "hash": "37370f26209b8cd4eeaacd8acdc9990040b4d210efbe645635c3e62b2583ce3c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/credit-card.svg",
+      "hash": "7db240e5639d2f2c128678e5e284e8c2d1a9d1216a199bfb039d74d09455ea53",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/expand-alt.svg",
+      "hash": "9fa5f18c70ff68441f97b7e5851564a7f69bc49671e88cf4c0a3eb182350e3b4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/zingiber/english-wordmark.svg",
+      "hash": "1fc666e92c95c970b3f921dc284b8d24422b206b69479a023ae30245d317d929",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "inc/functions.php",
+      "hash": "4e23088fbc8fb2aaab38bfabf15689e40aa85de268d89323c909008f17ca38eb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-menu-hero.png",
+      "hash": "a4a0286721ffb074912d257a98386c2f6f97498d7dcc08b35707bf35cbc70a20",
+      "mod_time": "2026-09-11T12:39:03Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-editor.css",
+      "hash": "e287a5cafe74e2f6c948c023b7c5391cad529a4c486f8ff57aca08fa1b9c715e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/new/vonaco-heading.woff2",
+      "hash": "d661530b5885aae0297a1c3f93b0ab6162a120d5eab131031d0fe461634f9111",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-wc-widget-layered-nav.php",
+      "hash": "267ca417e06bee4b48ef405c9b84925e00e5e73a1fac6d17d72de16f1fa495e5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/content-single-product.php",
+      "hash": "2006ba01b6b8f00b9868d9fac488ac68064b59709b4d762ad167de8d05a46a63",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/admin/product-360.css",
+      "hash": "8915659049e175a661ceaecaf34c8686f763975e43b802104b25fdee53546f6c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/star.svg",
+      "hash": "1ff1c1dd9989f52ee05c9594a22c2dc38ade92ceb746925e9afff3de49c441fa",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/dochub.svg",
+      "hash": "d4571ceaf39658cb57ee4467aa176152253835c676c6a2d7816c7137a2deb6c4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/vimeo.svg",
+      "hash": "4f578f9bee45720e77ae8c5c27d780375fd6dabf15b7318fabf426bb823f5d66",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/nav-menu.php",
+      "hash": "934c2bbfbafb686e8146ea28b6ea44129f4911cd1188f2d35cd171852222ff0c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-hooks.php",
+      "hash": "7dee3dd785e4953fd66e99489707467e881918d1a3e57853cea8a9e450a18d16",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "style-rtl.css",
+      "hash": "ae36c351d866f53adcf31c333419abdfa529d1e784bbdd0c18453f78f6976694",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/content-widget-product.php",
+      "hash": "6dffe18dd04e997ab77a5e2527afb1ff5cdc0d95350d6a8efd3d31cbcaa48a86",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/woocommerce/woocommerce-legacy.css.map",
+      "hash": "595658022c428cc3b1a8ecac507db28d45d7974d04aa35657d1490f826983aef",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/woocommerce/product-ajax-search.js",
+      "hash": "00fb38ae47a9f44722970eeefee2c271b13f20c09d1c75bd4ed9f6af485b3526",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "header.php",
+      "hash": "c56c2b80bc06ce6fe037a51b754c66cb7bfa67977ab5c0ef81256bda93a52110",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/modules/class-login.php",
+      "hash": "8b1f73e536d116c93837ff96aa05ed921df4692c30aa15feb9986227ba1dbb39",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/elementor/countdown.js",
+      "hash": "ec9db93ba4e448970939c02d1ca1cd976c936d5df28fa34df8ce192c74c77600",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/arrow-up.svg",
+      "hash": "25e5cb08c92c3e0e5ee89ec05a155e4f1a1cb0498ab551cf517b997dc6619f18",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "index.php",
+      "hash": "0d908d91de6ac17dccb332dc520555f060d458a2baaa2f13e326cfe445d845f4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-about.mjs",
+      "hash": "a86e4cfd394284537ac37303dc2d83e2e5dd31aa16d59d519a7298f06fa4d30a",
+      "mod_time": "2026-11-10T09:03:18Z"
+    },
+    {
+      "path": "tests/check-zingiber-menu.mjs",
+      "hash": "65666f520ffe83a368176a2bcf30b08437fcda13a974d7e325a7afe15f60c389",
+      "mod_time": "2026-11-10T09:03:18Z"
+    },
+    {
+      "path": "404.php",
+      "hash": "14ac7d7ade8756eba6ddc5388ef8370e0aeb2c9ce8bfd422bdd1a440a235dce0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/class-main.php",
+      "hash": "89e1817ebf09f8d8ff7c31cdbecca55e5b6650f37d93fd079b4fa3f473956c4f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/heading-menu-hero.png",
+      "hash": "782ce382e0ada25aac609665b538e21a380e79592637e04df3befd3a39eb9192",
+      "mod_time": "2026-09-11T14:08:50Z"
+    },
+    {
+      "path": "work/qa/hero-no-pattern.png",
+      "hash": "4e44f9ef920815e8b31fddad4af00f4942b59b49c366ca76d11bd41258d28830",
+      "mod_time": "2026-09-11T14:01:29Z"
+    },
+    {
+      "path": "work/qa/menu-cta.png",
+      "hash": "dda1979728151bee7cd0e8e2ecd0efc56ca8c089e9cc003fcea2744368f09f3f",
+      "mod_time": "2026-09-12T05:03:30Z"
+    },
+    {
+      "path": "work/qa/preloader-live.png",
+      "hash": "9eee109822d3290583209a308c1396580710489df00375b293ab77b3b4c98a17",
+      "mod_time": "2026-09-12T04:40:22Z"
+    },
+    {
+      "path": "inc/header-footer-elementor/class-hfe.php",
+      "hash": "23271077ccc5509556e16d2000c4128268326f4a60e0cb5c8751ca36116f7296",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/new/vonaco-heading.ttf",
+      "hash": "7df426606fa5050abda097546317778d84fd889ad0d787a60912858b948bcceb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/wordpress.svg",
+      "hash": "6816012e213ddf83ab2c2533c57f64be08e613e5f2fb0f28dbd970d5f9916bc9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "comments.php",
+      "hash": "8c8e12b2187d94f0d8755a330444b07939ebfa900d30eb6f75f04c135c67dc90",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/elementor-control/class-elementor-control.php",
+      "hash": "b1b64bbea803b828c077f9e6d531f0255df4d367024c40b1dc218bcb77fcba2f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/assets/js/editor.js",
+      "hash": "eb34936af561e5ae59c070068c78241d1387a9b9573403b9d06d3cb7e191cd7a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-sticky-header.png",
+      "hash": "3ea5b2434d171a74033e95b48f70fa44a81ac5daa6acd3e2e27d9bfff094d785",
+      "mod_time": "2026-09-11T12:39:12Z"
+    },
+    {
+      "path": "work/qa/pattern-removed-gallery.png",
+      "hash": "623b79fc41d5cf1a05592e2785bc27dc147c27fe26a8333b043886c20a49358e",
+      "mod_time": "2026-09-11T13:42:46Z"
+    },
+    {
+      "path": "assets/fonts/new/vonaco-heading.eot",
+      "hash": "edb88a21a52a6e63198b8db054a407800f589e81a5e8c2273136721899495008",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-grilled-lamb.jpg",
+      "hash": "67f71ac3d0f08e51ca85d74d5941c528ee0bb4d37a5c4587b6c4b4b611a5f21a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/play.svg",
+      "hash": "c4683dea176c14ebe2a3802ab30ba160eec745b204bb14531f305024ebe320a1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/base/elementor.css",
+      "hash": "24b2bf939de5c3b47944440c0efd9aadd2bf40b9baab33c879a908ab3ae9f316",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/frontend/search-popup.js",
+      "hash": "879fc441e0d076daccd892233b464a27dc68f18c7cb4fac94d6ea6818aac9004",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/trophy-alt.svg",
+      "hash": "928675a24c9716311c81f3386ffb06c7c431d45702cbd7caef90a5d71cd03f69",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/android.svg",
+      "hash": "8870988863a06a2214e772284297ce7b0cbbb78c4e450db821596b5c19911a51",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "sidebar.php",
+      "hash": "7f36e54b661deeffd519f6c792895224dbefcb00a22b5eae26486b9cf9c50b4a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/discord.svg",
+      "hash": "d5dc8655dc0c2a0673d4bfd1489c9514e83afd27113d8e67fbbdeaa0f115fea1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/babel/wocommerce.js",
+      "hash": "93c657ec88639206c1adc26663f3e41c490cf124ad285bf17cf118fcd8343bda",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.9.woff",
+      "hash": "8e628e303f7638a358045071d058aa11ec0fb32bc6045d657a167a4145e58c3d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/shoping.svg",
+      "hash": "eb635b6cc8aac3db725fceb85c82fdbb4fac98d923e1d4f25d59dc88c388b5cc",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/frown.svg",
+      "hash": "a8fb3af78d1d7abdfd4e6f5b42be17bdf8952507449036207d3e841a046edcb6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin-config.php",
+      "hash": "78168ea9abc0c03f1c8d71b456f3541dfcf4ecd062732e10d955ba77cfd11e74",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-revisions.mjs",
+      "hash": "8535c4f687951123534298b0c00649976032f3d336367f76e5b1ee78fac02e24",
+      "mod_time": "2026-11-10T09:07:32Z"
+    },
+    {
+      "path": "work/qa/view4-crop.png",
+      "hash": "87f57a43c89f58eeb1d2481a733285db0b3bbd7437789ffb7a05e5c933d264e8",
+      "mod_time": "2026-09-12T04:56:25Z"
+    },
+    {
+      "path": "assets/css/base/slick.css.map",
+      "hash": "aff7812c776eefc3143c47bc19d8b547afa91647ee3dc9214b281a6b52b45565",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/editor.js",
+      "hash": "b0474310822888415827ca2c98b93f2855b7bca9056161342e98364f4c136be0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/envelope.svg",
+      "hash": "6a15cbe835cdf8ad2ec70141b59613a6e1902f7043df9ca73b593c5192593b00",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/class-customize.php",
+      "hash": "fa1c4ebad21c9a73e202d7dcefbff5c45a96cfa84d75fc643d3c41b2036eca42",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "search.php",
+      "hash": "2464381c3a2271acfb9de281d174a1202bbfdeb6750b68ecbb755799d4c50d2a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/hero-scroll-guide-visible.png",
+      "hash": "68059b6220117f955476b2d36036e015eeb6f2296a9a2efcb4c7749bcb1c1bc4",
+      "mod_time": "2026-09-12T04:51:49Z"
+    },
+    {
+      "path": "work/qa/menu-cta-mobile.png",
+      "hash": "52e6fa078e70568256faae04d1ae6db2b7bb4e152c15c252007a0a815af7c0b3",
+      "mod_time": "2026-09-12T05:05:06Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-7-tests.log",
+      "hash": "fffef8a57f26d7849fc395a493d65e7e1ba9aa4d8c7a5d96f7042cd50eb57fa3",
+      "mod_time": "2026-10-22T15:08:50Z"
+    },
+    {
+      "path": "assets/fonts/.DS_Store",
+      "hash": "591b7ed1f9b5da261e38694ffd79276f9fa2caad917fedd5396ecc106be0c6f7",
+      "mod_time": "2026-09-02T00:59:57Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-texture-copper.jpg",
+      "hash": "01b4aefea87365fa5b13f2dd68a82690bbef0c627d0c16c2e078096d270e41d1",
+      "mod_time": "2026-09-12T03:14:17Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/clove.webp",
+      "hash": "b0d94d6651b2a716b17bd479f908936452fc194c701a92d57ab537a833cff7d3",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/2core/gift.svg",
+      "hash": "c31a5ca90b57bedba3f1a7abb80ffcddefe81794f610798916c18b789d136d3d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/minus-circle.svg",
+      "hash": "5272fd2dadf16baac74b3c11f5178037239c29a3ca27927819ff324be9568697",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "footer.php",
+      "hash": "080ad0ef172e5310659182a6dd8a2ec9c34ae2cb10663a2859bbb9940b794ff3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/product-searchform.php",
+      "hash": "c76f3e0f9eeef64627cce975ceb0af5a823e0ec11d67eeb4d648ed3cf8cc212c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/unknown.svg",
+      "hash": "4c72489a110fb4ea7565356caac922da93e7f86cab4c7ae78ffcaab5d15d2d21",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/interior-ambience-bar.jpg",
+      "hash": "534051d7825eae6807685b12b7d3d4c022b43f49dac8249d555219dfd4525c3d",
+      "mod_time": "2026-09-16T06:58:50Z"
+    },
+    {
+      "path": "assets/svg/2core/user-headset.svg",
+      "hash": "5fc8d61a80b280c3e44e1f8ac6351a775ead5b1c9a01f31230cfac8e4dd38f3f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "functions.php",
+      "hash": "6385749ea55e6da4fdd1839c9b4674178a266983e4327ad8795625ce710149d4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/babel/elementor.js",
+      "hash": "f141d31c0caf8da669211445e2fdda2be95198a66780f57299f0a722d8e9521f",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/oneclick/home_3.jpg",
+      "hash": "928a71b067bb37e92d1617b0343d8324d8dfbcd8d927126ad36d8280ee4bd494",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/caret-up.svg",
+      "hash": "b097d954681f2f3b0bbab77aa7059b2f35a67edfb0d2083ab5f864ba2a511e27",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/check-square.svg",
+      "hash": "2b7e4ada0b65f4b3d4d12a626987d40009e5c8ba92580f131074365bfa3f7fc6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/external-link-alt.svg",
+      "hash": "2b4d1a39482e7d2d283fe01412c2bec7f18ae6fc74b52e5b9d49d37b224793fd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/homepage/home-1.xml",
+      "hash": "a730c88928f89ad36f12783bb72eb5794d1c5db319d733730bebc42cc3fd3ec4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "footer-zingiber.php",
+      "hash": "9dda68a657d0c2e73fc340707f27d8c8cb70278fca11030fea58475cf98051c0",
+      "mod_time": "2026-11-10T09:02:16Z"
+    },
+    {
+      "path": "assets/css/base/elementor-rtl.css",
+      "hash": "64c96f37bb0eacc2f81c5b1510ea5ba8d955f7cd94b47e74a55bd6452e8099df",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/brand-contour-lines.png",
+      "hash": "13a31c337149a949843b8d5a5d67d5a20628bed94054e4973e4aaaabbf3e6d09",
+      "mod_time": "2026-09-12T04:39:12Z"
+    },
+    {
+      "path": "assets/svg/2core/mobile-android-alt.svg",
+      "hash": "3833cdf5041ba4f83f37211d986fda8698a82e85f1315f6cf17d549ff66e2d82",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/testimonial.php",
+      "hash": "c873f24305f40f2c75815218b37a1ff741fc6d1e2a8c729e34d02d494a184376",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/loop/loop-start.php",
+      "hash": "6f9a69e37f2b55c9688cf03ba22988cd5a30dd3ceb12d56fc62471a2db387861",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/pattern-footer.png",
+      "hash": "3e9d29b421e6b32809915d8be57be8dd28c06809f108d71be99234b08d28fc61",
+      "mod_time": "2026-09-11T13:37:25Z"
+    },
+    {
+      "path": "assets/js/elementor/product-tab.js",
+      "hash": "0b118295989d1767a676433d6b6ab8a35f0e9b626e238a9992ccf579f44e73da",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/vonaco-plate.svg",
+      "hash": "5138b722504d58dc3e094d9c4f672d912998f757434f5a62870eace1034fa7e6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/heart.svg",
+      "hash": "58ce35229ce812329a7619a49fd200b0eb5bca587a751443584337e35c32d7c5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/search-plus.svg",
+      "hash": "1c31bbd2697c84684d28b1f4dd00016e76ed49fda59c664f8fdceebed47537f6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/class-merlin.php",
+      "hash": "b6534e3b32d56e93bd8ae1f660a38d30598afc26cf620eb1d6339f156a79abb6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/heading-journey-whole.png",
+      "hash": "e545481db94fd2ec33673fdf2ddaf2b7e85a689b174a5f9ce1c2ef38231c8733",
+      "mod_time": "2026-09-11T14:19:15Z"
+    },
+    {
+      "path": "assets/fonts/new/vonaco-heading.woff",
+      "hash": "519a93f89f280d2314aa43e05300753132c251e20b734224f11c161c064070e1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/credit-cards/amex.svg",
+      "hash": "a4386c90afd69610c71685ad73507aef37dec1bbb7cfcfa87c5b4c987fcb9ea8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/curry-leaf.webp",
+      "hash": "e1e62c8fe266cf322f7f83742c14f888b126663af2a7e4fb6ac24ac708e17d70",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/1theme/cart-shopping.svg",
+      "hash": "ac29c593c1184eb578ed2d89a6d078b36e4490fd80ff2f4143247f3cb1951698",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/google.svg",
+      "hash": "9c5d023c224f791aec9d608e5502e8d0bd0ef5ce8623e292951ad60a664b03b8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-coastal-thali.jpg",
+      "hash": "98bf93bea71cfecf3641f80516d3cfa910f9b666766a72447ab8a6fb59c44121",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/zingiber-logo-light.png",
+      "hash": "0811ad7197f36fcaf5a18ce954cf585c3fce33f2972cb59f92bac4fc9025ac63",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/svg/2core/level-up-alt.svg",
+      "hash": "965afd706306274c1559365b91ff064e296f97b544acd54dcde4975f8cc72fd2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-10-23-zingiber-smooth-scroll-design.md",
+      "hash": "71d5803cda0cecea7f3111bfafa100c4493b1104356398248deb1bec2e5918f0",
+      "mod_time": "2026-10-22T17:15:11Z"
+    },
+    {
+      "path": "assets/css/base/gutenberg-editor-rtl.css",
+      "hash": "60c383a2760340d45f2676b5e569b2461d5b30d7bb70c4f1541938a3b95d4cdd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/css/dokan/dokan.css",
+      "hash": "a0d25532dbf06f850f6ff2ff8a9817c3de7a0aa964c70f0e447072158f58fc8d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/thumbtack.svg",
+      "hash": "e6fc8f7adb75d99dc88be7107f0d963201bdb2a4f2c9c1149c422e68dd76a03b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-product-brand-list-walker.php",
+      "hash": "369573830619292cce05f714b39e121980949ba5bc9c0af5f3b3d495fb2ee0eb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/materials-principles.png",
+      "hash": "4ff202fb728c7a9ef633a1e541ab982725a3bf1368c99c0d7ef67e4b33d80b97",
+      "mod_time": "2026-09-11T13:29:04Z"
+    },
+    {
+      "path": "assets/fonts/slick.ttf",
+      "hash": "4cba5fa1289686fad0f5d2696a73f0a2d0361c6199fafbdc07e02430171e1c28",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/woocommerce/main.js",
+      "hash": "fd45fa0f8d8148ed5cdbf0b04f30b8f1b743c85b7e10264f00890dc534af4b45",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "style.css",
+      "hash": "c25607ebd9514372d50f225d04a2c7f71b04e960970ac5e501b6d08564b2adff",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "README.md",
+      "hash": "5195ff613d9fb36078439dbc8f20024acc04e7565794951e25c126c15394a11a",
+      "mod_time": "2026-11-10T09:05:47Z"
+    },
+    {
+      "path": "assets/images/zingiber/food-crab-plate.jpg",
+      "hash": "cf904e0f32b0ce2ab69165df0c3497bc67f7151e4f87a5cdb2574db9f8b49bb4",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/1theme/sliders-v.svg",
+      "hash": "a6d07be5928f7900a047ce614fc2870edde5ff6b1832cb77702b8f3e9abf343c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/comments.svg",
+      "hash": "5bc19b4a62e8bf46a1197019f97f981b99fba3a6044766eda0be51bc58418c05",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/user.svg",
+      "hash": "bc1c4ce44a53b6cea14fe2b5134e10b58be66c0bfeec6dc53045d87d767f6839",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/class-fix-elementor.php",
+      "hash": "da30b74b1f88dd0928dae1514442abaf52dc145d8d44b00b48c643dc5fdc81d7",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/merlin/includes/class-merlin-downloader.php",
+      "hash": "4f2f96a8d063e2e10380f142c0c32116e96a3772a03d610417e029bec47771e3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "single.php",
+      "hash": "4a40cc129051fa1c6339ca5cd38a48205c6a0f966e3210651cc5a263ee4ef8c4",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/posts-grid/item-post-style-1.php",
+      "hash": "bef178af95dfe34c52d6dfd30872810bb854a8db0705c2eebbf464ad41b5393d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-browser.mjs",
+      "hash": "7d5422351425323ae076116fb1fbadbf57424217e575bf01bcdb7b651929c4d4",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/2core/360.svg",
+      "hash": "927ceb89450d12c02aeb4a28ff123516ee0130e6ca2628ed351a295f2462f528",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/zingiber/texture-copper.svg",
+      "hash": "401a362358e63d6e779df890278f0f5987bfce0d2f32811986dc40185cbffd62",
+      "mod_time": "2026-09-11T13:28:27Z"
+    },
+    {
+      "path": "tests/check-zingiber-revision3.mjs",
+      "hash": "e1906bed0360b513b1a058dae6a386ff700bdc08774e07a91afe7ff69c0d76b7",
+      "mod_time": "2026-11-10T12:09:04Z"
+    },
+    {
+      "path": "woocommerce/single-product/product-image.php",
+      "hash": "a0a6bef68815e37aadf839b8e4de347a5d173bd6c657473ad56097b02223339a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/chevron-right.svg",
+      "hash": "152944e6530d8998fd4f513547943b8aa8686f1c967700aae3e317ea68e58c50",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/folder.svg",
+      "hash": "6db69a3e76c83698fc1068a82863650dc51156e13c40788a1d3d64a1e95ab479",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/amazon.svg",
+      "hash": "595815bc037c863d838b0fbb4fe76661b699a552ae08964b8c067b756650bd6d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/checkout/form-checkout.php",
+      "hash": "6005002794a0068ad6888be405910ea20c07dcdea8aa47d74beeaad983bf6b95",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".superpowers/sdd/pdf-revisions-oct30/progress.md",
+      "hash": "c598a036379f07ff0042814677568b31a7a3e2e593be6429c5b394961d52cae8",
+      "mod_time": "2026-10-30T04:04:26Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.8.woff2",
+      "hash": "0abce4359f3d17701a8ea5d53d797a4c28e0ef741443d4169bc950f429bec142",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/vonaco-quotes1.svg",
+      "hash": "2db30fafd1a258d11285c81fcb98ef0a7ef29236b3ff7d36a4e6ab7adfab6462",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/th-list.svg",
+      "hash": "6c313cc376298fee4a794b4e22380bf6b55046767fe2ba65ffaa0d9fe0c31be9",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/icons.json",
+      "hash": "28f973a22cc680c9c5226acbc515d5e42d2bfc266cd5f6fd7b91f4594f3e01a6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "woocommerce/content-product-list.php",
+      "hash": "66ffb72c47e1c6574a64b36ec0c48b8d1bbccaf62ea36052f1241c032034bfdb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/babel/theme.js",
+      "hash": "62adf35d490724c660db8136483b5ac9fe1091605c97c959d23e53e360e3db1d",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/admin/woocommerce-brand.js",
+      "hash": "5ca7ea281688c3c5e6000bfdd6a83af4e1dbdb13555e03b41acc1735ea78ba1a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/docker.svg",
+      "hash": "dbfbd8bba18c3cd9f9ed4d19dce684fb4c8a2ff8224aebd2c104312c60b607b2",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/megamenu/includes/class-menu-walker.php",
+      "hash": "490584e4a4f3a4d3fe1825d52931fad5d1c430285393c9a9f3d31791ed7bb30a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "tests/check-zingiber-language.php",
+      "hash": "3f6b5d51db73a218efe2788a30cf2b6a147feebaede98e0e5430efcdc5026c0f",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "work/qa/materials-reservations.png",
+      "hash": "774e03260f138bcdeedd51f1c25192b72b101fa859f78a8afeab7801d4df8d29",
+      "mod_time": "2026-09-11T13:29:02Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.3.1.svg",
+      "hash": "42a63121f053bca03b04e71b9cd39e0695782a588b6f4ac4694eb367b2043e79",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/spices/cardamom.webp",
+      "hash": "97fa638063bb889739518150d7a85078dd4b511d7f7eb81c480e6a0fc1c87437",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "assets/svg/1theme/search-1.svg",
+      "hash": "1b1308468fbcb95d7d86dc2d5566b4c71354c66dc1a59a1045e2e70ae8c5bad5",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/plus.svg",
+      "hash": "bb65af079e55cafe80b5c29b7537d845320da2411889e935b6a20b98cd4b8491",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/custom-widgets/image-carousel.php",
+      "hash": "0eb337d50bfec47ea2fee85b92ea5812eeaebb75433f211de6b8c1364d4e3771",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "hash": "2d425e5ae8aa412b02fcef64cb909b6a70f64684997f50085f4d1c46bc2a82b6",
+      "mod_time": "2026-10-30T10:45:15Z"
+    },
+    {
+      "path": "assets/svg/brands/bitbucket.svg",
+      "hash": "85d3ee375781f816bee10807f9111b3ab8470f52a8d46d995f443448213b267c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/snapchat.svg",
+      "hash": "07cc150bea427d1c2361ccb87638054edf62bb456501529a0c64bc01a97716b8",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/zingiber/english-logo.svg",
+      "hash": "d0f9d6d0f1962ab5afd888bd44c68a1ca7989fa17a7bfd86b60d7bf774793fbf",
+      "mod_time": "2026-11-09T07:32:56Z"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-10-22-zingiber-pdf-structure-implementation.md",
+      "hash": "7ff4be6cdb1089218712b7b2fc5972ca47b0f8ff96bdf8e6a63de8326bc39391",
+      "mod_time": "2026-10-22T17:07:26Z"
+    },
+    {
+      "path": ".superpowers/sdd/2026-10-22-zingiber-pdf-structure-implementation/task-2-brief.md",
+      "hash": "771f8d7cb3f4f66c06cba04df8d6c970ca659e76a2d168fccd17fdb6d919b94f",
+      "mod_time": "2026-10-22T14:37:21Z"
+    },
+    {
+      "path": "assets/images/credit-cards/laser.svg",
+      "hash": "83c4bd6ce73335c1ad55a49261acc8581fa0f35ffabca5d2901cc879239d7fbb",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/images/zingiber/favicon/icon-16.png",
+      "hash": "951d9798930e7fd8afa46041274fb9219fbdefbc2e3bd3ffb974191938e22fd1",
+      "mod_time": "2026-09-11T09:59:13Z"
+    },
+    {
+      "path": "assets/js/elementor/reservation-form.js",
+      "hash": "1799188f714083ba853a8bd0d787f6f436c2d2481ef7bc78079cc473de989b91",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/google-plus-g.svg",
+      "hash": "f4972caddf2af51b580a42ed7e410794a61f1e216c6a83b27437922c85a082dd",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/ebay.svg",
+      "hash": "eecfc9a00a9c35b044309208ddd6740e0f5e0493a6086a0032bf58139b1c7a57",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/paypal.svg",
+      "hash": "f5deaef612619f4b82fe5923128d3bee0e26aa5ede857bf6d2c367dc450dd97c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-08-17-zingiber-home-2-design.md",
+      "hash": "44add8b26dd3a769208d202d5d06b1ce8b5d26756ed3565b23f249973450e78a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/fonts/icons/vonaco-icon-1.2.9.eot",
+      "hash": "27df454602c2d2fbf1bdea5a7a07b6e3d8c317fc06952b4854196f75697279d3",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/js/admin/admin.js",
+      "hash": "f8fd0d4a80cb115324bf8de4bc0383e9c35a0d89c45818a682b2ea972ff3501a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/1theme/next-right.svg",
+      "hash": "0a672e837e9aad83718549ca24962d15ac84d1bd315cf16571dc1c662f5c0c97",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/apple.svg",
+      "hash": "e16d7be44cbde2fddf06ca6d76652240e995faca6790059baff1c5e6598d4f0a",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "dummy-data/theme-options.json",
+      "hash": "ca2781acad5a8b5f56c9e844243d51f0dfa07e20bbf737b0213cec9d14c64e60",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/posts-grid.php",
+      "hash": "259132b18ab2b43de096b46afef28a0aed4031ee22e932dc5b75c6c9ae3d316e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/woocommerce/class-woocommerce-brand.php",
+      "hash": "8d27d3405381be2544e78a0490adfacb96446369260c2dac2b38b473e56d50da",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "work/qa/brand-about-texture.png",
+      "hash": "33b32d2d1d3be28c55f47c2e6ebee6462b49b6a9ce0509545d8d83c6f96029ab",
+      "mod_time": "2026-09-11T13:02:52Z"
+    },
+    {
+      "path": "assets/svg/1theme/linkedin-in.svg",
+      "hash": "11a850df4a0d610e038bfd47d6a3dd449a0bd1dc344783aaa56d4bedefd4a6ac",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/bars.svg",
+      "hash": "6544f109743592739118ae71235b4273afb724396fff1918417e2c70eb82882e",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/bitcoin.svg",
+      "hash": "53894b3ed7c580686bf9ee048bad9164f5b298d7bf9518484b0008ec8a316ce1",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/cpanel.svg",
+      "hash": "516c95104b26619c8069d12ddf568b23a2f29c153877c4229047544f99e38a5b",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "template-parts/zingiber-frame.php",
+      "hash": "5e0b95f54b1cec2d8459b3b990fd1fbd6f70936f79e66719e87cf524b1b1ffd5",
+      "mod_time": "2026-09-12T04:58:12Z"
+    },
+    {
+      "path": "work/qa/materials-footer.png",
+      "hash": "c22fa3521b29d0bfaa8b3095875ce146955d74255f15e2bd51196ee1a4e71ae2",
+      "mod_time": "2026-09-11T13:27:28Z"
+    },
+    {
+      "path": "work/qa/pattern-home.png",
+      "hash": "f24fc355472d67cdb730595d9698257f73887d649bc6e04588b7feb7747905fe",
+      "mod_time": "2026-09-11T13:37:24Z"
+    },
+    {
+      "path": "assets/svg/1theme/long-arrow-down.svg",
+      "hash": "dea6c5e49da8f424cf6d99558049b43049f4297a4e86f5d55e260443dd9c983c",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/2core/contact.svg",
+      "hash": "9fd004f2912968bb1a1c04c3c6ba6ab91f6024593ecc575a4fa9c22974238f32",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/google-plus.svg",
+      "hash": "d758c34bcbc36d12d926e20cb6235c55b86f4ea66d4f73e1bc0c4b6b1cff78a6",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/zingiber/ui-ar.php",
+      "hash": "4955b35fc5bd6fa8103a0e81f81ebe213410042d3e6ac956aeafbb5d4e8f5b5a",
+      "mod_time": "2026-11-10T09:07:32Z"
+    },
+    {
+      "path": "work/qa/materials-experience.png",
+      "hash": "8a81b261ccf54f01aff0c100efa0ae9161af914987da628a0f4d8e5d4316fad4",
+      "mod_time": "2026-09-11T13:29:02Z"
+    },
+    {
+      "path": "assets/svg/2core/history.svg",
+      "hash": "a69b69619c281b7d825b02b3d29c0cebe61e28e8056b07ac61c71faf5ab1ddf0",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "assets/svg/brands/firefox.svg",
+      "hash": "6630ce7b0d6c58a307d99206064a473ddcf3b082e6167c2c67fbd3b64b016926",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/elementor/widgets/team-box.php",
+      "hash": "d082c4af3aec25a80ddec6aa402a22853773835ecc44d74754d9b42cfaefdb26",
+      "mod_time": "2026-09-02T00:34:11Z"
+    },
+    {
+      "path": "inc/zingiber/language.php",
+      "hash": "d9481e0d690e1ec647457ba39c11f6c344ca953fa01077be83b369e221d95fac",
+      "mod_time": "2026-11-09T07:32:56Z"
+    }
+  ],
+  "fact_count": 1253,
+  "insight_count": 108,
+  "enola_version": "0.4.30",
+  "snapshot_id": "sha256:f9ab94455df3a09ca9ddb86d672894900fd45fe5cb5c3118f40de2114e949245",
+  "git": {
+    "ref": "main",
+    "commit": "6b9d982ae1a03c5ab499e825e4e2ef8785e93263",
+    "dirty": true,
+    "remote": "github.com/ajgumiran88/zingiber-reborn"
+  },
+  "config_hash": "sha256:3adc688a0f1dadd7c001cfc90ef05ce328f08b9a61c74a15e5f9839f222d0f08",
+  "extractor_version": "v351",
+  "files_seen": 618,
+  "files_parsed": 109,
+  "source_bytes": 1318404,
+  "files_skipped": 22,
+  "dirs_skipped": 3,
+  "skipped_sample": [
+    ".git/ (glob: **/.git/**)",
+    "assets/js/admin/admin.min.js (glob: **/*.min.js)",
+    "assets/js/admin/editor.min.js (glob: **/*.min.js)",
+    "assets/js/admin/product-360.min.js (glob: **/*.min.js)",
+    "assets/js/admin/woocommerce-brand.min.js (glob: **/*.min.js)",
+    "assets/js/editor.min.js (glob: **/*.min.js)",
+    "assets/js/elementor-custom-css.min.js (glob: **/*.min.js)",
+    "assets/js/elementor-frontend.min.js (glob: **/*.min.js)",
+    "assets/js/footer.min.js (glob: **/*.min.js)",
+    "assets/js/isotope.pkgd.min.js (glob: **/*.min.js)",
+    "assets/js/skip-link-focus-fix.min.js (glob: **/*.min.js)",
+    "assets/js/sticky-add-to-cart.min.js (glob: **/*.min.js)",
+    "assets/js/tooltipster.bundle.js (glob: **/*.bundle.js)",
+    "assets/js/tooltipster.min.js (glob: **/*.min.js)",
+    "assets/js/vendor/ (glob: **/vendor/**)",
+    "assets/js/woocommerce/cart-canvas.min.js (glob: **/*.min.js)",
+    "assets/js/woocommerce/cart-side.min.js (glob: **/*.min.js)",
+    "assets/js/woocommerce/header-cart.min.js (glob: **/*.min.js)",
+    "assets/js/woocommerce/main.min.js (glob: **/*.min.js)",
+    "assets/js/woocommerce/off-canvas.min.js (glob: **/*.min.js)"
+  ],
+  "ignore_glob_hash": "sha256:9ee2ed929411f65a0acebb88a0e8d236226c27d8061975f304e3b1ff2841c318",
+  "heuristic_insights": 107,
+  "coverage": {
+    "services_total": 0,
+    "coverage_gaps": 0,
+    "unresolved_edges": 0,
+    "extractors_reporting": 1,
+    "extraction_unresolved": 42
+  },
+  "census": {
+    "files_walked": 640,
+    "parsed": 109,
+    "excluded_by_ignore": 22,
+    "excluded_by_kind": 401,
+    "excluded_kinds": {
+      "(no extension)": 3,
+      ".css": 28,
+      ".diff": 1,
+      ".ds_store": 7,
+      ".eot": 6,
+      ".gif": 1,
+      ".gitignore": 1,
+      ".gitkeep": 1,
+      ".ico": 1,
+      ".jpg": 24,
+      ".json": 5,
+      ".lock": 1,
+      ".log": 8,
+      ".map": 9,
+      ".mp4": 1,
+      ".pdf": 2,
+      ".png": 55,
+      ".pot": 2,
+      ".svg": 205,
+      ".ttf": 6,
+      ".webp": 15,
+      ".woff": 6,
+      ".woff2": 5,
+      ".xml": 8
+    },
+    "skipped_with_cause": 108,
+    "top_skip_causes": [
+      {
+        "cause": "claimed by typescript, which did not run this snapshot",
+        "count": 56
+      },
+      {
+        "cause": "claimed by php, no facts emitted",
+        "count": 52
+      }
+    ]
+  },
+  "output_hashes": {
+    "facts.jsonl": "sha256:49cd1eb89a6d458d9aedff519f5c84be16b158ec6b767f5378895a7af9eeccc1",
+    "flows.json": "sha256:e19f2e3cbaea60c71e7cc6217dc07fc2f9ebd6fa21a4da916e8b30be654264ef",
+    "insights.json": "sha256:f01c5bb5163a883292b50bdb43bdcd7457b6b81d2334d359ceb7421efebdbad4",
+    "llm_context.md": "sha256:1e7a3c5350c72eae033ff4868ddbbe3b666cd24985dbe10b494a6aaeabc7363a"
+  },
+  "unseen": {
+    "files_excluded_by_ignore": 22,
+    "dirs_excluded_by_ignore": 3,
+    "outside_graph": {
+      "imports": 98
+    },
+    "dead_exemptions": 0,
+    "dynamic_feature_classes": 0
+  }
+}
