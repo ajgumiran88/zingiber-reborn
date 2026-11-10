@@ -267,7 +267,6 @@
         var isScrolling = false;
         var isInView = !('IntersectionObserver' in window);
         var animationFrame = 0;
-        var loopTimer = 0;
         var lastActiveSlide = -1;
         /* Distance from a slide's snap edge to where the track snaps it, in viewport pixels. */
         var offsetOf = function (slide) {
@@ -302,39 +301,21 @@
             }
         };
         var cancelSlideMotion = function () {
-            if (!animationFrame && !loopTimer) return;
+            if (!animationFrame) return;
             window.cancelAnimationFrame(animationFrame);
-            window.clearTimeout(loopTimer);
             animationFrame = 0;
-            loopTimer = 0;
-            track.classList.remove('is-sliding', 'is-resetting');
+            track.classList.remove('is-sliding');
             isScrolling = false;
             updateCoast();
         };
-        var goToCoast = function (index, loop) {
+        var goToCoast = function (index) {
             window.cancelAnimationFrame(animationFrame);
-            window.clearTimeout(loopTimer);
             animationFrame = 0;
-            loopTimer = 0;
-            track.classList.remove('is-sliding', 'is-resetting');
+            track.classList.remove('is-sliding');
             isScrolling = false;
             var slide = slides[Math.max(0, Math.min(slides.length - 1, index))];
-            var target = loop ? 0 : track.scrollLeft + offsetOf(slide);
+            var target = track.scrollLeft + offsetOf(slide);
             target = Math.max(0, Math.min(track.scrollWidth - track.clientWidth, target));
-            if (loop && !reducedMotion) {
-                isScrolling = true;
-                track.classList.add('is-resetting');
-                loopTimer = window.setTimeout(function () {
-                    track.scrollTo({ left: 0, behavior: 'instant' });
-                    updateCoast();
-                    track.classList.remove('is-resetting');
-                    loopTimer = window.setTimeout(function () {
-                        loopTimer = 0;
-                        isScrolling = false;
-                    }, 260);
-                }, 180);
-                return;
-            }
             if (reducedMotion) {
                 track.scrollTo({ left: target, behavior: 'instant' });
                 return updateCoast();
@@ -345,10 +326,11 @@
             isScrolling = true;
             track.classList.add('is-sliding');
             var started = performance.now();
-            var duration = Math.min(680, Math.max(520, 470 + Math.abs(distance) * 0.12));
+            // Longer travel (the rewind to slide one) gets more time, so every move reads at a similar speed.
+            var duration = Math.min(1400, Math.max(600, 420 + Math.abs(distance) * 0.4));
             var move = function (now) {
                 var progress = Math.min(1, (now - started) / duration);
-                var eased = progress * progress * (3 - 2 * progress);
+                var eased = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
                 track.scrollTo({ left: start + distance * eased, behavior: 'instant' });
                 if (progress < 1) {
                     animationFrame = window.requestAnimationFrame(move);
@@ -393,7 +375,7 @@
                     window.setTimeout(autoplay, 100);
                     return;
                 }
-                goToCoast(next.disabled ? 0 : activeSlide + 1, next.disabled);
+                goToCoast(next.disabled ? 0 : activeSlide + 1);
                 window.setTimeout(autoplay, 2000);
             };
             window.setTimeout(autoplay, 2000);

@@ -29,6 +29,7 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
                 enquiryOutline: style('.zingiber-enquiry__photo').outlineStyle,
                 roundCaptions: [...document.querySelectorAll('.zingiber-coastal__caption')].every(e => parseFloat(getComputedStyle(e).borderRadius) === 20),
                 coastNamesFit: [...document.querySelectorAll('.zingiber-coastal__caption h3')].every(e => e.scrollWidth <= e.clientWidth + 1 && e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight) < 1.1),
+                coastPhotosFit: [...document.querySelectorAll('.zingiber-coastal__slide')].every(e => e.querySelector('figure').offsetWidth <= e.offsetWidth),
                 coastCaptionLines: [...document.querySelectorAll('.zingiber-coastal__caption p')].map(e => e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)),
                 principleTop: rect('.zingiber-principle-card h3').top - rect('.zingiber-principle-card').top,
                 principleHeight: rect('.zingiber-principle-card').height,
@@ -61,6 +62,7 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
         assert.equal(layout.storyBorder, 'none', `${label}: no inner photo border`);
         assert.equal(layout.enquiryOutline, 'none', `${label}: no outer enquiry border`);
         assert.ok(layout.roundCaptions && layout.coastNamesFit, `${label}: rounded captions and single-line region names`);
+        assert.ok(layout.coastPhotosFit, `${label}: coastal photos stay inside their slide, keeping the gap`);
         if (width >= 768) assert.ok(layout.coastCaptionLines.every(lines => lines < 1.1), `${label}: single-line coastal captions`);
         assert.ok(layout.principleTop >= layout.principleHeight * .2 && layout.principleTop < layout.principleHeight * .4 && layout.principleWeight >= 600 && layout.principleSize >= 14, `${label}: lower, larger, bolder principle titles`);
         assert.ok(layout.socialInStory && layout.socialAfterPhoto && layout.socialTop >= layout.photoTop - 2 && layout.socialTop - layout.photoTop < layout.photoHeight * .3, `${label}: compact Follow Along group balanced beside photo`);

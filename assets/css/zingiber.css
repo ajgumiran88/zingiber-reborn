@@ -3142,12 +3142,6 @@ html.zingiber-menu-open {
     scroll-behavior: auto !important;
 }
 
-.zingiber-coastal__track.is-resetting,
-.zingiber-principle-cards.is-resetting {
-    opacity: 0;
-    transition: opacity 180ms ease-in;
-}
-
 .zingiber-coastal__slide {
     display: grid;
     flex: 0 0 80%;
@@ -5054,8 +5048,9 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
 
 /* #6: each coast is a smaller square photograph with the next ones in view; the caption keeps its full-width bar, now clear. */
 /* Start-aligned on the page gutter, so the row fills from the left edge instead of leaving a blank before slide one. */
-.zingiber-coastal__track { padding-inline: var(--zingiber-gutter); scroll-padding-inline: var(--zingiber-gutter); }
-.zingiber-coastal__slide { flex: 0 0 min(36rem, 80vw); scroll-snap-align: start; }
+.zingiber-coastal__track { gap: clamp(0.75rem, 1.25vw, 1.25rem); padding-inline: var(--zingiber-gutter); scroll-padding-inline: var(--zingiber-gutter); }
+/* Fixed column: a single-line caption must never widen the square past the slide and eat the gap. */
+.zingiber-coastal__slide { flex: 0 0 min(40rem, 86vw); grid-template-columns: minmax(0, 1fr); scroll-snap-align: start; }
 .zingiber-coastal__slide figure { aspect-ratio: 1; }
 .zingiber-coastal__caption {
     background: transparent;
