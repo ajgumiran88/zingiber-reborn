@@ -3700,18 +3700,18 @@ html.zingiber-menu-open {
     width: 100%;
     height: auto;
     max-height: 30rem;
-    aspect-ratio: 3 / 5;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: var(--zingiber-button-radius);
 }
 
-.zingiber-footer__story p {
+.zingiber-footer__story > p {
     margin: 0 0 1.5rem;
     font-size: clamp(1rem, 1.4vw, 1.3rem);
     line-height: 1.5;
 }
 
-.zingiber-footer__story a {
+.zingiber-footer__story > a {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -4344,7 +4344,6 @@ html.zingiber-menu-open {
     color: var(--zingiber-charcoal);
 }
 .zingiber-story__image { position: relative; min-height: 0; aspect-ratio: 4 / 5; overflow: clip; border-radius: var(--zingiber-photo-radius); }
-.zingiber-story__image::after { content: ""; position: absolute; inset: 0.85rem; border: 1px solid rgba(237, 231, 225, 0.6); border-radius: inherit; pointer-events: none; }
 .zingiber-story__copy { padding: 0; }
 .zingiber-story .zingiber-eyebrow { color: var(--zingiber-burnt-red); }
 .zingiber-story__copy p:not(.zingiber-eyebrow) { color: var(--zingiber-ink-soft); line-height: 1.8; }
@@ -4688,9 +4687,9 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
 /* Culinary direction reads as one centred statement, as JF's opening line does. */
 .zingiber-coastal__intro { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 1.5rem; text-align: center; margin-bottom: clamp(3rem, 6vw, 5rem); }
 .zingiber-coastal__copy { padding-top: 0; }
-.zingiber-coastal__copy p { margin-inline: auto; max-width: 44rem; }
+.zingiber-coastal__copy p { margin-inline: auto; max-width: 64rem; }
 @media (min-width: 768px) {
-    .zingiber-coastal h2 { max-width: 19ch; margin-inline: auto; font-size: clamp(2rem, 3.3vw, 3.15rem); line-height: 1.18; }
+    .zingiber-coastal h2 { max-width: none; margin-inline: auto; font-size: clamp(1.65rem, 3.3vw, 3.15rem); line-height: 1.18; }
 }
 
 /* JF dish counter: large serif index, small total, short rule, bare chevrons pushed to the far edge. */
@@ -4740,8 +4739,8 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
 /* Revision 2: one photo shape site-wide — the soft rectangle the client picked from the collage. */
 .zingiber-gallery-teaser__tile { border-radius: var(--zingiber-photo-radius); }
 
-/* Revision 2: Get in Touch keeps the door (arch) shape, framed by a hairline that follows it. */
-.zingiber-enquiry__photo { border-radius: 999px 999px var(--zingiber-photo-radius) var(--zingiber-photo-radius); outline: 1px solid rgba(15, 15, 15, 0.28); outline-offset: 0.55rem; }
+/* Get in Touch retains its arch; Revision 3 removes the outer hairline. */
+.zingiber-enquiry__photo { border-radius: 999px 999px var(--zingiber-photo-radius) var(--zingiber-photo-radius); }
 .zingiber-enquiry__art::before { display: none; }
 
 /* Inner pages open like JF's About: full-height photograph, centred statement. */
@@ -4994,8 +4993,7 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
    shape, a small clear slide caption, restaurant roots and a quieter footer.
    ========================================================================== */
 
-/* #2, #3: the masthead is a clear pane a quarter of the page wide (client: half of the first cut), with room either side of Book Now.
-   26.5rem floor = Book Now | logo | menu + EN/AR at 44px targets; below ~1700px wide it holds there. */
+/* Revision 3 widens the clear masthead to 70%; the 28rem floor preserves its 44px controls. */
 .zingiber-header:not(.is-sticky) { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .zingiber-header.is-sticky { background: rgba(237, 231, 225, 0.4); box-shadow: none; }
 .zingiber-header .zingiber-header__inner,
@@ -5003,7 +5001,7 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
 @media (min-width: 768px) {
     .zingiber-header,
     .zingiber-header.is-sticky,
-    .zingiber-navigation { width: max(32%, 28rem); }
+    .zingiber-navigation { width: max(70%, 28rem); }
     .zingiber-header .zingiber-header__inner,
     .zingiber-navigation__masthead { padding-inline: 0.85rem; }
 }
@@ -5095,11 +5093,11 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
 
 /* #15: smaller footer type; headings lead, body sits a step below. */
 .zingiber-footer .zingiber-footer__heading { margin-bottom: 1rem; font-size: 0.875rem; }
-.zingiber-footer :is(.zingiber-footer__nav a, .zingiber-footer__social a, .zingiber-footer__social span, address, .zingiber-footer__contact > a, .zingiber-footer__contact > span, .zingiber-footer__hours p, .zingiber-footer__story p) {
+.zingiber-footer :is(.zingiber-footer__nav a, .zingiber-footer__social a, .zingiber-footer__social span, address, .zingiber-footer__contact > a, .zingiber-footer__contact > span, .zingiber-footer__hours p, .zingiber-footer__story > p) {
     font-size: 0.8125rem;
     line-height: 1.6;
 }
-.zingiber-footer__story p { max-width: 24rem; }
+.zingiber-footer__story > p { max-width: 24rem; }
 .zingiber-footer .zingiber-footer__bottom p { font-size: 0.75rem; }
 
 /* Menu pills clear the floating masthead (4.5rem bar + 1rem inset + hairlines); the admin bar drops the masthead a further 2rem. */
@@ -5119,4 +5117,77 @@ body.zingiber-page-about .zingiber-header .zingiber-language { color: inherit; }
         transition: clip-path 2200ms var(--zingiber-ease-lux);
     }
     .zingiber-enhanced-motion .zingiber-footer__invitation:has(.is-visible) .zingiber-footer__roots { clip-path: inset(-20% 0 -20% 0); }
+}
+
+/* Revision 3: clear wide masthead, open text measures and consistent rounded panes. */
+body.zingiber-site .zingiber-header,
+body.zingiber-site .zingiber-header.is-sticky {
+    background: transparent;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-radius: var(--zingiber-photo-radius);
+}
+/* Keep dark controls readable when the clear masthead passes over photography. */
+.zingiber-header.is-sticky .zingiber-header__inner { filter: drop-shadow(0 1px 1px var(--zingiber-sand)); }
+@media (prefers-reduced-transparency: reduce) {
+    body.zingiber-site .zingiber-header { background: var(--zingiber-charcoal); }
+    body.zingiber-site .zingiber-header.is-sticky,
+    body.zingiber-page-about .zingiber-header,
+    body.zingiber-page-menu .zingiber-header { background: var(--zingiber-sand); }
+}
+.zingiber-story { align-items: start; }
+.zingiber-coastal__intro > :first-child { width: 100%; }
+.zingiber-coastal__intro .zingiber-eyebrow { margin-inline: auto; }
+.zingiber-coastal__caption { border-radius: var(--zingiber-photo-radius); }
+.zingiber-coastal__caption h3 { flex-shrink: 0; white-space: nowrap; }
+.zingiber-principle-card h3 {
+    top: 26%;
+    font-size: clamp(0.875rem, 1.65vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.zingiber-footer__story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    align-self: stretch;
+}
+.zingiber-footer__story > .zingiber-footer__social {
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 0 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--zingiber-line);
+}
+.zingiber-footer .zingiber-footer__story > p {
+    margin-bottom: 0.75rem;
+    font-family: var(--zingiber-display);
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    line-height: 1.5;
+    text-wrap: balance;
+}
+.zingiber-footer__social-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.zingiber-footer .zingiber-footer__social-links > :is(a, span) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    color: var(--zingiber-burnt-red);
+}
+.zingiber-footer__social-links svg { width: 20px; height: 20px; }
+.zingiber-footer .zingiber-footer__social-links a:is(:hover, :focus-visible) { color: var(--zingiber-sand); background: var(--zingiber-burnt-red); }
+.zingiber-footer__social-unavailable { opacity: 0.6; }
+/* Crop the original vector logo to its ginger, preserving all of its source paths. */
+.zingiber-footer__ginger { display: block; width: clamp(4rem, 8vw, 7rem); height: auto; margin: 0 auto 1.5rem; }
+@media (min-width: 768px) {
+    .zingiber-coastal h2 { white-space: nowrap; }
+    .zingiber-enquiry__content h2 { font-size: clamp(1.4rem, 2.3vw, 2.35rem); white-space: nowrap; }
+}
+@media (max-width: 767px) {
+    .zingiber-footer .zingiber-footer__story > p { font-size: 0.9375rem; line-height: 1.6; }
 }

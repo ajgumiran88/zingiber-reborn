@@ -27,6 +27,8 @@ return [
     'All fields are required.' => 'جميع الحقول مطلوبة.', 'Name' => 'الاسم', 'Email' => 'البريد الإلكتروني', 'Comments / Event details' => 'التعليقات / تفاصيل المناسبة',
     'Send enquiry' => 'أرسل الاستفسار', 'Prefer email?' => 'تفضل البريد الإلكتروني؟',
     'Visit Zingiber' => 'زوروا زنجيبر', 'Opening Hours' => 'ساعات العمل', 'Follow Along' => 'تابعونا',
+    'Facebook: %s. Page link coming soon.' => 'فيسبوك: %s. رابط الصفحة قريباً.',
+    'Facebook page link coming soon' => 'رابط صفحة فيسبوك قريباً',
     'Zingiber Restaurant. All rights reserved.' => 'مطعم زنجيبر. جميع الحقوق محفوظة.',
     'Jumeirah Lakes Towers, Dubai, UAE' => 'أبراج بحيرات جميرا، دبي، الإمارات العربية المتحدة',
     'Zingiber home' => 'زنجيبر الرئيسية', 'Skip to content' => 'انتقل إلى المحتوى', 'Open navigation' => 'افتح قائمة التنقل',

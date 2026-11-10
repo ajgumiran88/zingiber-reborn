@@ -73,7 +73,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.principlesPaged, `${width}: remaining principles page in with next/previous`);
     assert.ok(result.heroType <= 50, `${width}: restrained hero type`);
     assert.ok(result.sectionSpace >= 40 && result.sectionSpace <= 90, `${width}: section space without excessive gaps (revision 2 #7): ${result.sectionSpace}`);
-    assert.equal(result.videoSource, '', 'Hero keeps the current photograph until the client video arrives');
+    assert.match(result.videoSource, /hero-placeholder\.mp4/, 'Existing placeholder video is retained');
     assert.equal(result.dialablePlaceholder, false, 'Placeholder phone cannot be dialed');
     assert.equal(result.obsoleteArt, false, 'Obsolete illustrations removed');
     assert.ok(result.photo.includes('interior-'), 'Restaurant enquiry photograph');
@@ -87,7 +87,7 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(result.roots >= 1, 'Animated footer roots replace ginger illustrations');
     assert.equal(result.spices, width < 1024 ? 6 : 9, `${width}: Experience floats whole-spice art at every depth`);
     assert.ok(result.headerClear, 'Clear masthead over the hero (revision 2 #2)');
-    if (width >= 768) assert.ok(Math.abs(result.headerWidth - Math.max(width * 0.32, 448)) < 2, `${width}: masthead is a quarter of the page, floored where its controls fit: ${result.headerWidth}`);
+    if (width >= 768) assert.ok(Math.abs(result.headerWidth - Math.max(width * 0.7, 448)) < 2, `${width}: masthead is 70% of the page: ${result.headerWidth}`);
     assert.ok(result.bookGap >= 8, `${width}: room beside Book Now (revision 2 #3): ${result.bookGap}`);
     assert.equal(result.pauseButtons, 0, 'No slider pause buttons (revision 2 #6, #9)');
     assert.equal(result.storyTitle, 'Coastal India, Reimagined for Now', 'Word split keeps heading text intact');
@@ -99,7 +99,7 @@ for (const width of [375, 768, 1024, 1440]) {
     await page.evaluate(() => scrollTo(0, innerHeight));
     await page.waitForFunction(() => document.querySelector('.zingiber-header').classList.contains('is-sticky'));
     // Wait out the header's background transition before reading the colour.
-    await page.waitForFunction(() => /^rgba?\(237, 231, 225/.test(getComputedStyle(document.querySelector('.zingiber-header')).backgroundColor));
+    await page.waitForFunction(() => getComputedStyle(document.querySelector('.zingiber-header')).backgroundColor === 'rgba(0, 0, 0, 0)');
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: `/tmp/zingiber-revisions/hero-${width}.png` });
     for (const selector of ['#principles', '#gallery', '#zingiber-enquiry', 'footer']) {

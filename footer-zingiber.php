@@ -20,6 +20,14 @@ get_template_part('template-parts/zingiber-enquiry');
         <div class="zingiber-footer__brand" data-zingiber-reveal>
             <?php zingiber_theme_image($siteContent['home']['sections']['chef_story']['image'], ['width' => 768, 'height' => 1152, 'class' => 'zingiber-footer__photo', 'sizes' => '(min-width: 1025px) 20vw, 40vw']); ?>
             <div class="zingiber-footer__story">
+                <div class="zingiber-footer__social" data-zingiber-reveal>
+                    <p class="zingiber-footer__heading"><?php esc_html_e('Follow Along', 'vonaco'); ?></p>
+                    <div class="zingiber-footer__social-links">
+                        <span class="zingiber-footer__social-unavailable" role="img" aria-label="<?php echo esc_attr(sprintf(__('Facebook: %s. Page link coming soon.', 'vonaco'), $contact['facebook'])); ?>" title="<?php esc_attr_e('Facebook page link coming soon', 'vonaco'); ?>"><?php echo zingiber_icon_svg('facebook'); ?></span>
+                        <a href="https://www.tiktok.com/@zingiberdubai" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><?php echo zingiber_icon_svg('tiktok'); ?></a>
+                        <a href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><?php echo zingiber_icon_svg('instagram'); ?></a>
+                    </div>
+                </div>
                 <p><?php echo esc_html(zingiber_prevent_widows($siteContent['home']['hero']['subheading'])); ?></p>
                 <a href="<?php echo esc_url(zingiber_page_url($siteContent['home']['calls_to_action']['story']['url'])); ?>"><?php echo esc_html($siteContent['home']['calls_to_action']['story']['label']); ?><span aria-hidden="true">↗</span></a>
             </div>
@@ -31,12 +39,6 @@ get_template_part('template-parts/zingiber-enquiry');
                     <li><a href="<?php echo esc_url(zingiber_page_url('/' . $slug . '/')); ?>"><?php echo esc_html($siteContent[$slug]['title']); ?></a></li>
                 <?php endforeach; ?>
             </ul>
-            <div class="zingiber-footer__social" data-zingiber-reveal>
-                <p class="zingiber-footer__heading"><?php esc_html_e('Follow Along', 'vonaco'); ?></p>
-                <a href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a>
-                <a href="https://www.tiktok.com/@zingiberdubai" target="_blank" rel="noopener noreferrer">TikTok <span aria-hidden="true">↗</span></a>
-                <span>Facebook <?php echo esc_html($contact['facebook']); ?></span>
-            </div>
         </nav>
         <div class="zingiber-footer__contact" data-zingiber-reveal>
             <h3 class="zingiber-footer__heading"><?php esc_html_e('Visit Zingiber', 'vonaco'); ?></h3>
@@ -56,6 +58,9 @@ get_template_part('template-parts/zingiber-enquiry');
         </div>
     </div>
     <a class="zingiber-container zingiber-footer__wordmark" data-zingiber-reveal href="<?php echo esc_url(zingiber_page_url('/')); ?>" aria-label="<?php esc_attr_e('Zingiber home', 'vonaco'); ?>">
+        <svg class="zingiber-footer__ginger" viewBox="412 290 145 234" width="145" height="234" aria-hidden="true" focusable="false">
+            <image href="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-logo.svg')); ?>" x="185" y="285" width="635" height="390" />
+        </svg>
         <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-wordmark.svg')); ?>" alt="Zingiber" width="635" height="130" loading="lazy">
     </a>
     <div class="zingiber-container zingiber-footer__bottom">

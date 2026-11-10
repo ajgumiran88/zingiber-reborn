@@ -13,15 +13,15 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
         const grid = document.querySelector('.zingiber-page-menu__images');
         const intro = document.querySelector('.zingiber-page-menu__intro');
         return {
-            glass: getComputedStyle(header).backdropFilter.includes('blur(24px)'),
+            clear: getComputedStyle(header).backdropFilter === 'none' && getComputedStyle(header).backgroundColor === 'rgba(0, 0, 0, 0)',
             headerWidth: header.offsetWidth,
             gridWidth: grid.offsetWidth,
             introBeforeCards: intro.offsetTop < grid.offsetTop,
             photoSizes: [...grid.querySelectorAll('figure')].map(e => [e.offsetWidth, e.offsetHeight]),
         };
     });
-    assert.ok(layout.glass, 'Masthead has stronger glass blur');
-    assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.32, 448))) <= 1, `${width}: masthead is a quarter of the page, floored where its controls fit`);
+    assert.ok(layout.clear, 'Masthead is fully transparent (Revision 3)');
+    assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.7, 448))) <= 1, `${width}: masthead is 70% of the page`);
     assert.ok(layout.gridWidth >= width * .92, `${width}: full-width menu content`);
     assert.ok(layout.introBeforeCards, 'Introduction leads the food grid');
     assert.ok(layout.photoSizes.every(([w, h]) => Math.abs(w - h) <= 1 && Math.abs(w - layout.photoSizes[0][0]) <= 1), 'All food frames have equal square dimensions');
@@ -96,7 +96,7 @@ for (const width of [375, 768, 1440, 1920]) {
         }), selector);
         assert.equal(layout.overflow, 0, `${slug} ${width}: no overflow`);
         assert.ok(layout.widths.every(w => w >= width * .92 && w <= width), `${slug} ${width}: content, enquiry and footer fill the page: ${layout.widths}`);
-        assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.32, 448))) <= 1, `${slug} ${width}: masthead is a quarter of the page, floored where its controls fit`);
+        assert.ok(Math.abs(layout.headerWidth - (width < 768 ? width - 20 : Math.max(width * 0.7, 448))) <= 1, `${slug} ${width}: masthead is 70% of the page`);
         if (width === 768) assert.ok(layout.languageLinks, `${slug}: Arabic internal links retain language`);
         assert.ok(await page.evaluate(() => {
             const rect = s => document.querySelector(s).getBoundingClientRect();

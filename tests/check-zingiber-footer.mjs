@@ -1,7 +1,7 @@
 // Run: ego-browser nodejs < tests/check-zingiber-footer.mjs
 import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
-const task = await taskSpace('Zingiber Ballena footer');
+const task = await taskSpace('Zingiber balanced footer');
 const page = task.page('p1');
 await mkdir('/tmp/zingiber-footer', { recursive: true });
 for (const width of [375, 768, 1024, 1440]) {
@@ -23,19 +23,28 @@ for (const width of [375, 768, 1024, 1440]) {
     assert.ok(layout.labels, 'Every form field has a visible label');
     assert.ok(layout.strip < 240, `${width}: compact footer contact strip`);
     assert.ok(layout.logo > width * .8, `${width}: oversized wordmark`);
+    await page.evaluate(() => document.querySelector('.zingiber-footer__grid').scrollIntoView({ behavior: 'instant', block: 'center' }));
+    await page.waitForFunction(() => [...document.querySelectorAll('.zingiber-footer__grid [data-zingiber-reveal]')].every(e => getComputedStyle(e).opacity === '1'));
     const columns = await page.evaluate(() => {
         const rect = selector => document.querySelector(selector).getBoundingClientRect();
         const brand = rect('.zingiber-footer__brand');
         const nav = rect('.zingiber-footer__nav');
         const photo = rect('.zingiber-footer__photo');
+        const social = rect('.zingiber-footer__social');
+        const story = rect('.zingiber-footer__story > p');
         return {
             imageIsPortrait: photo.height > photo.width,
             storyBeforeNav: document.querySelector('.zingiber-footer__brand').offsetTop <= document.querySelector('.zingiber-footer__nav').offsetTop,
             detailsAlongsideNav: document.querySelector('.zingiber-footer__nav').offsetTop === document.querySelector('.zingiber-footer__contact').offsetTop,
             desktopSplit: brand.width > nav.width * 1.7 && document.querySelector('.zingiber-footer__brand').offsetTop === document.querySelector('.zingiber-footer__nav').offsetTop,
+            storyGap: story.top - social.bottom,
+            socialTargets: [...document.querySelectorAll('.zingiber-footer__social-links > *')].every(e => e.offsetWidth >= 44 && e.offsetHeight >= 44),
+            socialColors: new Set([...document.querySelectorAll('.zingiber-footer__social-links > *')].map(e => getComputedStyle(e).color)).size,
         };
     });
     assert.ok(columns.imageIsPortrait && columns.storyBeforeNav, `${width}: portrait and introduction lead the footer`);
+    assert.ok(columns.storyGap >= 16 && columns.storyGap <= 48, `${width}: social and story content form one compact group, gap ${columns.storyGap}`);
+    assert.ok(columns.socialTargets && columns.socialColors === 1, `${width}: social buttons have matching colors and usable targets`);
     assert.ok(columns.detailsAlongsideNav, `${width}: navigation and visit details share a row`);
     if (width > 1024) assert.ok(columns.desktopSplit, 'Desktop gives half the footer to the image and story');
     assert.ok(await page.evaluate(() => {
@@ -90,12 +99,12 @@ for (const width of [375, 1440]) {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, `${width}: Arabic footer fits`);
     assert.ok(await page.evaluate(() => /[\u0600-\u06ff]/.test(document.querySelector('.zingiber-footer__story').textContent)), 'Footer introduction uses translated copy');
     assert.ok(await page.evaluate(() => [...document.querySelectorAll('footer a')].filter(a => a.origin === location.origin).every(a => new URL(a.href).searchParams.get('lang') === 'ar')), 'Footer links preserve Arabic');
-    await page.focus('.zingiber-footer__story a');
+    await page.focus('.zingiber-footer__story > a');
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Tab');
     assert.ok(await page.evaluate(() => {
         const style = getComputedStyle(document.activeElement);
-        return document.activeElement.matches('.zingiber-footer__story a') && style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0;
+        return document.activeElement.matches('.zingiber-footer__story > a') && style.outlineStyle !== 'none' && parseFloat(style.outlineWidth) > 0;
     }), 'Story link has visible keyboard focus');
     await page.screenshot({ path: `/tmp/zingiber-footer/arabic-${width}.png` });
     console.log(`PASS: Arabic footer and keyboard focus ${width}px`);

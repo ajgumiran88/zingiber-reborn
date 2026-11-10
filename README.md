@@ -49,7 +49,7 @@ Run `php tests/check-zingiber-enquiry.php /path/to/local/wordpress/wp-load.php` 
 
 ## October 2026 revision pass
 
-The supplied English logo is retained as vector artwork in `assets/svg/zingiber/english-logo.svg`; the light treatment and footer wordmark use the same source paths. Fine animated roots replace the ginger illustrations. Heading sizes, section spacing, glass navigation, menu transitions, visible principles and footer follow `Zingiber Website Revisions 30 oct 2026.pdf`.
+The supplied English logo is retained as vector artwork in `assets/svg/zingiber/english-logo.svg`; the light treatment, footer wordmark, and footer ginger use the same source paths. Fine animated roots decorate the contact strip. Revision 3 of the client document adds a wider transparent masthead, aligned story copy, borderless photography, rounded coastal captions, larger principle titles, and social icons beside the footer photo. Facebook remains unlinked until its page URL is supplied. Run `ego-browser nodejs < tests/check-zingiber-revision3.mjs` for the focused English/Arabic layout checks from 375px to 1920px.
 
 The EN / العربية switch keeps the current page. Arabic uses `?lang=ar`, local draft copy in `inc/zingiber/content-ar.php` and `inc/zingiber/ui-ar.php`, RTL layout, and language-preserving links and enquiry redirects. Have an Arabic-speaking editor approve the draft before publication. Any page cache must include the `lang` query parameter in its key. Contact numbers and email stay unchanged. The video remains pending the client's asset; configure `home.hero.video` when supplied.
 

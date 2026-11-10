@@ -13,7 +13,7 @@ $sent = !$errors && ($_GET['enquiry'] ?? '') === 'sent';
         </div>
         <div class="zingiber-enquiry__content">
             <p class="zingiber-eyebrow"><?php esc_html_e('Contact & Reservations', 'vonaco'); ?></p>
-            <h2 id="zingiber-enquiry-title" data-zingiber-reveal><?php esc_html_e('Want to chat?', 'vonaco'); ?><br><?php esc_html_e('Get in touch.', 'vonaco'); ?></h2>
+            <h2 id="zingiber-enquiry-title" data-zingiber-reveal><?php esc_html_e('Want to chat?', 'vonaco'); ?> <?php esc_html_e('Get in touch.', 'vonaco'); ?></h2>
             <?php if (zingiber_current_page_content()['slug'] === 'contact') : ?>
                 <p class="zingiber-enquiry__intro"><?php echo esc_html($siteContent['contact']['sections'][0]['body'][0]); ?></p>
             <?php endif; ?>
