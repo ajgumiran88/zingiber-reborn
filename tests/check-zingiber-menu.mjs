@@ -27,8 +27,14 @@ for (const width of [375, 768, 1024, 1440, 1920]) {
     assert.ok(layout.photoSizes.every(([w, h]) => Math.abs(w - h) <= 1 && Math.abs(w - layout.photoSizes[0][0]) <= 1), 'All food frames have equal square dimensions');
     assert.equal(await page.evaluate(() => document.querySelectorAll('.zingiber-page-hero').length), 0, 'JF menu opens with title and pills');
     assert.equal(await page.evaluate(() => document.querySelectorAll('main h1').length), 1, 'One menu title');
-    assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.zingiber-page-menu__images')).gridTemplateColumns.split(' ').length), width < 600 ? 1 : width < 1025 ? 2 : 3, 'JF food grid');
+    assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.zingiber-page-menu__images')).gridTemplateColumns.split(' ').length), width < 600 ? 1 : 2, 'JF food grid');
     await page.evaluate(() => document.querySelector('.zingiber-page-menu__images').scrollIntoView({ behavior: 'instant', block: 'start' }));
+    if (width >= 600) {
+        assert.ok(await page.evaluate(() => {
+            const grid = document.querySelector('.zingiber-page-menu__images');
+            return grid.offsetHeight <= innerHeight;
+        }), `${width}: 2x2 menu fits in the viewport`);
+    }
     await page.waitForFunction(() => document.querySelector('[data-zingiber-menu-tabs]').classList.contains('is-stuck'));
     assert.ok(await page.evaluate(() => {
         const nav = document.querySelector('[data-zingiber-menu-tabs]');

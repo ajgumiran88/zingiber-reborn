@@ -1197,9 +1197,6 @@ to {
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
-html:not([lang="ar"]) .zingiber-page-menu__display {
-    text-transform: lowercase;
-}
 .zingiber-enhanced-motion .zingiber-page-menu__display.is-visible {
     animation: zingiber-menu-showup 2.6s linear forwards;
 }
@@ -1211,11 +1208,11 @@ html:not(.zingiber-enhanced-motion) .zingiber-menu-plate__title {
 }
 .zingiber-page-menu__lede {
     margin: 0;
-    max-width: 22ch;
+    max-width: none;
     font-family: var(--zingiber-display);
     font-size: var(--zingiber-type-feature);
     line-height: 1.25;
-    text-wrap: balance;
+    white-space: nowrap;
 }
 .zingiber-page-menu__intro {
     display: grid;
@@ -1261,7 +1258,7 @@ html:not(.zingiber-enhanced-motion) .zingiber-menu-plate__title {
     font: 500 var(--zingiber-type-ui) / 1.2 var(--zingiber-body);
     letter-spacing: 0.04em;
     text-decoration: none;
-    text-transform: lowercase;
+    white-space: nowrap;
     transition: background-color 280ms var(--zingiber-ease), color 280ms var(--zingiber-ease), border-color 280ms var(--zingiber-ease), transform 280ms var(--zingiber-ease);
 }
 .zingiber-site .zingiber-page-menu__tab:hover,
@@ -1274,14 +1271,12 @@ html:not(.zingiber-enhanced-motion) .zingiber-menu-plate__title {
 .zingiber-page-menu__tab:active {
     transform: scale(0.97);
 }
-html[lang="ar"] .zingiber-page-menu__tab {
-    text-transform: none;
-}
 .zingiber-page-menu__images {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
-    gap: clamp(1.75rem, 3.5vw, 3rem) clamp(1rem, 2.4vw, 2rem);
+    justify-items: center;
+    gap: 0.75rem clamp(1.25rem, 2vw, 2rem);
     margin-top: clamp(2.5rem, 5vw, 4.5rem);
     list-style: none;
     padding: 0;
@@ -4598,7 +4593,7 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
 .zingiber-page-menu.zingiber-section { overflow: visible; padding-top: clamp(10rem, 16vw, 15rem); }
 .zingiber-page-menu__mast { padding-block: 0 2.5rem; }
 .zingiber-page-menu__display { font-size: var(--zingiber-type-hero); }
-.zingiber-page-menu__intro { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); margin-block: clamp(2rem, 4vw, 4rem); }
+.zingiber-page-menu__intro { max-width: none; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: clamp(1.5rem, 4vw, 4rem); margin-block: clamp(2rem, 4vw, 4rem); }
 .zingiber-page-menu__tabs {
     top: 6.25rem;
     z-index: 60;
@@ -4626,14 +4621,117 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
 .zingiber-page-menu__step svg { width: 1rem; height: 1rem; rotate: 45deg; }
 .zingiber-page-menu__step[data-zingiber-menu-step="-1"] svg { rotate: -135deg; }
 .zingiber-page-menu__step:disabled { opacity: 0.35; cursor: default; }
-.zingiber-page-menu__images { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem); margin-top: 0; }
-.zingiber-menu-plate { scroll-margin-top: 6rem; }
-.zingiber-menu-plate__figure { width: 100%; aspect-ratio: 1; margin-bottom: 2rem; }
-.zingiber-menu-plate__copy { max-width: 18rem; }
-.zingiber-page-menu__dock { display: none; }
-@media (min-width: 1025px) {
-    .zingiber-menu-plate:last-child:nth-child(3n + 1) { grid-column: 2; }
+/*
+ * Premium 2x2: the four regions read as one printed menu card — sand
+ * panel quartered by hairlines, each plate beside its numbered story.
+ */
+.zingiber-page-menu__images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 0;
+    padding: clamp(0.5rem, 1vw, 0.85rem);
+    border: 1px solid var(--zingiber-line);
+    border-radius: calc(var(--zingiber-photo-radius) + 0.85rem);
+    background: var(--zingiber-sand);
+    box-shadow: none;
+    color: var(--zingiber-charcoal);
+    counter-reset: zingiber-plate;
 }
+.zingiber-menu-plate {
+    --zingiber-plate-line: var(--zingiber-line);
+    counter-increment: zingiber-plate;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto auto 1fr;
+    column-gap: clamp(1.25rem, 2.6vw, 2.5rem);
+    text-align: start;
+    padding: clamp(0.75rem, 1.4vw, 1.25rem);
+    scroll-margin-top: 9rem;
+}
+.zingiber-menu-plate:nth-child(even) { border-inline-start: 1px solid var(--zingiber-plate-line); }
+.zingiber-menu-plate:nth-child(n + 3) { border-block-start: 1px solid var(--zingiber-plate-line); }
+.zingiber-menu-plate::before {
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 0.9rem;
+    color: var(--zingiber-copper);
+    font: italic 400 clamp(1.6rem, 2.4vw, 2.4rem) / 1 var(--zingiber-display);
+    content: counter(zingiber-plate, decimal-leading-zero);
+    transition: transform 600ms var(--zingiber-ease);
+}
+.zingiber-menu-plate__figure {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    width: min(22rem, 20vw, calc((100svh - 23rem) / 2));
+    aspect-ratio: 1;
+    margin: 0;
+    border-radius: var(--zingiber-photo-radius);
+}
+.zingiber-menu-plate__figure::after {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(15, 15, 15, 0.08);
+    content: '';
+    pointer-events: none;
+}
+.zingiber-page-menu__images .zingiber-menu-plate__figure img { box-shadow: none; }
+.zingiber-menu-plate__title {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 0;
+    font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: var(--zingiber-tracking-display);
+}
+.zingiber-menu-plate__copy {
+    grid-column: 2;
+    grid-row: 4;
+    position: relative;
+    max-width: 21rem;
+    margin-top: 1.1rem;
+    padding-top: 1.1rem;
+    color: var(--zingiber-ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+/* A short copper rule that draws out when the plate is hovered. */
+.zingiber-menu-plate__copy::before {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--zingiber-copper);
+    content: '';
+    transform-origin: left;
+    transition: transform 600ms var(--zingiber-ease);
+}
+html[dir="rtl"] .zingiber-menu-plate__copy::before { transform-origin: right; }
+.zingiber-menu-plate.is-visible .zingiber-menu-plate__figure,
+.zingiber-menu-plate:nth-child(even).is-visible .zingiber-menu-plate__figure { animation: none; }
+html:not(.zingiber-enhanced-motion) .zingiber-page-menu__images .zingiber-menu-plate__title {
+    color: var(--zingiber-charcoal);
+    -webkit-text-fill-color: var(--zingiber-charcoal);
+}
+@media (prefers-reduced-motion: no-preference) {
+    html.zingiber-enhanced-motion .zingiber-page-menu__images .zingiber-menu-plate__title {
+        background-image: linear-gradient(to right, var(--zingiber-charcoal), var(--zingiber-charcoal), var(--zingiber-charcoal), rgba(15, 15, 15, 0));
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .zingiber-page-menu__images .zingiber-menu-plate__title {
+        color: var(--zingiber-charcoal);
+        -webkit-text-fill-color: var(--zingiber-charcoal);
+    }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .zingiber-menu-plate:hover::before { transform: translateX(0.35rem); }
+    .zingiber-menu-plate:hover .zingiber-menu-plate__copy::before { transform: scaleX(2.2); }
+}
+.zingiber-page-menu__dock { display: none; }
 @media (max-width: 767px) {
     .zingiber-page-menu__tabs { top: 4.5rem; }
     .zingiber-page-menu__intro { grid-template-columns: 1fr; }
@@ -4652,6 +4750,12 @@ body.zingiber-page-menu .zingiber-header .zingiber-book-link { border-color: rgb
     .zingiber-page-menu__tabs { padding-block: 0.65rem; }
     .zingiber-page-menu__rail { flex: 1 1 auto; min-width: 0; }
     .zingiber-page-menu__tab { padding-inline: 1.2rem; }
+    .zingiber-page-menu__lede { white-space: normal; }
+    .zingiber-menu-plate__figure { width: 40vw; }
+    .zingiber-menu-plate:nth-child(even) { border-inline-start: 0; }
+    .zingiber-menu-plate:nth-child(n + 2) { border-block-start: 1px solid var(--zingiber-plate-line); }
+    .zingiber-menu-plate__title { font-size: 1.5rem; }
+    .zingiber-menu-plate__copy { margin-top: 0.75rem; padding-top: 0.75rem; font-size: 0.88rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
     .zingiber-menu-plate.is-visible { animation-duration: 650ms; }

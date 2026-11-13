@@ -158,7 +158,7 @@ get_header('zingiber');
                                 [
                                     'width' => 1024,
                                     'height' => 1024,
-                                    'sizes' => '(min-width: 1025px) 30vw, (min-width: 600px) 46vw, 94vw',
+                                    'sizes' => '(min-width: 600px) 24vw, 45vw',
                                 ]
                             );
                             ?>
