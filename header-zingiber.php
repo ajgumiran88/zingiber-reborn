@@ -171,12 +171,10 @@ $navigationLabels = [
                 </li>
             <?php endforeach; ?>
         </ul>
-        <a class="zingiber-navigation__social" href="https://www.instagram.com/zingiberdubai/" target="_blank" rel="noopener noreferrer">Instagram <?php echo zingiber_icon_svg('arrow'); ?></a>
         <figure class="zingiber-navigation__image" aria-hidden="true">
             <?php zingiber_theme_image($navigationPages['home']['sections']['chef_story']['image'], ['width' => 1536, 'height' => 1024, 'sizes' => '(min-width: 768px) 42rem, 90vw']); ?>
             <figcaption class="zingiber-navigation__caption">
                 <span><?php esc_html_e('Introducing a Modern Indian', 'vonaco'); ?></span>
-                <img src="<?php echo esc_url(zingiber_theme_asset_url('assets/svg/zingiber/english-logo-light.svg')); ?>" alt="" width="635" height="390">
                 <span><?php esc_html_e('Coastal Dining Experience.', 'vonaco'); ?></span>
             </figcaption>
         </figure>

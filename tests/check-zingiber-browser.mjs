@@ -53,11 +53,11 @@ for (const width of [375, 768, 1024, 1440]) {
     }), `${width}: contained menu with food image`);
     assert.equal(await page.evaluate(() => document.activeElement.hasAttribute('data-zingiber-menu-close')), true);
     assert.ok(['hidden', 'clip'].includes(await page.evaluate(() => getComputedStyle(document.documentElement).overflow)), 'Dialog locks page scrolling');
-    await page.focus('.zingiber-navigation__social');
+    await page.focus('#zingiber-primary-menu li:last-child a');
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.matches('dialog .zingiber-book-link')), true);
     await page.keyboard.press('Shift+Tab');
-    assert.equal(await page.evaluate(() => document.activeElement.matches('.zingiber-navigation__social')), true);
+    assert.equal(await page.evaluate(() => document.activeElement.matches('#zingiber-primary-menu li:last-child a')), true);
     await page.keyboard.press('Escape');
     await page.waitForFunction(() => !document.querySelector('dialog').open
         && document.activeElement.hasAttribute('data-zingiber-menu-toggle')

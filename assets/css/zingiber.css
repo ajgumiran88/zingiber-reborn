@@ -2803,23 +2803,6 @@ html.zingiber-menu-open {
     text-decoration-thickness: 1px;
 }
 
-.zingiber-navigation__social {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    min-height: 44px;
-    margin-top: 1.5rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.zingiber-navigation__social svg {
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
 @starting-style {
     .zingiber-navigation[open]::backdrop {
         opacity: 0;
@@ -4166,44 +4149,36 @@ html.zingiber-menu-open {
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
-.zingiber-navigation__links li a,
-.zingiber-navigation__social {
+.zingiber-navigation__links li a {
     opacity: 0;
     translate: 0 20px;
 }
-.zingiber-navigation__links li a:hover,
-.zingiber-navigation__social:hover { color: var(--zingiber-burnt-red); }
+.zingiber-navigation__links li a:hover { color: var(--zingiber-burnt-red); }
 .zingiber-navigation__links li a[aria-current] { font-style: normal; text-underline-offset: 0.35em; }
-.zingiber-navigation__social { margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 500; letter-spacing: 0.05em; }
-.zingiber-navigation__social svg { width: 0.6rem; height: 0.6rem; }
-.zingiber-navigation[open] :is(.zingiber-navigation__masthead, .zingiber-navigation__links, .zingiber-navigation__links li a, .zingiber-navigation__social) { opacity: 1; }
+.zingiber-navigation[open] :is(.zingiber-navigation__masthead, .zingiber-navigation__links, .zingiber-navigation__links li a) { opacity: 1; }
 .zingiber-navigation[open] .zingiber-navigation__links { clip-path: inset(0 0 0 0 round 5px); }
-.zingiber-navigation[open] :is(.zingiber-navigation__links li a, .zingiber-navigation__social) { translate: 0 0; }
+.zingiber-navigation[open] .zingiber-navigation__links li a { translate: 0 0; }
 .zingiber-navigation[open] .zingiber-menu-toggle__icon span:first-child { transform: translateY(6px) rotate(45deg); }
 .zingiber-navigation[open] .zingiber-menu-toggle__icon span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .zingiber-navigation[open] .zingiber-menu-toggle__icon span:last-child { transform: translateY(-6px) rotate(-45deg); }
 @media (prefers-reduced-motion: no-preference) {
-    /* Ballena GSAP timeline: sheet 0-400ms, links +50ms from 150ms, socials at 350ms. */
+    /* Ballena GSAP timeline: sheet 0-400ms, links +50ms from 150ms. */
     .zingiber-navigation[open] .zingiber-navigation__masthead { transition: opacity 300ms ease; }
     .zingiber-navigation[open] .zingiber-navigation__links { transition: clip-path 400ms var(--zingiber-nav-out), opacity 400ms var(--zingiber-nav-out); }
     .zingiber-navigation[open] .zingiber-navigation__links li a {
         transition: opacity 400ms var(--zingiber-nav-out) calc(150ms + var(--i) * 50ms), translate 400ms var(--zingiber-nav-out) calc(150ms + var(--i) * 50ms), color 300ms ease;
     }
-    .zingiber-navigation[open] .zingiber-navigation__social {
-        transition: opacity 400ms var(--zingiber-nav-out) 350ms, translate 400ms var(--zingiber-nav-out) 350ms, color 300ms ease;
-    }
-    /* Closing mirrors the timeline: socials first, links in reverse, sheet last. */
+    /* Closing mirrors the timeline: links in reverse, sheet last. */
     .zingiber-navigation__masthead { transition: opacity 300ms ease; }
     .zingiber-navigation__links { transition: clip-path 400ms var(--zingiber-nav-in) 350ms, opacity 400ms var(--zingiber-nav-in) 350ms; }
     .zingiber-navigation__links li a {
         transition: opacity 400ms var(--zingiber-nav-in) calc(200ms - var(--i) * 50ms), translate 400ms var(--zingiber-nav-in) calc(200ms - var(--i) * 50ms), color 300ms ease;
     }
-    .zingiber-navigation__social { transition: opacity 400ms var(--zingiber-nav-in), translate 400ms var(--zingiber-nav-in), color 300ms ease; }
     .zingiber-menu-toggle__icon span { transition: transform 300ms ease, opacity 300ms ease; }
     @starting-style {
-        .zingiber-navigation[open] :is(.zingiber-navigation__masthead, .zingiber-navigation__links, .zingiber-navigation__links li a, .zingiber-navigation__social) { opacity: 0; }
+        .zingiber-navigation[open] :is(.zingiber-navigation__masthead, .zingiber-navigation__links, .zingiber-navigation__links li a) { opacity: 0; }
         .zingiber-navigation[open] .zingiber-navigation__links { clip-path: inset(0 0 100% 0 round 5px); }
-        .zingiber-navigation[open] :is(.zingiber-navigation__links li a, .zingiber-navigation__social) { translate: 0 20px; }
+        .zingiber-navigation[open] .zingiber-navigation__links li a { translate: 0 20px; }
         .zingiber-navigation[open] .zingiber-menu-toggle__icon span { opacity: 1; transform: none; }
     }
     /* Ballena header entrance, first view only, once the curtain lifts. */
@@ -4232,7 +4207,7 @@ html.zingiber-menu-open {
     position: absolute;
     inset: 0;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 1.5rem;
     padding-inline: 2.5rem;
@@ -4242,8 +4217,8 @@ html.zingiber-menu-open {
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
+.zingiber-navigation__caption span:first-child { text-align: start; }
 .zingiber-navigation__caption span:last-child { text-align: end; }
-.zingiber-navigation__image .zingiber-navigation__caption img { width: 4.5rem; height: auto; }
 @media (max-width: 1024px) {
     .zingiber-navigation__links {
         min-height: calc(100dvh - 2rem - 4.5rem - 8px);
